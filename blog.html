@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Cadi | Cleaning Business Growth & Strategy</title>
+<meta name="description" content="Real talk for cleaning business owners. No fluff, no theory — just the honest stuff that actually moves your business forward.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:      #040810;
+  --navy:     #07102e;
+  --blue:     #1a3ac9;
+  --electric: #2e55f0;
+  --sky:      #4f78ff;
+  --pale:     #c4d3ff;
+  --white:    #ffffff;
+  --off:      #f0f4ff;
+  --font:     'Plus Jakarta Sans', sans-serif;
+  --serif:    'Instrument Serif', serif;
+  --ease:     cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--ink);
+  font-family: var(--font);
+  color: var(--white);
+  overflow-x: hidden;
+  line-height: 1;
+}
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  opacity: 0.022;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* UTILS */
+.inner        { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+.inner-narrow { max-width: 740px;  margin: 0 auto; padding: 0 40px; }
+.inner-post   { max-width: 680px;  margin: 0 auto; padding: 0 40px; }
+
+.hl {
+  background: linear-gradient(135deg, #fff 0%, #a8c4ff 40%, #4f78ff 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hl-warm {
+  background: linear-gradient(135deg, #071140 0%, #1d38c4 55%, #2e55f0 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+.glass {
+  background: rgba(7,16,46,0.55);
+  border: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(32px); border-radius: 24px;
+  position: relative; overflow: hidden;
+}
+.glass::before {
+  content: ''; position: absolute; top: 0; left: 8%; right: 8%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(79,120,255,0.4), transparent);
+  pointer-events: none;
+}
+.divider {
+  height: 1px; margin: 0 40px;
+  background: linear-gradient(90deg, transparent, rgba(79,120,255,0.12), transparent);
+}
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);} }
+@keyframes blink  { 0%,100%{opacity:1;}50%{opacity:0.2;} }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 16px 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(4,8,16,0.8); backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.nav-wm {
+  font-family: var(--font); font-weight: 600; font-size: 26px;
+  letter-spacing: -0.05em; display: flex; align-items: baseline;
+  text-decoration: none; filter: drop-shadow(0 0 10px rgba(79,120,255,0.4));
+}
+.nC{color:rgba(196,211,255,0.6);}
+.na{background:linear-gradient(170deg,#fff,#a8c4ff,#4f78ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.nd{background:linear-gradient(170deg,#fff,#6090ff,#2e55f0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.ni{color:rgba(255,255,255,0.28);position:relative;}
+.ndot{position:absolute;left:50%;transform:translateX(-50%);border-radius:50%;width:5px;height:5px;top:0.08em;background:radial-gradient(circle,#fff,#a8c4ff,#4f78ff,transparent);box-shadow:0 0 8px 2px rgba(168,196,255,0.7),0 0 18px 4px rgba(79,120,255,0.4);animation:blink 2s ease-in-out infinite;}
+.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+.nav-links a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.45); text-decoration: none; padding: 8px 14px; border-radius: 10px; transition: all 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.05); }
+.nav-right { display: flex; align-items: center; gap: 10px; }
+.nav-signin { font-family: var(--font); font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.5); background: none; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 9px 18px; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+.nav-signin:hover { border-color: rgba(255,255,255,0.25); color: #fff; }
+.nav-cta { font-family: var(--font); font-size: 13px; font-weight: 700; color: #fff; background: linear-gradient(135deg,var(--blue),var(--electric)); border: none; border-radius: 10px; padding: 10px 20px; cursor: pointer; box-shadow: 0 4px 16px rgba(46,85,240,0.35); transition: all 0.2s; text-decoration: none; white-space: nowrap; }
+.nav-cta:hover { box-shadow: 0 6px 22px rgba(46,85,240,0.55); transform: translateY(-1px); }
+
+/* ══════════════════════════════
+   BLOG LISTING PAGE
+══════════════════════════════ */
+#blogListing { display: block; }
+#blogPost1   { display: none; }
+#blogPost2   { display: none; }
+
+/* HERO */
+.blog-hero {
+  padding: 140px 40px 80px;
+  position: relative; overflow: hidden;
+}
+.blog-hero-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(29,56,196,0.16) 0%, transparent 60%), var(--ink);
+  pointer-events: none;
+}
+.blog-hero-inner { position: relative; z-index: 1; max-width: 720px; }
+.blog-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(79,120,255,0.7); display: block; margin-bottom: 14px; }
+.blog-h1 { font-size: clamp(40px, 6vw, 64px); font-weight: 800; letter-spacing: -0.05em; line-height: 1.05; color: #fff; margin-bottom: 18px; }
+.blog-sub { font-size: 18px; font-weight: 400; line-height: 1.7; color: rgba(255,255,255,0.45); max-width: 520px; }
+.blog-sub strong { color: rgba(255,255,255,0.75); font-weight: 600; }
+
+/* FEATURED POST */
+.featured-post {
+  margin: 0 40px 16px;
+  max-width: 1000px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0; cursor: pointer;
+  transition: transform 0.3s; border-radius: 28px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.featured-post:hover { transform: translateY(-4px); }
+.fp-visual {
+  background: linear-gradient(145deg, #07102e, #0d1a5e);
+  display: flex; flex-direction: column;
+  align-items: flex-start; justify-content: flex-end;
+  padding: 40px; position: relative; overflow: hidden;
+  min-height: 380px;
+}
+.fp-visual::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 30% 30%, rgba(29,56,196,0.3) 0%, transparent 70%);
+}
+.fp-emoji { font-size: 64px; margin-bottom: 20px; position: relative; z-index: 1; }
+.fp-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(79,120,255,0.7); background: rgba(79,120,255,0.1); border: 1px solid rgba(79,120,255,0.2); border-radius: 100px; padding: 4px 12px; display: inline-block; margin-bottom: 12px; position: relative; z-index: 1; }
+.fp-title { font-size: 26px; font-weight: 800; letter-spacing: -0.04em; line-height: 1.15; color: #fff; position: relative; z-index: 1; }
+
+.fp-content {
+  padding: 40px; background: rgba(7,16,46,0.6); backdrop-filter: blur(32px);
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.fp-featured-label { font-size: 9px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(79,120,255,0.6); margin-bottom: 16px; }
+.fp-excerpt { font-size: 16px; line-height: 1.75; color: rgba(255,255,255,0.55); margin-bottom: 24px; flex: 1; }
+.fp-excerpt strong { color: rgba(255,255,255,0.82); font-weight: 600; }
+.fp-meta { display: flex; align-items: center; justify-content: space-between; }
+.fp-author { display: flex; align-items: center; gap: 10px; }
+.fp-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--electric)); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: #fff; }
+.fp-author-name { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.6); }
+.fp-date { font-size: 12px; color: rgba(255,255,255,0.25); }
+.fp-read { font-size: 12px; font-weight: 600; color: var(--sky); }
+
+/* POST GRID */
+.posts-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 14px; margin: 0 40px 80px;
+  max-width: 1000px;
+}
+.post-card {
+  background: rgba(7,16,46,0.55);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 22px; overflow: hidden;
+  cursor: pointer; transition: transform 0.3s, border-color 0.3s;
+  position: relative;
+}
+.post-card:hover { transform: translateY(-4px); border-color: rgba(79,120,255,0.2); }
+.post-card::before { content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg,transparent,rgba(79,120,255,0.3),transparent); }
+.pc-visual {
+  height: 160px; padding: 28px 24px 20px;
+  background: linear-gradient(145deg, #07102e, #0d1a5e);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  position: relative; overflow: hidden;
+}
+.pc-visual::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(29,56,196,0.2) 0%, transparent 70%); }
+.pc-emoji { font-size: 36px; position: relative; z-index: 1; margin-bottom: 8px; }
+.pc-tag { font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(79,120,255,0.65); background: rgba(79,120,255,0.08); border: 1px solid rgba(79,120,255,0.15); border-radius: 100px; padding: 3px 10px; display: inline-block; position: relative; z-index: 1; }
+.pc-body { padding: 22px 22px 24px; }
+.pc-title { font-size: 16px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.3; color: #fff; margin-bottom: 10px; }
+.pc-excerpt { font-size: 13px; line-height: 1.65; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+.pc-meta { display: flex; align-items: center; justify-content: space-between; }
+.pc-author-sm { font-size: 11px; color: rgba(255,255,255,0.3); }
+.pc-read { font-size: 11px; font-weight: 600; color: var(--sky); }
+
+/* COMING SOON CARD */
+.post-card.coming {
+  opacity: 0.5; cursor: default;
+}
+.post-card.coming:hover { transform: none; border-color: rgba(255,255,255,0.06); }
+.cs-badge { font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 100px; padding: 3px 10px; display: inline-block; }
+
+/* ══════════════════════════════
+   BLOG POST TEMPLATE
+══════════════════════════════ */
+.post-page { padding-top: 100px; background: #f8f9ff; }
+
+.post-hero {
+  padding: 60px 40px 64px;
+  position: relative; overflow: hidden;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.post-hero-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(29,56,196,0.14) 0%, transparent 60%), var(--ink);
+  pointer-events: none;
+}
+.post-hero-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; text-align: center; }
+.post-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(79,120,255,0.7); background: rgba(79,120,255,0.08); border: 1px solid rgba(79,120,255,0.18); border-radius: 100px; padding: 5px 14px; display: inline-block; margin-bottom: 20px; }
+.post-h1 { font-size: clamp(34px, 5.5vw, 58px); font-weight: 800; letter-spacing: -0.05em; line-height: 1.05; color: #fff; margin-bottom: 20px; }
+.post-intro { font-size: 19px; font-weight: 400; line-height: 1.7; color: rgba(255,255,255,0.75); max-width: 620px; margin: 0 auto 28px; }
+.post-intro strong { color: #fff; font-weight: 600; }
+.post-byline { display: flex; align-items: center; justify-content: center; gap: 12px; }
+.post-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--electric)); display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; color: #fff; }
+.post-author-info { text-align: left; }
+.post-author-name { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.65); }
+.post-meta { font-size: 12px; color: rgba(255,255,255,0.25); margin-top: 2px; }
+
+/* POST CONTENT */
+.post-content {
+  padding: 64px 40px 80px;
+  max-width: 680px; margin: 0 auto;
+}
+.post-content p {
+  font-size: 17px; font-weight: 400; line-height: 1.85;
+  color: rgba(255,255,255,0.88); margin-bottom: 24px;
+}
+.post-content p strong { font-weight: 700; color: #fff; }
+.post-content p em {
+  font-style: normal; font-weight: 600;
+  background: linear-gradient(135deg, #a8c4ff, #4f78ff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.post-content h2 {
+  font-size: 28px; font-weight: 800; letter-spacing: -0.03em;
+  color: #fff; margin: 48px 0 16px; line-height: 1.2;
+}
+.post-content h3 {
+  font-size: 20px; font-weight: 700; letter-spacing: -0.02em;
+  color: #fff; margin: 36px 0 12px; line-height: 1.3;
+}
+.post-pull {
+  border-left: 2px solid rgba(79,120,255,0.45);
+  border-radius: 0 16px 16px 0;
+  background: rgba(29,56,196,0.07);
+  padding: 22px 26px; margin: 32px 0;
+  font-family: var(--serif); font-style: italic;
+  font-size: 22px; line-height: 1.5; color: rgba(255,255,255,0.92);
+}
+.post-callout {
+  background: rgba(29,56,196,0.08);
+  border: 1px solid rgba(79,120,255,0.15);
+  border-radius: 18px; padding: 24px 28px; margin: 32px 0;
+  font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.82);
+}
+.post-callout strong { color: #fff; font-weight: 700; }
+.post-callout .callout-label { font-size: 9px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(79,120,255,0.6); margin-bottom: 8px; }
+.post-stat {
+  display: flex; align-items: center; gap: 20px;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; padding: 20px 24px; margin: 24px 0;
+}
+.ps-num { font-size: 42px; font-weight: 800; letter-spacing: -0.05em; background: linear-gradient(135deg,#fff,#a8c4ff 40%,#4f78ff); -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; flex-shrink: 0; line-height: 1; }
+.ps-label { font-size: 15px; color: rgba(255,255,255,0.78); line-height: 1.5; }
+.ps-label strong { color: #fff; font-weight: 600; }
+.post-list { margin: 16px 0 24px 0; display: flex; flex-direction: column; gap: 12px; }
+.post-list-item { display: flex; align-items: flex-start; gap: 12px; font-size: 16px; line-height: 1.65; color: rgba(255,255,255,0.82); }
+.post-list-item .li-icon { color: var(--sky); flex-shrink: 0; font-size: 14px; margin-top: 3px; }
+.post-list-item strong { color: #fff; font-weight: 600; }
+.post-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 40px 0; }
+
+/* POST CTA */
+.post-cta {
+  background: rgba(7,16,46,0.6);
+  border: 1px solid rgba(79,120,255,0.2);
+  border-radius: 22px; padding: 36px 36px; margin-top: 52px;
+  position: relative; overflow: hidden;
+}
+.post-cta::before { content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg,transparent,rgba(79,120,255,0.45),transparent); }
+.post-cta h3 { font-size: 22px; font-weight: 800; letter-spacing: -0.03em; color: #fff; margin-bottom: 10px; }
+.post-cta p { font-size: 15px; line-height: 1.65; color: rgba(255,255,255,0.75); margin-bottom: 20px; }
+.post-cta p strong { color: #fff; font-weight: 700; }
+.post-cta-btn { font-family: var(--font); font-size: 14px; font-weight: 700; color: #fff; background: linear-gradient(135deg,var(--blue),var(--electric)); border: none; border-radius: 12px; padding: 14px 28px; cursor: pointer; box-shadow: 0 4px 20px rgba(46,85,240,0.35); transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+.post-cta-btn:hover { box-shadow: 0 6px 28px rgba(46,85,240,0.55); transform: translateY(-1px); }
+
+/* Back nav */
+.post-back { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.35); cursor: pointer; margin-bottom: 32px; transition: color 0.2s; background: none; border: none; font-family: var(--font); }
+.post-back:hover { color: rgba(255,255,255,0.65); }
+
+/* More posts */
+.more-posts { padding: 64px 40px 80px; background: rgba(7,16,46,0.3); border-top: 1px solid rgba(255,255,255,0.04); }
+.more-label { font-size: 11px; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.2); margin-bottom: 28px; }
+.more-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; max-width: 900px; }
+
+/* FOOTER */
+footer { padding: 52px 40px 36px; background: rgba(2,4,12,0.95); border-top: 1px solid rgba(255,255,255,0.04); }
+.footer-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.footer-wm { font-family: var(--font); font-weight: 600; font-size: 22px; letter-spacing: -0.05em; display: flex; align-items: baseline; filter: drop-shadow(0 0 8px rgba(79,120,255,0.3)); }
+.fwC{color:rgba(196,211,255,0.5);} .fwa{background:linear-gradient(170deg,#fff,#a8c4ff,#4f78ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;} .fwd{background:linear-gradient(170deg,#fff,#6090ff,#2e55f0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;} .fwi{color:rgba(255,255,255,0.22);position:relative;} .fwdot{position:absolute;left:50%;transform:translateX(-50%);border-radius:50%;width:4px;height:4px;top:0.08em;background:radial-gradient(circle,#fff,#a8c4ff,#4f78ff,transparent);box-shadow:0 0 6px 2px rgba(168,196,255,0.6);}
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.18); }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 12px; color: rgba(255,255,255,0.2); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: rgba(255,255,255,0.5); }
+
+@media(max-width:900px){
+  nav{padding:14px 24px;} .nav-links{display:none;}
+  .featured-post{grid-template-columns:1fr;margin:0 24px 16px;}
+  .posts-grid{grid-template-columns:1fr;margin:0 24px 60px;}
+  .inner,.inner-narrow,.inner-post,.post-content{padding:0 24px;}
+  .more-grid{grid-template-columns:1fr;}
+  .post-hero{padding:52px 24px;}
+  .more-posts{padding:48px 24px 60px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="/" class="nav-wm">
+    <span class="nC">C</span><span class="na">a</span><span class="nd">d</span>
+    <span class="ni">i<span class="ndot"></span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/#why">Why Cadi</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/demo.html">Demo</a></li>
+    <li><a href="/blog.html" class="active">Blog</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://app.cadi.cleaning" class="nav-signin">Sign in</a>
+    <a href="/#access" class="nav-cta">Get first access ⚡</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════
+     BLOG LISTING
+══════════════════════════════ -->
+<div id="blogListing">
+  <section class="blog-hero">
+    <div class="blog-hero-bg"></div>
+    <div class="inner blog-hero-inner">
+      <span class="blog-eyebrow">The Cadi Blog</span>
+      <h1 class="blog-h1">Real talk for<br><span class="hl">cleaning business owners.</span></h1>
+      <p class="blog-sub">No fluff. No theory borrowed from Silicon Valley. <strong>Just the honest stuff that actually moves a cleaning business forward</strong> — written by people still in it.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FEATURED -->
+  <div class="featured-post" onclick="showPost(1)" style="margin-top:48px;">
+    <div class="fp-visual">
+      <div class="fp-emoji">😤</div>
+      <span class="fp-tag">Mindset & Growth</span>
+      <div class="fp-title">Why most cleaning businesses are stuck in survival mode</div>
+    </div>
+    <div class="fp-content">
+      <div class="fp-featured-label">⭐ Featured post</div>
+      <p class="fp-excerpt">
+        Most cleaning business owners aren't failing because they lack clients, or talent, or work ethic.
+        They're failing because <strong>they're running their business in reactive mode</strong> —
+        responding to what's in front of them instead of building something that works without them.
+        Here's what survival mode actually looks like — and how to get out of it.
+      </p>
+      <div class="fp-meta">
+        <div class="fp-author">
+          <div class="fp-avatar">R</div>
+          <div>
+            <div class="fp-author-name">Rhi</div>
+            <div class="fp-date">8 min read · Founder, Cadi</div>
+          </div>
+        </div>
+        <div class="fp-read">Read now →</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POSTS GRID -->
+  <div class="posts-grid" style="margin-top:16px;">
+
+    <div class="post-card" onclick="showPost(2)">
+      <div class="pc-visual">
+        <div class="pc-emoji">🎯</div>
+        <span class="pc-tag">Strategy</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">Focus on your clients, not the competition</div>
+        <div class="pc-excerpt">While you're watching what everyone else is doing, your best clients are deciding whether to stay.</div>
+        <div class="pc-meta">
+          <div class="pc-author-sm">Rhi · 6 min read</div>
+          <div class="pc-read">Read →</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="post-card coming">
+      <div class="pc-visual">
+        <div class="pc-emoji">🧱</div>
+        <span class="cs-badge">Coming soon</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">Build the boring business</div>
+        <div class="pc-excerpt">The unglamorous stuff nobody talks about — and why the businesses that master it always win.</div>
+        <div class="pc-meta">
+          <div class="pc-author-sm">Cadi · Coming soon</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="post-card coming">
+      <div class="pc-visual">
+        <div class="pc-emoji">🎯</div>
+        <span class="cs-badge">Coming soon</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">Read this before you set another goal</div>
+        <div class="pc-excerpt">Goal-setting advice for cleaning businesses is broken. Here's what actually works.</div>
+        <div class="pc-meta">
+          <div class="pc-author-sm">Rhi · Coming soon</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="post-card coming">
+      <div class="pc-visual">
+        <div class="pc-emoji">💰</div>
+        <span class="cs-badge">Coming soon</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">Why most cleaning businesses stall at £60k</div>
+        <div class="pc-excerpt">There's a ceiling most cleaning businesses hit and never break through. Here's exactly why — and what to do about it.</div>
+        <div class="pc-meta">
+          <div class="pc-author-sm">Cadi · Coming soon</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="post-card coming">
+      <div class="pc-visual">
+        <div class="pc-emoji">📈</div>
+        <span class="cs-badge">Coming soon</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">3 tactical ways to immensely grow your cleaning business</div>
+        <div class="pc-excerpt">Not theory. Not "get more clients." Three specific, actionable moves that actually work.</div>
+        <div class="pc-meta">
+          <div class="pc-author-sm">Cadi · Coming soon</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="post-card coming">
+      <div class="pc-visual">
+        <div class="pc-emoji">🔍</div>
+        <span class="cs-badge">Coming soon</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-title">Is your cleaning business actually built to grow?</div>
+        <div class="pc-excerpt">Most businesses that want to grow aren't ready to. Here's the honest checklist.</div>
+        <div class="pc-meta">
+          <div class="pc-author-sm">Rhi · Coming soon</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-wm"><span class="fwC">C</span><span class="fwa">a</span><span class="fwd">d</span><span class="fwi">i<span class="fwdot"></span></span></div>
+      <p class="footer-copy">© 2025 Cadi · cadi.cleaning</p>
+      <div class="footer-links">
+        <a href="/">Home</a><a href="/about.html">About</a><a href="/demo.html">Demo</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════
+     POST 1: SURVIVAL MODE
+══════════════════════════════ -->
+<div id="blogPost1" class="post-page">
+  <div class="post-hero">
+    <div class="post-hero-bg"></div>
+    <div class="post-hero-inner">
+      <button class="post-back" onclick="showListing()">← Back to blog</button>
+      <span class="post-tag">Mindset & Growth</span>
+      <h1 class="post-h1">Why most cleaning businesses are stuck in survival mode</h1>
+      <p class="post-intro">
+        Most cleaning business owners aren't failing because they lack clients or work ethic.
+        They're failing because <strong>they're running entirely on reaction</strong> — and they don't even know it.
+      </p>
+      <div class="post-byline">
+        <div class="post-avatar">R</div>
+        <div class="post-author-info">
+          <div class="post-author-name">Rhi — Founder, Cadi</div>
+          <div class="post-meta">8 minute read · Cleaning business owner & software founder</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-content">
+
+    <p>I want to talk about something nobody in the cleaning industry seems willing to say out loud. Most cleaning businesses aren't struggling because of a lack of clients. They're not struggling because of competition, or pricing, or the economy. <strong>They're struggling because they're stuck in survival mode — and survival mode is designed to keep you exactly where you are.</strong></p>
+
+    <p>I know this because I lived it. And I know it because we built Cadi specifically to pull cleaning business owners out of it.</p>
+
+    <h2>What does survival mode actually look like?</h2>
+
+    <p>Survival mode doesn't feel like failing. That's the trap. It feels like being busy. It feels like working hard. It feels like progress — because money is coming in, the phone is ringing, the jobs are getting done.</p>
+
+    <p>But here's what's actually happening. You're spending every day responding to what's in front of you. A client cancels — you react. A team member doesn't show — you react. An invoice doesn't get paid — you react. You're not running your business. <strong>Your business is running you.</strong></p>
+
+    <div class="post-pull">"You're not running your business. Your business is running you. And it will keep doing that until you build the systems to stop it."</div>
+
+    <p>The signs of survival mode are specific. You don't know your exact profit margin right now — today. You're not sure if you could afford to hire without it becoming a financial risk. You've never done a proper annual review of your business. You use at least three different apps to get through a single working day. You haven't had a proper week off without checking your phone.</p>
+
+    <p>If two or more of those are true, you're in survival mode. And that's not a character flaw — <em>it's a systems problem.</em></p>
+
+    <div class="post-stat">
+      <div class="ps-num">44%</div>
+      <div class="ps-label"><strong>of cleaning businesses don't survive 5 years.</strong> Not because the work dried up — the industry grows at 9% a year. Because they couldn't build the foundation to support growth when it came.</div>
+    </div>
+
+    <h2>Why survival mode is so hard to escape</h2>
+
+    <p>The brutal irony of survival mode is that being in it makes it harder to get out. You don't have time to work on the business because you're always working in it. You can't afford to step back and look at the numbers because you're too busy making sure the jobs get done. You can't build systems because every day something needs your immediate attention.</p>
+
+    <p>It's a loop. And the only way out of it is to interrupt the loop — deliberately, with intention — before you feel ready.</p>
+
+    <div class="post-callout">
+      <div class="callout-label">The honest truth</div>
+      <strong>Most cleaning business owners wait until they're forced to change.</strong> A client leaves and takes 20% of their revenue with them. A team member quits and there's no system for replacing them. Tax season arrives and the numbers don't add up. The change happens — it just happens on the worst possible timeline, under the worst possible pressure.
+    </div>
+
+    <h2>The three things keeping you in survival mode</h2>
+
+    <h3>1. You don't have visibility on your own business</h3>
+
+    <p>If you don't know your exact profit margin, your client retention rate, or your average job value right now — today — you're flying blind. And businesses that fly blind don't grow deliberately. They grow accidentally, or they don't grow at all. <strong>Data isn't a luxury. It's the thing that turns reactive decisions into strategic ones.</strong></p>
+
+    <h3>2. Your pricing is based on gut feel, not reality</h3>
+
+    <p>Most cleaning business owners price jobs based on what they think sounds reasonable, or what they think the client will accept. Very few have ever properly calculated what a job actually costs them — time, travel, products, overheads — and priced from there. The result is that a huge proportion of cleaning businesses are making far less margin than they think. <strong>Some are barely breaking even on their busiest days.</strong></p>
+
+    <h3>3. There's no system for growth — only for today</h3>
+
+    <p>You have a system for getting jobs done. You might have a system for invoicing. But do you have a system for onboarding new team members? For tracking which clients are most valuable long-term? For reviewing the business quarterly and making strategic decisions? If the answer is no, <em>growth is always going to be accidental rather than intentional.</em></p>
+
+    <div class="post-divider"></div>
+
+    <h2>How to start getting out of it</h2>
+
+    <p>The exit from survival mode isn't a single dramatic change. It's a series of small ones that compound. But they have to start somewhere.</p>
+
+    <div class="post-list">
+      <div class="post-list-item"><span class="li-icon">→</span><div><strong>Get your numbers in front of you.</strong> Not at year end. Right now. Revenue this month, expenses this month, what's left. If you can't answer that question in thirty seconds, that's the first thing to fix.</div></div>
+      <div class="post-list-item"><span class="li-icon">→</span><div><strong>Price one job properly.</strong> Take your next quote request and actually calculate the cost — time, travel, products, a proportion of your overheads. Price from that number, not from what you feel like charging.</div></div>
+      <div class="post-list-item"><span class="li-icon">→</span><div><strong>Identify your three best clients.</strong> Not your biggest — your best. The ones who pay on time, value the service, refer others, and will still be with you in two years. Build your business around keeping those people.</div></div>
+      <div class="post-list-item"><span class="li-icon">→</span><div><strong>Block one hour a week to work on the business.</strong> Not in it. On it. That's when you look at the numbers, review what's working, and make one decision that moves things forward. One hour. Non-negotiable.</div></div>
+    </div>
+
+    <p>None of that is complicated. All of it is hard — because survival mode fights back. It fills your diary. It creates urgency. It convinces you there isn't time.</p>
+
+    <p><strong>There's always time for the things that matter most. We just have to decide they matter.</strong></p>
+
+    <div class="post-pull">"The businesses that escape survival mode aren't necessarily the ones that work hardest. They're the ones that decide — on a specific day — that they're going to run the business differently. And then they build the tools to do it."</div>
+
+    <p>That's exactly why we built Cadi. Not because the cleaning industry needed another scheduling tool or another invoicing app. But because <em>cleaning business owners deserved a tool that actually showed them how their business was running</em> — in real time, in plain language, with specific actions to improve it.</p>
+
+    <p>The business health score. The pricing calculator built on 17 years of real data. The dashboard that tells you not just what's happening but what to do next. These aren't features. They're the exit from survival mode.</p>
+
+    <p>And you don't have to wait until everything falls apart to use them.</p>
+
+    <div class="post-cta">
+      <h3>Ready to see how your business is actually doing?</h3>
+      <p>Cadi gives you the clarity to stop reacting and start building. <strong>Free to start. No card. Takes 60 seconds.</strong> And if you want to be part of shaping what comes next — the Founding 200 is still open.</p>
+      <a href="/#access" class="post-cta-btn">Get first access — it's free →</a>
+    </div>
+
+  </div>
+
+  <div class="more-posts">
+    <div class="inner">
+      <div class="more-label">Read next</div>
+      <div class="more-grid">
+        <div class="post-card" onclick="showPost(2)">
+          <div class="pc-visual"><div class="pc-emoji">🎯</div><span class="pc-tag">Strategy</span></div>
+          <div class="pc-body">
+            <div class="pc-title">Focus on your clients, not the competition</div>
+            <div class="pc-excerpt">While you're watching what everyone else is doing, your best clients are deciding whether to stay.</div>
+            <div class="pc-meta"><div class="pc-author-sm">Rhi · 6 min read</div><div class="pc-read">Read →</div></div>
+          </div>
+        </div>
+        <div class="post-card coming"><div class="pc-visual"><div class="pc-emoji">💰</div><span class="cs-badge">Coming soon</span></div><div class="pc-body"><div class="pc-title">Why most cleaning businesses stall at £60k</div><div class="pc-excerpt">There's a ceiling most cleaning businesses hit and never break through.</div></div></div>
+        <div class="post-card coming"><div class="pc-visual"><div class="pc-emoji">🧱</div><span class="cs-badge">Coming soon</span></div><div class="pc-body"><div class="pc-title">Build the boring business</div><div class="pc-excerpt">The unglamorous stuff nobody talks about — and why it always wins.</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <footer><div class="footer-inner"><div class="footer-wm"><span class="fwC">C</span><span class="fwa">a</span><span class="fwd">d</span><span class="fwi">i<span class="fwdot"></span></span></div><p class="footer-copy">© 2025 Cadi · cadi.cleaning</p><div class="footer-links"><a href="/">Home</a><a href="/about.html">About</a><a href="/blog.html">Blog</a></div></div></footer>
+</div>
+
+<!-- ══════════════════════════════
+     POST 2: FOCUS ON YOUR CLIENTS
+══════════════════════════════ -->
+<div id="blogPost2" class="post-page">
+  <div class="post-hero">
+    <div class="post-hero-bg"></div>
+    <div class="post-hero-inner">
+      <button class="post-back" onclick="showListing()">← Back to blog</button>
+      <span class="post-tag">Strategy</span>
+      <h1 class="post-h1">Focus on your clients, not the competition</h1>
+      <p class="post-intro">
+        While you're watching what everyone else is doing, your best clients are quietly deciding
+        <strong>whether they still want to stay with you.</strong>
+      </p>
+      <div class="post-byline">
+        <div class="post-avatar">R</div>
+        <div class="post-author-info">
+          <div class="post-author-name">Rhi — Founder, Cadi</div>
+          <div class="post-meta">6 minute read · Cleaning business owner & software founder</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-content">
+
+    <p>There's a conversation I hear constantly in cleaning business communities. Someone's worried about the new company that just started up down the road. Someone's upset about a competitor undercutting on price. Someone's trying to figure out what their rivals are doing on social media so they can do it better.</p>
+
+    <p>And while all of that is happening, their best clients are cleaning their own bathrooms because the last visit wasn't up to standard and they didn't feel like saying anything. <strong>They just quietly cancelled.</strong></p>
+
+    <h2>Competition is a distraction. Retention is the game.</h2>
+
+    <p>Here's the thing about the cleaning industry that most business owners don't have the data to see clearly: <em>the biggest threat to your business isn't another cleaning company taking your clients.</em> It's your existing clients leaving for reasons that are entirely preventable — and that you'd never even know about because they don't complain, they just disappear.</p>
+
+    <div class="post-stat">
+      <div class="ps-num">68%</div>
+      <div class="ps-label"><strong>of customers leave because they feel unappreciated or overlooked</strong> — not because they found someone cheaper. Price is rarely the real reason. Indifference is.</div>
+    </div>
+
+    <p>Think about what that means for a cleaning business. You spend time and money acquiring a new client. You do the first clean. Maybe the second. And then gradually — because life gets busy and there's always a next thing — the relationship becomes transactional. They're a job on a schedule. You're a direct debit on their bank statement. <strong>There's no relationship there to fight for when something goes slightly wrong.</strong></p>
+
+    <div class="post-pull">"Your best clients aren't leaving because someone offered them a cheaper clean. They're leaving because nobody made them feel like they mattered. That's a fixable problem."</div>
+
+    <h2>What obsessing over competition actually costs you</h2>
+
+    <p>When you're focused on the competition, you're spending mental energy on things you can't control. You can't control what another company charges. You can't control their marketing budget, their team, their location, or the clients they go after. <strong>Trying to out-compete someone else is the most exhausting, least effective growth strategy available to a cleaning business owner.</strong></p>
+
+    <p>And while you're doing it — while you're checking their Instagram, wondering why they're growing faster, thinking about whether to match their prices — your own clients are experiencing a service that's quietly getting less personal. Because your attention is elsewhere.</p>
+
+    <p>The businesses that dominate their local area don't do it by beating the competition. They do it by <em>making the competition irrelevant</em> — by building relationships with their clients so strong that price comparison doesn't even come into it.</p>
+
+    <h2>What client-focused actually looks like in practice</h2>
+
+    <p>This isn't about being nice. It's about being intentional. Here's what it looks like when a cleaning business genuinely focuses on its clients rather than its competition:</p>
+
+    <div class="post-list">
+      <div class="post-list-item"><span class="li-icon">→</span><div><strong>You know which clients are most valuable long-term — and you protect them.</strong> Not just who spends the most, but who refers others, who's been with you longest, who has the highest lifetime value. These people get your best communication, your most reliable team, your personal attention.</div></div>
+      <div class="post-list-item"><span class="li-icon">→</span><div><strong>You track retention, not just acquisition.</strong> Most cleaning businesses measure how many new clients they're getting. Very few measure how many they're keeping — and at what rate. If you're losing 2 clients a month and gaining 3, you're not growing. You're treading water expensively.</div></div>
+      <div class="post-list-item"><span class="li-icon">→</span><div><strong>You make it easy for happy clients to refer you.</strong> Word of mouth is the most powerful marketing a cleaning business has. But it doesn't happen automatically — it happens when clients feel genuinely looked after and have a simple way to pass your name on.</div></div>
+      <div class="post-list-item"><span class="li-icon">→</span><div><strong>You review the relationship, not just the job.</strong> Once a year, at minimum, you look at each client relationship. Are they happy? Have their needs changed? Is there something you could be doing that you're not? This kind of intentional review is what turns a 1-year client into a 5-year client.</div></div>
+    </div>
+
+    <div class="post-callout">
+      <div class="callout-label">The maths that changes everything</div>
+      A cleaning business with 40 clients who stay for an average of 3 years generates dramatically more revenue than one with 60 clients who leave after 8 months. <strong>Lifetime value beats volume every single time.</strong> The businesses that understand this stop chasing new clients and start investing in the ones they already have.
+    </div>
+
+    <h2>How to actually do this — practically</h2>
+
+    <p>The reason most cleaning business owners don't do this isn't because they don't want to. It's because they don't have the visibility. You can't focus on client relationships if you don't know which clients are at risk of leaving, which ones have the highest lifetime value, or which ones haven't had a proper check-in in six months.</p>
+
+    <p>This is one of the things Cadi was built specifically to solve. Not just scheduling or invoicing — but giving you a clear picture of your client base. Who's been with you longest. Who's most valuable. Who might be drifting. <strong>Because you can't build relationships with data you don't have.</strong></p>
+
+    <p>But even without software, you can start tomorrow. Pick your five best clients. Not biggest — best. Write them a personal message. Not a circular email, not a social post — a direct, personal message that says you value them and you're committed to making sure the service is exactly what they need. See what comes back.</p>
+
+    <p>It takes twenty minutes. <em>It's the most valuable twenty minutes you'll spend this week.</em></p>
+
+    <div class="post-pull">"Stop asking how to get more clients. Start asking how to keep the ones you have so well that they never think about leaving — and then tell everyone they know about you."</div>
+
+    <p>The cleaning businesses that win long-term aren't the ones with the lowest prices or the biggest marketing budget. They're the ones whose clients feel genuinely looked after — so well that no competitor with a leaflet through the door is ever going to turn their head.</p>
+
+    <p><strong>Stop watching the competition. Start watching your clients.</strong> That's where the business is.</p>
+
+    <div class="post-cta">
+      <h3>Know exactly which clients matter most — and why.</h3>
+      <p>Cadi tracks client lifetime value, retention, and relationship health so you always know where to focus. <strong>Free to start. No card needed.</strong></p>
+      <a href="/#access" class="post-cta-btn">Get first access — it's free →</a>
+    </div>
+
+  </div>
+
+  <div class="more-posts">
+    <div class="inner">
+      <div class="more-label">Read next</div>
+      <div class="more-grid">
+        <div class="post-card" onclick="showPost(1)">
+          <div class="pc-visual"><div class="pc-emoji">😤</div><span class="pc-tag">Mindset & Growth</span></div>
+          <div class="pc-body">
+            <div class="pc-title">Why most cleaning businesses are stuck in survival mode</div>
+            <div class="pc-excerpt">Most cleaning owners aren't failing because they lack clients. They're failing because they're running entirely on reaction.</div>
+            <div class="pc-meta"><div class="pc-author-sm">Rhi · 8 min read</div><div class="pc-read">Read →</div></div>
+          </div>
+        </div>
+        <div class="post-card coming"><div class="pc-visual"><div class="pc-emoji">💰</div><span class="cs-badge">Coming soon</span></div><div class="pc-body"><div class="pc-title">Why most cleaning businesses stall at £60k</div><div class="pc-excerpt">There's a ceiling most cleaning businesses hit and never break through.</div></div></div>
+        <div class="post-card coming"><div class="pc-visual"><div class="pc-emoji">📈</div><span class="cs-badge">Coming soon</span></div><div class="pc-body"><div class="pc-title">3 tactical ways to immensely grow your cleaning business</div><div class="pc-excerpt">Not theory. Three specific moves that actually work.</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <footer><div class="footer-inner"><div class="footer-wm"><span class="fwC">C</span><span class="fwa">a</span><span class="fwd">d</span><span class="fwi">i<span class="fwdot"></span></span></div><p class="footer-copy">© 2025 Cadi · cadi.cleaning</p><div class="footer-links"><a href="/">Home</a><a href="/about.html">About</a><a href="/blog.html">Blog</a></div></div></footer>
+</div>
+
+<script>
+function showPost(num) {
+  document.getElementById('blogListing').style.display = 'none';
+  document.getElementById('blogPost1').style.display = 'none';
+  document.getElementById('blogPost2').style.display = 'none';
+  document.getElementById('blogPost' + num).style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function showListing() {
+  document.getElementById('blogPost1').style.display = 'none';
+  document.getElementById('blogPost2').style.display = 'none';
+  document.getElementById('blogListing').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').style.background =
+    window.scrollY > 40 ? 'rgba(4,8,16,0.95)' : 'rgba(4,8,16,0.8)';
+});
+</script>
+
+</body>
+</html>
+<style>
+/* POST PAGE LIGHT OVERRIDE */
+.post-page { background: #f8f9ff !important; }
+.post-hero { background: #040810; }
+.post-content { background: #f8f9ff; }
+.post-content p { color: #1a1f36 !important; }
+.post-content p strong { color: #040810 !important; }
+.post-content p em { background: linear-gradient(135deg,#1a3ac9,#2e55f0); -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; font-weight:600; }
+.post-content h2 { color: #040810 !important; }
+.post-content h3 { color: #1a1f36 !important; }
+.post-pull { background: rgba(29,56,196,0.05); border-left-color: rgba(29,56,196,0.5); color: #1a1f36 !important; }
+.post-callout { background: rgba(29,56,196,0.05); border-color: rgba(29,56,196,0.15); color: #1a1f36 !important; }
+.post-callout strong { color: #040810 !important; }
+.post-callout .callout-label { color: rgba(29,56,196,0.7); }
+.post-stat { background: #fff; border-color: rgba(29,56,196,0.1); }
+.ps-label { color: #1a1f36 !important; }
+.ps-label strong { color: #040810 !important; }
+.post-list-item { color: #1a1f36 !important; }
+.post-list-item strong { color: #040810 !important; }
+.post-divider { background: rgba(7,17,64,0.08); }
+.post-cta { background: #fff; border-color: rgba(29,56,196,0.18); }
+.post-cta h3 { color: #040810; }
+.post-cta p { color: #1a1f36 !important; }
+.post-cta p strong { color: #040810 !important; }
+.more-posts { background: #eef2ff; border-top-color: rgba(7,17,64,0.06); }
+.more-label { color: rgba(7,17,64,0.3); }
+.post-back { color: rgba(7,17,64,0.4) !important; }
+.post-back:hover { color: rgba(7,17,64,0.7) !important; }
+.post-author-name { color: rgba(7,17,64,0.65); }
+.post-meta { color: rgba(7,17,64,0.35); }
+</style>

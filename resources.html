@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Resources — Cadi | Cleaning Business Guides & Tools</title>
+<meta name="description" content="Free guides, checklists and industry data for UK cleaning business owners. How to start, how to grow, how to hire — all in one place.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:      #040810;
+  --navy:     #07102e;
+  --blue:     #1a3ac9;
+  --electric: #2e55f0;
+  --sky:      #4f78ff;
+  --pale:     #c4d3ff;
+  --white:    #ffffff;
+  --off:      #f0f4ff;
+  --font:     'Plus Jakarta Sans', sans-serif;
+  --serif:    'Instrument Serif', serif;
+  --ease:     cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--ink); font-family: var(--font); color: var(--white); overflow-x: hidden; }
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.022;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* UTILS */
+.inner { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+.inner-narrow { max-width: 760px; margin: 0 auto; padding: 0 40px; }
+.hl { background: linear-gradient(135deg,#fff 0%,#a8c4ff 40%,#4f78ff 100%); -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
+.hl-warm { background: linear-gradient(135deg,#071140 0%,#1d38c4 55%,#2e55f0 100%); -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
+.glass { background: rgba(7,16,46,0.55); border: 1px solid rgba(255,255,255,0.06); backdrop-filter: blur(32px); border-radius: 24px; position: relative; overflow: hidden; }
+.glass::before { content: ''; position: absolute; top: 0; left: 8%; right: 8%; height: 1px; background: linear-gradient(90deg,transparent,rgba(79,120,255,0.4),transparent); pointer-events: none; }
+.glass-light { background: rgba(255,255,255,0.85); border: 1px solid rgba(29,56,196,0.08); border-radius: 24px; position: relative; overflow: hidden; backdrop-filter: blur(20px); }
+.divider { height: 1px; margin: 0 40px; background: linear-gradient(90deg,transparent,rgba(79,120,255,0.12),transparent); }
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);} }
+@keyframes blink  { 0%,100%{opacity:1;}50%{opacity:0.2;} }
+@keyframes popIn  { from{opacity:0;transform:scale(0.96);}to{opacity:1;transform:scale(1);} }
+
+/* NAV */
+nav { position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(4,8,16,0.8);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.05); }
+.nav-wm { font-family:var(--font);font-weight:600;font-size:26px;letter-spacing:-0.05em;display:flex;align-items:baseline;text-decoration:none;filter:drop-shadow(0 0 10px rgba(79,120,255,0.4)); }
+.nC{color:rgba(196,211,255,0.6);}.na{background:linear-gradient(170deg,#fff,#a8c4ff,#4f78ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}.nd{background:linear-gradient(170deg,#fff,#6090ff,#2e55f0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}.ni{color:rgba(255,255,255,0.28);position:relative;}.ndot{position:absolute;left:50%;transform:translateX(-50%);border-radius:50%;width:5px;height:5px;top:0.08em;background:radial-gradient(circle,#fff,#a8c4ff,#4f78ff,transparent);box-shadow:0 0 8px 2px rgba(168,196,255,0.7),0 0 18px 4px rgba(79,120,255,0.4);animation:blink 2s ease-in-out infinite;}
+.nav-links{display:flex;align-items:center;gap:4px;list-style:none;}
+.nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,0.45);text-decoration:none;padding:8px 14px;border-radius:10px;transition:all 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.05);}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.nav-signin{font-family:var(--font);font-size:13px;font-weight:600;color:rgba(255,255,255,0.5);background:none;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:9px 18px;cursor:pointer;transition:all 0.2s;text-decoration:none;}
+.nav-signin:hover{border-color:rgba(255,255,255,0.25);color:#fff;}
+.nav-cta{font-family:var(--font);font-size:13px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--blue),var(--electric));border:none;border-radius:10px;padding:10px 20px;cursor:pointer;box-shadow:0 4px 16px rgba(46,85,240,0.35);transition:all 0.2s;text-decoration:none;white-space:nowrap;}
+.nav-cta:hover{box-shadow:0 6px 22px rgba(46,85,240,0.55);transform:translateY(-1px);}
+
+/* ══════════════════════════
+   HERO
+══════════════════════════ */
+.hero { padding:140px 40px 80px;position:relative;overflow:hidden; }
+.hero-bg { position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(29,56,196,0.16) 0%,transparent 60%),var(--ink);pointer-events:none; }
+.hero-orb { position:absolute;border-radius:50%;filter:blur(110px);pointer-events:none; }
+.ho1{width:600px;height:600px;background:rgba(29,56,196,0.14);top:-200px;left:-100px;animation:od 18s ease-in-out infinite alternate;}
+.ho2{width:400px;height:400px;background:rgba(46,85,240,0.09);bottom:-100px;right:-80px;animation:od 22s ease-in-out infinite alternate-reverse;}
+@keyframes od{0%{transform:translate(0,0);}100%{transform:translate(30px,24px);}}
+.hero-inner{position:relative;z-index:1;}
+.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:rgba(79,120,255,0.7);display:block;margin-bottom:14px;}
+.hero-h1{font-size:clamp(40px,6vw,68px);font-weight:800;letter-spacing:-0.05em;line-height:1.05;color:#fff;margin-bottom:18px;}
+.hero-sub{font-size:18px;font-weight:400;line-height:1.7;color:rgba(255,255,255,0.48);max-width:540px;margin-bottom:40px;}
+.hero-sub strong{font-weight:700;color:rgba(255,255,255,0.8);}
+.hero-stats{display:flex;align-items:center;gap:32px;flex-wrap:wrap;}
+.hs-item{display:flex;flex-direction:column;gap:3px;}
+.hs-num{font-size:28px;font-weight:800;letter-spacing:-0.04em;background:linear-gradient(135deg,#fff,#a8c4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hs-label{font-size:11px;color:rgba(255,255,255,0.28);letter-spacing:0.04em;}
+.hs-divider{width:1px;height:36px;background:rgba(255,255,255,0.06);}
+
+/* ══════════════════════════
+   FILTER TABS
+══════════════════════════ */
+.filter-section{padding:48px 0 0;position:relative;z-index:1;}
+.filter-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:48px;}
+.filter-label{font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-right:6px;}
+.filter-btn{font-family:var(--font);font-size:13px;font-weight:600;color:rgba(255,255,255,0.45);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:100px;padding:9px 20px;cursor:pointer;transition:all 0.2s;}
+.filter-btn:hover{color:rgba(255,255,255,0.75);border-color:rgba(255,255,255,0.15);}
+.filter-btn.active{color:#fff;background:rgba(29,56,196,0.2);border-color:rgba(79,120,255,0.4);}
+
+/* ══════════════════════════
+   CATEGORY SECTIONS
+══════════════════════════ */
+.cat-section{margin-bottom:72px;}
+.cat-header{display:flex;align-items:center;gap:16px;margin-bottom:28px;}
+.cat-icon{font-size:28px;width:52px;height:52px;background:rgba(79,120,255,0.08);border:1px solid rgba(79,120,255,0.14);border-radius:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cat-title{font-size:26px;font-weight:800;letter-spacing:-0.04em;color:#fff;}
+.cat-sub{font-size:14px;color:rgba(255,255,255,0.35);margin-top:2px;}
+
+/* ══════════════════════════
+   RESOURCE CARDS — 3 TYPES
+══════════════════════════ */
+.resources-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.resources-grid.two-col{grid-template-columns:repeat(2,1fr);}
+
+/* TYPE 1 — CHECKLIST */
+.res-card{border-radius:22px;overflow:hidden;transition:transform 0.3s,border-color 0.3s;cursor:pointer;}
+.res-card:hover{transform:translateY(-4px);}
+.res-card.dark:hover{border-color:rgba(79,120,255,0.25);}
+.res-card.light:hover{border-color:rgba(29,56,196,0.25);}
+
+.rc-header{padding:28px 26px 20px;position:relative;}
+.rc-type-badge{font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;border-radius:100px;padding:4px 12px;display:inline-block;margin-bottom:12px;}
+.badge-checklist{background:rgba(50,180,100,0.1);color:rgba(80,200,130,0.9);border:1px solid rgba(50,180,100,0.2);}
+.badge-guide{background:rgba(79,120,255,0.1);color:rgba(120,160,255,0.9);border:1px solid rgba(79,120,255,0.2);}
+.badge-listicle{background:rgba(255,180,50,0.1);color:rgba(255,190,80,0.9);border:1px solid rgba(255,180,50,0.2);}
+.badge-data{background:rgba(168,100,255,0.1);color:rgba(190,130,255,0.9);border:1px solid rgba(168,100,255,0.2);}
+.rc-emoji{font-size:32px;margin-bottom:12px;display:block;}
+.rc-title{font-size:18px;font-weight:800;letter-spacing:-0.03em;line-height:1.2;margin-bottom:8px;}
+.rc-title.dark-text{color:#071140;}
+.rc-title.light-text{color:#fff;}
+.rc-desc{font-size:13px;line-height:1.6;}
+.rc-desc.dark-text{color:rgba(7,17,64,0.5);}
+.rc-desc.light-text{color:rgba(255,255,255,0.45);}
+
+.rc-preview{padding:0 26px 24px;}
+
+/* Checklist preview */
+.checklist-preview{display:flex;flex-direction:column;gap:6px;}
+.cp-item{display:flex;align-items:center;gap:10px;font-size:13px;}
+.cp-item.dark-text{color:rgba(7,17,64,0.55);}
+.cp-item.light-text{color:rgba(255,255,255,0.5);}
+.cp-check{width:18px;height:18px;border-radius:5px;border:1.5px solid;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;}
+.cp-check.dark{border-color:rgba(29,56,196,0.25);color:rgba(29,56,196,0.7);}
+.cp-check.light{border-color:rgba(79,120,255,0.3);color:rgba(79,120,255,0.7);}
+.cp-more{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-top:4px;padding-left:28px;}
+.cp-more.dark{color:rgba(29,56,196,0.5);}
+.cp-more.light{color:rgba(79,120,255,0.5);}
+
+/* Listicle preview */
+.listicle-preview{display:flex;flex-direction:column;gap:8px;}
+.lp-item{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.4;}
+.lp-num{font-size:11px;font-weight:800;color:var(--sky);flex-shrink:0;width:18px;margin-top:1px;}
+.lp-text.dark-text{color:rgba(7,17,64,0.55);}
+.lp-text.light-text{color:rgba(255,255,255,0.5);}
+
+/* Stat preview */
+.stat-preview{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.sp-item{background:rgba(255,255,255,0.05);border-radius:12px;padding:14px 12px;text-align:center;}
+.sp-item.light-bg{background:rgba(7,17,64,0.05);}
+.sp-num{font-size:22px;font-weight:800;letter-spacing:-0.04em;background:linear-gradient(135deg,#fff,#a8c4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.sp-num.dark-num{background:linear-gradient(135deg,#071140,#1d38c4,#2e55f0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.sp-label{font-size:10px;color:rgba(255,255,255,0.28);line-height:1.4;margin-top:3px;}
+.sp-label.dark-label{color:rgba(7,17,64,0.38);}
+
+.rc-footer{padding:16px 26px 24px;border-top:1px solid;display:flex;align-items:center;justify-content:space-between;}
+.rc-footer.dark-border{border-top-color:rgba(7,17,64,0.06);}
+.rc-footer.light-border{border-top-color:rgba(255,255,255,0.05);}
+.rc-count{font-size:11px;font-weight:500;}
+.rc-count.dark-text{color:rgba(7,17,64,0.35);}
+.rc-count.light-text{color:rgba(255,255,255,0.3);}
+.rc-open{font-size:12px;font-weight:700;}
+.rc-open.dark{color:var(--electric);}
+.rc-open.light{color:var(--sky);}
+
+/* ══════════════════════════
+   MODAL / EXPANDED VIEW
+══════════════════════════ */
+.modal-overlay{position:fixed;inset:0;z-index:500;background:rgba(4,8,16,0.85);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:24px;}
+.modal-overlay.open{display:flex;}
+.modal{background:#f8f9ff;border-radius:28px;max-width:760px;width:100%;max-height:88vh;overflow-y:auto;position:relative;animation:popIn 0.35s var(--ease) both;}
+.modal-close{position:absolute;top:20px;right:20px;background:rgba(7,17,64,0.08);border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:16px;color:rgba(7,17,64,0.5);display:flex;align-items:center;justify-content:center;transition:all 0.2s;z-index:10;}
+.modal-close:hover{background:rgba(7,17,64,0.14);color:#071140;}
+.modal-header{background:linear-gradient(145deg,#07102e,#0d1a5e);padding:40px 44px;border-radius:28px 28px 0 0;}
+.modal-badge{font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(168,196,255,0.65);margin-bottom:10px;}
+.modal-title{font-size:28px;font-weight:800;letter-spacing:-0.04em;color:#fff;line-height:1.1;margin-bottom:8px;}
+.modal-sub{font-size:14px;color:rgba(255,255,255,0.45);line-height:1.6;}
+.modal-body{padding:36px 44px;}
+
+/* Checklist inside modal */
+.modal-section-label{font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(29,56,196,0.6);margin-bottom:14px;margin-top:28px;}
+.modal-section-label:first-child{margin-top:0;}
+.modal-checklist{display:flex;flex-direction:column;gap:10px;margin-bottom:8px;}
+.mc-item{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;background:#fff;border:1px solid rgba(7,17,64,0.06);border-radius:12px;cursor:pointer;transition:all 0.2s;}
+.mc-item:hover{border-color:rgba(29,56,196,0.15);background:#f8f9ff;}
+.mc-item.checked{background:rgba(29,56,196,0.04);border-color:rgba(29,56,196,0.15);}
+.mc-box{width:22px;height:22px;border-radius:6px;border:2px solid rgba(29,56,196,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.2s;margin-top:1px;}
+.mc-item.checked .mc-box{background:var(--electric);border-color:var(--electric);}
+.mc-check-icon{font-size:11px;color:#fff;opacity:0;transition:opacity 0.2s;}
+.mc-item.checked .mc-check-icon{opacity:1;}
+.mc-content{}
+.mc-text{font-size:14px;font-weight:600;color:#071140;line-height:1.3;margin-bottom:2px;}
+.mc-item.checked .mc-text{color:rgba(7,17,64,0.4);text-decoration:line-through;}
+.mc-detail{font-size:12px;color:rgba(7,17,64,0.4);line-height:1.5;}
+
+/* Guide sections */
+.modal-guide-step{background:#fff;border:1px solid rgba(7,17,64,0.06);border-radius:16px;margin-bottom:12px;overflow:hidden;}
+.mgs-header{padding:18px 20px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:background 0.2s;}
+.mgs-header:hover{background:rgba(7,17,64,0.02);}
+.mgs-num{font-size:13px;font-weight:800;color:var(--electric);width:24px;flex-shrink:0;}
+.mgs-title{font-size:15px;font-weight:700;color:#071140;flex:1;}
+.mgs-arrow{font-size:12px;color:rgba(7,17,64,0.3);transition:transform 0.2s;}
+.mgs-header.open .mgs-arrow{transform:rotate(180deg);}
+.mgs-body{display:none;padding:0 20px 18px 58px;font-size:14px;line-height:1.7;color:rgba(7,17,64,0.55);}
+.mgs-body.open{display:block;}
+.mgs-body strong{color:#071140;font-weight:600;}
+.mgs-body ul{margin-top:8px;padding-left:16px;display:flex;flex-direction:column;gap:4px;}
+.mgs-body li{color:rgba(7,17,64,0.55);}
+
+/* Stat cards in modal */
+.modal-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
+.ms-item{background:#fff;border:1px solid rgba(7,17,64,0.07);border-radius:14px;padding:18px 14px;text-align:center;}
+.ms-num{font-size:26px;font-weight:800;letter-spacing:-0.04em;background:linear-gradient(135deg,#071140,#1d38c4,#2e55f0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px;}
+.ms-label{font-size:11px;color:rgba(7,17,64,0.38);line-height:1.4;}
+.ms-source{font-size:9px;color:rgba(7,17,64,0.22);margin-top:3px;letter-spacing:0.06em;}
+
+/* Progress bar */
+.progress-section{background:#fff;border:1px solid rgba(29,56,196,0.1);border-radius:16px;padding:18px 20px;margin-top:20px;}
+.prog-label{font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(29,56,196,0.6);margin-bottom:8px;display:flex;justify-content:space-between;}
+.prog-bar{height:6px;background:rgba(7,17,64,0.06);border-radius:100px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--electric));border-radius:100px;transition:width 0.4s var(--ease);}
+
+/* Modal CTA */
+.modal-cta{background:linear-gradient(135deg,rgba(29,56,196,0.06),rgba(79,120,255,0.04));border:1px solid rgba(29,56,196,0.15);border-radius:18px;padding:24px 28px;margin-top:24px;}
+.modal-cta h4{font-size:17px;font-weight:800;letter-spacing:-0.02em;color:#071140;margin-bottom:6px;}
+.modal-cta p{font-size:13px;color:rgba(7,17,64,0.5);line-height:1.6;margin-bottom:16px;}
+.modal-cta p strong{color:#071140;font-weight:600;}
+.modal-cta-btn{font-family:var(--font);font-size:14px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--blue),var(--electric));border:none;border-radius:12px;padding:13px 28px;cursor:pointer;box-shadow:0 4px 18px rgba(29,56,196,0.3);transition:all 0.2s;text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
+.modal-cta-btn:hover{box-shadow:0 6px 24px rgba(29,56,196,0.45);transform:translateY(-1px);}
+
+/* ══════════════════════════
+   LEVEL FILTER (Start a business)
+══════════════════════════ */
+.level-tabs{display:flex;gap:8px;margin-bottom:20px;}
+.level-tab{font-family:var(--font);font-size:12px;font-weight:600;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);color:rgba(255,255,255,0.4);border-radius:100px;padding:7px 16px;cursor:pointer;transition:all 0.2s;}
+.level-tab.active{background:rgba(29,56,196,0.2);border-color:rgba(79,120,255,0.4);color:#fff;}
+
+/* ══════════════════════════
+   FOOTER
+══════════════════════════ */
+footer{padding:52px 40px 36px;background:rgba(2,4,12,0.95);border-top:1px solid rgba(255,255,255,0.04);}
+.footer-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.footer-wm{font-family:var(--font);font-weight:600;font-size:22px;letter-spacing:-0.05em;display:flex;align-items:baseline;filter:drop-shadow(0 0 8px rgba(79,120,255,0.3));}
+.fwC{color:rgba(196,211,255,0.5);}.fwa{background:linear-gradient(170deg,#fff,#a8c4ff,#4f78ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}.fwd{background:linear-gradient(170deg,#fff,#6090ff,#2e55f0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}.fwi{color:rgba(255,255,255,0.22);position:relative;}.fwdot{position:absolute;left:50%;transform:translateX(-50%);border-radius:50%;width:4px;height:4px;top:0.08em;background:radial-gradient(circle,#fff,#a8c4ff,#4f78ff,transparent);box-shadow:0 0 6px 2px rgba(168,196,255,0.6);}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.18);}
+.footer-links{display:flex;gap:20px;}
+.footer-links a{font-size:12px;color:rgba(255,255,255,0.2);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:rgba(255,255,255,0.5);}
+
+@media(max-width:900px){
+  nav{padding:14px 24px;}.nav-links{display:none;}
+  .inner,.inner-narrow{padding:0 24px;}
+  .resources-grid,.resources-grid.two-col{grid-template-columns:1fr;}
+  .modal-body,.modal-header{padding:28px 24px;}
+  .modal-stats{grid-template-columns:1fr 1fr;}
+  .hero{padding:120px 24px 60px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="/" class="nav-wm"><span class="nC">C</span><span class="na">a</span><span class="nd">d</span><span class="ni">i<span class="ndot"></span></span></a>
+  <ul class="nav-links">
+    <li><a href="/#why">Why Cadi</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/demo.html">Demo</a></li>
+    <li><a href="/blog.html">Blog</a></li>
+    <li><a href="/resources.html" class="active">Resources</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://app.cadi.cleaning" class="nav-signin">Sign in</a>
+    <a href="/#access" class="nav-cta">Get first access ⚡</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-orb ho1"></div>
+  <div class="hero-orb ho2"></div>
+  <div class="hero-inner inner">
+    <span class="hero-eyebrow">Free resources — no sign up needed</span>
+    <h1 class="hero-h1">Everything you need to<br><span class="hl">run your cleaning business properly.</span></h1>
+    <p class="hero-sub">Checklists, guides and real industry data — <strong>completely free.</strong> No email required. No catch. Just the stuff that actually helps.</p>
+    <div class="hero-stats">
+      <div class="hs-item"><div class="hs-num">18+</div><div class="hs-label">Free resources</div></div>
+      <div class="hs-divider"></div>
+      <div class="hs-item"><div class="hs-num">3</div><div class="hs-label">Categories</div></div>
+      <div class="hs-divider"></div>
+      <div class="hs-item"><div class="hs-num">100%</div><div class="hs-label">Free — always</div></div>
+      <div class="hs-divider"></div>
+      <div class="hs-item"><div class="hs-num">UK</div><div class="hs-label">Specific data</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FILTER -->
+<section class="filter-section">
+  <div class="inner">
+    <div class="filter-bar">
+      <span class="filter-label">Filter:</span>
+      <button class="filter-btn active" onclick="filterCat('all',this)">All resources</button>
+      <button class="filter-btn" onclick="filterCat('start',this)">🚀 Start a business</button>
+      <button class="filter-btn" onclick="filterCat('howto',this)">📋 How-to guides</button>
+      <button class="filter-btn" onclick="filterCat('data',this)">📊 Industry data</button>
+    </div>
+
+    <!-- ══════════════════════
+         CAT 1: START A BUSINESS
+    ══════════════════════ -->
+    <div class="cat-section" data-cat="start" id="cat-start">
+      <div class="cat-header">
+        <div class="cat-icon">🚀</div>
+        <div>
+          <div class="cat-title">How to start a cleaning business</div>
+          <div class="cat-sub">Everything from your first client to your first team member</div>
+        </div>
+      </div>
+
+      <div class="level-tabs">
+        <button class="level-tab active" onclick="filterLevel('all',this)">All levels</button>
+        <button class="level-tab" onclick="filterLevel('beginner',this)">Just starting out</button>
+        <button class="level-tab" onclick="filterLevel('intermediate',this)">Already cleaning</button>
+      </div>
+
+      <div class="resources-grid">
+
+        <!-- CHECKLIST: Launch -->
+        <div class="res-card dark glass" data-level="beginner" onclick="openModal('launch-checklist')">
+          <div class="rc-header">
+            <span class="rc-type-badge badge-checklist">✓ Checklist</span>
+            <span class="rc-emoji">🚀</span>
+            <div class="rc-title light-text">Launch checklist — 30 things before your first client</div>
+            <div class="rc-desc light-text">The exact steps to go from idea to booked job. Tick them off as you go.</div>
+          </div>
+          <div class="rc-preview">
+            <div class="checklist-preview">
+              <div class="cp-item light-text"><div class="cp-check light">✓</div>Register as self-employed with HMRC</div>
+              <div class="cp-item light-text"><div class="cp-check light">✓</div>Get public liability insurance (min £1M)</div>
+              <div class="cp-item light-text"><div class="cp-check light">✓</div>Open a separate business bank account</div>
+              <div class="cp-more light">+ 27 more steps →</div>
+            </div>
+          </div>
+          <div class="rc-footer light-border">
+            <span class="rc-count light-text">30 items · Interactive</span>
+            <span class="rc-open light">Open →</span>
+          </div>
+        </div>
+
+        <!-- GUIDE: Pricing -->
+        <div class="res-card dark glass" data-level="beginner" onclick="openModal('pricing-guide')">
+          <div class="rc-header">
+            <span class="rc-type-badge badge-guide">📖 Guide</span>
+            <span class="rc-emoji">💰</span>
+            <div class="rc-title light-text">How to price your cleaning services (without guessing)</div>
+            <div class="rc-desc light-text">A step-by-step guide to calculating what to charge — based on real costs, not gut feel.</div>
+          </div>
+          <div class="rc-preview">
+            <div class="listicle-preview">
+              <div class="lp-item"><div class="lp-num">01</div><div class="lp-text light-text">Calculate your true hourly cost</div></div>
+              <div class="lp-item"><div class="lp-num">02</div><div class="lp-text light-text">Add travel, products and overheads</div></div>
+              <div class="lp-item"><div class="lp-num">03</div><div class="lp-text light-text">Set your minimum acceptable margin</div></div>
+              <div class="lp-item"><div class="lp-num">04</div><div class="lp-text light-text">Price for lifetime value, not just the job</div></div>
+            </div>
+          </div>
+          <div class="rc-footer light-border">
+            <span class="rc-count light-text">8 min read</span>
+            <span class="rc-open light">Read →</span>
+          </div>
+        </div>
+
+        <!-- LISTICLE: Mistakes -->
+        <div class="res-card dark glass" data-level="beginner" onclick="openModal('mistakes-listicle')">
+          <div class="rc-header">
+            <span class="rc-type-badge badge-listicle">📝 Listicle</span>
+            <span class="rc-emoji">⚠️</span>
+            <div class="rc-title light-text">7 mistakes every new cleaning business makes (and how to avoid them)</div>
+            <div class="rc-desc light-text">We made most of these. You don't have to.</div>
+          </div>
+          <div class="rc-preview">
+            <div class="listicle-preview">
+              <div class="lp-item"><div class="lp-num">01</div><div class="lp-text light-text">Underpricing to win clients</div></div>
+              <div class="lp-item"><div class="lp-num">02</div><div class="lp-text light-text">No written terms and conditions</div></div>
+              <div class="lp-item"><div class="lp-num">03</div><div class="lp-text light-text">Mixing personal and business money</div></div>
+            </div>
+          </div>
+          <div class="rc-footer light-border">
+            <span class="rc-count light-text">7 mistakes · 5 min read</span>
+            <span class="rc-open light">Read →</span>
+          </div>
+        </div>
+
+        <!-- GUIDE: First hire (intermediate) -->
+        <div class="res-card dark glass" data-level="intermediate" onclick="openModal('first-hire')">
+          <div class="rc-header">
+            <span class="rc-type-badge badge-guide">📖 Guide</span>
+            <span class="rc-emoji">👥</span>
+            <div class="rc-title light-text">How to make your first hire without it going wrong</div>
+            <div class="rc-desc light-text">The real cost of a new employee, what to look for, and how to onboard properly.</div>
+          </div>
+          <div class="rc-preview">
+            <div class="listicle-preview">
+              <div class="lp-item"><div class="lp-num">01</div><div class="lp-text light-text">Work out the true cost before you commit</div></div>
+              <div class="lp-item"><div class="lp-num">02</div><div class="lp-text light-text">Employee vs self-employed — what's right</div></div>
+              <div class="lp-item"><div class="lp-num">03</div><div class="lp-text light-text">Your legal obligations from day one</div></div>
+            </div>
+          </div>
+          <div class="rc-footer light-border">
+            <span class="rc-count light-text">10 min read</span>
+            <span class="rc-open light">Read →</span>
+          </div>
+        </div>
+
+        <!-- CHECKLIST: Scale (intermediate) -->
+        <div class="res-card dark glass" data-level="intermediate" onclick="openModal('scale-checklist')">
+          <div class="rc-header">
+            <span class="rc-type-badge badge-checklist">✓ Checklist</span>
+            <span class="rc-emoji">📈</span>
+            <div class="rc-title light-text">Are you ready to scale? The 20-point readiness check</div>
+            <div class="rc-desc light-text">Before you take on more clients or staff, make sure your foundation is solid.</div>
+          </div>
+          <div class="rc-preview">
+            <div class="checklist-preview">
+              <div class="cp-item light-text"><div class="cp-check light">✓</div>You know your exact profit margin</div>
+              <div class="cp-item light-text"><div class="cp-check light">✓</div>You have a written client onboarding process</div>
+              <div class="cp-item light-text"><div class="cp-check light">✓</div>You have 3+ months of operating costs in reserve</div>
+              <div class="cp-more light">+ 17 more →</div>
+            </div>
+          </div>
+          <div class="rc-footer light-border">
+            <span class="rc-count light-text">20 items · Interactive</span>
+            <span class="rc-open light">Open →</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════════════════
+         CAT 2: HOW-TO GUIDES
+    ══════════════════════ -->
+    <div class="cat-section" data-cat="howto" id="cat-howto">
+      <div class="cat-header">
+        <div class="cat-icon">📋</div>
+        <div>
+          <div class="cat-title">How-to guides</div>
+          <div class="cat-sub">Hiring, invoicing, marketing and everything in between</div>
+        </div>
+      </div>
+
+      <div class="resources-grid">
+
+        <!-- Invoicing guide -->
+        <div class="res-card light glass-light" onclick="openModal('invoicing-guide')">
+          <div class="rc-header">
+            <span class="rc-type-badge badge-guide">📖 Guide</span>
+            <span class="rc-emoji">🧾</span>
+            <div class="rc-title dark-text">How to invoice properly — and actually get paid on time</div>
+            <div class="rc-desc dark-text">Late payments kill cash flow. Here's how to set up invoicing that gets you paid fast.</div>
+          </div>
+          <div class="rc-preview">
+            <div class="listicle-preview">
+              <div class="lp-item"><div class="lp-num">01</div><div class="lp-text dark-text">What every invoice must legally include</div></div>
+              <div class="lp-item"><div class="lp-num">02</div><div class="lp-text dark-text">Setting payment terms that clients respect</div></div>
+              <div class="lp-item"><div class="lp-num">03</div><div class="lp-text dark-text">How to chase late payments without the awkwardness</div></div>
+              <div class="lp-item"><div class="lp-num">04</div><div class="lp-text dark-text">Automating invoices so you never forget</div></div>
+            </div>
+          </div>
+          <div class="rc-footer dark-border">
+            <span class="rc-count dark-text">7 min read</span>
+            <span class="rc-open dark">Read →</span>
+          </div>
+        </div>
+
+        <!-- Marketing guide -->
+        <div class="res-card light glass-light" onclick="openModal('marketing-guide')">
+          <div class="rc-header">
+            <span class="rc-type-badge badge-guide">📖 Guide</span>
+            <span class="rc-emoji">📣</span>
+            <div class="rc-title dark-text">How to market your cleaning business without spending a fortune</div>
+            <div class="rc-desc dark-text">The channels that actually work for cleaning businesses in the UK — and the ones that don't.</div>
+          </div>
+          <div class="rc-preview">
+            <div class="listicle-preview">
+              <div class="lp-item"><div class="lp-num">01</div><div class="lp-text dark-text">Google Business Profile — your most valuable free tool</div></div>
+              <div class="lp-item"><div class="lp-num">02</div><div class="lp-text dark-text">How to generate referrals systematically</div></div>
+              <div class="lp-item"><div class="lp-num">03</div><div class="lp-text dark-text">Social media that doesn't waste your time</div></div>
+            </div>
+          </div>
+          <div class="rc-footer dark-border">
+            <span class="rc-count dark-text">8 min read</span>
+            <span class="rc-open dark">Read →</span>
+          </div>
+        </div>
+
+        <!-- Hiring checklist -->
+        <div class="res-card light glass-light" onclick="openModal('hiring-checklist')">
+          <div class="rc-header">
+            <span class="rc-type-badge badge-checklist">✓ Checklist</span>
+            <span class="rc-emoji">🤝</span>
+            <div class="rc-title dark-text">The complete hiring checklist for UK cleaning businesses</div>
+            <div class="rc-desc dark-text">Every legal and practical step — from posting the job to their first day.</div>
+          </div>
+          <div class="rc-preview">
+            <div class="checklist-preview">
+              <div class="cp-item dark-text"><div class="cp-check dark">✓</div>Write a clear job description</div>
+              <div class="cp-item dark-text"><div class="cp-check dark">✓</div>Check right to work in the UK</div>
+              <div class="cp-item dark-text"><div class="cp-check dark">✓</div>Set up payroll with HMRC</div>
+              <div class="cp-more dark">+ 18 more steps →</div>
+            </div>
+          </div>
+          <div class="rc-footer dark-border">
+            <span class="rc-count dark-text">21 items · Interactive</span>
+            <span class="rc-open dark">Open →</span>
+          </div>
+        </div>
+
+        <!-- Tax guide -->
+        <div class="res-card light glass-light" onclick="openModal('tax-guide')">
+          <div class="rc-header">
+            <span class="rc-type-badge badge-guide">📖 Guide</span>
+            <span class="rc-emoji">💷</span>
+            <div class="rc-title dark-text">Tax for cleaning business owners — what you actually need to know</div>
+            <div class="rc-desc dark-text">Self-assessment, VAT, Making Tax Digital — explained simply. No accountant jargon.</div>
+          </div>
+          <div class="rc-preview">
+            <div class="listicle-preview">
+              <div class="lp-item"><div class="lp-num">01</div><div class="lp-text dark-text">When you need to register for self-assessment</div></div>
+              <div class="lp-item"><div class="lp-num">02</div><div class="lp-text dark-text">What expenses you can claim</div></div>
+              <div class="lp-item"><div class="lp-num">03</div><div class="lp-text dark-text">VAT threshold and when to register</div></div>
+              <div class="lp-item"><div class="lp-num">04</div><div class="lp-text dark-text">Making Tax Digital — what it means for you</div></div>
+            </div>
+          </div>
+          <div class="rc-footer dark-border">
+            <span class="rc-count dark-text">10 min read</span>
+            <span class="rc-open dark">Read →</span>
+          </div>
+        </div>
+
+        <!-- Client retention -->
+        <div class="res-card light glass-light" onclick="openModal('retention-guide')">
+          <div class="rc-header">
+            <span class="rc-type-badge badge-listicle">📝 Listicle</span>
+            <span class="rc-emoji">💙</span>
+            <div class="rc-title dark-text">10 ways to keep your cleaning clients for longer</div>
+            <div class="rc-desc dark-text">Retention is worth 5x more than acquisition. Here's how to do it without trying too hard.</div>
+          </div>
+          <div class="rc-preview">
+            <div class="listicle-preview">
+              <div class="lp-item"><div class="lp-num">01</div><div class="lp-text dark-text">The annual review conversation</div></div>
+              <div class="lp-item"><div class="lp-num">02</div><div class="lp-text dark-text">How to handle a complaint without losing the client</div></div>
+              <div class="lp-item"><div class="lp-num">03</div><div class="lp-text dark-text">The referral ask (and when to make it)</div></div>
+            </div>
+          </div>
+          <div class="rc-footer dark-border">
+            <span class="rc-count dark-text">10 tips · 6 min read</span>
+            <span class="rc-open dark">Read →</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════════════════
+         CAT 3: INDUSTRY DATA
+    ══════════════════════ -->
+    <div class="cat-section" data-cat="data" id="cat-data">
+      <div class="cat-header">
+        <div class="cat-icon">📊</div>
+        <div>
+          <div class="cat-title">UK Cleaning Industry Data</div>
+          <div class="cat-sub">Real numbers. Real benchmarks. Know where you stand.</div>
+        </div>
+      </div>
+
+      <div class="resources-grid two-col">
+
+        <!-- Industry snapshot -->
+        <div class="res-card dark glass" onclick="openModal('industry-snapshot')">
+          <div class="rc-header">
+            <span class="rc-type-badge badge-data">📊 Data</span>
+            <span class="rc-emoji">🇬🇧</span>
+            <div class="rc-title light-text">UK Cleaning Industry Snapshot 2025</div>
+            <div class="rc-desc light-text">The key numbers every cleaning business owner should know — market size, growth, benchmarks.</div>
+          </div>
+          <div class="rc-preview">
+            <div class="stat-preview">
+              <div class="sp-item"><div class="sp-num">£72B</div><div class="sp-label">Industry value</div></div>
+              <div class="sp-item"><div class="sp-num">79K</div><div class="sp-label">UK businesses</div></div>
+              <div class="sp-item"><div class="sp-num">9%</div><div class="sp-label">Annual growth</div></div>
+              <div class="sp-item"><div class="sp-num">44%</div><div class="sp-label">5yr survival rate</div></div>
+            </div>
+          </div>
+          <div class="rc-footer light-border">
+            <span class="rc-count light-text">12 key stats · BCC 2025 data</span>
+            <span class="rc-open light">View →</span>
+          </div>
+        </div>
+
+        <!-- Pricing benchmarks -->
+        <div class="res-card dark glass" onclick="openModal('pricing-benchmarks')">
+          <div class="rc-header">
+            <span class="rc-type-badge badge-data">📊 Data</span>
+            <span class="rc-emoji">💰</span>
+            <div class="rc-title light-text">UK Cleaning Pricing Benchmarks 2025</div>
+            <div class="rc-desc light-text">Average rates by service type and region — so you know if you're charging too little (you probably are).</div>
+          </div>
+          <div class="rc-preview">
+            <div class="stat-preview">
+              <div class="sp-item"><div class="sp-num">£18</div><div class="sp-label">Avg hourly domestic UK</div></div>
+              <div class="sp-item"><div class="sp-num">£25</div><div class="sp-label">Avg hourly London</div></div>
+              <div class="sp-item"><div class="sp-num">£95</div><div class="sp-label">Avg end of tenancy 2-bed</div></div>
+              <div class="sp-item"><div class="sp-num">£45</div><div class="sp-label">Avg window clean house</div></div>
+            </div>
+          </div>
+          <div class="rc-footer light-border">
+            <span class="rc-count light-text">8 service types · UK regional data</span>
+            <span class="rc-open light">View →</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section style="padding:80px 0;background:rgba(7,16,46,0.4);border-top:1px solid rgba(255,255,255,0.04);text-align:center;">
+  <div class="inner-narrow">
+    <span style="font-size:11px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:rgba(79,120,255,0.7);display:block;margin-bottom:14px;">Want to go deeper?</span>
+    <h2 style="font-size:clamp(32px,5vw,50px);font-weight:800;letter-spacing:-0.04em;line-height:1.1;color:#fff;margin-bottom:14px;">
+      Cadi puts all of this<br><span class="hl">into practice automatically.</span>
+    </h2>
+    <p style="font-size:17px;color:rgba(255,255,255,0.45);line-height:1.7;margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto;">
+      These guides tell you what to do. <strong style="color:rgba(255,255,255,0.75);">Cadi does it for you</strong> — pricing, invoicing, accounting, staff, growth. All in one place.
+    </p>
+    <a href="/#access" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font);font-size:16px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--blue),var(--electric),var(--sky));border:none;border-radius:14px;padding:18px 36px;cursor:pointer;box-shadow:0 6px 28px rgba(46,85,240,0.4);text-decoration:none;">
+      Get first access — it's free →
+    </a>
+    <p style="font-size:12px;color:rgba(255,255,255,0.18);margin-top:14px;letter-spacing:0.04em;">No card · No commitment · Free up to 20 clients</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-wm"><span class="fwC">C</span><span class="fwa">a</span><span class="fwd">d</span><span class="fwi">i<span class="fwdot"></span></span></div>
+    <p class="footer-copy">© 2025 Cadi · cadi.cleaning</p>
+    <div class="footer-links"><a href="/">Home</a><a href="/about.html">About</a><a href="/blog.html">Blog</a><a href="/resources.html">Resources</a></div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════
+     MODALS
+══════════════════════════ -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal" id="modalBox">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+// NAV scroll
+window.addEventListener('scroll',()=>{ document.getElementById('nav').style.background = window.scrollY>40?'rgba(4,8,16,0.95)':'rgba(4,8,16,0.8)'; });
+
+// FILTER categories
+function filterCat(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.cat-section').forEach(s=>{
+    s.style.display = (cat==='all'||s.dataset.cat===cat) ? 'block' : 'none';
+  });
+}
+
+// FILTER level
+function filterLevel(level, btn) {
+  document.querySelectorAll('.level-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#cat-start .res-card').forEach(c=>{
+    c.style.display = (level==='all'||c.dataset.level===level) ? 'block' : 'none';
+  });
+}
+
+// CHECKLIST interaction
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+  updateProgress();
+}
+function updateProgress() {
+  const items = document.querySelectorAll('.mc-item');
+  const checked = document.querySelectorAll('.mc-item.checked').length;
+  const total = items.length;
+  const pct = total ? Math.round((checked/total)*100) : 0;
+  const fill = document.getElementById('progressFill');
+  const label = document.getElementById('progressLabel');
+  if(fill) fill.style.width = pct+'%';
+  if(label) label.textContent = checked+' of '+total+' complete';
+}
+
+// GUIDE accordions
+function toggleStep(el) {
+  el.classList.toggle('open');
+  const body = el.nextElementSibling;
+  body.classList.toggle('open');
+}
+
+// MODAL
+const modals = {
+  'launch-checklist': {
+    badge:'✓ Checklist · Beginner',
+    title:'Launch checklist — 30 things before your first client',
+    sub:'Tick off each step as you go. Your progress saves automatically in this session.',
+    content: `
+      <div class="modal-section-label">Business setup</div>
+      <div class="modal-checklist">
+        ${checkItem('Register as self-employed with HMRC (if sole trader)','Do this as soon as you start earning — you have until 5 October after your first tax year.')}
+        ${checkItem('Open a separate business bank account','Mixing personal and business money is the fastest way to lose track of your finances.')}
+        ${checkItem('Register your business name (if using a trading name)','Check it\'s not already taken at Companies House or with another business locally.')}
+        ${checkItem('Set up a simple bookkeeping system from day one','A spreadsheet works. Cadi works better. The point is to start tracking immediately.')}
+      </div>
+      <div class="modal-section-label">Insurance & legal</div>
+      <div class="modal-checklist">
+        ${checkItem('Get public liability insurance — minimum £1 million cover','Most clients and contracts require this. Some require £5M or more.')}
+        ${checkItem('Consider employers\' liability insurance (if you have or plan to hire staff)','This is a legal requirement as soon as you employ anyone — even casual or part-time.')}
+        ${checkItem('Get contents and equipment cover for your cleaning kit','Your equipment is your livelihood. It\'s worth protecting.')}
+        ${checkItem('Create simple terms and conditions for your clients','These protect you if a client refuses to pay or damages occur.')}
+      </div>
+      <div class="modal-section-label">Pricing & quoting</div>
+      <div class="modal-checklist">
+        ${checkItem('Calculate your minimum hourly rate (not what you think sounds fair)','Include travel, products, wear on equipment, tax buffer, and your time.')}
+        ${checkItem('Set your pricing structure for each service type','Domestic, commercial, end of tenancy, one-off — price each one properly.')}
+        ${checkItem('Create a quote template you can send professionally','Even a simple email template beats writing the same thing from scratch every time.')}
+        ${checkItem('Decide on your payment terms upfront','14 days is standard. 7 days is better. Make it clear before you start the job.')}
+      </div>
+      <div class="modal-section-label">Getting your first clients</div>
+      <div class="modal-checklist">
+        ${checkItem('Set up a Google Business Profile — it\'s free and it works','This is how local clients find you. Fill every field. Add photos.')}
+        ${checkItem('Tell everyone you know you\'ve started — family, friends, neighbours','Your first 5 clients will almost certainly come from people who know you.')}
+        ${checkItem('Join local Facebook groups and community pages','Post once, professionally. Don\'t spam. These work surprisingly well.')}
+        ${checkItem('Create a simple one-page website or landing page','Even a basic page with your services, area, and contact details builds credibility.')}
+        ${checkItem('Ask your first clients for a Google review immediately after the job','Five genuine reviews puts you ahead of 80% of local competitors.')}
+      </div>
+      <div class="modal-section-label">Operations</div>
+      <div class="modal-checklist">
+        ${checkItem('Create a cleaning kit list and buy supplies in bulk','Calculate the cost per clean — it\'s a business expense and it keeps margin predictable.')}
+        ${checkItem('Set up a system for scheduling jobs (even a paper diary works to start)','You need to know where you\'re supposed to be before you get busy.')}
+        ${checkItem('Create a cleaning checklist for each service type','Consistency is what keeps clients. A checklist makes consistency effortless.')}
+        ${checkItem('Decide how you\'ll handle cancellations and no-shows','Write your policy before you need it — not after a difficult conversation.')}
+      </div>
+      <div class="progress-section">
+        <div class="prog-label"><span>Your progress</span><span id="progressLabel">0 of 19 complete</span></div>
+        <div class="prog-bar"><div class="prog-fill" id="progressFill" style="width:0%"></div></div>
+      </div>`
+  },
+  'pricing-guide': {
+    badge:'📖 Guide · Beginner & Intermediate',
+    title:'How to price your cleaning services (without guessing)',
+    sub:'Stop guessing. Here\'s the step-by-step method for pricing jobs so you actually make money.',
+    content: `
+      <div class="modal-guide-step"><div class="mgs-header open" onclick="toggleStep(this)"><div class="mgs-num">01</div><div class="mgs-title">Calculate your true hourly cost</div><div class="mgs-arrow">▼</div></div><div class="mgs-body open"><p>Before you can price anything, you need to know what one hour of your time actually costs. Add up: your desired take-home pay, National Insurance, travel costs per hour worked, products and supplies per hour, equipment depreciation, and any insurance or software costs. Divide by your billable hours per week.</p><p><strong>Most cleaning business owners find their true hourly cost is £5–8 more than they assumed.</strong> This is why so many are undercharging.</p></div></div>
+      <div class="modal-guide-step"><div class="mgs-header" onclick="toggleStep(this)"><div class="mgs-num">02</div><div class="mgs-title">Factor in travel, products and overheads</div><div class="mgs-arrow">▼</div></div><div class="mgs-body"><p>Travel time is working time — you should be accounting for it. If a job is 20 minutes away, that's 40 minutes round trip that needs to be factored into the price. Products cost money. Factor in a realistic cost per clean, not a rough guess.</p><ul><li>Travel: time and fuel at HMRC approved rate (45p/mile first 10,000 miles)</li><li>Products: track your monthly spend and divide by number of cleans</li><li>Overheads: insurance, software, phone, website — divide by monthly jobs</li></ul></div></div>
+      <div class="modal-guide-step"><div class="mgs-header" onclick="toggleStep(this)"><div class="mgs-num">03</div><div class="mgs-title">Set your minimum acceptable margin</div><div class="mgs-arrow">▼</div></div><div class="mgs-body"><p>Your minimum margin is the lowest profit percentage you'll accept on a job before you're better off not taking it. <strong>For a solo cleaning business, aim for at least 40–50% gross margin.</strong> That means if your true cost for a job is £30, your minimum price is £50–60. Anything less and you're working for less than your costs allow.</p></div></div>
+      <div class="modal-guide-step"><div class="mgs-header" onclick="toggleStep(this)"><div class="mgs-num">04</div><div class="mgs-title">Price for lifetime value, not just the job</div><div class="mgs-arrow">▼</div></div><div class="mgs-body"><p>This is the part most pricing advice skips entirely. A fortnightly domestic client at £65 isn't worth £65. Over two years, they're worth £1,690. <strong>When you see the lifetime value of a client, you make completely different pricing decisions.</strong> You invest more in quality. You price more confidently. You focus on retention rather than volume.</p><p>This is exactly what Cadi's pricing calculator shows you — not just what to charge, but the lifetime value potential of each client type.</p></div></div>
+      <div class="modal-guide-step"><div class="mgs-header" onclick="toggleStep(this)"><div class="mgs-num">05</div><div class="mgs-title">Know when to raise your prices</div><div class="mgs-arrow">▼</div></div><div class="mgs-body"><p>If you haven't raised your prices in 12 months, you've effectively given yourself a pay cut — inflation has reduced your real margin. <strong>An annual price increase of 3–5% is standard and expected by clients.</strong> Communicate it clearly, give 30 days notice, and frame it positively. Very few clients leave over a reasonable increase.</p></div></div>`
+  },
+  'mistakes-listicle': {
+    badge:'📝 Listicle · Beginner',
+    title:'7 mistakes every new cleaning business makes',
+    sub:'We made most of these. You don\'t have to.',
+    content: `
+      ${mistakeItem('01','Underpricing to win clients','Competing on price attracts price-sensitive clients who leave the moment someone cheaper comes along. Price on value. Win clients who stay.')}
+      ${mistakeItem('02','No written terms and conditions','Without T&Cs, you have no legal standing when a client refuses to pay or claims damage you didn\'t cause. Write them before you need them.')}
+      ${mistakeItem('03','Mixing personal and business money','One account for everything makes it impossible to know what you\'re actually making. Open a business account on day one — it takes 10 minutes.')}
+      ${mistakeItem('04','Taking every client that comes','Some clients cost more than they\'re worth — in time, stress, and the opportunity cost of the better clients you could be serving. Learn to say no early.')}
+      ${mistakeItem('05','No system for getting reviews','Reviews are the single most powerful marketing a cleaning business has. But they don\'t happen automatically. Ask for them immediately after a great clean.')}
+      ${mistakeItem('06','Ignoring your tax obligations','Self-assessment, National Insurance, VAT threshold — these don\'t wait for you to feel ready. Understand them from day one and set money aside from every payment.')}
+      ${mistakeItem('07','Trying to grow before the foundation is solid','More clients before you have systems just means more chaos. Get your pricing, scheduling, invoicing and operations sorted first. Then grow.')}
+    `
+  },
+  'industry-snapshot': {
+    badge:'📊 Data · UK Cleaning Industry 2025',
+    title:'UK Cleaning Industry Snapshot 2025',
+    sub:'The numbers every cleaning business owner should know. Sources: British Cleaning Council Research Report 2025, ONS, Grand View Research.',
+    content: `
+      <div class="modal-section-label">Market size & growth</div>
+      <div class="modal-stats">
+        <div class="ms-item"><div class="ms-num">£72B</div><div class="ms-label">Total industry value</div><div class="ms-source">BCC 2026</div></div>
+        <div class="ms-item"><div class="ms-num">9%</div><div class="ms-label">Annual growth forecast 2025–2030</div><div class="ms-source">Grand View Research</div></div>
+        <div class="ms-item"><div class="ms-num">£30B</div><div class="ms-label">Projected UK market size by 2030</div><div class="ms-source">Grand View Research</div></div>
+      </div>
+      <div class="modal-section-label">The businesses in it</div>
+      <div class="modal-stats">
+        <div class="ms-item"><div class="ms-num">79K</div><div class="ms-label">Cleaning businesses in the UK</div><div class="ms-source">ONS / BCC 2025</div></div>
+        <div class="ms-item"><div class="ms-num">99%</div><div class="ms-label">Independently owned</div><div class="ms-source">PolicyBee 2025</div></div>
+        <div class="ms-item"><div class="ms-num">9/10</div><div class="ms-label">Have fewer than 10 employees</div><div class="ms-source">BCC 2025</div></div>
+      </div>
+      <div class="modal-section-label">Survival & growth</div>
+      <div class="modal-stats">
+        <div class="ms-item"><div class="ms-num">44%</div><div class="ms-label">5-year business survival rate</div><div class="ms-source">ONS 2024</div></div>
+        <div class="ms-item"><div class="ms-num">1.5M</div><div class="ms-label">People employed in the industry</div><div class="ms-source">BCC 2026</div></div>
+        <div class="ms-item"><div class="ms-num">5%</div><div class="ms-label">Of the UK's total workforce</div><div class="ms-source">BCC 2026</div></div>
+      </div>
+      <div class="modal-section-label">What this means for your business</div>
+      <p style="font-size:15px;line-height:1.75;color:rgba(7,17,64,0.65);">The cleaning industry is one of the fastest-growing sectors in the UK — and 99% of it is made up of independent businesses just like yours. The opportunity is enormous. The challenge is that most of those businesses are running without the right tools, which is why the 5-year survival rate sits at 44%. <strong style="color:#071140;">The businesses that make it are the ones that build proper systems before they need them.</strong></p>`
+  },
+  'pricing-benchmarks': {
+    badge:'📊 Data · UK Pricing Benchmarks 2025',
+    title:'UK Cleaning Pricing Benchmarks 2025',
+    sub:'Average rates across service types and regions. If you\'re below these, you\'re almost certainly undercharging.',
+    content: `
+      <div class="modal-section-label">Domestic cleaning — hourly rates</div>
+      <div class="modal-stats">
+        <div class="ms-item"><div class="ms-num">£18</div><div class="ms-label">UK average hourly rate</div></div>
+        <div class="ms-item"><div class="ms-num">£25</div><div class="ms-label">London average hourly rate</div></div>
+        <div class="ms-item"><div class="ms-num">£15</div><div class="ms-label">North England average</div></div>
+      </div>
+      <div class="modal-section-label">Specialist services — per job</div>
+      <div class="modal-stats">
+        <div class="ms-item"><div class="ms-num">£95</div><div class="ms-label">End of tenancy — 2 bed</div></div>
+        <div class="ms-item"><div class="ms-num">£145</div><div class="ms-label">End of tenancy — 3 bed</div></div>
+        <div class="ms-item"><div class="ms-num">£55</div><div class="ms-label">Oven clean — standard</div></div>
+      </div>
+      <div class="modal-section-label">Exterior & window cleaning</div>
+      <div class="modal-stats">
+        <div class="ms-item"><div class="ms-num">£45</div><div class="ms-label">Window clean — 3 bed house</div></div>
+        <div class="ms-item"><div class="ms-num">£80</div><div class="ms-label">Driveway jet wash — standard</div></div>
+        <div class="ms-item"><div class="ms-num">£120</div><div class="ms-label">Full exterior clean — house</div></div>
+      </div>
+      <p style="font-size:13px;color:rgba(7,17,64,0.4);margin-top:16px;line-height:1.6;">Sources: industry surveys, Checkatrade, Rated People, Bark.com. Rates vary significantly by region, experience, and service quality. These are averages — premium positioning can command 20–40% above these figures.</p>`
+  },
+  'hiring-checklist': {
+    badge:'✓ Checklist · How-to Guide',
+    title:'The complete hiring checklist for UK cleaning businesses',
+    sub:'Every legal and practical step — from posting the job to their first day on the job.',
+    content: `
+      <div class="modal-section-label">Before you advertise</div>
+      <div class="modal-checklist">
+        ${checkItem('Decide employee vs self-employed — and understand the difference','HMRC has strict rules on employment status. Getting this wrong has serious consequences.')}
+        ${checkItem('Work out the true cost of a hire','Salary + National Insurance + holiday pay + equipment + training. Know the number before you commit.')}
+        ${checkItem('Check you have employers\' liability insurance','This is a legal requirement from day one of employment. Minimum £5 million cover.')}
+        ${checkItem('Write a clear job description with pay, hours and expectations','Vague job descriptions attract the wrong candidates and create problems later.')}
+      </div>
+      <div class="modal-section-label">The hiring process</div>
+      <div class="modal-checklist">
+        ${checkItem('Post on Indeed, Facebook Jobs and local community groups','These are the most effective channels for cleaning roles in most UK areas.')}
+        ${checkItem('Check Right to Work in the UK before offering the job','You must check and keep a record of documents confirming the right to work. This is a legal requirement.')}
+        ${checkItem('Take up at least one reference','Always. Even if they seem perfect.')}
+        ${checkItem('Carry out a DBS check if they\'ll be working in clients\' homes','Enhanced DBS checks give clients confidence and protect your business reputation.')}
+      </div>
+      <div class="modal-section-label">Before their first day</div>
+      <div class="modal-checklist">
+        ${checkItem('Register as an employer with HMRC (if first hire)','You must do this before their first payday. It can take up to 5 working days.')}
+        ${checkItem('Set up payroll — HMRC PAYE or payroll software','You\'re legally required to report payroll to HMRC every time you pay an employee.')}
+        ${checkItem('Issue a written employment contract','This must be provided on or before their first day. Include pay, hours, holiday entitlement and notice period.')}
+        ${checkItem('Create an onboarding checklist and training plan','The first week sets the tone. A structured onboarding dramatically improves retention.')}
+        ${checkItem('Tell your clients a new team member is joining','Proactive communication builds trust. Surprises don\'t.')}
+      </div>
+      <div class="progress-section">
+        <div class="prog-label"><span>Your progress</span><span id="progressLabel">0 of 13 complete</span></div>
+        <div class="prog-bar"><div class="prog-fill" id="progressFill" style="width:0%"></div></div>
+      </div>`
+  }
+};
+
+function checkItem(text, detail) {
+  return `<div class="mc-item" onclick="toggleCheck(this)"><div class="mc-box"><span class="mc-check-icon">✓</span></div><div class="mc-content"><div class="mc-text">${text}</div><div class="mc-detail">${detail}</div></div></div>`;
+}
+function mistakeItem(num, title, desc) {
+  return `<div style="background:#fff;border:1px solid rgba(7,17,64,0.07);border-radius:16px;padding:22px 24px;margin-bottom:12px;"><div style="display:flex;align-items:flex-start;gap:14px;"><div style="font-size:22px;font-weight:800;color:rgba(29,56,196,0.25);flex-shrink:0;line-height:1;margin-top:2px;">${num}</div><div><div style="font-size:16px;font-weight:700;color:#071140;margin-bottom:5px;letter-spacing:-0.02em;">${title}</div><div style="font-size:14px;color:rgba(7,17,64,0.55);line-height:1.65;">${desc}</div></div></div></div>`;
+}
+
+function openModal(id) {
+  const m = modals[id];
+  if (!m) return;
+  const cta = `<div class="modal-cta"><h4>Put this into practice with Cadi</h4><p>Cadi handles the invoicing, scheduling, accounting and staff management automatically — so you can focus on the cleaning. <strong>Free to start. No card needed.</strong></p><a href="/#access" class="modal-cta-btn">Get first access →</a></div>`;
+  document.getElementById('modalContent').innerHTML = `
+    <div class="modal-header"><div class="modal-badge">${m.badge}</div><div class="modal-title">${m.title}</div><div class="modal-sub">${m.sub}</div></div>
+    <div class="modal-body">${m.content}${cta}</div>`;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // Init progress if checklist
+  setTimeout(updateProgress, 100);
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeModalOutside(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+</script>
+</body>
+</html>
