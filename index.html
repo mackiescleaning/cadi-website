@@ -1086,10 +1086,10 @@ footer {
   <div class="inner">
     <span class="eyebrow-light">Simple, honest pricing</span>
     <h2 class="pricing-h2">
-      Start free.<br>
-      <span class="hl-warm">Scale when you're ready.</span>
+      Simple pricing.<br>
+      <span class="hl-warm">Half price while founding spots last.</span>
     </h2>
-    <p class="pricing-sub">No hidden fees. No surprise bills. Pay more only when your business grows.</p>
+    <p class="pricing-sub">Growth plan is <strong>£29/mo for founding members</strong> — down from £59/mo at launch. Free plan available with no card needed.</p>
 
     <div class="billing-toggle">
       <button class="btgl-btn active" onclick="setBilling('monthly',this)">Monthly</button>
@@ -1144,13 +1144,18 @@ footer {
 
       <!-- GROWTH — POPULAR -->
       <div class="plan-card popular">
-        <div class="popular-badge">Most popular</div>
+        <div class="popular-badge">⚡ Founding price</div>
         <div class="plan-name">Growth</div>
         <div class="plan-tagline">For businesses actively scaling.</div>
-        <div class="plan-price"><span class="pp-cur">£</span><span class="pp-amt" id="p2">29</span><span class="pp-per">/mo</span></div>
-        <div class="plan-save" id="s2">&nbsp;</div>
-        <div class="plan-limit">51–100 clients<br><span style="font-size:10px;color:rgba(7,17,64,0.3);">or 121–250 exterior</span></div>
-        <button class="plan-cta-btn cta-paid-btn">Start Growth</button>
+        <div class="plan-price" style="align-items:flex-start;flex-direction:column;gap:2px;">
+          <div style="display:flex;align-items:baseline;gap:3px;">
+            <span class="pp-cur">£</span><span class="pp-amt" id="p2">29</span><span class="pp-per">/mo</span>
+          </div>
+          <div style="font-size:11px;color:rgba(29,56,196,0.5);text-decoration:line-through;font-weight:600;">£59/mo after launch</div>
+        </div>
+        <div class="plan-save" id="s2" style="color:rgba(80,200,140,0.8);font-weight:700;">Save 51% — founding rate</div>
+        <div class="plan-limit" style="background:rgba(29,56,196,0.06);border-color:rgba(29,56,196,0.15);">51–100 clients<br><span style="font-size:10px;color:rgba(7,17,64,0.3);">or 121–250 exterior</span></div>
+        <button class="plan-cta-btn cta-paid-btn" onclick="window.location.href='/founding-200.html'">Claim founding price →</button>
         <div class="feat-label">Starter, plus</div>
         <div class="feat"><span class="fi">✓</span><strong>HMRC Making Tax Digital</strong></div>
         <div class="feat"><span class="fi">✓</span>Full staff portal & hiring</div>
@@ -1160,7 +1165,7 @@ footer {
         <div class="feat"><span class="fi">✓</span>Marketing & social tools</div>
         <div class="plan-divider"></div>
         <div class="feat"><span class="fi">✓</span>Priority support</div>
-        <div class="seat-note">+ £5/mo per team member (up to 5)</div>
+        <div class="seat-note">+ £5/mo per team member (up to 5) · Founding price locked forever</div>
       </div>
 
       <!-- PRO -->
@@ -1264,34 +1269,200 @@ footer {
         <span class="sp-label">&nbsp;· closes at 200</span>
       </div>
 
-      <span class="eyebrow">The Founding 200</span>
+      <span class="eyebrow">The Founding 200 — Launch Bundle</span>
 
       <h2 class="founding-h2">
-        You're not buying software.<br>
-        <span class="hl">You're helping build it.</span>
+        The planner alone retails at £49.<br>
+        <span class="hl">You get that plus everything else for £69.</span>
       </h2>
 
       <p class="founding-sub">
-        200 founding member spots. <strong>£29/mo locked in for life.</strong>
-        Weekly calls with the founders. A physical welcome pack. 50% affiliate commissions.
-        And a seat at the table that shapes where Cadi goes.
+        One decision. Made once. <strong>Locked in forever.</strong>
+        The founding bundle is everything Cadi has to offer — plus a physical planner posted to your door —
+        for less than the planner costs on its own.
       </p>
 
-      <div class="offer-strip">
-        <div class="os-item"><strong>£29/mo</strong>Locked in forever</div>
-        <div class="os-item"><strong>Full Growth plan</strong>Every feature included</div>
-        <div class="os-item"><strong>Weekly Zooms</strong>Direct access to founders</div>
-        <div class="os-item"><strong>Welcome pack</strong>Shipped to your door</div>
-        <div class="os-item"><strong>50% affiliate</strong>Commission for life</div>
+      <!-- BUNDLE CARD -->
+      <div style="width:100%;max-width:960px;background:rgba(7,16,46,0.7);border:1px solid rgba(79,120,255,0.2);border-radius:28px;overflow:hidden;position:relative;margin-bottom:24px;">
+
+        <!-- Top glow line -->
+        <div style="position:absolute;top:0;left:8%;right:8%;height:1px;background:linear-gradient(90deg,transparent,rgba(79,120,255,0.6),transparent);"></div>
+
+        <!-- Three columns -->
+        <div style="display:grid;grid-template-columns:1fr 1px 1fr 1px 1fr;gap:0;">
+
+          <!-- COL 1: What's in the bundle -->
+          <div style="padding:36px 32px;">
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(79,120,255,0.6);margin-bottom:20px;">What's in the bundle</div>
+            <div style="display:flex;flex-direction:column;gap:14px;">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <span style="color:rgba(80,200,140,0.8);font-size:13px;margin-top:2px;flex-shrink:0;">✓</span>
+                  <div>
+                    <div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:2px;">Physical annual planner</div>
+                    <div style="font-size:11px;color:rgba(255,255,255,0.35);">Posted to your door</div>
+                  </div>
+                </div>
+                <div style="font-size:13px;font-weight:700;color:rgba(255,100,100,0.6);text-decoration:line-through;white-space:nowrap;flex-shrink:0;">£49</div>
+              </div>
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <span style="color:rgba(80,200,140,0.8);font-size:13px;margin-top:2px;flex-shrink:0;">✓</span>
+                  <div>
+                    <div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:2px;">3 months full platform</div>
+                    <div style="font-size:11px;color:rgba(255,255,255,0.35);">Every feature. Nothing locked.</div>
+                  </div>
+                </div>
+                <div style="font-size:13px;font-weight:700;color:rgba(255,100,100,0.6);text-decoration:line-through;white-space:nowrap;flex-shrink:0;">£87</div>
+              </div>
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <span style="color:rgba(80,200,140,0.8);font-size:13px;margin-top:2px;flex-shrink:0;">✓</span>
+                  <div>
+                    <div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:2px;">50% affiliate program</div>
+                    <div style="font-size:11px;color:rgba(255,255,255,0.35);">Earn from month 2 — forever</div>
+                  </div>
+                </div>
+                <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.25);white-space:nowrap;flex-shrink:0;">£∞</div>
+              </div>
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <span style="color:rgba(80,200,140,0.8);font-size:13px;margin-top:2px;flex-shrink:0;">✓</span>
+                  <div>
+                    <div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:2px;">Weekly founder Zoom calls</div>
+                    <div style="font-size:11px;color:rgba(255,255,255,0.35);">8 weeks direct access to us</div>
+                  </div>
+                </div>
+                <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.25);white-space:nowrap;flex-shrink:0;">Priceless</div>
+              </div>
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <span style="color:rgba(80,200,140,0.8);font-size:13px;margin-top:2px;flex-shrink:0;">✓</span>
+                  <div>
+                    <div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:2px;">Founding member badge</div>
+                    <div style="font-size:11px;color:rgba(255,255,255,0.35);">Permanent. On your profile forever.</div>
+                  </div>
+                </div>
+                <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.25);white-space:nowrap;flex-shrink:0;">Permanent</div>
+              </div>
+              <!-- Total -->
+              <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:14px;display:flex;justify-content:space-between;align-items:center;">
+                <div style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.35);">Total real value</div>
+                <div style="font-size:18px;font-weight:800;color:rgba(255,100,100,0.6);text-decoration:line-through;">£136+</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DIVIDER -->
+          <div style="background:rgba(255,255,255,0.05);"></div>
+
+          <!-- COL 2: The price -->
+          <div style="padding:36px 32px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(79,120,255,0.6);margin-bottom:16px;">Your founding price</div>
+
+            <!-- Bundle price -->
+            <div style="margin-bottom:6px;">
+              <div style="font-size:11px;color:rgba(255,255,255,0.25);margin-bottom:4px;letter-spacing:0.06em;">First 3 months</div>
+              <div style="display:flex;align-items:baseline;justify-content:center;gap:4px;">
+                <span style="font-size:22px;font-weight:700;color:rgba(255,255,255,0.5);margin-top:4px;">£</span>
+                <span style="font-size:72px;font-weight:800;letter-spacing:-0.06em;line-height:1;background:linear-gradient(135deg,#fff,#a8c4ff 40%,#4f78ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">69</span>
+              </div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.3);margin-top:2px;">one-time bundle payment</div>
+            </div>
+
+            <!-- Then -->
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:12px 20px;margin:16px 0;width:100%;">
+              <div style="font-size:10px;color:rgba(255,255,255,0.25);margin-bottom:4px;letter-spacing:0.08em;text-transform:uppercase;">Then from month 4</div>
+              <div style="font-size:24px;font-weight:800;letter-spacing:-0.04em;color:#fff;">£29<span style="font-size:13px;font-weight:400;color:rgba(255,255,255,0.35);">/mo</span></div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.25);margin-top:2px;">Locked in forever. Never changes.</div>
+            </div>
+
+            <!-- Saving badge -->
+            <div style="background:rgba(80,200,140,0.1);border:1px solid rgba(80,200,140,0.2);border-radius:12px;padding:12px 20px;width:100%;margin-bottom:20px;">
+              <div style="font-size:10px;color:rgba(80,200,140,0.6);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:4px;">You save</div>
+              <div style="font-size:26px;font-weight:800;letter-spacing:-0.04em;color:rgba(80,200,140,0.9);">£67 <span style="font-size:13px;font-weight:500;color:rgba(80,200,140,0.6);">upfront</span></div>
+              <div style="font-size:11px;color:rgba(80,200,140,0.5);margin-top:2px;">vs buying the planner + platform separately</div>
+            </div>
+
+            <a href="/founding-200.html" class="btn-primary" style="width:100%;justify-content:center;font-size:15px;padding:17px 24px;">
+              Claim your bundle →
+            </a>
+            <div style="font-size:11px;color:rgba(255,255,255,0.2);margin-top:10px;line-height:1.5;">187 spots left · closes permanently at 200</div>
+          </div>
+
+          <!-- DIVIDER -->
+          <div style="background:rgba(255,255,255,0.05);"></div>
+
+          <!-- COL 3: The affiliate kicker -->
+          <div style="padding:36px 32px;">
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(79,120,255,0.6);margin-bottom:20px;">The affiliate kicker</div>
+
+            <p style="font-size:14px;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:20px;">
+              From month 2, you earn <strong style="color:#fff;">50% of every monthly subscription</strong> for every person you refer to Cadi. For life.
+            </p>
+
+            <!-- Refer calculator -->
+            <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;">
+              <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;">
+                <div style="font-size:13px;color:rgba(255,255,255,0.5);">Refer <strong style="color:#fff;">1 person</strong></div>
+                <div style="font-size:14px;font-weight:700;color:rgba(168,196,255,0.8);">+£14.50/mo</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;">
+                <div style="font-size:13px;color:rgba(255,255,255,0.5);">Refer <strong style="color:#fff;">2 people</strong></div>
+                <div style="font-size:14px;font-weight:700;color:rgba(168,196,255,0.8);">+£29/mo back</div>
+              </div>
+              <div style="background:rgba(29,56,196,0.12);border:1px solid rgba(79,120,255,0.2);border-radius:12px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;">
+                <div style="font-size:13px;color:rgba(255,255,255,0.6);">Refer <strong style="color:#fff;">4 people</strong></div>
+                <div style="font-size:14px;font-weight:800;background:linear-gradient(135deg,#fff,#a8c4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Cadi is free 🎉</div>
+              </div>
+            </div>
+
+            <div style="background:rgba(80,200,140,0.06);border:1px solid rgba(80,200,140,0.15);border-radius:14px;padding:16px;font-size:13px;color:rgba(255,255,255,0.65);line-height:1.65;">
+              <strong style="color:#fff;">Most founding members know at least 4 other cleaning business owners.</strong> That means Cadi could cost you nothing — every single month — for as long as they stay subscribed.
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bottom bar -->
+        <div style="border-top:1px solid rgba(255,255,255,0.05);padding:16px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;background:rgba(7,16,46,0.4);">
+          <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
+            <span style="font-size:12px;color:rgba(255,255,255,0.25);">✓ No hidden fees</span>
+            <span style="font-size:12px;color:rgba(255,255,255,0.25);">✓ Price locked forever</span>
+            <span style="font-size:12px;color:rgba(255,255,255,0.25);">✓ Cancel anytime after 3 months</span>
+            <span style="font-size:12px;color:rgba(255,255,255,0.25);">✓ Planner shipped within 5 days</span>
+          </div>
+          <div style="font-size:12px;font-weight:600;color:rgba(255,100,100,0.6);">⚡ 187 of 200 spots remaining</div>
+        </div>
+
       </div>
 
-      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;">
-        <a href="/founding-200" class="btn-primary" style="font-size:17px;padding:20px 40px;">
-          Claim your founding spot →
-        </a>
-        <a href="/founding-200" class="btn-ghost">See full details</a>
+      <!-- Month breakdown -->
+      <div style="width:100%;max-width:960px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:28px;">
+        <div style="background:rgba(7,16,46,0.5);border:1px solid rgba(255,255,255,0.05);border-radius:16px;padding:20px 16px;text-align:center;">
+          <div style="font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:rgba(79,120,255,0.5);margin-bottom:8px;">Today</div>
+          <div style="font-size:24px;font-weight:800;letter-spacing:-0.04em;background:linear-gradient(135deg,#fff,#a8c4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px;">£69</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.3);line-height:1.4;">Bundle · Planner posted · Access starts</div>
+        </div>
+        <div style="background:rgba(7,16,46,0.5);border:1px solid rgba(255,255,255,0.05);border-radius:16px;padding:20px 16px;text-align:center;">
+          <div style="font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:rgba(79,120,255,0.5);margin-bottom:8px;">Month 2</div>
+          <div style="font-size:24px;font-weight:800;letter-spacing:-0.04em;background:linear-gradient(135deg,#fff,#a8c4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px;">£0</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.3);line-height:1.4;">Affiliate active · Refer 2 friends · Break even</div>
+        </div>
+        <div style="background:rgba(7,16,46,0.5);border:1px solid rgba(255,255,255,0.05);border-radius:16px;padding:20px 16px;text-align:center;">
+          <div style="font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:rgba(79,120,255,0.5);margin-bottom:8px;">Month 4+</div>
+          <div style="font-size:24px;font-weight:800;letter-spacing:-0.04em;background:linear-gradient(135deg,#fff,#a8c4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px;">£29</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.3);line-height:1.4;">Monthly · Locked forever · Never changes</div>
+        </div>
+        <div style="background:rgba(29,56,196,0.1);border:1px solid rgba(79,120,255,0.2);border-radius:16px;padding:20px 16px;text-align:center;">
+          <div style="font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:rgba(79,120,255,0.6);margin-bottom:8px;">vs normal price</div>
+          <div style="font-size:24px;font-weight:800;letter-spacing:-0.04em;color:rgba(255,100,100,0.6);text-decoration:line-through;margin-bottom:4px;">£59</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.3);line-height:1.4;">What new users pay from month 4 onwards</div>
+        </div>
       </div>
-      <p class="founding-note">3-month minimum · No price increases · Founding badge permanent</p>
+
+      <a href="/founding-200.html" class="btn-ghost" style="font-size:14px;">See everything that's included →</a>
+      <p class="founding-note" style="margin-top:14px;">When 200 spots are claimed — the bundle closes. The planner goes. The price goes to £59/mo. Permanently.</p>
 
     </div>
   </div>
@@ -1322,7 +1493,7 @@ footer {
       <h4>Company</h4>
       <a href="/about">About</a>
       <a href="/blog">Blog</a>
-      <a href="mailto:hello@cadi.cleaning">Contact</a>
+      <a href="/cdn-cgi/l/email-protection#660e030a0a09260507020f48050a0307080f0801">Contact</a>
     </div>
     <div class="footer-col">
       <h4>Legal</h4>
@@ -1341,7 +1512,7 @@ footer {
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // Nav scroll
 window.addEventListener('scroll', () => {
   document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
@@ -1391,11 +1562,4 @@ document.getElementById('email-input')?.addEventListener('keydown', e => { if(e.
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault();
-    const t = document.querySelector(a.getAttribute('href'));
-    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-});
-</script>
-
-</body>
-</html>
+    const t = docu
