@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cadi — The software that runs your cleaning business</title>
+<meta name="description" content="Cadi is the all-in-one software for cleaning business owners. Pricing, scheduling, invoicing, accounting, staff and growth. One login. No chaos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ══════════════════════════════════════
+   TOKENS
+══════════════════════════════════════ */
+:root {
+  --ink:       #040810;
+  --navy:      #07102e;
+  --blue:      #1a3ac9;
+  --electric:  #2e55f0;
+  --sky:       #4f78ff;
+  --pale:      #c4d3ff;
+  --white:     #ffffff;
+  --off-white: #f0f4ff;
+
+  --glass-bg:     rgba(7,16,46,0.55);
+  --glass-border: rgba(255,255,255,0.06);
+
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-serif:   'Instrument Serif', serif;
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--ink);
+  font-family: var(--font-display);
+  color: var(--white);
+  overflow-x: hidden;
+  line-height: 1;
+}
+
+/* NOISE OVERLAY */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0;
+  opacity: 0.022;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════
+   UTILITIES
+══════════════════════════════════════ */
+.inner       { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+.inner-wide  { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+.inner-narrow{ max-width: 720px;  margin: 0 auto; padding: 0 40px; }
+
+.hl {
+  background: linear-gradient(135deg, #fff 0%, #a8c4ff 40%, #4f78ff 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hl-warm {
+  background: linear-gradient(135deg, #071140 0%, #1d38c4 55%, #2e55f0 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+.eyebrow {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: rgba(79,120,255,0.7);
+  display: block; margin-bottom: 14px;
+}
+.eyebrow-light {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: rgba(29,56,196,0.6);
+  display: block; margin-bottom: 14px;
+}
+
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border-radius: 28px;
+  position: relative; overflow: hidden;
+}
+.glass::before {
+  content: '';
+  position: absolute; top: 0; left: 8%; right: 8%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(79,120,255,0.4), transparent);
+  pointer-events: none;
+}
+
+.glass-light {
+  background: rgba(240,244,255,0.7);
+  border: 1px solid rgba(29,56,196,0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 28px;
+  position: relative; overflow: hidden;
+}
+
+/* BUTTONS */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-display);
+  font-size: 15px; font-weight: 700;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--blue), var(--electric), var(--sky));
+  border: none; border-radius: 14px;
+  padding: 16px 32px; cursor: pointer;
+  box-shadow: 0 6px 28px rgba(46,85,240,0.4);
+  transition: box-shadow 0.2s, transform 0.2s;
+  text-decoration: none; white-space: nowrap;
+}
+.btn-primary:hover { box-shadow: 0 10px 36px rgba(46,85,240,0.6); transform: translateY(-2px); }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-display);
+  font-size: 14px; font-weight: 500;
+  color: rgba(255,255,255,0.45);
+  background: none; border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px; padding: 15px 28px; cursor: pointer;
+  transition: all 0.2s; text-decoration: none;
+}
+.btn-ghost:hover { border-color: rgba(255,255,255,0.25); color: rgba(255,255,255,0.8); }
+
+.btn-primary-light {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-display);
+  font-size: 15px; font-weight: 700;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--blue), var(--electric));
+  border: none; border-radius: 14px;
+  padding: 16px 32px; cursor: pointer;
+  box-shadow: 0 6px 28px rgba(29,56,196,0.3);
+  transition: all 0.2s; text-decoration: none;
+}
+.btn-primary-light:hover { box-shadow: 0 10px 36px rgba(29,56,196,0.5); transform: translateY(-2px); }
+
+.divider {
+  height: 1px; margin: 0 40px;
+  background: linear-gradient(90deg, transparent, rgba(79,120,255,0.12), transparent);
+}
+
+/* FADE UP ANIMATION */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.7s var(--ease) both; }
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+
+/* ══════════════════════════════════════
+   NAV
+══════════════════════════════════════ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 16px 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(4,8,16,0.7);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: background 0.3s;
+}
+nav.scrolled { background: rgba(4,8,16,0.92); }
+
+/* Nav wordmark */
+.nav-wm {
+  font-family: var(--font-display);
+  font-weight: 600; font-size: 28px;
+  letter-spacing: -0.05em; line-height: 1;
+  display: flex; align-items: baseline;
+  text-decoration: none;
+  filter: drop-shadow(0 0 12px rgba(79,120,255,0.4));
+}
+.nav-C { color: rgba(196,211,255,0.6); }
+.nav-a {
+  background: linear-gradient(170deg, #fff 0%, #a8c4ff 40%, #4f78ff 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.nav-d {
+  background: linear-gradient(170deg, #fff 10%, #6090ff 55%, #2e55f0 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.nav-i { color: rgba(255,255,255,0.28); position: relative; }
+.nav-dot {
+  position: absolute; left: 50%; transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, #a8c4ff 35%, #4f78ff 65%, transparent 85%);
+  width: 6px; height: 6px; top: 0.08em;
+  box-shadow: 0 0 8px 2px rgba(168,196,255,0.7), 0 0 20px 5px rgba(79,120,255,0.4);
+  animation: nav-dot-pulse 3.5s ease-in-out infinite;
+}
+@keyframes nav-dot-pulse {
+  0%,100% { box-shadow: 0 0 8px 2px rgba(168,196,255,0.7), 0 0 20px 5px rgba(79,120,255,0.4); transform: translateX(-50%) scale(1); }
+  50%      { box-shadow: 0 0 12px 3px rgba(168,196,255,0.9), 0 0 30px 8px rgba(79,120,255,0.6); transform: translateX(-50%) scale(1.2); }
+}
+
+.nav-links {
+  display: flex; align-items: center; gap: 8px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 14px; font-weight: 500;
+  color: rgba(255,255,255,0.45);
+  text-decoration: none; padding: 8px 14px;
+  border-radius: 10px;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover { color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.05); }
+
+.nav-right { display: flex; align-items: center; gap: 10px; }
+
+.nav-signin {
+  font-family: var(--font-display);
+  font-size: 13px; font-weight: 600;
+  color: rgba(255,255,255,0.5);
+  background: none; border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px; padding: 9px 18px; cursor: pointer;
+  transition: all 0.2s; text-decoration: none;
+}
+.nav-signin:hover { border-color: rgba(255,255,255,0.25); color: #fff; }
+
+.nav-cta {
+  font-family: var(--font-display);
+  font-size: 13px; font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--blue), var(--electric));
+  border: none; border-radius: 10px;
+  padding: 10px 20px; cursor: pointer;
+  box-shadow: 0 4px 16px rgba(46,85,240,0.35);
+  transition: all 0.2s; text-decoration: none; white-space: nowrap;
+}
+.nav-cta:hover { box-shadow: 0 6px 22px rgba(46,85,240,0.55); transform: translateY(-1px); }
+
+/* Mobile nav toggle */
+.nav-burger {
+  display: none;
+  flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+}
+.nav-burger span {
+  display: block; width: 22px; height: 2px;
+  background: rgba(255,255,255,0.55);
+  border-radius: 2px; transition: all 0.2s;
+}
+
+/* ══════════════════════════════════════
+   HERO — DARK
+══════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 140px 40px 100px;
+  position: relative; overflow: hidden;
+}
+
+/* BG orbs */
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -5%, rgba(29,56,196,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 5% 90%, rgba(14,28,100,0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 30% at 95% 80%, rgba(29,56,196,0.09) 0%, transparent 50%),
+    var(--ink);
+  pointer-events: none;
+}
+.hero-orb {
+  position: absolute; border-radius: 50%;
+  filter: blur(110px); pointer-events: none;
+  animation: orb-drift 18s ease-in-out infinite alternate;
+}
+.hero-orb-1 { width: 700px; height: 700px; background: rgba(29,56,196,0.18); top: -250px; left: -150px; }
+.hero-orb-2 { width: 500px; height: 500px; background: rgba(46,85,240,0.11); bottom: -150px; right: -100px; animation-delay: -8s; animation-duration: 22s; }
+@keyframes orb-drift { 0%{transform:translate(0,0);} 100%{transform:translate(35px,28px);} }
+
+.hero-edge {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(79,120,255,0.15), transparent);
+}
+
+.hero-inner {
+  position: relative; z-index: 1;
+  max-width: 1080px; margin: 0 auto; width: 100%;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center;
+}
+
+.hero-pill {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 100px; padding: 9px 20px;
+  margin-bottom: 32px;
+}
+.hero-pill-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--sky);
+  box-shadow: 0 0 10px rgba(79,120,255,0.9);
+  animation: blink 2s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.2;} }
+.hero-pill-text {
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+
+.hero-h1 {
+  font-size: clamp(48px, 7vw, 80px);
+  font-weight: 800; letter-spacing: -0.05em;
+  line-height: 1.0; color: var(--white);
+  margin-bottom: 22px;
+}
+
+.hero-sub {
+  font-size: clamp(17px, 2.2vw, 21px);
+  font-weight: 400; line-height: 1.7;
+  color: rgba(255,255,255,0.48);
+  max-width: 580px; margin: 0 auto 40px;
+}
+.hero-sub strong { font-weight: 700; color: rgba(255,255,255,0.82); }
+
+.hero-btns {
+  display: flex; align-items: center; gap: 12px;
+  flex-wrap: wrap; justify-content: center;
+  margin-bottom: 56px;
+}
+.hero-note {
+  font-size: 12px; color: rgba(255,255,255,0.2);
+  letter-spacing: 0.06em;
+}
+
+/* Hero stats */
+.hero-stats {
+  display: flex; align-items: stretch; gap: 0;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 20px; overflow: hidden;
+  background: rgba(7,16,46,0.5);
+  backdrop-filter: blur(20px);
+  width: 100%; max-width: 700px;
+}
+.hero-stat {
+  flex: 1; padding: 24px 20px; text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.05);
+}
+.hero-stat:last-child { border-right: none; }
+.hs-num {
+  font-size: 32px; font-weight: 800; letter-spacing: -0.04em;
+  background: linear-gradient(135deg, #fff, #a8c4ff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; margin-bottom: 4px;
+}
+.hs-label { font-size: 12px; color: rgba(255,255,255,0.25); line-height: 1.4; }
+
+/* ══════════════════════════════════════
+   WHY CADI — DARK SECTION
+══════════════════════════════════════ */
+.why-section {
+  padding: 120px 0;
+  position: relative; background: var(--ink);
+}
+.why-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; margin-top: 52px;
+}
+.why-card {
+  padding: 36px 32px;
+  transition: transform 0.3s, border-color 0.3s;
+}
+.why-card:hover { transform: translateY(-4px); border-color: rgba(79,120,255,0.2); }
+.wc-icon {
+  font-size: 24px; margin-bottom: 16px;
+  width: 48px; height: 48px;
+  background: rgba(79,120,255,0.08);
+  border: 1px solid rgba(79,120,255,0.14);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+}
+.wc-title { font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 8px; letter-spacing: -0.02em; }
+.wc-body  { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.45); }
+.wc-body strong { color: rgba(255,255,255,0.75); font-weight: 600; }
+
+/* ══════════════════════════════════════
+   WHAT IT REPLACES — LIGHT SECTION
+══════════════════════════════════════ */
+.replaces-section {
+  padding: 120px 0;
+  background: var(--off-white);
+  position: relative;
+}
+.replaces-section::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(29,56,196,0.2), transparent);
+}
+
+.replaces-h2 {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 800; letter-spacing: -0.04em;
+  color: #071140; line-height: 1.1; margin-bottom: 14px;
+}
+.replaces-sub {
+  font-size: 18px; color: rgba(7,17,64,0.45);
+  line-height: 1.65; margin-bottom: 52px;
+}
+.replaces-sub strong { color: rgba(7,17,64,0.7); font-weight: 600; }
+
+.replaces-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 10px; margin-bottom: 20px;
+}
+.rep-item {
+  background: rgba(255,255,255,0.8);
+  border: 1px solid rgba(29,56,196,0.08);
+  border-radius: 18px; padding: 22px 16px;
+  text-align: center;
+}
+.rep-name { font-size: 12px; font-weight: 600; color: rgba(7,17,64,0.45); margin-bottom: 6px; letter-spacing: 0.06em; }
+.rep-what { font-size: 11px; color: rgba(7,17,64,0.3); margin-bottom: 12px; line-height: 1.4; }
+.rep-price {
+  font-size: 26px; font-weight: 800; letter-spacing: -0.03em;
+  color: rgba(200,60,60,0.55);
+  text-decoration: line-through;
+  text-decoration-color: rgba(200,60,60,0.3);
+}
+.rep-per { font-size: 10px; color: rgba(200,60,60,0.4); }
+
+.total-row-light {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 28px;
+  background: rgba(200,60,60,0.05);
+  border: 1px solid rgba(200,60,60,0.1);
+  border-radius: 16px; margin-bottom: 12px;
+}
+.trl-label { font-size: 14px; font-weight: 600; color: rgba(7,17,64,0.5); }
+.trl-note  { font-size: 11px; color: rgba(7,17,64,0.3); }
+.trl-amount {
+  font-size: 30px; font-weight: 800; letter-spacing: -0.04em;
+  color: rgba(200,60,60,0.55);
+  text-decoration: line-through;
+  text-decoration-color: rgba(200,60,60,0.3);
+}
+
+.cadi-row-light {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 24px 28px;
+  background: rgba(29,56,196,0.06);
+  border: 1px solid rgba(29,56,196,0.2);
+  border-radius: 16px; margin-bottom: 14px;
+}
+.crl-label { font-size: 16px; font-weight: 700; color: #071140; }
+.crl-sub   { font-size: 12px; color: rgba(7,17,64,0.4); margin-top: 3px; }
+.crl-price {
+  font-size: 46px; font-weight: 800; letter-spacing: -0.05em;
+  background: linear-gradient(135deg, #071140 0%, #1d38c4 60%, #2e55f0 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; line-height: 1;
+}
+.crl-per { font-size: 14px; color: rgba(7,17,64,0.35); }
+
+.saving-light {
+  text-align: center; padding: 14px;
+  background: rgba(50,180,100,0.06);
+  border: 1px solid rgba(50,180,100,0.15);
+  border-radius: 12px;
+  font-size: 15px; font-weight: 700;
+  color: rgba(30,140,70,0.8);
+}
+
+/* ══════════════════════════════════════
+   OBJECTIONS — DARK
+══════════════════════════════════════ */
+.objections-section {
+  padding: 120px 0;
+  background: var(--ink);
+}
+.obj-list { display: flex; flex-direction: column; gap: 14px; margin-top: 48px; }
+.obj-card {
+  padding: 36px 40px;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.obj-card:hover { border-color: rgba(79,120,255,0.2); transform: translateY(-2px); }
+.obj-q {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 22px; line-height: 1.35;
+  color: rgba(255,255,255,0.38);
+  margin-bottom: 16px; padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.obj-a {
+  font-size: 16px; font-weight: 400;
+  line-height: 1.8; color: rgba(255,255,255,0.68);
+}
+.obj-a strong { font-weight: 700; color: var(--white); }
+.obj-a em {
+  font-style: normal; font-weight: 600;
+  background: linear-gradient(135deg, #a8c4ff, #4f78ff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.obj-closer {
+  margin-top: 14px; padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  font-size: 14px; font-weight: 700; font-style: italic;
+  color: rgba(255,255,255,0.4);
+  display: flex; align-items: center; gap: 10px;
+}
+.obj-closer::before {
+  content: ''; display: inline-block;
+  width: 18px; height: 1px;
+  background: rgba(79,120,255,0.5); flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════
+   PRICING — LIGHT
+══════════════════════════════════════ */
+.pricing-section {
+  padding: 120px 0;
+  background: var(--off-white);
+  position: relative;
+}
+.pricing-section::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(29,56,196,0.2), transparent);
+}
+
+.pricing-h2 {
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 800; letter-spacing: -0.04em;
+  color: #071140; margin-bottom: 12px; line-height: 1.1;
+}
+.pricing-sub {
+  font-size: 18px; color: rgba(7,17,64,0.45);
+  margin-bottom: 48px; line-height: 1.6;
+}
+
+/* Billing toggle */
+.billing-toggle {
+  display: inline-flex; align-items: center;
+  background: rgba(7,17,64,0.06);
+  border: 1px solid rgba(7,17,64,0.1);
+  border-radius: 100px; padding: 4px;
+  margin-bottom: 40px;
+}
+.btgl-btn {
+  font-family: var(--font-display);
+  font-size: 12px; font-weight: 600;
+  color: rgba(7,17,64,0.4);
+  background: none; border: none;
+  border-radius: 100px; padding: 9px 20px;
+  cursor: pointer; transition: all 0.2s; position: relative;
+}
+.btgl-btn.active {
+  background: var(--white);
+  color: #071140;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.save-badge {
+  position: absolute; top: -10px; right: -6px;
+  background: linear-gradient(135deg, #1d38c4, #2e55f0);
+  color: #fff; font-size: 8px; font-weight: 700;
+  letter-spacing: 0.08em; padding: 2px 7px;
+  border-radius: 100px; white-space: nowrap;
+}
+
+.plans-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 12px; align-items: start;
+}
+.plan-card {
+  background: var(--white);
+  border: 1px solid rgba(7,17,64,0.08);
+  border-radius: 24px; padding: 28px 22px;
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.plan-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(29,56,196,0.1); }
+.plan-card.popular {
+  border-color: rgba(29,56,196,0.3);
+  box-shadow: 0 8px 32px rgba(29,56,196,0.12);
+}
+.popular-badge {
+  position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+  background: linear-gradient(135deg, #1d38c4, #2e55f0);
+  color: #fff; font-size: 9px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 4px 14px; border-radius: 0 0 10px 10px;
+}
+.plan-name {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: rgba(7,17,64,0.4);
+  margin-bottom: 6px; margin-top: 8px;
+}
+.plan-tagline { font-size: 12px; color: rgba(7,17,64,0.3); margin-bottom: 18px; min-height: 30px; line-height: 1.4; }
+.plan-price {
+  display: flex; align-items: baseline; gap: 3px; margin-bottom: 4px;
+}
+.pp-cur { font-size: 18px; font-weight: 700; color: rgba(7,17,64,0.5); margin-top: 4px; }
+.pp-amt { font-size: 46px; font-weight: 800; letter-spacing: -0.05em; color: #071140; line-height: 1; }
+.pp-per { font-size: 13px; color: rgba(7,17,64,0.3); }
+.plan-save { font-size: 11px; font-weight: 600; color: rgba(30,140,70,0.8); margin-bottom: 16px; min-height: 16px; }
+.plan-limit {
+  font-size: 12px; font-weight: 600; color: rgba(7,17,64,0.55);
+  background: rgba(7,17,64,0.04);
+  border: 1px solid rgba(7,17,64,0.07);
+  border-radius: 8px; padding: 8px 10px;
+  margin-bottom: 18px; text-align: center; line-height: 1.4;
+}
+.plan-cta-btn {
+  font-family: var(--font-display);
+  font-size: 13px; font-weight: 700;
+  width: 100%; padding: 13px;
+  border-radius: 12px; border: none;
+  cursor: pointer; margin-bottom: 20px;
+  transition: all 0.2s;
+}
+.cta-free-btn {
+  background: rgba(7,17,64,0.05);
+  border: 1px solid rgba(7,17,64,0.1);
+  color: rgba(7,17,64,0.5);
+}
+.cta-free-btn:hover { background: rgba(7,17,64,0.08); color: #071140; }
+.cta-paid-btn {
+  background: linear-gradient(135deg, #1d38c4, #2e55f0);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(29,56,196,0.3);
+}
+.cta-paid-btn:hover { box-shadow: 0 6px 22px rgba(29,56,196,0.5); transform: translateY(-1px); }
+.feat-label {
+  font-size: 9px; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; color: rgba(7,17,64,0.25);
+  margin-bottom: 10px;
+}
+.feat {
+  display: flex; align-items: flex-start; gap: 8px;
+  padding: 5px 0; font-size: 12px; color: rgba(7,17,64,0.55); line-height: 1.4;
+}
+.feat .fi { color: var(--electric); flex-shrink: 0; font-size: 11px; margin-top: 1px; }
+.feat.locked { color: rgba(7,17,64,0.2); }
+.feat.locked .fi { opacity: 0.25; }
+.feat strong { color: #071140; font-weight: 600; }
+.plan-divider { height: 1px; background: rgba(7,17,64,0.05); margin: 12px 0; }
+.seat-note { font-size: 10px; color: rgba(7,17,64,0.25); margin-top: auto; padding-top: 12px; line-height: 1.5; }
+
+/* ══════════════════════════════════════
+   FOUNDING 200 CTA — DARK
+══════════════════════════════════════ */
+.founding-section {
+  padding: 120px 0;
+  background: var(--ink);
+  position: relative; overflow: hidden;
+}
+.founding-bloom {
+  position: absolute;
+  width: 800px; height: 500px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(29,56,196,0.14) 0%, transparent 70%);
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+  pointer-events: none; animation: bloom-pulse 6s ease-in-out infinite;
+}
+@keyframes bloom-pulse { 0%,100%{opacity:0.7;transform:translate(-50%,-50%) scale(1);} 50%{opacity:1;transform:translate(-50%,-50%) scale(1.1);} }
+
+.founding-inner {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+.spots-pill {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 100px; padding: 8px 20px; margin-bottom: 28px;
+}
+.sp-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--sky); box-shadow: 0 0 10px rgba(79,120,255,0.9);
+  animation: blink 2s ease-in-out infinite;
+}
+.sp-num { font-size: 13px; font-weight: 700; background: linear-gradient(135deg,#fff,#a8c4ff); -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
+.sp-label { font-size: 11px; color: rgba(255,255,255,0.28); letter-spacing: 0.06em; }
+
+.founding-h2 {
+  font-size: clamp(40px, 6vw, 68px);
+  font-weight: 800; letter-spacing: -0.05em;
+  line-height: 1.05; color: var(--white); margin-bottom: 18px;
+}
+.founding-sub {
+  font-size: 19px; font-weight: 400;
+  line-height: 1.75; color: rgba(255,255,255,0.45);
+  max-width: 580px; margin: 0 auto 40px;
+}
+.founding-sub strong { font-weight: 700; color: rgba(255,255,255,0.82); }
+
+/* Offer strip */
+.offer-strip {
+  display: flex; align-items: stretch; gap: 0;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 20px; overflow: hidden;
+  background: rgba(7,16,46,0.5);
+  backdrop-filter: blur(20px);
+  width: 100%; max-width: 800px;
+  margin-bottom: 36px;
+}
+.os-item {
+  flex: 1; padding: 22px 18px; text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.05);
+  font-size: 13px; color: rgba(255,255,255,0.45);
+  line-height: 1.5;
+}
+.os-item:last-child { border-right: none; }
+.os-item strong { display: block; font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+
+.founding-note { font-size: 12px; color: rgba(255,255,255,0.18); letter-spacing: 0.05em; margin-top: 14px; }
+
+/* ══════════════════════════════════════
+   FOOTER — DARK
+══════════════════════════════════════ */
+footer {
+  padding: 60px 40px 40px;
+  background: rgba(2,4,12,0.95);
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+.footer-inner {
+  max-width: 1080px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 48px; margin-bottom: 48px;
+}
+.footer-brand {}
+.footer-wm {
+  font-family: var(--font-display);
+  font-weight: 600; font-size: 28px;
+  letter-spacing: -0.05em; margin-bottom: 10px;
+  display: flex; align-items: baseline;
+  filter: drop-shadow(0 0 10px rgba(79,120,255,0.3));
+}
+.fw-C { color: rgba(196,211,255,0.5); }
+.fw-a {
+  background: linear-gradient(170deg, #fff 0%, #a8c4ff 40%, #4f78ff 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.fw-d {
+  background: linear-gradient(170deg, #fff 10%, #6090ff 55%, #2e55f0 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.fw-i { color: rgba(255,255,255,0.22); position: relative; }
+.fw-dot {
+  position: absolute; left: 50%; transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, #a8c4ff 40%, #4f78ff 70%, transparent 85%);
+  width: 5px; height: 5px; top: 0.08em;
+  box-shadow: 0 0 6px 2px rgba(168,196,255,0.6), 0 0 16px 4px rgba(79,120,255,0.35);
+}
+.footer-tagline { font-size: 13px; color: rgba(255,255,255,0.25); line-height: 1.6; max-width: 220px; }
+
+.footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 16px; }
+.footer-col a { display: block; font-size: 14px; color: rgba(255,255,255,0.38); text-decoration: none; margin-bottom: 10px; transition: color 0.2s; }
+.footer-col a:hover { color: rgba(255,255,255,0.75); }
+
+.footer-bottom {
+  max-width: 1080px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.04);
+  flex-wrap: wrap; gap: 12px;
+}
+.fb-copy { font-size: 12px; color: rgba(255,255,255,0.18); }
+.fb-links { display: flex; gap: 20px; }
+.fb-links a { font-size: 12px; color: rgba(255,255,255,0.2); text-decoration: none; }
+.fb-links a:hover { color: rgba(255,255,255,0.5); }
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+@media (max-width: 900px) {
+  nav { padding: 14px 24px; }
+  .nav-links { display: none; }
+  .nav-burger { display: flex; }
+  .inner, .inner-wide, .inner-narrow { padding: 0 24px; }
+  .hero { padding: 120px 24px 80px; }
+  .why-grid { grid-template-columns: 1fr; }
+  .replaces-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .plans-grid { grid-template-columns: 1fr 1fr; }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .offer-strip { flex-wrap: wrap; }
+  .hero-stats { flex-wrap: wrap; }
+  .footer-inner { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .hero-h1 { font-size: 40px; }
+  .plans-grid { grid-template-columns: 1fr; }
+  .replaces-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     NAV
+══════════════════════════════════════ -->
+<nav id="nav">
+  <a href="/" class="nav-wm">
+    <span class="nav-C">C</span>
+    <span class="nav-a">a</span>
+    <span class="nav-d">d</span>
+    <span class="nav-i">i<span class="nav-dot"></span></span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#why">Why Cadi</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/demo">Demo</a></li>
+    <li><a href="/blog">Blog</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <a href="https://app.cadi.cleaning" class="nav-signin">Sign in</a>
+    <a href="#access" class="nav-cta">Get first access ⚡</a>
+  </div>
+
+  <button class="nav-burger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-edge"></div>
+
+  <div class="hero-inner">
+    <div class="hero-pill fade-up delay-1">
+      <span class="hero-pill-dot"></span>
+      <span class="hero-pill-text">Something big is coming — be first</span>
+    </div>
+
+    <h1 class="hero-h1 fade-up delay-2">
+      Your cleaning business.<br>
+      <span class="hl">Finally under control.</span>
+    </h1>
+
+    <p class="hero-sub fade-up delay-3">
+      Cadi is the all-in-one software for cleaning business owners who are done with the chaos —
+      <strong>pricing, scheduling, invoicing, accounting, staff and growth.</strong>
+      One login. No overwhelm.
+    </p>
+
+    <div class="hero-btns fade-up delay-4">
+      <a href="#access" class="btn-primary">Get first access — it's free →</a>
+      <a href="#why" class="btn-ghost">See how it works</a>
+    </div>
+    <p class="hero-note fade-up delay-5">No card needed · No commitment · Built by a cleaning business</p>
+
+    <div class="hero-stats fade-up delay-5">
+      <div class="hero-stat">
+        <div class="hs-num">£119</div>
+        <div class="hs-label">What 5 tools costs<br>without Cadi</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-num">£29</div>
+        <div class="hs-label">Founding member<br>price — forever</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-num">79K</div>
+        <div class="hs-label">Cleaning businesses<br>in the UK</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-num">0</div>
+        <div class="hs-label">Other software<br>built like this</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════
+     WHY CADI
+══════════════════════════════════════ -->
+<section class="why-section" id="why">
+  <div class="inner">
+    <span class="eyebrow">Why Cadi</span>
+    <h2 style="font-size:clamp(36px,5vw,56px);font-weight:800;letter-spacing:-0.04em;line-height:1.1;color:#fff;margin-bottom:14px;">
+      The confidence of a co-founder.<br>
+      <span class="hl">Without the hefty salary.</span>
+    </h2>
+    <p style="font-size:18px;color:rgba(255,255,255,0.45);line-height:1.65;max-width:580px;">
+      Cadi keeps your business on track, shows you how to improve your money and your time — so you can step away from the cleaning and finally run the business.
+    </p>
+
+    <div class="why-grid">
+      <div class="why-card glass">
+        <div class="wc-icon">📊</div>
+        <div class="wc-title">Stop undercharging</div>
+        <div class="wc-body">Cadi's pricing calculator is built around <strong>real cleaning costs</strong> — time, products, travel, overheads. Quote with confidence and never leave money on the table again.</div>
+      </div>
+      <div class="why-card glass">
+        <div class="wc-icon">💷</div>
+        <div class="wc-title">Tax season stops being terrifying</div>
+        <div class="wc-body">Your income and expenses are tracked automatically. <strong>Cadi connects directly to HMRC</strong> for Making Tax Digital submissions. No scrambling. No accountant bill.</div>
+      </div>
+      <div class="why-card glass">
+        <div class="wc-icon">📅</div>
+        <div class="wc-title">Your schedule runs itself</div>
+        <div class="wc-body">Jobs, clients, recurring bookings — all managed in one place. <strong>No more WhatsApp threads</strong>, sticky notes or double-bookings. Changes update instantly.</div>
+      </div>
+      <div class="why-card glass">
+        <div class="wc-icon">👥</div>
+        <div class="wc-title">Build a team without the fear</div>
+        <div class="wc-body">Hiring, onboarding, training academies, payroll — all inside Cadi. <strong>See the true cost of a hire</strong> before you commit. Stop guessing. Start growing.</div>
+      </div>
+      <div class="why-card glass">
+        <div class="wc-icon">🏅</div>
+        <div class="wc-title">Know exactly how you're doing</div>
+        <div class="wc-body">Your live dashboard tracks revenue, client growth and your <strong>business health score</strong> — so you always make decisions based on data, not gut feel.</div>
+      </div>
+      <div class="why-card glass">
+        <div class="wc-icon">🌴</div>
+        <div class="wc-title">Finally take some time off</div>
+        <div class="wc-body">Your schedule is running, your invoices are going out, your accounts are updating. <strong>Cadi holds it all together</strong> while you're not there. Proper time off. At last.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════
+     WHAT IT REPLACES — LIGHT
+══════════════════════════════════════ -->
+<section class="replaces-section">
+  <div class="inner">
+    <span class="eyebrow-light">The honest maths</span>
+    <h2 class="replaces-h2">
+      What you'd pay<br>
+      <span class="hl-warm">without Cadi</span>
+    </h2>
+    <p class="replaces-sub">
+      Running a cleaning business properly costs <strong>£119+/mo in software</strong> — if you're using the right tools separately. And they still don't talk to each other.
+    </p>
+
+    <div class="replaces-grid">
+      <div class="rep-item">
+        <div class="rep-name">CleanerPlanner</div>
+        <div class="rep-what">Scheduling only</div>
+        <div class="rep-price">£25</div>
+        <div class="rep-per">/mo</div>
+      </div>
+      <div class="rep-item">
+        <div class="rep-name">Xero Starter</div>
+        <div class="rep-what">Accounting + MTD</div>
+        <div class="rep-price">£16</div>
+        <div class="rep-per">/mo</div>
+      </div>
+      <div class="rep-item">
+        <div class="rep-name">ZenMaid</div>
+        <div class="rep-what">CRM + clients</div>
+        <div class="rep-price">£38</div>
+        <div class="rep-per">/mo</div>
+      </div>
+      <div class="rep-item">
+        <div class="rep-name">Breathe HR</div>
+        <div class="rep-what">Staff + hiring</div>
+        <div class="rep-price">£25</div>
+        <div class="rep-per">/mo</div>
+      </div>
+      <div class="rep-item">
+        <div class="rep-name">Payroll tool</div>
+        <div class="rep-what">Wages + payslips</div>
+        <div class="rep-price">£15</div>
+        <div class="rep-per">/mo</div>
+      </div>
+    </div>
+
+    <div class="total-row-light">
+      <div>
+        <div class="trl-label">Total across 5 tools</div>
+        <div class="trl-note">And they still don't talk to each other</div>
+      </div>
+      <div class="trl-amount">£119/mo</div>
+    </div>
+
+    <div class="cadi-row-light">
+      <div>
+        <div class="crl-label">Cadi — all of it</div>
+        <div class="crl-sub">One login. Everything. Built for cleaning.</div>
+      </div>
+      <div style="display:flex;align-items:baseline;gap:6px;">
+        <div class="crl-price">£29</div>
+        <div class="crl-per">/mo</div>
+      </div>
+    </div>
+
+    <div class="saving-light">
+      You save £90/mo — that's £1,080 back in your pocket every year 💙
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     OBJECTIONS
+══════════════════════════════════════ -->
+<section class="objections-section">
+  <div class="inner">
+    <span class="eyebrow">The honest questions</span>
+    <h2 style="font-size:clamp(34px,5vw,52px);font-weight:800;letter-spacing:-0.04em;line-height:1.1;color:#fff;margin-bottom:12px;">
+      If you're thinking <span class="hl">"but…"</span>
+    </h2>
+    <p style="font-size:17px;color:rgba(255,255,255,0.4);line-height:1.65;">
+      We've been in your position. We know what you're thinking. Here's the straight answer.
+    </p>
+
+    <div class="obj-list">
+
+      <div class="obj-card glass">
+        <div class="obj-q">"£29 a month for all of that — there must be a catch."</div>
+        <div class="obj-a">
+          We understand why you'd think that. CleanerPlanner charges £25 for scheduling alone.
+          The reason Cadi can do more for less isn't a trick —
+          <strong>we built it ourselves, we're not paying for five separate platforms to white-label,
+          and we don't have a VC firm demanding we maximise revenue before we've proved the product.</strong>
+          We're a cleaning business building software for cleaning businesses.
+          <em>Low overheads. Honest motivations. No catch.</em>
+        </div>
+        <div class="obj-closer">No hidden fees. No price increases. No catch.</div>
+      </div>
+
+      <div class="obj-card glass">
+        <div class="obj-q">"I've tried software before and it never sticks."</div>
+        <div class="obj-a">
+          That's fair — and almost certainly not your fault. Most software cleaning businesses try
+          was never built for them. <strong>So of course it didn't stick.
+          You were forcing your business into a shape it didn't fit.</strong>
+          Cadi is different because every feature was designed around how a cleaning business actually works —
+          interior, exterior, solo operator, growing team.
+          When software finally fits your business, you actually use it. <em>That's not discipline. That's design.</em>
+        </div>
+        <div class="obj-closer">The software didn't fail you. The wrong software failed you.</div>
+      </div>
+
+      <div class="obj-card glass">
+        <div class="obj-q">"What if you put the price up once I'm hooked?"</div>
+        <div class="obj-a">
+          <strong>Your founding member price is locked in writing — as long as you stay subscribed.</strong>
+          We're not a VC-backed company chasing growth at any cost.
+          We're a cleaning business owner who built this because we needed it — and who still runs a cleaning business now.
+          When the price goes up for new users, your £29/mo stays exactly where it is.
+        </div>
+        <div class="obj-closer">Your price is yours. Full stop.</div>
+      </div>
+
+      <div class="obj-card glass">
+        <div class="obj-q">"I'm too small — I only have a handful of clients."</div>
+        <div class="obj-a">
+          <strong>This is exactly where Cadi was made to meet you.</strong>
+          The businesses that scale well don't wait until they're already big to get organised.
+          They build the foundation early, so when clients start coming in faster,
+          the systems are already there. Cadi shows you what your business needs to look like
+          to support a team — before you need it.
+          <em>You don't have to be big to think big.</em>
+        </div>
+        <div class="obj-closer">The best time to build the foundation is before you need it.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     PRICING — LIGHT
+══════════════════════════════════════ -->
+<section class="pricing-section" id="pricing">
+  <div class="inner">
+    <span class="eyebrow-light">Simple, honest pricing</span>
+    <h2 class="pricing-h2">
+      Start free.<br>
+      <span class="hl-warm">Scale when you're ready.</span>
+    </h2>
+    <p class="pricing-sub">No hidden fees. No surprise bills. Pay more only when your business grows.</p>
+
+    <div class="billing-toggle">
+      <button class="btgl-btn active" onclick="setBilling('monthly',this)">Monthly</button>
+      <button class="btgl-btn" onclick="setBilling('annual',this)">
+        Annual
+        <span class="save-badge">Save 20%</span>
+      </button>
+    </div>
+
+    <div class="plans-grid">
+
+      <!-- FREE -->
+      <div class="plan-card">
+        <div class="plan-name">Free</div>
+        <div class="plan-tagline">Try everything. No card.</div>
+        <div class="plan-price"><span class="pp-cur">£</span><span class="pp-amt">0</span></div>
+        <div class="plan-save">&nbsp;</div>
+        <div class="plan-limit">Up to 20 clients<br><span style="font-size:10px;color:rgba(7,17,64,0.3);">or 50 exterior clients</span></div>
+        <button class="plan-cta-btn cta-free-btn">Get started free</button>
+        <div class="feat-label">Included</div>
+        <div class="feat"><span class="fi">✓</span>Scheduling & calendar</div>
+        <div class="feat"><span class="fi">✓</span>Basic invoicing</div>
+        <div class="feat"><span class="fi">✓</span>Client management</div>
+        <div class="feat"><span class="fi">✓</span>Pricing calculator</div>
+        <div class="feat"><span class="fi">✓</span>Dashboard</div>
+        <div class="plan-divider"></div>
+        <div class="feat locked"><span class="fi">—</span>Accounting & HMRC MTD</div>
+        <div class="feat locked"><span class="fi">—</span>Staff portal</div>
+        <div class="feat locked"><span class="fi">—</span>Business health score</div>
+        <div class="seat-note">Solo use only.</div>
+      </div>
+
+      <!-- STARTER -->
+      <div class="plan-card">
+        <div class="plan-name">Starter</div>
+        <div class="plan-tagline">Everything to run properly.</div>
+        <div class="plan-price"><span class="pp-cur">£</span><span class="pp-amt" id="p1">19</span><span class="pp-per">/mo</span></div>
+        <div class="plan-save" id="s1">&nbsp;</div>
+        <div class="plan-limit">21–50 clients<br><span style="font-size:10px;color:rgba(7,17,64,0.3);">or 51–120 exterior</span></div>
+        <button class="plan-cta-btn cta-paid-btn">Start Starter</button>
+        <div class="feat-label">Free, plus</div>
+        <div class="feat"><span class="fi">✓</span><strong>Full invoicing & payments</strong></div>
+        <div class="feat"><span class="fi">✓</span>Accounting & expenses</div>
+        <div class="feat"><span class="fi">✓</span>Business health score</div>
+        <div class="feat"><span class="fi">✓</span>Annual business review</div>
+        <div class="feat"><span class="fi">✓</span>Growth tools</div>
+        <div class="plan-divider"></div>
+        <div class="feat locked"><span class="fi">—</span>HMRC MTD</div>
+        <div class="feat locked"><span class="fi">—</span>Staff portal</div>
+        <div class="seat-note">+ £5/mo per team member (up to 2)</div>
+      </div>
+
+      <!-- GROWTH — POPULAR -->
+      <div class="plan-card popular">
+        <div class="popular-badge">Most popular</div>
+        <div class="plan-name">Growth</div>
+        <div class="plan-tagline">For businesses actively scaling.</div>
+        <div class="plan-price"><span class="pp-cur">£</span><span class="pp-amt" id="p2">29</span><span class="pp-per">/mo</span></div>
+        <div class="plan-save" id="s2">&nbsp;</div>
+        <div class="plan-limit">51–100 clients<br><span style="font-size:10px;color:rgba(7,17,64,0.3);">or 121–250 exterior</span></div>
+        <button class="plan-cta-btn cta-paid-btn">Start Growth</button>
+        <div class="feat-label">Starter, plus</div>
+        <div class="feat"><span class="fi">✓</span><strong>HMRC Making Tax Digital</strong></div>
+        <div class="feat"><span class="fi">✓</span>Full staff portal & hiring</div>
+        <div class="feat"><span class="fi">✓</span>Training academies</div>
+        <div class="feat"><span class="fi">✓</span>Payroll management</div>
+        <div class="feat"><span class="fi">✓</span>Business leaderboard</div>
+        <div class="feat"><span class="fi">✓</span>Marketing & social tools</div>
+        <div class="plan-divider"></div>
+        <div class="feat"><span class="fi">✓</span>Priority support</div>
+        <div class="seat-note">+ £5/mo per team member (up to 5)</div>
+      </div>
+
+      <!-- PRO -->
+      <div class="plan-card">
+        <div class="plan-name">Pro</div>
+        <div class="plan-tagline">For established operations.</div>
+        <div class="plan-price"><span class="pp-cur">£</span><span class="pp-amt" id="p3">49</span><span class="pp-per">/mo</span></div>
+        <div class="plan-save" id="s3">&nbsp;</div>
+        <div class="plan-limit">100+ clients<br><span style="font-size:10px;color:rgba(7,17,64,0.3);">Unlimited exterior</span></div>
+        <button class="plan-cta-btn cta-paid-btn">Start Pro</button>
+        <div class="feat-label">Growth, plus</div>
+        <div class="feat"><span class="fi">✓</span><strong>Unlimited team members</strong></div>
+        <div class="feat"><span class="fi">✓</span>Advanced analytics</div>
+        <div class="feat"><span class="fi">✓</span>Multi-location support</div>
+        <div class="feat"><span class="fi">✓</span>API access</div>
+        <div class="feat"><span class="fi">✓</span>Dedicated account manager</div>
+        <div class="plan-divider"></div>
+        <div class="feat"><span class="fi">✓</span>White-glove migration</div>
+        <div class="seat-note">Unlimited team members included.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     EMAIL CAPTURE — LIGHT
+══════════════════════════════════════ -->
+<section id="access" style="padding:120px 0;background:var(--off-white);position:relative;">
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(29,56,196,0.2),transparent);"></div>
+  <div class="inner-narrow" style="text-align:center;">
+    <span class="eyebrow-light">Be first through the door</span>
+    <h2 style="font-size:clamp(34px,5vw,52px);font-weight:800;letter-spacing:-0.04em;line-height:1.1;color:#071140;margin-bottom:14px;">
+      Get first access.<br>
+      <span class="hl-warm">Completely free.</span>
+    </h2>
+    <p style="font-size:18px;color:rgba(7,17,64,0.45);line-height:1.65;margin-bottom:40px;">
+      Register your interest and you'll be the first to know when Cadi opens its doors.
+      No spam. No obligation. Just first access — and a very good reason to be early.
+    </p>
+
+    <div style="display:flex;gap:10px;max-width:520px;margin:0 auto 16px;">
+      <input
+        id="email-input"
+        type="email"
+        placeholder="Your email address"
+        style="flex:1;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;color:#071140;background:#fff;border:1px solid rgba(7,17,64,0.12);border-radius:14px;padding:16px 20px;outline:none;transition:border-color 0.2s;"
+        onfocus="this.style.borderColor='rgba(29,56,196,0.4)'"
+        onblur="this.style.borderColor='rgba(7,17,64,0.12)'"
+      />
+      <button
+        onclick="handleSignup()"
+        style="font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:700;color:#fff;background:linear-gradient(135deg,#1a3ac9,#2e55f0);border:none;border-radius:14px;padding:16px 28px;cursor:pointer;box-shadow:0 4px 20px rgba(29,56,196,0.3);white-space:nowrap;transition:all 0.2s;"
+        onmouseover="this.style.boxShadow='0 6px 28px rgba(29,56,196,0.5)';this.style.transform='translateY(-1px)'"
+        onmouseout="this.style.boxShadow='0 4px 20px rgba(29,56,196,0.3)';this.style.transform='translateY(0)'"
+      >
+        Get first access →
+      </button>
+    </div>
+
+    <p id="signup-success" style="display:none;font-size:14px;font-weight:600;color:rgba(30,140,70,0.8);margin-bottom:12px;">
+      ✓ You're in. Check your inbox — something good is coming.
+    </p>
+
+    <p style="font-size:12px;color:rgba(7,17,64,0.25);letter-spacing:0.04em;">
+      No spam. No card. Unsubscribe anytime.
+    </p>
+
+    <!-- What they're signing up for -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:36px;text-align:left;">
+      <div style="background:rgba(29,56,196,0.05);border:1px solid rgba(29,56,196,0.1);border-radius:16px;padding:20px;">
+        <div style="font-size:18px;margin-bottom:8px;">📬</div>
+        <div style="font-size:13px;font-weight:700;color:#071140;margin-bottom:4px;">First access</div>
+        <div style="font-size:12px;color:rgba(7,17,64,0.4);line-height:1.5;">You'll be first through the door when Cadi opens. Before the public.</div>
+      </div>
+      <div style="background:rgba(29,56,196,0.05);border:1px solid rgba(29,56,196,0.1);border-radius:16px;padding:20px;">
+        <div style="font-size:18px;margin-bottom:8px;">⚡</div>
+        <div style="font-size:13px;font-weight:700;color:#071140;margin-bottom:4px;">Founding 200 invite</div>
+        <div style="font-size:12px;color:rgba(7,17,64,0.4);line-height:1.5;">Early registrants get first shot at the £29/mo founding price — locked forever.</div>
+      </div>
+      <div style="background:rgba(29,56,196,0.05);border:1px solid rgba(29,56,196,0.1);border-radius:16px;padding:20px;">
+        <div style="font-size:18px;margin-bottom:8px;">💙</div>
+        <div style="font-size:13px;font-weight:700;color:#071140;margin-bottom:4px;">The inside story</div>
+        <div style="font-size:12px;color:rgba(7,17,64,0.4);line-height:1.5;">Behind the scenes of building Cadi — direct from the founders, in your inbox.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOUNDING 200 CTA
+══════════════════════════════════════ -->
+<section class="founding-section" id="founding">
+  <div class="founding-bloom"></div>
+  <div class="inner">
+    <div class="founding-inner">
+
+      <div class="spots-pill">
+        <span class="sp-dot"></span>
+        <span class="sp-num">187 spots remaining</span>
+        <span class="sp-label">&nbsp;· closes at 200</span>
+      </div>
+
+      <span class="eyebrow">The Founding 200</span>
+
+      <h2 class="founding-h2">
+        You're not buying software.<br>
+        <span class="hl">You're helping build it.</span>
+      </h2>
+
+      <p class="founding-sub">
+        200 founding member spots. <strong>£29/mo locked in for life.</strong>
+        Weekly calls with the founders. A physical welcome pack. 50% affiliate commissions.
+        And a seat at the table that shapes where Cadi goes.
+      </p>
+
+      <div class="offer-strip">
+        <div class="os-item"><strong>£29/mo</strong>Locked in forever</div>
+        <div class="os-item"><strong>Full Growth plan</strong>Every feature included</div>
+        <div class="os-item"><strong>Weekly Zooms</strong>Direct access to founders</div>
+        <div class="os-item"><strong>Welcome pack</strong>Shipped to your door</div>
+        <div class="os-item"><strong>50% affiliate</strong>Commission for life</div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;">
+        <a href="/founding-200" class="btn-primary" style="font-size:17px;padding:20px 40px;">
+          Claim your founding spot →
+        </a>
+        <a href="/founding-200" class="btn-ghost">See full details</a>
+      </div>
+      <p class="founding-note">3-month minimum · No price increases · Founding badge permanent</p>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-wm">
+        <span class="fw-C">C</span>
+        <span class="fw-a">a</span>
+        <span class="fw-d">d</span>
+        <span class="fw-i">i<span class="fw-dot"></span></span>
+      </div>
+      <p class="footer-tagline">The software that runs your cleaning business. Built by cleaners, for cleaners.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <a href="#why">Why Cadi</a>
+      <a href="#pricing">Pricing</a>
+      <a href="/demo">Demo</a>
+      <a href="/founding-200">Founding 200</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="/about">About</a>
+      <a href="/blog">Blog</a>
+      <a href="mailto:hello@cadi.cleaning">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="/privacy">Privacy policy</a>
+      <a href="/terms">Terms of service</a>
+      <a href="/cookies">Cookie policy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="fb-copy">© 2025 Cadi. All rights reserved. · cadi.cleaning</p>
+    <div class="fb-links">
+      <a href="https://instagram.com/getcadi">Instagram</a>
+      <a href="https://tiktok.com/@getcadi">TikTok</a>
+      <a href="https://linkedin.com/company/getcadi">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Mobile nav
+function toggleNav() {
+  const links = document.querySelector('.nav-links');
+  links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+  links.style.flexDirection = 'column';
+  links.style.position = 'absolute';
+  links.style.top = '64px'; links.style.left = '0'; links.style.right = '0';
+  links.style.background = 'rgba(4,8,16,0.97)';
+  links.style.padding = '16px 24px 24px';
+  links.style.borderBottom = '1px solid rgba(255,255,255,0.06)';
+}
+
+// Billing toggle
+const prices   = { monthly: [19,29,49], annual: [15,23,39] };
+const saves    = { monthly: ['','',''], annual: ['Save £48/yr','Save £72/yr','Save £120/yr'] };
+
+function setBilling(type, btn) {
+  document.querySelectorAll('.btgl-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  [0,1,2].forEach(i => {
+    document.getElementById(`p${i+1}`).textContent = prices[type][i];
+    const s = document.getElementById(`s${i+1}`);
+    s.textContent = saves[type][i];
+    s.style.color = type === 'annual' ? 'rgba(30,140,70,0.8)' : 'transparent';
+  });
+}
+
+// Email signup
+function handleSignup() {
+  const email = document.getElementById('email-input').value;
+  if (!email || !email.includes('@')) {
+    document.getElementById('email-input').style.borderColor = 'rgba(200,60,60,0.4)';
+    return;
+  }
+  // TODO: Connect to Loops API endpoint
+  // fetch('https://app.loops.so/api/v1/contacts/create', { method:'POST', headers:{'Authorization':'Bearer YOUR_LOOPS_API_KEY','Content-Type':'application/json'}, body: JSON.stringify({ email, source:'homepage-waitlist' }) })
+  document.getElementById('signup-success').style.display = 'block';
+  document.getElementById('email-input').value = '';
+  document.getElementById('email-input').style.borderColor = 'rgba(30,140,70,0.4)';
+}
+document.getElementById('email-input')?.addEventListener('keydown', e => { if(e.key === 'Enter') handleSignup(); });
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+
+</body>
+</html>

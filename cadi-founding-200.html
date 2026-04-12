@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cadi — The Founding 200</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #040810;
+  --navy: #07102e;
+  --blue: #1a3ac9;
+  --electric: #2e55f0;
+  --sky: #4f78ff;
+  --pale: #c4d3ff;
+  --white: #ffffff;
+}
+
+body {
+  background: var(--ink);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--white);
+  line-height: 1;
+  overflow-x: hidden;
+}
+
+/* NOISE */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* BG */
+.bg-glow {
+  position: fixed; inset: 0; z-index: 0; overflow: hidden;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -5%, rgba(29,56,196,0.15) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 30% at 80% 80%, rgba(14,28,100,0.1) 0%, transparent 60%),
+    var(--ink);
+}
+
+.page { position: relative; z-index: 1; }
+
+/* SECTION WRAPPER */
+section { padding: 80px 24px; }
+.inner { max-width: 860px; margin: 0 auto; }
+.inner-wide { max-width: 1060px; margin: 0 auto; }
+.inner-narrow { max-width: 680px; margin: 0 auto; }
+
+/* GLASS CARD */
+.glass {
+  background: rgba(7,16,46,0.55);
+  border: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border-radius: 28px;
+  position: relative; overflow: hidden;
+}
+.glass::before {
+  content: '';
+  position: absolute; top: 0; left: 8%; right: 8%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(79,120,255,0.4), transparent);
+  pointer-events: none;
+}
+
+/* TYPE */
+.eyebrow {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.35em; text-transform: uppercase;
+  color: rgba(79,120,255,0.65);
+  display: block; margin-bottom: 16px;
+}
+h1 {
+  font-size: 64px; font-weight: 800;
+  letter-spacing: -0.05em; line-height: 1.0;
+  color: #fff; margin-bottom: 20px;
+}
+h1 .hl {
+  background: linear-gradient(135deg, #fff 0%, #a8c4ff 40%, #4f78ff 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+h1 .dim { color: rgba(255,255,255,0.38); }
+h2 {
+  font-size: 38px; font-weight: 800;
+  letter-spacing: -0.04em; line-height: 1.1;
+  color: #fff; margin-bottom: 16px;
+}
+h2 .hl {
+  background: linear-gradient(135deg, #fff 0%, #a8c4ff 40%, #4f78ff 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+h3 {
+  font-size: 22px; font-weight: 700;
+  letter-spacing: -0.03em; color: #fff; margin-bottom: 10px;
+}
+.lead {
+  font-size: 19px; font-weight: 400;
+  line-height: 1.75; color: rgba(255,255,255,0.6);
+  margin-bottom: 20px;
+}
+.lead strong { font-weight: 700; color: #fff; }
+.lead em {
+  font-style: normal; font-weight: 600;
+  background: linear-gradient(135deg, #a8c4ff, #4f78ff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.body-copy {
+  font-size: 16px; font-weight: 400;
+  line-height: 1.8; color: rgba(255,255,255,0.6);
+}
+.body-copy strong { color: #fff; font-weight: 700; }
+.body-copy em {
+  font-style: normal; font-weight: 600;
+  background: linear-gradient(135deg, #a8c4ff, #4f78ff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* PILL */
+.pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 100px; padding: 7px 16px;
+  margin-bottom: 28px;
+}
+.pill .dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #4f78ff;
+  box-shadow: 0 0 8px rgba(79,120,255,0.8);
+  animation: blink 2s ease-in-out infinite;
+}
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50%      { opacity: 0.3; }
+}
+
+/* CTA BUTTONS */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 16px; font-weight: 700;
+  color: #fff; background: linear-gradient(135deg, #1a3ac9, #2e55f0, #4f78ff);
+  border: none; border-radius: 16px;
+  padding: 18px 36px; cursor: pointer;
+  box-shadow: 0 6px 32px rgba(46,85,240,0.45);
+  transition: all 0.2s; text-decoration: none;
+}
+.btn-primary:hover { box-shadow: 0 10px 40px rgba(46,85,240,0.65); transform: translateY(-2px); }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px; font-weight: 500;
+  color: rgba(255,255,255,0.4);
+  background: none; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; padding: 16px 28px; cursor: pointer;
+  transition: all 0.2s; text-decoration: none;
+}
+.btn-ghost:hover { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); }
+
+.btn-group { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.btn-note { font-size: 12px; color: rgba(255,255,255,0.2); margin-top: 12px; letter-spacing: 0.04em; }
+
+/* DIVIDER */
+.divider {
+  height: 1px; margin: 0 24px;
+  background: linear-gradient(90deg, transparent, rgba(79,120,255,0.15), transparent);
+}
+
+/* ══════════════════════════════════════════
+   HERO
+══════════════════════════════════════════ */
+.hero {
+  padding: 100px 24px 80px;
+  text-align: center;
+  position: relative;
+}
+.hero-bloom {
+  position: absolute;
+  width: 800px; height: 500px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(29,56,196,0.12) 0%, transparent 70%);
+  top: 0; left: 50%; transform: translateX(-50%);
+  pointer-events: none;
+  animation: bloom 6s ease-in-out infinite;
+}
+@keyframes bloom {
+  0%,100% { opacity: 0.7; transform: translateX(-50%) scale(1); }
+  50%      { opacity: 1;   transform: translateX(-50%) scale(1.08); }
+}
+.spots-counter {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 100px; padding: 8px 20px;
+  margin-bottom: 32px;
+}
+.spots-num {
+  font-size: 14px; font-weight: 800; letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #fff, #a8c4ff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.spots-label { font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 0.06em; }
+
+/* ══════════════════════════════════════════
+   STORY SECTION
+══════════════════════════════════════════ */
+.story-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; margin-top: 40px;
+}
+.story-card {
+  padding: 36px 32px;
+}
+.story-label {
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: rgba(79,120,255,0.55); margin-bottom: 14px;
+}
+.quote-mark {
+  font-family: 'Instrument Serif', serif;
+  font-size: 72px; line-height: 0.6;
+  color: rgba(79,120,255,0.2);
+  display: block; margin-bottom: 16px;
+}
+
+/* ══════════════════════════════════════════
+   WHAT IT REPLACES
+══════════════════════════════════════════ */
+.replaces-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 10px; margin: 32px 0;
+}
+.replace-item {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 16px; padding: 20px 16px;
+  text-align: center;
+}
+.ri-name { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.35); margin-bottom: 6px; letter-spacing: 0.06em; }
+.ri-what { font-size: 10px; color: rgba(255,255,255,0.2); margin-bottom: 10px; line-height: 1.4; }
+.ri-price {
+  font-size: 22px; font-weight: 800; letter-spacing: -0.03em;
+  color: rgba(255,100,100,0.55);
+  text-decoration: line-through;
+  text-decoration-color: rgba(255,100,100,0.3);
+}
+.ri-per { font-size: 10px; color: rgba(255,100,100,0.35); }
+
+.total-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 28px;
+  background: rgba(255,60,60,0.05);
+  border: 1px solid rgba(255,100,100,0.1);
+  border-radius: 16px; margin-bottom: 14px;
+}
+.tr-label { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.5); }
+.tr-amount {
+  font-size: 28px; font-weight: 800; letter-spacing: -0.04em;
+  color: rgba(255,100,100,0.6);
+  text-decoration: line-through;
+  text-decoration-color: rgba(255,100,100,0.35);
+}
+.tr-note { font-size: 11px; color: rgba(255,255,255,0.2); }
+
+.cadi-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 24px 28px;
+  background: rgba(29,56,196,0.1);
+  border: 1px solid rgba(79,120,255,0.25);
+  border-radius: 16px; margin-bottom: 10px;
+  position: relative; overflow: hidden;
+}
+.cadi-row::before {
+  content: '';
+  position: absolute; top: 0; left: 10%; right: 10%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(79,120,255,0.5), transparent);
+}
+.cr-label { font-size: 15px; font-weight: 700; color: #fff; }
+.cr-sub { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 3px; }
+.cr-price {
+  font-size: 42px; font-weight: 800; letter-spacing: -0.05em;
+  background: linear-gradient(135deg, #fff 0%, #a8c4ff 40%, #4f78ff 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  line-height: 1;
+}
+.cr-per { font-size: 14px; color: rgba(255,255,255,0.3); }
+
+.saving-banner {
+  text-align: center; padding: 14px;
+  background: rgba(50,200,120,0.06);
+  border: 1px solid rgba(50,200,120,0.15);
+  border-radius: 12px;
+  font-size: 14px; font-weight: 600;
+  color: rgba(80,200,140,0.8);
+}
+
+/* ══════════════════════════════════════════
+   THE OFFER
+══════════════════════════════════════════ */
+.offer-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 12px; margin: 32px 0;
+}
+.offer-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 22px 20px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 16px;
+}
+.offer-icon {
+  font-size: 20px; flex-shrink: 0;
+  width: 40px; height: 40px;
+  background: rgba(79,120,255,0.08);
+  border: 1px solid rgba(79,120,255,0.14);
+  border-radius: 11px;
+  display: flex; align-items: center; justify-content: center;
+}
+.offer-title { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.offer-desc { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.6; }
+
+/* PRICE CARD */
+.price-card {
+  padding: 48px 44px;
+  text-align: center;
+}
+.price-was {
+  font-size: 14px; color: rgba(255,255,255,0.25);
+  margin-bottom: 8px; letter-spacing: 0.04em;
+}
+.price-main {
+  display: flex; align-items: flex-start; justify-content: center; gap: 6px;
+  margin-bottom: 6px;
+}
+.price-currency { font-size: 28px; font-weight: 700; color: rgba(255,255,255,0.6); padding-top: 8px; }
+.price-amount {
+  font-size: 88px; font-weight: 800; letter-spacing: -0.06em; line-height: 1;
+  background: linear-gradient(135deg, #fff 0%, #a8c4ff 40%, #4f78ff 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.price-period { font-size: 18px; color: rgba(255,255,255,0.3); padding-bottom: 8px; align-self: flex-end; }
+.price-sub { font-size: 13px; color: rgba(255,255,255,0.3); margin-bottom: 28px; line-height: 1.6; }
+.price-sub strong { color: rgba(255,255,255,0.6); font-weight: 600; }
+.price-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 28px 0; }
+.price-payback {
+  font-size: 15px; font-weight: 600;
+  color: rgba(168,196,255,0.7); margin-bottom: 28px; line-height: 1.55;
+}
+.price-payback strong { color: #fff; }
+.spots-warning {
+  font-size: 12px; color: rgba(255,255,255,0.25);
+  margin-top: 16px; line-height: 1.6;
+}
+.spots-warning strong { color: rgba(255,255,255,0.5); }
+
+/* ══════════════════════════════════════════
+   TIMELINE
+══════════════════════════════════════════ */
+.timeline { position: relative; padding-left: 28px; }
+.timeline::before {
+  content: '';
+  position: absolute; left: 7px; top: 8px; bottom: 8px; width: 1px;
+  background: linear-gradient(180deg, rgba(79,120,255,0.4), rgba(79,120,255,0.1));
+}
+.tl-item { position: relative; padding-bottom: 36px; }
+.tl-item:last-child { padding-bottom: 0; }
+.tl-dot {
+  position: absolute; left: -24px; top: 4px;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--ink);
+  border: 2px solid rgba(79,120,255,0.5);
+  box-shadow: 0 0 10px rgba(79,120,255,0.3);
+}
+.tl-dot.active {
+  background: #2e55f0;
+  border-color: #4f78ff;
+  box-shadow: 0 0 16px rgba(79,120,255,0.6);
+}
+.tl-period {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(79,120,255,0.55); margin-bottom: 6px;
+}
+.tl-title { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+.tl-body { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.7; }
+.tl-body strong { color: rgba(255,255,255,0.75); font-weight: 600; }
+
+/* ══════════════════════════════════════════
+   OBJECTIONS
+══════════════════════════════════════════ */
+.objection-card {
+  padding: 36px 36px 32px;
+  margin-bottom: 12px;
+}
+.obj-q {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 20px; line-height: 1.35;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 18px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.obj-a {
+  font-size: 16px; font-weight: 400;
+  line-height: 1.8; color: rgba(255,255,255,0.75);
+}
+.obj-a strong { font-weight: 700; color: #fff; }
+.obj-a .hl {
+  background: linear-gradient(135deg, #a8c4ff, #4f78ff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; font-weight: 600;
+}
+.obj-closer {
+  margin-top: 16px; padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  font-size: 15px; font-weight: 700;
+  color: rgba(255,255,255,0.6); font-style: italic;
+}
+
+/* ══════════════════════════════════════════
+   Q&A
+══════════════════════════════════════════ */
+.qa-item {
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.qa-item:first-child { padding-top: 0; }
+.qa-item:last-child { border-bottom: none; padding-bottom: 0; }
+.qa-q {
+  font-size: 16px; font-weight: 700;
+  color: rgba(255,255,255,0.8); margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+.qa-a {
+  font-size: 15px; color: rgba(255,255,255,0.48);
+  line-height: 1.75;
+}
+.qa-a strong { color: rgba(255,255,255,0.75); font-weight: 600; }
+
+/* ══════════════════════════════════════════
+   FINAL CTA
+══════════════════════════════════════════ */
+.final-cta {
+  padding: 100px 24px;
+  text-align: center;
+  position: relative;
+}
+.final-bloom {
+  position: absolute;
+  width: 700px; height: 400px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(29,56,196,0.14) 0%, transparent 70%);
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+  pointer-events: none;
+  animation: bloom 5s ease-in-out infinite;
+}
+.final-cta h2 { font-size: 52px; margin-bottom: 18px; }
+
+/* SECTION LABEL */
+.section-label {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: rgba(255,255,255,0.18);
+  margin-bottom: 32px; display: block;
+}
+
+/* FEATURE CHECK LIST */
+.check-list { display: flex; flex-direction: column; gap: 0; }
+.check-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 15px; color: rgba(255,255,255,0.65);
+  line-height: 1.4;
+}
+.check-item:last-child { border-bottom: none; }
+.check-item .ci { color: #4f78ff; flex-shrink: 0; font-size: 13px; margin-top: 2px; }
+.check-item strong { color: #fff; font-weight: 600; }
+
+/* STICKY NAV */
+.sticky-nav {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+  z-index: 100;
+  display: flex; align-items: center; gap: 14px;
+  background: rgba(4,8,16,0.85);
+  border: 1px solid rgba(79,120,255,0.25);
+  backdrop-filter: blur(24px);
+  border-radius: 100px; padding: 12px 20px 12px 24px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+}
+.sn-text {
+  font-size: 13px; font-weight: 600;
+  color: rgba(255,255,255,0.55);
+  white-space: nowrap;
+}
+.sn-text strong { color: #fff; }
+.sn-spots {
+  font-size: 11px; font-weight: 700;
+  color: rgba(79,120,255,0.8);
+  background: rgba(79,120,255,0.1);
+  border: 1px solid rgba(79,120,255,0.2);
+  border-radius: 100px; padding: 4px 12px;
+}
+.sn-btn {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px; font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #1a3ac9, #4f78ff);
+  border: none; border-radius: 100px;
+  padding: 11px 22px; cursor: pointer;
+  box-shadow: 0 4px 16px rgba(46,85,240,0.4);
+  white-space: nowrap;
+}
+
+</style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+
+<!-- STICKY NAV -->
+<div class="sticky-nav">
+  <div class="sn-text"><strong>The Founding 200</strong> — £29/mo for life</div>
+  <div class="sn-spots">187 spots left</div>
+  <button class="sn-btn">Claim your spot →</button>
+</div>
+
+<div class="page">
+
+  <!-- ══════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════ -->
+  <div class="hero">
+    <div class="hero-bloom"></div>
+
+    <div class="spots-counter">
+      <div class="pill" style="margin:0;padding:0;background:none;border:none;">
+        <span class="dot"></span>
+      </div>
+      <span class="spots-num">187 spots remaining</span>
+      <span class="spots-label">· closes when 200 are claimed</span>
+    </div>
+
+    <span class="eyebrow">Cadi &nbsp;·&nbsp; The Founding 200</span>
+
+    <h1>
+      You're not buying software.<br>
+      <span class="hl">You're helping build it.</span>
+    </h1>
+
+    <p class="lead" style="max-width:620px;margin:0 auto 36px;">
+      We're inviting 200 cleaning business owners to join us at the ground floor.
+      Full access to everything Cadi does. Weekly calls with the founders. A locked-in price for life.
+      <strong>And a seat at the table that shapes where this goes.</strong>
+    </p>
+
+    <div class="btn-group" style="justify-content:center;margin-bottom:16px;">
+      <a href="#claim" class="btn-primary">Claim your founding spot →</a>
+      <a href="#what" class="btn-ghost">See what's included</a>
+    </div>
+    <p class="btn-note">£29/mo · 3-month minimum · Locked in for life · 187 spots left</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ══════════════════════════════════════════
+       THE STORY
+  ══════════════════════════════════════════ -->
+  <section>
+    <div class="inner">
+      <span class="eyebrow">Why this exists</span>
+      <h2>We built Cadi because <span class="hl">we needed it.</span></h2>
+
+      <p class="lead">
+        Chris and I run separate sides of a cleaning business — interior and exterior.
+        And we couldn't find a single piece of software that worked for both.
+        Everything out there was built for one type of cleaning, or so generic it barely worked for any of it.
+        <strong>So we stopped looking and started building.</strong>
+      </p>
+
+      <p class="body-copy" style="margin-bottom:24px;">
+        We know what it feels like to not know if the money in your bank is actually yours — or if it belongs to HMRC.
+        We know what it feels like to want to hire but be too scared. To want a day off but not trust that everything
+        holds together without you. To be jumping between four different apps just to get through a single day —
+        and still not really knowing what you're making until the end of the year.
+      </p>
+
+      <p class="body-copy" style="margin-bottom:32px;">
+        <strong>Cadi is the co-founder we never had.</strong> It keeps the business on track when you're too busy
+        cleaning to think straight. It shows you where to improve, manages your money, and gives you the confidence
+        to build a team and actually step back. That's what every cleaning business owner deserves.
+        And that's exactly what Cadi gives you.
+      </p>
+
+      <div class="story-grid">
+        <div class="glass story-card">
+          <div class="story-label">Why we need you</div>
+          <span class="quote-mark">"</span>
+          <p class="body-copy">
+            We're not launching to 10,000 strangers. We're starting with 200 people
+            who care enough to show up, use every feature, and tell us honestly what works and what doesn't.
+            <strong>Your feedback shapes the roadmap. Your experience shapes the product.</strong>
+            We want Cadi to be built by cleaning business owners — not just for them.
+          </p>
+        </div>
+        <div class="glass story-card">
+          <div class="story-label">What we're asking</div>
+          <span class="quote-mark">"</span>
+          <p class="body-copy">
+            Use Cadi properly. All of it — not just scheduling or invoicing, but accounting, the health score,
+            the staff portal if you have team, the pricing calculator on every job.
+            Join our weekly calls for the first 8 weeks. Tell us what you love, what's broken, what's missing.
+            <strong>In return, we'll make sure you never pay full price for Cadi again.</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══════════════════════════════════════════
+       WHAT IT REPLACES
+  ══════════════════════════════════════════ -->
+  <section id="value">
+    <div class="inner">
+      <span class="eyebrow">The honest maths</span>
+      <h2>What you'd pay <span class="hl">without Cadi</span></h2>
+
+      <p class="lead">
+        This is what running a cleaning business properly actually costs in software
+        — if you're using the right tools separately.
+      </p>
+
+      <div class="replaces-grid">
+        <div class="replace-item">
+          <div class="ri-name">CleanerPlanner</div>
+          <div class="ri-what">Scheduling only</div>
+          <div class="ri-price">£25</div>
+          <div class="ri-per">/mo</div>
+        </div>
+        <div class="replace-item">
+          <div class="ri-name">Xero Starter</div>
+          <div class="ri-what">Accounting + HMRC MTD</div>
+          <div class="ri-price">£16</div>
+          <div class="ri-per">/mo</div>
+        </div>
+        <div class="replace-item">
+          <div class="ri-name">ZenMaid</div>
+          <div class="ri-what">CRM + client management</div>
+          <div class="ri-price">£38</div>
+          <div class="ri-per">/mo</div>
+        </div>
+        <div class="replace-item">
+          <div class="ri-name">Breathe HR</div>
+          <div class="ri-what">Staff, hiring + onboarding</div>
+          <div class="ri-price">£25</div>
+          <div class="ri-per">/mo</div>
+        </div>
+        <div class="replace-item">
+          <div class="ri-name">Payroll tool</div>
+          <div class="ri-what">Wages + payslips</div>
+          <div class="ri-price">£15</div>
+          <div class="ri-per">/mo</div>
+        </div>
+      </div>
+
+      <div class="total-row">
+        <div>
+          <div class="tr-label">Total across 5 tools</div>
+          <div class="tr-note">And they still don't talk to each other</div>
+        </div>
+        <div class="tr-amount">£119/mo</div>
+      </div>
+
+      <div class="cadi-row">
+        <div>
+          <div class="cr-label">Cadi — all of it</div>
+          <div class="cr-sub">One login. Everything. Built for cleaning.</div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:6px;">
+          <div class="cr-price">£29</div>
+          <div class="cr-per">/mo</div>
+        </div>
+      </div>
+
+      <div class="saving-banner">
+        You save £90/mo — that's £1,080 every year. Back in your pocket.
+      </div>
+
+      <div class="glass" style="padding:28px 32px;margin-top:16px;">
+        <p class="body-copy">
+          <strong>And here's what none of those tools have:</strong> a live business health score
+          that tells you how well you're running your business. A leaderboard where cleaning businesses
+          compete. HMRC Making Tax Digital built in — not bolted on. A staff portal that covers hiring,
+          training academies, onboarding and payroll in one place. Pricing calculators that are actually
+          accurate for cleaning. An annual business review. <em>Features no other cleaning software
+          has even thought of.</em>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══════════════════════════════════════════
+       THE OFFER
+  ══════════════════════════════════════════ -->
+  <section id="what">
+    <div class="inner">
+      <span class="eyebrow">The Founding 200 offer</span>
+      <h2>Everything you get when <span class="hl">you join</span></h2>
+
+      <div class="offer-grid">
+        <div class="offer-item">
+          <div class="offer-icon">💙</div>
+          <div>
+            <div class="offer-title">Full Growth plan — every feature</div>
+            <div class="offer-desc">Pricing, scheduling, invoicing, accounting, HMRC MTD, staff portal, hiring, training academies, payroll, business health score, leaderboard, growth tools, annual review. All of it. No modules locked.</div>
+          </div>
+        </div>
+        <div class="offer-item">
+          <div class="offer-icon">🔒</div>
+          <div>
+            <div class="offer-title">£29/mo locked in forever</div>
+            <div class="offer-desc">When Cadi's price goes up — and it will — you never pay more. Your £29/mo is yours for life as long as you stay subscribed. No price increases. No catches. In writing.</div>
+          </div>
+        </div>
+        <div class="offer-item">
+          <div class="offer-icon">📞</div>
+          <div>
+            <div class="offer-title">Weekly Zoom calls with the founders</div>
+            <div class="offer-desc">8 weeks of weekly group calls with us personally — not a support team, not a recording. Us. Walk through setup, ask anything, shape the product in real time. Fortnightly after that for the full 6 months.</div>
+          </div>
+        </div>
+        <div class="offer-item">
+          <div class="offer-icon">📦</div>
+          <div>
+            <div class="offer-title">Physical welcome pack</div>
+            <div class="offer-desc">A Cadi welcome box lands at your door before your first login. The annual planner, a branded notebook, your founding member card. Something real. Something that sits on your desk and reminds you this is serious.</div>
+          </div>
+        </div>
+        <div class="offer-item">
+          <div class="offer-icon">💰</div>
+          <div>
+            <div class="offer-title">50% affiliate commission — for life</div>
+            <div class="offer-desc">Every cleaning business owner you refer to Cadi earns you 50% of their monthly subscription for as long as they stay. Refer 5 friends on £39/mo and you're earning £97.50/mo back. Refer 10 and Cadi pays for itself.</div>
+          </div>
+        </div>
+        <div class="offer-item">
+          <div class="offer-icon">🏅</div>
+          <div>
+            <div class="offer-title">Founding Member badge — permanent</div>
+            <div class="offer-desc">Your profile carries the Founding Member badge forever. Priority feature requests, first access to everything new, and your name in the credits. You helped build this. That matters.</div>
+          </div>
+        </div>
+        <div class="offer-item">
+          <div class="offer-icon">🗺️</div>
+          <div>
+            <div class="offer-title">Direct vote on the roadmap</div>
+            <div class="offer-desc">Your feature requests go to the top of the list. You're not submitting a ticket into the void — you're talking to the people building it, every week, for 6 months.</div>
+          </div>
+        </div>
+        <div class="offer-item">
+          <div class="offer-icon">🚚</div>
+          <div>
+            <div class="offer-title">Complete migration support</div>
+            <div class="offer-desc">Already using Xero, CleanerPlanner, spreadsheets? We move everything across for you. Not a help article — actual support. You start fresh in Cadi, and we handle the heavy lifting.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══════════════════════════════════════════
+       PRICE
+  ══════════════════════════════════════════ -->
+  <section id="claim">
+    <div class="inner-narrow">
+      <div class="glass price-card">
+        <span class="eyebrow" style="display:block;text-align:center;">Your founding member price</span>
+        <div class="price-was">Full price after launch: £39/mo</div>
+        <div class="price-main">
+          <span class="price-currency">£</span>
+          <span class="price-amount">29</span>
+          <span class="price-period">/mo</span>
+        </div>
+        <p class="price-sub">
+          <strong>3-month minimum commitment</strong> (£87 upfront, then monthly).<br>
+          After 3 months, continue month-to-month at £29/mo — forever.
+        </p>
+
+        <div class="price-divider"></div>
+
+        <div class="price-payback">
+          You save <strong>£10/mo</strong> against the full launch price.<br>
+          That's <strong>£120/yr back in your pocket</strong> — every year — for joining early.<br>
+          Add the affiliate income and Cadi can literally pay for itself.
+        </div>
+
+        <a href="#" class="btn-primary" style="width:100%;justify-content:center;font-size:17px;padding:20px;">
+          Claim your founding spot →
+        </a>
+
+        <p class="spots-warning">
+          <strong>187 spots remaining.</strong> When 200 are claimed, this offer closes permanently.
+          The price goes to £39/mo and founding membership is gone. There's no waitlist after close.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══════════════════════════════════════════
+       WHAT HAPPENS NEXT
+  ══════════════════════════════════════════ -->
+  <section>
+    <div class="inner">
+      <span class="eyebrow">What happens when you join</span>
+      <h2>Your first <span class="hl">6 months</span> with Cadi</h2>
+
+      <div class="timeline" style="margin-top:36px;">
+        <div class="tl-item">
+          <div class="tl-dot active"></div>
+          <div class="tl-period">Day 1</div>
+          <div class="tl-title">Your welcome pack is dispatched</div>
+          <div class="tl-body">Before you've even logged in, your physical Cadi welcome pack is on its way. The annual planner, your founding member card, and a handwritten note from us. <strong>This is real. It's happening.</strong></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot active"></div>
+          <div class="tl-period">Week 1–2</div>
+          <div class="tl-title">Personal onboarding call with us</div>
+          <div class="tl-body">Not a welcome email. A real call. We screen-share and walk you through your setup — your pricing calculator, your client list, your schedule. <strong>You leave the call with Cadi actually running your business.</strong></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot active"></div>
+          <div class="tl-period">Weeks 3–8</div>
+          <div class="tl-title">Weekly group Zoom calls</div>
+          <div class="tl-body">Every week for 8 weeks: 15 mins on what's working and what's not. 15 mins deep-diving a feature you haven't explored yet. 15 mins open Q&A and roadmap discussion. <strong>Recorded and shared after every session.</strong></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-period">Months 3–6</div>
+          <div class="tl-title">Fortnightly calls + the WhatsApp community</div>
+          <div class="tl-body">Calls drop to fortnightly as you find your rhythm. By now you're in the founding member WhatsApp group — 200 cleaning business owners, all using the same software, helping each other. <strong>That community is worth as much as the software.</strong></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-period">Month 6+</div>
+          <div class="tl-title">£29/mo. Forever.</div>
+          <div class="tl-body">The programme ends. Your founding member status doesn't. You keep the price, the badge, the affiliate programme, and priority access — for life. <strong>You helped build Cadi. Cadi will always remember that.</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══════════════════════════════════════════
+       OBJECTIONS
+  ══════════════════════════════════════════ -->
+  <section>
+    <div class="inner">
+      <span class="eyebrow">The honest questions</span>
+      <h2>If you're thinking <span class="hl">"but..."</span></h2>
+      <p class="lead">We've been in your position. We know what you're thinking. Here's the straight answer to every one of them.</p>
+
+      <div class="objection-card glass">
+        <div class="obj-q">"£29 a month for all of that — there must be a catch."</div>
+        <div class="obj-a">
+          We understand why you'd think that. CleanerPlanner charges £25 for scheduling alone. Xero charges £16 just for accounting.
+          The reason Cadi can do more for less isn't a trick — it's because <strong>we built it ourselves, we're not paying for five separate platforms to white-label,
+          and we don't have a VC firm demanding we maximise revenue before we've even proved the product.</strong> We're a cleaning business building
+          software for cleaning businesses. Our overheads are low. Our motivations are honest. And the founding price exists because
+          <em>we need your feedback more than we need your money right now.</em>
+        </div>
+        <div class="obj-closer">"We don't ask you to trust us. Try it. See for yourself."</div>
+      </div>
+
+      <div class="objection-card glass">
+        <div class="obj-q">"I've tried software before and it never sticks."</div>
+        <div class="obj-a">
+          That's fair — and it's almost certainly not your fault. Most software that cleaning businesses try was never built for them.
+          It was built for trades, or generic field service, or some broad small business that could be anything.
+          <strong>So of course it didn't stick. You were forcing your business into a shape it didn't fit.</strong>
+          Cadi is different because every feature was designed around how a cleaning business actually works —
+          interior, exterior, solo operator, growing team. When software finally fits, you actually use it.
+          That's not discipline. That's design. And the weekly calls in the first 8 weeks exist specifically
+          to make sure you don't leave it sitting unused.
+        </div>
+        <div class="obj-closer">"The software didn't fail you. The wrong software failed you."</div>
+      </div>
+
+      <div class="objection-card glass">
+        <div class="obj-q">"What if you put the price up once I'm hooked?"</div>
+        <div class="obj-a">
+          <strong>Your founding member price is locked in writing — as long as you stay subscribed.</strong>
+          We're not a VC-backed company chasing growth at any cost. We're a cleaning business owner who built this because we needed it —
+          and who still runs a cleaning business now. We're not going anywhere and we're not going to pull the rug.
+          When the price goes up for new users, your £29/mo stays exactly where it is. That's the whole point of joining now.
+        </div>
+        <div class="obj-closer">"Your price is yours. Full stop."</div>
+      </div>
+
+      <div class="objection-card glass">
+        <div class="obj-q">"I'm too small for this — I only have a handful of clients."</div>
+        <div class="obj-a">
+          This is exactly where Cadi was made to meet you. <strong>The solo cleaner who wants to grow but doesn't know if they can —
+          that's who this was built for first.</strong> The businesses that scale well don't wait until they're already big to get organised.
+          They build the foundation early, so when clients start coming in faster, the systems are already there.
+          Cadi shows you what your business looks like right now — and what it needs to look like to support a team.
+          The pricing calculator tells you what to charge. The health score tells you what to fix.
+          <em>You don't have to be big to think big.</em>
+        </div>
+        <div class="obj-closer">"The best time to build the foundation is before you need it."</div>
+      </div>
+
+      <div class="objection-card glass">
+        <div class="obj-q">"I'm already set up in Xero and don't want to move everything across."</div>
+        <div class="obj-a">
+          You don't have to move anything yet. <strong>Start fresh in Cadi — explore it, use the tools, run your first invoice through it.</strong>
+          No pressure to pull the plug on what you're already running until you're ready.
+          And when you are ready, founding members get complete migration support.
+          We're not going to hand you a help article and wish you luck.
+          We'll move everything across properly — so nothing gets lost and the transition feels seamless.
+        </div>
+        <div class="obj-closer">"Play first. Migrate when you're ready. We'll be there."</div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══════════════════════════════════════════
+       Q&A FROM THE FOUNDER
+  ══════════════════════════════════════════ -->
+  <section>
+    <div class="inner">
+      <span class="eyebrow">Straight from the founder</span>
+      <h2>Questions we get <span class="hl">asked every time</span></h2>
+      <p class="lead" style="margin-bottom:36px;">Real questions. Honest answers. No sales script.</p>
+
+      <div class="glass" style="padding:40px 44px;">
+        <div class="check-list">
+
+          <div class="qa-item">
+            <div class="qa-q">What made you build Cadi in the first place?</div>
+            <div class="qa-a">Chris and I run separate sides of our cleaning business — interior and exterior — and we couldn't find a single piece of software that worked for both. Everything out there was built for one type of cleaning, or it was so generic it barely worked for any of it. <strong>So we stopped looking and started building.</strong> Cadi is what we actually needed — and what every cleaning business owner deserves to have.</div>
+          </div>
+
+          <div class="qa-item">
+            <div class="qa-q">What was the hardest part of running the business before Cadi?</div>
+            <div class="qa-a">Jumping between apps just to get through a single day. Not really knowing what profit we were making until the end of the year — by which point the money was already spent. Wondering if we could afford to hire, or if bringing someone on would actually sink us. <strong>That fear of growth — where you want to scale but you can't see the numbers clearly enough to know if it's safe. That's an awful place to run a business from.</strong></div>
+          </div>
+
+          <div class="qa-item">
+            <div class="qa-q">What's the feature that made you think — yes, this is it?</div>
+            <div class="qa-a">The dashboard. Specifically the business health score. It doesn't just show you numbers — it tells you how well you're actually running your business and where to improve. Then the accounting side gave us this confidence with money we'd never had before. <strong>And the staff portal changed everything about hiring. For the first time we could see the true cost of a new employee before we committed.</strong></div>
+          </div>
+
+          <div class="qa-item">
+            <div class="qa-q">What does having Cadi feel like day to day?</div>
+            <div class="qa-a">Confident. You open your dashboard and you actually know what's going on in your business. You can see a clear path to growth — not just hoping it happens, but understanding exactly what needs to move to get there. <strong>The difference between running a business and owning one.</strong></div>
+          </div>
+
+          <div class="qa-item">
+            <div class="qa-q">Who is the Founding 200 actually for?</div>
+            <div class="qa-a">Any cleaning business owner who feels like they're winging it. You know the feeling — you're busy, clients are coming in, money's moving around, but you don't have a clear picture of what's actually happening in your business. <strong>If you've ever felt like you're running your business on instinct and hope, the Founding 200 was built for you.</strong></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══════════════════════════════════════════
+       FINAL CTA
+  ══════════════════════════════════════════ -->
+  <div class="final-cta">
+    <div class="final-bloom"></div>
+
+    <div class="inner-narrow" style="position:relative;z-index:1;">
+      <span class="eyebrow" style="display:block;text-align:center;">187 spots remaining</span>
+
+      <h2 style="font-size:52px;margin-bottom:18px;">
+        Your cleaning business<br>
+        <span class="hl">deserves this.</span>
+      </h2>
+
+      <p class="lead" style="margin-bottom:12px;">
+        <strong>Cadi gives you the confidence of a co-founder — without the hefty salary.</strong>
+        It keeps your business on track, shows you how to improve your money and your time,
+        and gives you the confidence to build a team and finally take some time off.
+      </p>
+
+      <p class="body-copy" style="margin-bottom:36px;color:rgba(255,255,255,0.4);">
+        The software that runs your cleaning business. £29/mo. Locked in for life.
+        200 spots. When they're gone, they're gone.
+      </p>
+
+      <div class="btn-group" style="justify-content:center;margin-bottom:16px;">
+        <a href="#" class="btn-primary" style="font-size:17px;padding:20px 40px;">
+          Join the Founding 200 →
+        </a>
+      </div>
+      <p class="btn-note" style="text-align:center;">
+        £29/mo · 3-month minimum · Full Growth plan · Locked forever
+        <br>No hidden fees. No price increases. No catch.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
