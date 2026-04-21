@@ -84,6 +84,13 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;back
 .sc2-emoji{font-size:22px;margin-bottom:8px;}
 .sc2-title{font-size:13px;font-weight:700;color:#fff;margin-bottom:3px;}
 .sc2-desc{font-size:11px;color:var(--label);line-height:1.4;}
+.biz-name-wrap{max-width:420px;margin:0 auto 24px;text-align:left;}
+.biz-name-label{display:block;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:8px;}
+.biz-name-opt{font-size:10px;font-weight:500;color:rgba(255,255,255,0.28);letter-spacing:0.04em;text-transform:none;margin-left:4px;}
+.biz-name-inp{width:100%;font-family:var(--font-app);font-size:14px;color:#fff;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:var(--radius-sm);padding:13px 16px;outline:none;transition:all 0.18s;}
+.biz-name-inp::placeholder{color:rgba(255,255,255,0.28);}
+.biz-name-inp:focus{border-color:rgba(59,91,255,0.45);background:rgba(59,91,255,0.06);}
+
 .start-btn{display:block;width:fit-content;margin:0 auto;font-family:var(--font-app);font-size:15px;font-weight:600;color:#fff;background:var(--blue);border:none;border-radius:var(--radius-sm);padding:16px 48px;cursor:pointer;box-shadow:0 4px 24px rgba(59,91,255,0.4);transition:all 0.2s;opacity:0.3;pointer-events:none;}
 .start-btn.ready{opacity:1;pointer-events:all;}
 .start-btn.ready:hover{box-shadow:0 6px 32px rgba(59,91,255,0.6);transform:translateY(-1px);}
@@ -478,6 +485,10 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
       <div class="scenario-card" onclick="selectScenario('solo',this)"><div class="sc2-emoji">🌱</div><div class="sc2-title">Solo & growing</div><div class="sc2-desc">Running it yourself, 10–25 clients, getting organised</div></div>
       <div class="scenario-card" onclick="selectScenario('team',this)"><div class="sc2-emoji">👥</div><div class="sc2-title">Small team</div><div class="sc2-desc">You and 2–4 staff, 30–60 clients, juggling jobs and people</div></div>
       <div class="scenario-card" onclick="selectScenario('scaling',this)"><div class="sc2-emoji">🚀</div><div class="sc2-title">Scaling up</div><div class="sc2-desc">Established business, 70+ clients, ready to professionalise</div></div>
+    </div>
+    <div class="biz-name-wrap">
+      <label class="biz-name-label" for="bizNameInp">Your business name <span class="biz-name-opt">— optional, makes the demo yours</span></label>
+      <input id="bizNameInp" class="biz-name-inp" type="text" placeholder="e.g. Mackies Cleaning" maxlength="42" autocomplete="organization">
     </div>
     <button class="start-btn" id="startBtn" onclick="startDemo()">Start my demo →</button>
   </div>
@@ -912,12 +923,20 @@ function checkR(){if(S.sector&&S.scenario)document.getElementById('startBtn').cl
 
 function startDemo(){
   if(!S.sector||!S.scenario)return;
+  const bizRaw=(document.getElementById('bizNameInp')?.value||'').trim();
+  const biz=bizRaw||'Mackies Cleaning';
+  S.biz=biz;
+  document.getElementById('dbBiz').textContent=biz;
+  document.getElementById('sbName').textContent=biz;
+  document.getElementById('sbAvatar').textContent=biz.charAt(0).toUpperCase();
+  document.getElementById('lbYourName').textContent=biz;
   document.getElementById('setupScreen').style.display='none';
   document.getElementById('appShell').classList.add('show');
   document.getElementById('demoBanner').classList.add('show');
   document.getElementById('demoProgress').style.display='block';
   initApp();goToStep(0);
-  setTimeout(()=>showToast('Welcome to Cadi','You\'re logged in on a free trial. Poke around — nothing you do here is saved.','👋'),600);
+  const firstName=biz.split(/\s+/)[0];
+  setTimeout(()=>showToast('Welcome to Cadi, '+firstName,'You\'re logged in on a free trial. Poke around — nothing you do here is saved.','👋'),600);
 }
 
 function initApp(){
