@@ -322,7 +322,7 @@ footer{padding:60px 40px 40px;background:rgba(2,4,12,0.95);border-top:1px solid 
 <section class="pricing-section" id="pricing">
   <div class="inner" style="max-width:860px;">
     <span class="eyebrow-light">Founding member pricing</span>
-    <h2 class="pricing-h2">Start for £29/mo.<br><span class="hl-warm">Annual founders get another 50% off.</span></h2>
+    <h2 class="pricing-h2">Start for £29/mo.<br><span class="hl-warm" id="annHeadline">Annual founders get 2 months free.</span></h2>
     <p class="pricing-sub">Both plans include the full platform, weekly founder calls, and 50% affiliate commission from month 2. Annual founding members also get the physical planner posted to their door.</p>
 
     <!-- Toggle -->
@@ -330,7 +330,7 @@ footer{padding:60px 40px 40px;background:rgba(2,4,12,0.95);border-top:1px solid 
       <button id="tog-monthly" onclick="setPlan('monthly')" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:600;padding:10px 28px;border-radius:100px;border:none;cursor:pointer;transition:all 0.2s;background:#fff;color:#071140;box-shadow:0 2px 8px rgba(0,0,0,0.08);">Monthly</button>
       <button id="tog-annual" onclick="setPlan('annual')" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:600;padding:10px 28px;border-radius:100px;border:none;cursor:pointer;transition:all 0.2s;background:none;color:rgba(7,17,64,0.4);position:relative;">
         Annual
-        <span style="position:absolute;top:-10px;right:-4px;background:linear-gradient(135deg,#1d38c4,#2e55f0);color:#fff;font-size:8px;font-weight:700;letter-spacing:0.08em;padding:2px 7px;border-radius:100px;white-space:nowrap;">Extra 50% off</span>
+        <span id="annTogBadge" style="position:absolute;top:-10px;right:-4px;background:linear-gradient(135deg,#1d38c4,#2e55f0);color:#fff;font-size:8px;font-weight:700;letter-spacing:0.08em;padding:2px 7px;border-radius:100px;white-space:nowrap;">2 months free</span>
       </button>
     </div>
 
@@ -394,16 +394,16 @@ footer{padding:60px 40px 40px;background:rgba(2,4,12,0.95);border-top:1px solid 
             <div style="font-size:11px;color:rgba(29,56,196,0.5);margin-bottom:6px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;">Annual founding price</div>
             <div style="display:flex;align-items:baseline;gap:4px;">
               <span class="pp-cur" style="font-size:20px;">£</span>
-              <span style="font-size:64px;font-weight:800;letter-spacing:-0.05em;line-height:1;color:#071140;">174</span>
+              <span style="font-size:64px;font-weight:800;letter-spacing:-0.05em;line-height:1;color:#071140;">290</span>
               <span class="pp-per" style="font-size:16px;">/yr</span>
             </div>
-            <div style="font-size:13px;color:rgba(7,17,64,0.4);margin-top:4px;">That's <strong style="color:#071140;">£14.50/mo</strong> — half the monthly rate</div>
+            <div style="font-size:13px;color:rgba(7,17,64,0.4);margin-top:4px;">That's <strong style="color:#071140;">£24.17/mo</strong> — save £58 a year</div>
           </div>
         </div>
 
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:22px;flex-wrap:wrap;">
           <span style="font-size:12px;font-weight:700;color:rgba(200,60,60,0.5);text-decoration:line-through;">£348/yr after launch</span>
-          <span style="font-size:11px;font-weight:700;color:rgba(30,140,70,0.8);background:rgba(30,140,70,0.08);border:1px solid rgba(30,140,70,0.15);border-radius:100px;padding:3px 10px;">Save 50% on annual — founding rate</span>
+          <span id="annSavePill" style="font-size:11px;font-weight:700;color:rgba(30,140,70,0.8);background:rgba(30,140,70,0.08);border:1px solid rgba(30,140,70,0.15);border-radius:100px;padding:3px 10px;">2 months free — founding rate</span>
         </div>
 
         <div class="plan-limit" style="background:rgba(29,56,196,0.06);border-color:rgba(29,56,196,0.15);margin-bottom:24px;">Unlimited clients &nbsp;·&nbsp; Up to 5 team members included</div>
@@ -471,9 +471,9 @@ footer{padding:60px 40px 40px;background:rgba(2,4,12,0.95);border-top:1px solid 
       <div class="spots-pill"><span class="sp-dot"></span><span class="sp-num">187 spots remaining</span><span class="sp-label">&nbsp;· closes at 200</span></div>
       <span class="eyebrow">The Founding 200 — Launch Bundle</span>
 
-      <h2 class="founding-h2">£29/mo — or go annual<br><span class="hl">and get another 50% off.</span></h2>
+      <h2 class="founding-h2">£29/mo — or go annual<br><span class="hl" id="annFoundHl">and get 2 months free.</span></h2>
 
-      <p class="founding-sub">Monthly founding members pay <strong>£29/mo locked forever</strong> — half what new users pay. Go annual and it drops to <strong>£14.50/mo</strong>, plus a physical planner posted to your door. Both plans include weekly founder calls and 50% affiliate commission from month 2.</p>
+      <p class="founding-sub">Monthly founding members pay <strong>£29/mo locked forever</strong> — half what new users pay. Go annual and it drops to <strong>£24.17/mo</strong> — that's <strong>2 months free every year</strong> — plus a physical planner posted to your door. Both plans include weekly founder calls and 50% affiliate commission from month 2.</p>
 
       <!-- BUNDLE CARD -->
       <div style="width:100%;max-width:960px;background:rgba(7,16,46,0.7);border:1px solid rgba(79,120,255,0.2);border-radius:28px;overflow:hidden;position:relative;margin-bottom:16px;">
@@ -545,14 +545,14 @@ footer{padding:60px 40px 40px;background:rgba(2,4,12,0.95);border-top:1px solid 
 
             <!-- Annual -->
             <div style="background:rgba(80,200,140,0.08);border:1px solid rgba(80,200,140,0.2);border-radius:14px;padding:18px 20px;width:100%;margin-bottom:20px;text-align:left;position:relative;">
-              <div style="position:absolute;top:-10px;right:14px;background:rgba(80,200,140,0.9);color:#071140;font-size:9px;font-weight:800;letter-spacing:0.1em;padding:3px 10px;border-radius:100px;">EXTRA 50% OFF</div>
+              <div id="annExtraPill" style="position:absolute;top:-10px;right:14px;background:rgba(80,200,140,0.9);color:#071140;font-size:9px;font-weight:800;letter-spacing:0.1em;padding:3px 10px;border-radius:100px;">2 MONTHS FREE</div>
               <div style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(80,200,140,0.6);margin-bottom:8px;">Annual</div>
               <div style="display:flex;align-items:baseline;gap:3px;">
                 <span style="font-size:18px;font-weight:700;color:rgba(255,255,255,0.4);">£</span>
-                <span style="font-size:52px;font-weight:800;letter-spacing:-0.05em;line-height:1;color:rgba(80,200,140,0.95);">174</span>
+                <span style="font-size:52px;font-weight:800;letter-spacing:-0.05em;line-height:1;color:rgba(80,200,140,0.95);">290</span>
                 <span style="font-size:14px;color:rgba(80,200,140,0.5);padding-bottom:5px;">/yr</span>
               </div>
-              <div style="font-size:12px;font-weight:600;color:rgba(80,200,140,0.7);margin-top:3px;">£14.50/mo · + planner posted to your door</div>
+              <div style="font-size:12px;font-weight:600;color:rgba(80,200,140,0.7);margin-top:3px;">£24.17/mo · + planner posted to your door</div>
             </div>
 
             <a href="/founding-200.html" class="btn-primary" style="width:100%;justify-content:center;font-size:15px;padding:17px 24px;">Claim your founding spot →</a>
@@ -568,7 +568,7 @@ footer{padding:60px 40px 40px;background:rgba(2,4,12,0.95);border-top:1px solid 
             <div style="display:flex;flex-direction:column;gap:0;">
               <div style="display:flex;gap:16px;padding-bottom:22px;">
                 <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;"><div style="width:28px;height:28px;border-radius:50%;background:rgba(59,91,255,0.2);border:1px solid rgba(59,91,255,0.4);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#a8c4ff;">1</div><div style="width:1px;flex:1;background:rgba(255,255,255,0.06);margin-top:6px;"></div></div>
-                <div style="padding-top:4px;"><div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px;">Sign up — pick your plan</div><div style="font-size:12px;color:rgba(255,255,255,0.38);line-height:1.6;">Monthly at £29/mo or annual at £174/yr. Platform access opens immediately. Annual members get their planner posted within 5 days.</div></div>
+                <div style="padding-top:4px;"><div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px;">Sign up — pick your plan</div><div style="font-size:12px;color:rgba(255,255,255,0.38);line-height:1.6;">Monthly at £29/mo or annual at £290/yr. Platform access opens immediately. Annual members get their planner posted within 5 days.</div></div>
               </div>
               <div style="display:flex;gap:16px;padding-bottom:22px;">
                 <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;"><div style="width:28px;height:28px;border-radius:50%;background:rgba(59,91,255,0.2);border:1px solid rgba(59,91,255,0.4);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#a8c4ff;">2</div><div style="width:1px;flex:1;background:rgba(255,255,255,0.06);margin-top:6px;"></div></div>
@@ -621,7 +621,7 @@ footer{padding:60px 40px 40px;background:rgba(2,4,12,0.95);border-top:1px solid 
               <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">
                 <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;">
                   <div style="font-size:13px;color:rgba(255,255,255,0.45);">Refer <strong style="color:#fff;">1 cleaner</strong> (annual plan)</div>
-                  <div style="font-size:14px;font-weight:700;color:rgba(168,196,255,0.9);">+£174/yr</div>
+                  <div style="font-size:14px;font-weight:700;color:rgba(168,196,255,0.9);">+£290/yr</div>
                 </div>
                 <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;">
                   <div style="font-size:13px;color:rgba(255,255,255,0.45);">Refer <strong style="color:#fff;">2 cleaners</strong></div>
@@ -690,6 +690,22 @@ function toggleNav(){
   try{sessionStorage.setItem('cta_variant',v);}catch(e){}
 })();
 
+// A/B test — annual pricing headline: "2 months free" vs "Pay for 10, get 12"
+(function(){
+  let v;try{v=sessionStorage.getItem('annual_variant');}catch(e){}
+  if(v!=='a'&&v!=='b'){v=Math.random()<0.5?'a':'b';try{sessionStorage.setItem('annual_variant',v);}catch(e){}}
+  const copy={
+    a:{headline:'Annual founders get 2 months free.',togBadge:'2 months free',savePill:'2 months free — founding rate',foundHl:'and get 2 months free.',extraPill:'2 MONTHS FREE'},
+    b:{headline:'Annual founders: pay for 10, get 12.',togBadge:'Pay 10, get 12',savePill:'Pay for 10, get 12 — founding rate',foundHl:'and only pay for 10 months.',extraPill:'PAY 10, GET 12'}
+  }[v];
+  const set=(id,txt)=>{const el=document.getElementById(id);if(el)el.textContent=txt;};
+  set('annHeadline',copy.headline);
+  set('annTogBadge',copy.togBadge);
+  set('annSavePill',copy.savePill);
+  set('annFoundHl',copy.foundHl);
+  set('annExtraPill',copy.extraPill);
+})();
+
 // Plan toggle
 function setPlan(plan){
   const monthly=document.getElementById('card-monthly');
@@ -722,11 +738,12 @@ async function handleSignup(){
     return;
   }
   const variant=sessionStorage.getItem('cta_variant')||'unknown';
+  const annualVariant=sessionStorage.getItem('annual_variant')||'unknown';
   try{
     const res=await fetch(LOOPS_FORM_URL,{
       method:'POST',
       headers:{'Content-Type':'application/x-www-form-urlencoded'},
-      body:'userGroup=&mailingLists=&email='+encodeURIComponent(email)+'&ctaVariant='+encodeURIComponent(variant)
+      body:'userGroup=&mailingLists=&email='+encodeURIComponent(email)+'&ctaVariant='+encodeURIComponent(variant)+'&annualVariant='+encodeURIComponent(annualVariant)
     });
     if(!res.ok){
       const data=await res.json().catch(()=>({}));
