@@ -453,6 +453,7 @@ footer{padding:60px 40px 40px;background:rgba(2,4,12,0.95);border-top:1px solid 
       <button onclick="handleSignup()" id="signup-btn" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:700;color:#fff;background:linear-gradient(135deg,#1a3ac9,#2e55f0);border:none;border-radius:14px;padding:16px 28px;cursor:pointer;box-shadow:0 4px 20px rgba(29,56,196,0.3);white-space:nowrap;transition:all 0.2s;">Get first access →</button>
     </div>
     <p id="signup-success" style="display:none;font-size:14px;font-weight:600;color:rgba(30,140,70,0.8);margin-bottom:12px;">✓ You're in. Check your inbox — something good is coming.</p>
+    <p id="signup-error" style="display:none;font-size:14px;font-weight:600;color:rgba(200,60,60,0.8);margin-bottom:12px;">Something went wrong. Please try again.</p>
     <p style="font-size:12px;color:rgba(7,17,64,0.25);letter-spacing:0.04em;">No spam. No card. Unsubscribe anytime.</p>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:36px;text-align:left;">
       <div style="background:rgba(29,56,196,0.05);border:1px solid rgba(29,56,196,0.1);border-radius:16px;padding:20px;"><div style="font-size:18px;margin-bottom:8px;">📬</div><div style="font-size:13px;font-weight:700;color:#071140;margin-bottom:4px;">First access</div><div style="font-size:12px;color:rgba(7,17,64,0.4);line-height:1.5;">You'll be first through the door when Cadi opens. Before the public.</div></div>
@@ -705,15 +706,41 @@ function setPlan(plan){
     togM.style.cssText='font-family:\'Plus Jakarta Sans\',sans-serif;font-size:13px;font-weight:600;padding:10px 28px;border-radius:100px;border:none;cursor:pointer;transition:all 0.2s;background:none;color:rgba(7,17,64,0.4);';
   }
 }
-function handleSignup(){
-  const email=document.getElementById('email-input').value;
-  if(!email||!email.includes('@')){document.getElementById('email-input').style.borderColor='rgba(200,60,60,0.4)';return;}
-  // TODO: Connect to Loops API
-  // const variant=sessionStorage.getItem('cta_variant')||'unknown';
-  // fetch('https://app.loops.so/api/v1/contacts/create',{method:'POST',headers:{'Authorization':'Bearer YOUR_LOOPS_API_KEY','Content-Type':'application/json'},body:JSON.stringify({email,source:'homepage-waitlist',cta_variant:variant})})
-  document.getElementById('signup-success').style.display='block';
-  document.getElementById('email-input').value='';
-  document.getElementById('email-input').style.borderColor='rgba(30,140,70,0.4)';
+const LOOPS_FORM_URL='https://app.loops.so/api/newsletter-form/cmo7imr0303zm0iwrpkpy9dao';
+async function handleSignup(){
+  const input=document.getElementById('email-input');
+  const success=document.getElementById('signup-success');
+  const errorEl=document.getElementById('signup-error');
+  const email=input.value.trim();
+  success.style.display='none';
+  errorEl.style.display='none';
+  if(!email||!email.includes('@')){input.style.borderColor='rgba(200,60,60,0.4)';return;}
+  const last=Number(localStorage.getItem('loops-form-timestamp')||0);
+  if(last&&Date.now()-last<60000){
+    errorEl.textContent='Too many signups — try again in a minute.';
+    errorEl.style.display='block';
+    return;
+  }
+  const variant=sessionStorage.getItem('cta_variant')||'unknown';
+  try{
+    const res=await fetch(LOOPS_FORM_URL,{
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body:'userGroup=&mailingLists=&email='+encodeURIComponent(email)+'&ctaVariant='+encodeURIComponent(variant)
+    });
+    if(!res.ok){
+      const data=await res.json().catch(()=>({}));
+      throw new Error(data.message||res.statusText||'Signup failed');
+    }
+    localStorage.setItem('loops-form-timestamp',String(Date.now()));
+    success.style.display='block';
+    input.value='';
+    input.style.borderColor='rgba(30,140,70,0.4)';
+  }catch(err){
+    errorEl.textContent=err.message||'Something went wrong. Please try again.';
+    errorEl.style.display='block';
+    input.style.borderColor='rgba(200,60,60,0.4)';
+  }
 }
 document.getElementById('email-input')?.addEventListener('keydown',e=>{if(e.key==='Enter')handleSignup();});
 
