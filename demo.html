@@ -374,6 +374,49 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
 .btn-ghost2:hover{border-color:rgba(255,255,255,0.22);color:rgba(255,255,255,0.7);}
 .res-note{font-size:11px;color:rgba(255,255,255,0.16);margin-top:12px;letter-spacing:0.04em;}
 
+/* DEMO MODE BANNER */
+.demo-banner{display:none;position:sticky;top:56px;z-index:150;margin:0 auto 14px;max-width:1200px;padding:0 24px;}
+.demo-banner.show{display:block;animation:fadeUp 0.35s var(--ease) both;}
+.demo-banner-inner{background:linear-gradient(90deg,rgba(59,91,255,0.14),rgba(59,91,255,0.06));border:1px solid rgba(59,91,255,0.28);border-radius:12px;padding:9px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;backdrop-filter:blur(14px);}
+.db-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:blink 2s ease-in-out infinite;flex-shrink:0;}
+.db-label{font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--blue);}
+.db-sep{width:1px;height:14px;background:rgba(255,255,255,0.12);}
+.db-text{font-size:12px;color:rgba(255,255,255,0.78);font-weight:500;}
+.db-text strong{color:#fff;font-weight:700;}
+.db-pill{font-size:10px;font-weight:600;color:rgba(168,196,255,0.85);background:rgba(59,91,255,0.12);border:1px solid rgba(59,91,255,0.25);border-radius:100px;padding:3px 10px;}
+.db-spacer{flex:1;}
+.db-cta{font-size:11px;font-weight:700;color:#fff;background:var(--blue);border:none;border-radius:7px;padding:6px 14px;cursor:pointer;text-decoration:none;transition:all 0.2s;}
+.db-cta:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(59,91,255,0.45);}
+@media(max-width:700px){.demo-banner{top:52px;padding:0 12px;}.db-sep,.db-spacer,.db-pill.hide-mob{display:none;}}
+
+/* TOAST */
+.toast-stack{position:fixed;top:78px;right:20px;z-index:300;display:flex;flex-direction:column;gap:8px;pointer-events:none;}
+.toast{background:rgba(10,21,53,0.95);border:1px solid rgba(0,196,140,0.35);border-left:3px solid var(--green);border-radius:10px;padding:11px 16px 11px 13px;display:flex;align-items:flex-start;gap:10px;min-width:260px;max-width:340px;box-shadow:0 12px 40px rgba(0,0,0,0.5);backdrop-filter:blur(18px);animation:toastIn 0.35s var(--ease) both;pointer-events:auto;}
+.toast.out{animation:toastOut 0.3s var(--ease) both;}
+.toast-icon{font-size:16px;line-height:1.2;flex-shrink:0;}
+.toast-body{flex:1;}
+.toast-title{font-size:12px;font-weight:700;color:#fff;margin-bottom:2px;}
+.toast-msg{font-size:11px;color:rgba(255,255,255,0.65);line-height:1.45;}
+@keyframes toastIn{from{opacity:0;transform:translateX(20px);}to{opacity:1;transform:translateX(0);}}
+@keyframes toastOut{to{opacity:0;transform:translateX(20px);}}
+
+/* NEW JOB HIGHLIGHT */
+.job.job-new{animation:popIn 0.5s var(--ease) both;box-shadow:0 0 0 2px rgba(0,196,140,0.6),0 0 18px rgba(0,196,140,0.35);}
+
+/* LOCKED SIDEBAR ITEMS — preview only */
+.sb-item.sb-locked{opacity:0.38;cursor:help;}
+.sb-item.sb-locked:hover{background:rgba(255,255,255,0.025);color:rgba(255,255,255,0.5);opacity:0.55;}
+.sb-item.sb-locked .sb-dot{display:none;}
+.sb-item.sb-locked::after{content:'🔒';margin-left:auto;font-size:10px;opacity:0.5;filter:grayscale(1);}
+.sb-preview-tag{font-size:8px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.28);padding:0 14px 4px;}
+
+/* TRY-ME PULSE — highlights the primary interactive anchor per panel */
+.try-me{position:relative;}
+.try-me::after{content:'';position:absolute;inset:-4px;border-radius:calc(var(--radius-sm) + 4px);pointer-events:none;box-shadow:0 0 0 0 rgba(59,91,255,0.5);animation:tryPulse 2.4s ease-in-out infinite;}
+@keyframes tryPulse{0%,100%{box-shadow:0 0 0 0 rgba(59,91,255,0);}50%{box-shadow:0 0 0 4px rgba(59,91,255,0.35),0 0 22px rgba(59,91,255,0.25);}}
+.try-me-hint{font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(168,196,255,0.7);margin-top:8px;display:flex;align-items:center;gap:6px;}
+.try-me-hint::before{content:'👇';font-size:11px;}
+
 @media(max-width:900px){
   .mkt-nav{padding:12px 20px;}.nav-links{display:none;}
   .hero{padding:100px 20px 40px;}.setup-screen{padding:0 20px 40px;}
@@ -440,6 +483,22 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
   </div>
 </div>
 
+<!-- DEMO MODE BANNER -->
+<div class="demo-banner" id="demoBanner">
+  <div class="demo-banner-inner">
+    <span class="db-dot"></span>
+    <span class="db-label">Demo mode</span>
+    <span class="db-sep"></span>
+    <span class="db-text">Logged in as <strong id="dbBiz">Mackies Cleaning</strong></span>
+    <span class="db-pill hide-mob">Free trial · Day 1 of 14</span>
+    <span class="db-spacer"></span>
+    <a href="/#access" class="db-cta">Claim this account →</a>
+  </div>
+</div>
+
+<!-- TOAST STACK -->
+<div class="toast-stack" id="toastStack"></div>
+
 <!-- APP SHELL -->
 <div class="app-shell" id="appShell">
   <div class="app-frame">
@@ -451,20 +510,22 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
         <div class="sb-plan">Growth Plan</div>
       </div>
       <div class="sb-nav">
+        <div class="sb-preview-tag">In this demo</div>
         <div class="sb-item active" onclick="goToStep(0,this)"><span class="sb-icon">📊</span>Dashboard<span class="sb-dot"></span></div>
         <div class="sb-item" onclick="goToStep(1,this)"><span class="sb-icon">💰</span>Pricing<span class="sb-dot"></span></div>
         <div class="sb-item" onclick="goToStep(2,this)"><span class="sb-icon">📅</span>Scheduler<span class="sb-dot"></span></div>
-        <div class="sb-item"><span class="sb-icon">👤</span>Customers<span class="sb-dot"></span></div>
-        <div class="sb-item"><span class="sb-icon">📦</span>Inventory<span class="sb-dot"></span></div>
-        <div class="sb-item"><span class="sb-icon">£</span>Money<span class="sb-dot"></span></div>
         <div class="sb-item" onclick="goToStep(3,this)"><span class="sb-icon">🧾</span>Invoices<span class="sb-dot"></span></div>
-        <div class="sb-item"><span class="sb-icon">📒</span>Accounts<span class="sb-dot"></span></div>
-        <div class="sb-item"><span class="sb-icon">🗺️</span>Routes<span class="sb-dot"></span></div>
+        <div class="sb-preview-tag">Also in Cadi</div>
+        <div class="sb-item sb-locked" onclick="lockedNudge('Customers','Manage clients, addresses, service history, preferences — 20 free on the free plan.')"><span class="sb-icon">👤</span>Customers</div>
+        <div class="sb-item sb-locked" onclick="lockedNudge('Inventory','Track stock levels, reorder points, supplier details across all your vehicles.')"><span class="sb-icon">📦</span>Inventory</div>
+        <div class="sb-item sb-locked" onclick="lockedNudge('Money','Live P&amp;L, tax reserve, MTD figures — updated the moment an invoice is paid.')"><span class="sb-icon">£</span>Money</div>
+        <div class="sb-item sb-locked" onclick="lockedNudge('Accounts','Self-assessment-ready books. Export the HMRC file in one click.')"><span class="sb-icon">📒</span>Accounts</div>
+        <div class="sb-item sb-locked" onclick="lockedNudge('Routes','Optimised day routes across your team — cuts fuel + drive time by 20%.')"><span class="sb-icon">🗺️</span>Routes</div>
         <div class="sb-section">More</div>
-        <div class="sb-item"><span class="sb-icon">🔬</span>Business Lab<span class="sb-dot"></span></div>
-        <div class="sb-item"><span class="sb-icon">👥</span>Staff<span class="sb-dot"></span></div>
-        <div class="sb-item"><span class="sb-icon">📋</span>Annual Review<span class="sb-dot"></span></div>
-        <div class="sb-item"><span class="sb-icon">⚙️</span>Settings<span class="sb-dot"></span></div>
+        <div class="sb-item sb-locked" onclick="lockedNudge('Business Lab','Experiments, A/B tests, and benchmarking against other UK cleaners.')"><span class="sb-icon">🔬</span>Business Lab</div>
+        <div class="sb-item sb-locked" onclick="lockedNudge('Staff','Rotas, payroll, timesheets, holiday tracking for your team.')"><span class="sb-icon">👥</span>Staff</div>
+        <div class="sb-item sb-locked" onclick="lockedNudge('Annual Review','90-day sprints, year goals, retrospectives — the planning layer.')"><span class="sb-icon">📋</span>Annual Review</div>
+        <div class="sb-item sb-locked" onclick="lockedNudge('Settings','Branding, payment gateways, integrations, team roles.')"><span class="sb-icon">⚙️</span>Settings</div>
       </div>
     </div>
     <!-- MAIN -->
@@ -717,15 +778,8 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
             </div>
             <div>
               <div class="inv-card">
-                <div class="fl">Quick add — Residential</div>
-                <div class="qa-chips">
-                  <div class="qa" onclick="addLI('Regular clean','65.00')">+ Regular clean</div>
-                  <div class="qa" onclick="addLI('Deep clean','130.00')">+ Deep clean</div>
-                  <div class="qa" onclick="addLI('End of tenancy clean','195.00')">+ End of tenancy clean</div>
-                  <div class="qa" onclick="addLI('Oven clean','55.00')">+ Oven clean</div>
-                  <div class="qa" onclick="addLI('Carpet clean','80.00')">+ Carpet clean</div>
-                  <div class="qa" onclick="addLI('Spring clean','100.00')">+ Spring clean</div>
-                </div>
+                <div class="fl" id="qaHeading">Quick add — Residential</div>
+                <div class="qa-chips" id="qaChips"></div>
               </div>
               <div class="inv-card">
                 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;">
@@ -818,12 +872,39 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
 </div>
 
 <script>
-const S={sector:null,scenario:null,step:0,rate:18,mult:1,beds:2,bedTime:2};
+const S={sector:null,scenario:null,step:0,rate:18,mult:1,beds:2,bedTime:2,lastPrice:72,schedJobInjected:false};
 const SD={
   solo:   {jobs:8,rev:'£524',comp:'3 / 8',un:1,rank:'#20',score:62,count:21,hl:'Good foundation — room to grow',hs:'3 areas will push your score over 70 this month.',ai:'17 pts to unlock Good tier'},
   team:   {jobs:14,rev:'£1,240',comp:'6 / 14',un:0,rank:'#8',score:74,count:38,hl:'Strong business — scaling well',hs:'Retention rate is excellent. Payroll setup puts you in the top 10.',ai:'6 pts to unlock Elite tier'},
   scaling:{jobs:22,rev:'£3,850',comp:'15 / 22',un:0,rank:'#3',score:81,count:54,hl:'High performer — top 10% UK',hs:'Two more actions and you crack the top 5 nationally.',ai:'2 pts to unlock Elite tier'}
 };
+const SECTORS={
+  residential:{label:'Residential',pricingTabIdx:0,pricingGreeting:'Quote a house clean in under 20 seconds',customer:{name:'Sarah Mitchell',email:'sarah.mitchell@email.com',phone:'07712 345 678',addr:'42 Maple Close, MK2 2BY'},service:'Fortnightly domestic clean — 3-bed',pillClass:'pill-res',stypeIdx:0,chips:[['Regular clean','65.00'],['Deep clean','130.00'],['End of tenancy clean','195.00'],['Oven clean','55.00'],['Carpet clean','80.00'],['Spring clean','100.00']]},
+  commercial: {label:'Commercial',pricingTabIdx:1,pricingGreeting:'Build a commercial quote with real overhead data',customer:{name:'The Lantern Café',email:'accounts@lanterncafe.co.uk',phone:'07788 112 233',addr:'Unit 4, High Street, MK2 2BY'},service:'Weekly commercial clean — café (open hours)',pillClass:'pill-com',stypeIdx:1,chips:[['Weekly office clean','180.00'],['Daily touch-up clean','65.00'],['Monthly deep clean','350.00'],['Washroom service','95.00'],['Post-build clean','480.00'],['Window clean (interior)','85.00']]},
+  exterior:   {label:'Exterior',pricingTabIdx:2,pricingGreeting:'Price window & exterior jobs by property type',customer:{name:'Chris Patel',email:'chris.p@outlook.com',phone:'07855 443 221',addr:'12 Beech Avenue, MK2 3RY'},service:'Exterior windows & frames — 3-bed house',pillClass:'pill-ext',stypeIdx:2,chips:[['Window clean — 3 bed','45.00'],['Window clean — 4 bed','65.00'],['Gutter clearing','95.00'],['Jet wash — driveway','140.00'],['Fascia & soffit clean','180.00'],['Solar panel clean','120.00']]},
+  mixed:      {label:'Mixed',pricingTabIdx:0,pricingGreeting:'Quote any job — we switch calculators for you',customer:{name:'Sarah Mitchell',email:'sarah.mitchell@email.com',phone:'07712 345 678',addr:'42 Maple Close, MK2 2BY'},service:'Fortnightly domestic clean — 3-bed',pillClass:'pill-res',stypeIdx:0,chips:[['Regular clean','65.00'],['Deep clean','130.00'],['Window clean — 3 bed','45.00'],['Gutter clearing','95.00'],['Jet wash — driveway','140.00'],['Oven clean','55.00']]}
+};
+
+function showToast(title,msg,icon){
+  icon=icon||'✓';
+  const stack=document.getElementById('toastStack');
+  const t=document.createElement('div');
+  t.className='toast';
+  t.innerHTML=`<div class="toast-icon">${icon}</div><div class="toast-body"><div class="toast-title">${title}</div><div class="toast-msg">${msg}</div></div>`;
+  stack.appendChild(t);
+  setTimeout(()=>{t.classList.add('out');setTimeout(()=>t.remove(),320);},4200);
+}
+
+function lockedNudge(name,desc){
+  showToast(name+' — in full Cadi',desc,'🔒');
+}
+
+const TRY_ME_SELECTORS=['#panel0 .sn-next','#panel1 .prop-grid','#panel2 .fix-btn','#panel3 .qa-chips'];
+function applyTryMe(step){
+  document.querySelectorAll('.try-me').forEach(el=>el.classList.remove('try-me'));
+  const el=document.querySelector(TRY_ME_SELECTORS[step]||'');
+  if(el)el.classList.add('try-me');
+}
 
 function selectSector(s,el){S.sector=s;document.querySelectorAll('.sector-card').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');document.getElementById('scenarioSection').classList.add('show');checkR();}
 function selectScenario(sc,el){S.scenario=sc;document.querySelectorAll('.scenario-card').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');checkR();}
@@ -833,12 +914,14 @@ function startDemo(){
   if(!S.sector||!S.scenario)return;
   document.getElementById('setupScreen').style.display='none';
   document.getElementById('appShell').classList.add('show');
+  document.getElementById('demoBanner').classList.add('show');
   document.getElementById('demoProgress').style.display='block';
   initApp();goToStep(0);
+  setTimeout(()=>showToast('Welcome to Cadi','You\'re logged in on a free trial. Poke around — nothing you do here is saved.','👋'),600);
 }
 
 function initApp(){
-  const d=SD[S.scenario];
+  const d=SD[S.scenario],sec=SECTORS[S.sector]||SECTORS.residential;
   const now=new Date();
   document.getElementById('dashDate').textContent=now.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'});
   document.getElementById('ssJobs').textContent=d.jobs;
@@ -852,15 +935,35 @@ function initApp(){
   document.getElementById('aiPts').textContent=d.ai;
   document.getElementById('hcLabel').textContent=d.hl;
   document.getElementById('hcSub').textContent=d.hs;
+  // Highlight active sector pill in top bar
+  document.querySelectorAll('.atb-pill').forEach(p=>{p.style.opacity=p.classList.contains(sec.pillClass)?'1':'0.35';p.style.fontWeight=p.classList.contains(sec.pillClass)?'700':'500';});
+  // Switch pricing tab to match sector
+  const tabs=document.querySelectorAll('.pt-tab');
+  tabs.forEach((t,i)=>t.classList.toggle('active',i===sec.pricingTabIdx));
   // Scheduler dates
   const mon=new Date();mon.setDate(mon.getDate()-mon.getDay()+1);
   const sun=new Date(mon);sun.setDate(mon.getDate()+6);
   document.getElementById('sdr').textContent=mon.toLocaleDateString('en-GB',{day:'numeric',month:'short'})+' – '+sun.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
   for(let i=0;i<7;i++){const d2=new Date(mon);d2.setDate(mon.getDate()+i);document.getElementById('cd'+i).textContent=d2.getDate();}
-  // Invoice
+  // Invoice — prefill with sector's customer + service
+  const inv=document.querySelectorAll('#panel3 .inv-card:first-child .fi');
+  if(inv[0])inv[0].value=sec.customer.name;
+  if(inv[1])inv[1].value=sec.customer.email;
+  if(inv[2])inv[2].value=sec.customer.phone;
+  if(inv[3])inv[3].value=sec.customer.addr;
+  const liDesc=document.querySelector('#liContainer .li-row .li-in');
+  if(liDesc)liDesc.value=sec.service;
+  // Quick-add chips + heading + service type — sector-aware
+  document.getElementById('qaHeading').textContent='Quick add — '+sec.label;
+  const chipsEl=document.getElementById('qaChips');
+  chipsEl.innerHTML=sec.chips.map(([n,p])=>`<div class="qa" data-name="${n.replace(/&/g,'&amp;').replace(/"/g,'&quot;')}" data-price="${p}">+ ${n}</div>`).join('');
+  chipsEl.onclick=(e)=>{const t=e.target.closest('.qa');if(t)addLI(t.dataset.name,t.dataset.price);};
+  document.querySelectorAll('.stype-row .stype').forEach((el,i)=>el.classList.toggle('sel',i===sec.stypeIdx));
   document.getElementById('invDate').value=now.toLocaleDateString('en-GB');
   const due=new Date();due.setDate(due.getDate()+14);
   document.getElementById('invDue').textContent=due.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+  // Invoice tip + send message reflect the actual customer email
+  document.getElementById('invSentMsg').textContent='✓ Invoice sent to '+sec.customer.email+' · Payment link included · Accounts updated automatically.';
 }
 
 const topbarMap=[
@@ -869,6 +972,7 @@ const topbarMap=[
 ];
 
 function goToStep(step,sbEl){
+  const prev=S.step;
   S.step=step;
   document.querySelectorAll('.app-panel').forEach((p,i)=>p.classList.toggle('show',i===step));
   document.querySelectorAll('.sb-item').forEach(s=>s.classList.remove('active'));
@@ -884,7 +988,53 @@ function goToStep(step,sbEl){
   const tb=topbarMap[step];
   if(tb){document.getElementById('atbSection').textContent=tb.s;document.getElementById('atbTitle').textContent=tb.t;}
   if(step===0)animateDash();
+  applyTryMe(step);
+  // Carry-through: pricing → scheduler injects the quoted job
+  if(prev===1&&step===2&&!S.schedJobInjected)setTimeout(injectPricedJob,350);
+  // Carry-through: scheduler → invoice pre-fills with the quoted amount
+  if(prev===2&&step===3)setTimeout(syncInvoiceWithQuote,250);
   document.getElementById('appShell').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function injectPricedJob(){
+  const sec=SECTORS[S.sector]||SECTORS.residential;
+  // Thursday 9am cell (index 4 in body: time=7am row, 7 cells per hour; 9am row start = 1+7+1+7+1 = 17, Thu=17+4=21)
+  // Simpler: target Thursday 9am by iterating
+  const body=document.querySelector('.cal-body');if(!body)return;
+  // Find the 9am row's Thu cell — the 3rd time-row, 4th cell after that time label
+  const children=[...body.children];
+  const timeLabels=children.map((c,i)=>({c,i})).filter(o=>o.c.classList.contains('cal-time'));
+  if(timeLabels.length<3)return;
+  const thuCellIdx=timeLabels[2].i+4; // 9am label + Thu offset (Mon=1, Tue=2, Wed=3, Thu=4)
+  const thuCell=children[thuCellIdx];
+  if(!thuCell)return;
+  const jobClass=S.sector==='exterior'?'job-ext':(S.sector==='commercial'?'job-com':'job-res');
+  const price=S.lastPrice||72;
+  const job=document.createElement('div');
+  job.className='job '+jobClass+' job-new';
+  job.innerHTML=`<div class="job-n">${sec.customer.name}</div><div class="job-t">Just quoted · ${S.bedTime||2}h</div><div class="job-p">£${price}</div>`;
+  thuCell.appendChild(job);
+  // Update Thursday total
+  const thuHdr=document.getElementById('cd3')?.parentElement?.querySelector('.dr');
+  if(thuHdr){thuHdr.textContent='£'+price;thuHdr.style.color='var(--green)';}
+  // Bump job count + revenue
+  const jobsEl=document.getElementById('ssJobs');
+  if(jobsEl){jobsEl.textContent=(parseInt(jobsEl.textContent)||0)+1;}
+  S.schedJobInjected=true;
+  showToast('Quote saved',`${sec.customer.name} — £${price}. Added to Thursday 9am.`,'📅');
+}
+
+function syncInvoiceWithQuote(){
+  const sec=SECTORS[S.sector]||SECTORS.residential;
+  const price=S.lastPrice||72;
+  const firstLi=document.querySelector('#liContainer .li-row');
+  if(firstLi){
+    const ins=firstLi.querySelectorAll('input');
+    if(ins[0])ins[0].value=sec.service;
+    if(ins[2])ins[2].value=price.toFixed(2);
+    calcTot();
+  }
+  showToast('Pre-filled for you',`${sec.customer.name} · £${price} — pulled from your quote.`,'🧾');
 }
 
 function animateDash(){
@@ -909,6 +1059,7 @@ function setP(beds,hours,el){document.querySelectorAll('.pb').forEach(x=>x.class
 function setPTab(el){document.querySelectorAll('.pt-tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');}
 function updateBD(){
   const rate=S.rate,price=Math.round(rate*S.bedTime*S.mult);
+  S.lastPrice=price;
   const tax=price*.2,ni=price*.09,net=price-tax-ni,margin=Math.round((net/price)*100);
   document.getElementById('pbQ').textContent='£'+price.toFixed(2);
   document.getElementById('pbC').textContent='£'+price.toFixed(2);
@@ -961,10 +1112,13 @@ function calcTot(){
   document.getElementById('invTot').textContent='£'+tot.toFixed(2);
 }
 function sendInv(){
+  const sec=SECTORS[S.sector]||SECTORS.residential;
+  const total=document.getElementById('invTot').textContent;
   document.getElementById('invSendBtn').textContent='✓ Sent';
   document.getElementById('invSendBtn').style.background='var(--green)';
   document.getElementById('invSendBtn').disabled=true;
   document.getElementById('invSentMsg').style.display='block';
+  showToast('Invoice sent',`${total} to ${sec.customer.name}. Accounts + tax reserve updated.`,'💸');
 }
 
 // RESULTS
