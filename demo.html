@@ -410,20 +410,23 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
 /* NEW JOB HIGHLIGHT */
 .job.job-new{animation:popIn 0.5s var(--ease) both;box-shadow:0 0 0 2px rgba(0,196,140,0.6),0 0 18px rgba(0,196,140,0.35);}
 
-/* PRICING TAB LOCK */
+/* PRICING TAB LOCK — preview visible behind a floating CTA */
 .pt-tab.pt-locked{position:relative;}
 .pt-tab.pt-locked::after{content:'🔒';font-size:10px;margin-left:6px;opacity:0.55;}
 .pricing-body-wrap{position:relative;}
-.pricing-lock{display:none;position:absolute;inset:0;background:rgba(6,13,36,0.82);backdrop-filter:blur(6px);border-radius:var(--radius);z-index:5;align-items:center;justify-content:center;padding:24px;animation:fadeUp 0.3s var(--ease) both;}
-.pricing-lock.show{display:flex;}
-.pl-inner{max-width:420px;text-align:center;}
-.pl-icon{font-size:36px;margin-bottom:14px;}
-.pl-title{font-family:var(--font-brand);font-size:22px;font-weight:800;letter-spacing:-0.02em;color:#fff;margin-bottom:8px;}
-.pl-sub{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.55;margin-bottom:20px;}
-.pl-cta{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-app);font-size:13px;font-weight:700;color:#fff;background:var(--blue);border:none;border-radius:10px;padding:12px 24px;cursor:pointer;box-shadow:0 4px 22px rgba(59,91,255,0.45);text-decoration:none;transition:all 0.2s;}
-.pl-cta:hover{box-shadow:0 6px 30px rgba(59,91,255,0.6);transform:translateY(-1px);}
-.pl-hint{font-size:11px;color:rgba(255,255,255,0.35);margin-top:14px;}
-.pl-hint a{color:rgba(168,196,255,0.8);text-decoration:underline;cursor:pointer;}
+.pricing-body-preview{display:none;pointer-events:none;filter:saturate(0.9);opacity:0.92;}
+.pricing-body-preview.show{display:grid;grid-template-columns:1fr 300px;gap:14px;}
+@media(max-width:900px){.pricing-body-preview.show{grid-template-columns:1fr;}}
+.pricing-lock{display:none;position:absolute;left:50%;bottom:18px;transform:translateX(-50%);max-width:560px;width:calc(100% - 32px);z-index:5;animation:fadeUp 0.3s var(--ease) both;}
+.pricing-lock.show{display:block;}
+.pl-inner{background:linear-gradient(135deg,rgba(10,21,53,0.97),rgba(19,33,82,0.97));border:1px solid rgba(59,91,255,0.4);border-radius:14px;padding:16px 20px;display:flex;align-items:center;gap:16px;backdrop-filter:blur(18px);box-shadow:0 18px 60px rgba(0,0,0,0.55),0 0 0 1px rgba(59,91,255,0.15) inset;}
+.pl-icon{font-size:28px;flex-shrink:0;}
+.pl-text{flex:1;min-width:0;}
+.pl-title{font-family:var(--font-brand);font-size:15px;font-weight:800;letter-spacing:-0.01em;color:#fff;margin-bottom:2px;}
+.pl-sub{font-size:11px;color:rgba(255,255,255,0.55);line-height:1.45;}
+.pl-cta{display:inline-flex;align-items:center;gap:5px;font-family:var(--font-app);font-size:12px;font-weight:700;color:#fff;background:var(--blue);border:none;border-radius:8px;padding:10px 16px;cursor:pointer;box-shadow:0 4px 16px rgba(59,91,255,0.4);text-decoration:none;transition:all 0.2s;flex-shrink:0;white-space:nowrap;}
+.pl-cta:hover{box-shadow:0 6px 22px rgba(59,91,255,0.55);transform:translateY(-1px);}
+@media(max-width:700px){.pl-inner{flex-direction:column;text-align:center;gap:12px;padding:14px 16px;}.pl-text{text-align:center;}}
 
 /* LOCKED SIDEBAR ITEMS — preview only */
 .sb-item.sb-locked{opacity:0.38;cursor:help;}
@@ -632,14 +635,15 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
           <div class="pricing-body-wrap">
             <div class="pricing-lock" id="pricingLock">
               <div class="pl-inner">
-                <div class="pl-icon" id="plIcon">🔒</div>
-                <div class="pl-title" id="plTitle">Commercial calculator</div>
-                <div class="pl-sub" id="plSub">Cost-plus quoting with overheads, team rates and contract discounts — built for commercial jobs.</div>
+                <div class="pl-icon" id="plIcon">🏢</div>
+                <div class="pl-text">
+                  <div class="pl-title" id="plTitle">Commercial calculator — locked</div>
+                  <div class="pl-sub" id="plSub">Live in the full Cadi. Claim your founding spot to unlock it.</div>
+                </div>
                 <a href="/#access" class="pl-cta">Get first access →</a>
-                <div class="pl-hint">or <a onclick="setPTabByName('residential')">try the Residential calculator</a></div>
               </div>
             </div>
-          <div class="pricing-body">
+          <div class="pricing-body pricing-body-sector" id="pricingBodyRes">
             <div>
               <div class="p-card">
                 <div class="p-title">Your hourly rate</div>
@@ -707,6 +711,124 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
               </div>
             </div>
           </div>
+
+          <!-- COMMERCIAL PREVIEW -->
+          <div class="pricing-body-preview" id="pricingBodyCom">
+            <div>
+              <div class="p-card">
+                <div class="p-title">Contract setup</div>
+                <div class="p-sub">Build ongoing commercial contracts with cost-plus pricing</div>
+                <div class="fl" style="margin-top:14px;">Property type</div>
+                <div class="presets" style="margin-bottom:14px;">
+                  <button class="preset sel">Office</button>
+                  <button class="preset">Retail</button>
+                  <button class="preset">School</button>
+                  <button class="preset">Industrial</button>
+                  <button class="preset">Healthcare</button>
+                </div>
+                <div class="fl">Site size</div>
+                <div class="rate-display">
+                  <span class="rate-inp" style="width:auto;">4,200</span>
+                  <span class="rate-per">sq ft</span>
+                  <span class="rate-sync">✓ Auto-measured</span>
+                </div>
+                <div class="fl" style="margin-top:6px;">Visit frequency</div>
+                <div class="clean-grid">
+                  <div class="ct">Daily<span class="ctm">5×/wk</span></div>
+                  <div class="ct sel">Weekly<span class="ctm">1×</span></div>
+                  <div class="ct">Fortnightly<span class="ctm">0.5×</span></div>
+                  <div class="ct">Monthly<span class="ctm">0.25×</span></div>
+                </div>
+              </div>
+              <div class="p-card">
+                <div class="p-title">Cost build-up</div>
+                <div class="pbrows">
+                  <div class="pbrow"><div class="pbrow-l">Labour · 2 cleaners × 3h</div><div class="pbrow-v v-white">£54.00</div></div>
+                  <div class="pbrow"><div class="pbrow-l">Materials + consumables</div><div class="pbrow-v v-white">£8.50</div></div>
+                  <div class="pbrow"><div class="pbrow-l">Travel + fuel</div><div class="pbrow-v v-white">£6.00</div></div>
+                  <div class="pbrow"><div class="pbrow-l">Overheads (12%)</div><div class="pbrow-v v-white">£8.22</div></div>
+                  <div class="pbrow" style="font-weight:700;"><div class="pbrow-l" style="color:#fff;font-weight:700;">Subtotal cost</div><div class="pbrow-v v-white">£76.72</div></div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="profit-card">
+                <div class="pb-hdr"><div class="pb-title">CONTRACT SUMMARY</div><div class="pb-margin-label">35% margin <span class="pb-tag">Strong</span></div></div>
+                <div class="pb-bar"><div class="pb-bar-fill" style="width:35%;"></div></div>
+                <div class="tgt-row"><span class="tgt-l">Target margin</span><span class="tgt-v">30%</span></div>
+                <div class="pbrows" style="margin-top:14px;">
+                  <div class="pbrow"><div class="pbrow-l">Per visit</div><div class="pbrow-bar"><div class="pbrow-fill f-blue" style="width:100%;"></div></div><div class="pbrow-v v-white">£118.00</div></div>
+                  <div class="pbrow"><div class="pbrow-l">Weekly value</div><div class="pbrow-bar"><div class="pbrow-fill f-blue" style="width:100%;"></div></div><div class="pbrow-v v-white">£118.00</div></div>
+                  <div class="pbrow"><div class="pbrow-l">Monthly value</div><div class="pbrow-bar"><div class="pbrow-fill f-blue" style="width:100%;"></div></div><div class="pbrow-v v-white">£512.00</div></div>
+                  <div class="pbrow" style="font-weight:700;"><div class="pbrow-l" style="color:#fff;font-weight:700;">Annual contract</div><div class="pbrow-bar"><div class="pbrow-fill f-green" style="width:100%;"></div></div><div class="pbrow-v v-green">£6,136</div></div>
+                </div>
+                <div class="pbd">
+                  <div class="pbd-title">Deal quality</div>
+                  <div class="pbd-row"><div><div class="pbd-l">Margin on visit</div><div class="pbd-s">vs 30% target</div></div><div class="pbd-v v-green">37%</div></div>
+                  <div class="pbd-row"><div><div class="pbd-l">Recommended term</div><div class="pbd-s">pays back the sales cost</div></div><div class="pbd-v">12 months</div></div>
+                  <div class="pbd-row"><div><div class="pbd-l">3-year LTV</div></div><div class="pbd-v v-green">£18,408</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXTERIOR PREVIEW -->
+          <div class="pricing-body-preview" id="pricingBodyExt">
+            <div>
+              <div class="p-card">
+                <div class="p-title">Job type</div>
+                <div class="p-sub">Price any exterior job — windows, gutters, jet wash, solar</div>
+                <div class="clean-grid" style="grid-template-columns:repeat(3,1fr);">
+                  <div class="ct sel">Windows<span class="ctm">standard rate</span></div>
+                  <div class="ct">Gutters<span class="ctm">×1.8</span></div>
+                  <div class="ct">Fascia &amp; soffit<span class="ctm">×2.2</span></div>
+                  <div class="ct">Jet wash<span class="ctm">by sqm</span></div>
+                  <div class="ct">Solar panels<span class="ctm">per panel</span></div>
+                  <div class="ct">Conservatory<span class="ctm">×2.5</span></div>
+                </div>
+              </div>
+              <div class="p-card">
+                <div class="p-title">Property size</div>
+                <div class="p-sub">Ladder access + route cluster factored in</div>
+                <div class="prop-grid">
+                  <div class="pb">2 bed<span class="pbp">£25</span><span class="pbt">0.5h</span></div>
+                  <div class="pb sel">3 bed<span class="pbp">£35</span><span class="pbt">0.75h</span></div>
+                  <div class="pb">4 bed<span class="pbp">£50</span><span class="pbt">1h</span></div>
+                  <div class="pb">5 bed+<span class="pbp">£70</span><span class="pbt">1.25h</span></div>
+                  <div class="pb">Commercial<span class="pbp">POA</span><span class="pbt">site visit</span></div>
+                </div>
+              </div>
+              <div class="p-card">
+                <div class="p-title">Route cluster</div>
+                <div class="pbrows">
+                  <div class="pbrow"><div class="pbrow-l">Postcode</div><div class="pbrow-v v-white">MK2 · Bletchley</div></div>
+                  <div class="pbrow"><div class="pbrow-l">Neighbours on route</div><div class="pbrow-v v-green">4 within 300m</div></div>
+                  <div class="pbrow"><div class="pbrow-l">Route discount</div><div class="pbrow-v v-green">–£3.00</div></div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="profit-card">
+                <div class="pb-hdr"><div class="pb-title">JOB PRICE</div><div class="pb-margin-label">88% margin <span class="pb-tag">Strong</span></div></div>
+                <div class="pb-bar"><div class="pb-bar-fill" style="width:88%;"></div></div>
+                <div class="tgt-row"><span class="tgt-l">Target margin</span><span class="tgt-v">70%</span></div>
+                <div class="pbrows" style="margin-top:14px;">
+                  <div class="pbrow"><div class="pbrow-l">Base price</div><div class="pbrow-bar"><div class="pbrow-fill f-blue" style="width:100%;"></div></div><div class="pbrow-v v-white">£35.00</div></div>
+                  <div class="pbrow"><div class="pbrow-l">Route discount</div><div class="pbrow-bar"><div class="pbrow-fill f-red" style="width:10%;"></div></div><div class="pbrow-v v-red">–£3.00</div></div>
+                  <div class="pbrow"><div class="pbrow-l">Quoted to client</div><div class="pbrow-bar"><div class="pbrow-fill f-blue" style="width:100%;"></div></div><div class="pbrow-v v-white">£32.00</div></div>
+                  <div class="pbrow"><div class="pbrow-l">Materials + water</div><div class="pbrow-bar"><div class="pbrow-fill f-red" style="width:5%;"></div></div><div class="pbrow-v v-red">–£1.20</div></div>
+                  <div class="pbrow" style="font-weight:700;"><div class="pbrow-l" style="color:#fff;font-weight:700;">Net profit</div><div class="pbrow-bar"><div class="pbrow-fill f-green" style="width:88%;"></div></div><div class="pbrow-v v-green">£30.80</div></div>
+                </div>
+                <div class="pbd">
+                  <div class="pbd-title">Repeat value</div>
+                  <div class="pbd-row"><div><div class="pbd-l">Every 6 weeks</div></div><div class="pbd-v">£32.00</div></div>
+                  <div class="pbd-row"><div><div class="pbd-l">Annual from this client</div></div><div class="pbd-v v-green">£278</div></div>
+                  <div class="pbd-row"><div><div class="pbd-l">+ 4 neighbours · 2 yr LTV</div></div><div class="pbd-v v-green">£2,780</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           </div>
           <div class="step-nav">
             <button class="sn-back" onclick="goToStep(0)">← Back</button>
@@ -1101,15 +1223,24 @@ function setR(r,el){document.querySelectorAll('.preset').forEach(x=>x.classList.
 function setCT(m,el){document.querySelectorAll('.ct').forEach(x=>x.classList.remove('sel'));el.classList.add('sel');S.mult=m;const types={1:'Regular clean',2:'Deep clean',3:'End of tenancy',1.5:'One-off clean'};document.getElementById('pbdType').textContent=types[m]||'Regular clean';updateP();}
 function setP(beds,hours,el){document.querySelectorAll('.pb').forEach(x=>x.classList.remove('sel'));el.classList.add('sel');S.beds=beds;S.bedTime=hours;updateBD();}
 const PRICING_LOCK_COPY={
-  commercial:{icon:'🏢',title:'Commercial calculator',sub:'Cost-plus quoting with overheads, team rates and contract discounts — built for commercial jobs. Live in the full Cadi.'},
-  exterior:  {icon:'🪟',title:'Exterior calculator',sub:'Price windows, gutters, jet-wash and one-offs by property type — including ladder/height surcharges. Live in the full Cadi.'}
+  commercial:{icon:'🏢',title:'Commercial calculator — locked',sub:'Cost-plus quoting with overheads, team rates and contract discounts.'},
+  exterior:  {icon:'🪟',title:'Exterior calculator — locked',sub:'Property-based pricing with ladder, access and route-cluster logic.'}
 };
 function setPTab(el){
   document.querySelectorAll('.pt-tab').forEach(x=>x.classList.remove('active'));
   el.classList.add('active');
   const tab=el.dataset.tab||'residential';
   const lock=document.getElementById('pricingLock');
-  if(tab==='residential'){lock.classList.remove('show');return;}
+  const res=document.getElementById('pricingBodyRes');
+  const com=document.getElementById('pricingBodyCom');
+  const ext=document.getElementById('pricingBodyExt');
+  if(tab==='residential'){
+    res.style.display='';com.classList.remove('show');ext.classList.remove('show');
+    lock.classList.remove('show');return;
+  }
+  res.style.display='none';
+  if(tab==='commercial'){com.classList.add('show');ext.classList.remove('show');}
+  else{ext.classList.add('show');com.classList.remove('show');}
   const c=PRICING_LOCK_COPY[tab];
   document.getElementById('plIcon').textContent=c.icon;
   document.getElementById('plTitle').textContent=c.title;
