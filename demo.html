@@ -410,6 +410,21 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
 /* NEW JOB HIGHLIGHT */
 .job.job-new{animation:popIn 0.5s var(--ease) both;box-shadow:0 0 0 2px rgba(0,196,140,0.6),0 0 18px rgba(0,196,140,0.35);}
 
+/* PRICING TAB LOCK */
+.pt-tab.pt-locked{position:relative;}
+.pt-tab.pt-locked::after{content:'🔒';font-size:10px;margin-left:6px;opacity:0.55;}
+.pricing-body-wrap{position:relative;}
+.pricing-lock{display:none;position:absolute;inset:0;background:rgba(6,13,36,0.82);backdrop-filter:blur(6px);border-radius:var(--radius);z-index:5;align-items:center;justify-content:center;padding:24px;animation:fadeUp 0.3s var(--ease) both;}
+.pricing-lock.show{display:flex;}
+.pl-inner{max-width:420px;text-align:center;}
+.pl-icon{font-size:36px;margin-bottom:14px;}
+.pl-title{font-family:var(--font-brand);font-size:22px;font-weight:800;letter-spacing:-0.02em;color:#fff;margin-bottom:8px;}
+.pl-sub{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.55;margin-bottom:20px;}
+.pl-cta{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-app);font-size:13px;font-weight:700;color:#fff;background:var(--blue);border:none;border-radius:10px;padding:12px 24px;cursor:pointer;box-shadow:0 4px 22px rgba(59,91,255,0.45);text-decoration:none;transition:all 0.2s;}
+.pl-cta:hover{box-shadow:0 6px 30px rgba(59,91,255,0.6);transform:translateY(-1px);}
+.pl-hint{font-size:11px;color:rgba(255,255,255,0.35);margin-top:14px;}
+.pl-hint a{color:rgba(168,196,255,0.8);text-decoration:underline;cursor:pointer;}
+
 /* LOCKED SIDEBAR ITEMS — preview only */
 .sb-item.sb-locked{opacity:0.38;cursor:help;}
 .sb-item.sb-locked:hover{background:rgba(255,255,255,0.025);color:rgba(255,255,255,0.5);opacity:0.55;}
@@ -578,7 +593,7 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
                   <div class="lb-lock-icon">🔒</div>
                   <div class="lb-lock-title">The full leaderboard is live inside Cadi</div>
                   <div class="lb-lock-sub">See how your business ranks against cleaning businesses across the UK — in real time.</div>
-                  <button class="lb-lock-btn" onclick="window.location.href='/founding-200.html'">Get access →</button>
+                  <button class="lb-lock-btn" onclick="window.location.href='/#access'">Get access →</button>
                 </div>
               </div>
             </div>
@@ -611,10 +626,20 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
         <!-- PANEL 1: PRICING -->
         <div class="app-panel" id="panel1">
           <div class="pricing-tabs">
-            <div class="pt-tab active" onclick="setPTab(this)">Residential <span class="pt-sub">Quick quote + room builder</span></div>
-            <div class="pt-tab" onclick="setPTab(this)">Commercial <span class="pt-sub">Cost-build calculator</span></div>
-            <div class="pt-tab" onclick="setPTab(this)">Exterior <span class="pt-sub">Property & one-off jobs</span></div>
+            <div class="pt-tab active" data-tab="residential" onclick="setPTab(this)">Residential <span class="pt-sub">Quick quote + room builder</span></div>
+            <div class="pt-tab pt-locked" data-tab="commercial" onclick="setPTab(this)">Commercial <span class="pt-sub">Cost-build calculator</span></div>
+            <div class="pt-tab pt-locked" data-tab="exterior" onclick="setPTab(this)">Exterior <span class="pt-sub">Property & one-off jobs</span></div>
           </div>
+          <div class="pricing-body-wrap">
+            <div class="pricing-lock" id="pricingLock">
+              <div class="pl-inner">
+                <div class="pl-icon" id="plIcon">🔒</div>
+                <div class="pl-title" id="plTitle">Commercial calculator</div>
+                <div class="pl-sub" id="plSub">Cost-plus quoting with overheads, team rates and contract discounts — built for commercial jobs.</div>
+                <a href="/#access" class="pl-cta">Get first access →</a>
+                <div class="pl-hint">or <a onclick="setPTabByName('residential')">try the Residential calculator</a></div>
+              </div>
+            </div>
           <div class="pricing-body">
             <div>
               <div class="p-card">
@@ -682,6 +707,7 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
                 </div>
               </div>
             </div>
+          </div>
           </div>
           <div class="step-nav">
             <button class="sn-back" onclick="goToStep(0)">← Back</button>
@@ -818,7 +844,7 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
                 <div class="bank-r"><span class="bk">Sort code</span><span class="bv">60-83-71</span></div>
                 <div class="bank-r"><span class="bk">Account no.</span><span class="bv">12345678</span></div>
                 <div class="bank-r"><span class="bk">Reference</span><span class="bv">INV-1044</span></div>
-                <div class="inv-tip"><span>💡</span><span>When this invoice is marked paid, <strong>£65.00</strong> will be logged automatically to your <strong>Accounts tab</strong> — updating your YTD total, tax reserve and MTD figures.</span></div>
+                <div class="inv-tip"><span>💡</span><span>When this invoice is marked paid, <strong id="invTipAmt">£65.00</strong> will be logged automatically to your <strong>Accounts tab</strong> — updating your YTD total, tax reserve and MTD figures.</span></div>
               </div>
               <div class="inv-acts">
                 <button class="inv-save">Save draft</button>
@@ -862,7 +888,7 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
     <div class="ajf2">One-off</div><div class="ajf2">Daily</div><div class="ajf2">Weekly</div>
     <div class="ajf2 sel">Fortnightly</div><div class="ajf2">Monthly</div><div class="ajf2">Quarterly</div>
   </div>
-  <button class="ajf-cta" onclick="closeAJ()">Save & Schedule Recurring</button>
+  <button class="ajf-cta" onclick="saveAJ()">Save & Schedule Recurring</button>
 </div>
 
 <!-- RESULTS -->
@@ -956,9 +982,9 @@ function initApp(){
   document.getElementById('hcSub').textContent=d.hs;
   // Highlight active sector pill in top bar
   document.querySelectorAll('.atb-pill').forEach(p=>{p.style.opacity=p.classList.contains(sec.pillClass)?'1':'0.35';p.style.fontWeight=p.classList.contains(sec.pillClass)?'700':'500';});
-  // Switch pricing tab to match sector
-  const tabs=document.querySelectorAll('.pt-tab');
-  tabs.forEach((t,i)=>t.classList.toggle('active',i===sec.pricingTabIdx));
+  // Pricing always defaults to Residential (the one that actually works); Commercial/Exterior show a lock
+  document.getElementById('pricingLock').classList.remove('show');
+  document.querySelectorAll('.pt-tab').forEach((t,i)=>t.classList.toggle('active',i===0));
   // Scheduler dates
   const mon=new Date();mon.setDate(mon.getDate()-mon.getDay()+1);
   const sun=new Date(mon);sun.setDate(mon.getDate()+6);
@@ -1075,7 +1101,26 @@ function updateP(){
 function setR(r,el){document.querySelectorAll('.preset').forEach(x=>x.classList.remove('sel'));el.classList.add('sel');document.getElementById('rateInp').value=r;updateP();}
 function setCT(m,el){document.querySelectorAll('.ct').forEach(x=>x.classList.remove('sel'));el.classList.add('sel');S.mult=m;const types={1:'Regular clean',2:'Deep clean',3:'End of tenancy',1.5:'One-off clean'};document.getElementById('pbdType').textContent=types[m]||'Regular clean';updateP();}
 function setP(beds,hours,el){document.querySelectorAll('.pb').forEach(x=>x.classList.remove('sel'));el.classList.add('sel');S.beds=beds;S.bedTime=hours;updateBD();}
-function setPTab(el){document.querySelectorAll('.pt-tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');}
+const PRICING_LOCK_COPY={
+  commercial:{icon:'🏢',title:'Commercial calculator',sub:'Cost-plus quoting with overheads, team rates and contract discounts — built for commercial jobs. Live in the full Cadi.'},
+  exterior:  {icon:'🪟',title:'Exterior calculator',sub:'Price windows, gutters, jet-wash and one-offs by property type — including ladder/height surcharges. Live in the full Cadi.'}
+};
+function setPTab(el){
+  document.querySelectorAll('.pt-tab').forEach(x=>x.classList.remove('active'));
+  el.classList.add('active');
+  const tab=el.dataset.tab||'residential';
+  const lock=document.getElementById('pricingLock');
+  if(tab==='residential'){lock.classList.remove('show');return;}
+  const c=PRICING_LOCK_COPY[tab];
+  document.getElementById('plIcon').textContent=c.icon;
+  document.getElementById('plTitle').textContent=c.title;
+  document.getElementById('plSub').textContent=c.sub;
+  lock.classList.add('show');
+}
+function setPTabByName(name){
+  const t=document.querySelector(`.pt-tab[data-tab="${name}"]`);
+  if(t)setPTab(t);
+}
 function updateBD(){
   const rate=S.rate,price=Math.round(rate*S.bedTime*S.mult);
   S.lastPrice=price;
@@ -1111,6 +1156,46 @@ function fixSched(){
 }
 function openAJ(){document.getElementById('ajf').classList.add('show');document.getElementById('ajfOv').classList.add('show');document.body.style.overflow='hidden';}
 function closeAJ(){document.getElementById('ajf').classList.remove('show');document.getElementById('ajfOv').classList.remove('show');document.body.style.overflow='';}
+// Make modal chips selectable — one per group
+['.ajf-types','.ajf-svcs','.ajf-assign','.ajf-freq'].forEach(sel=>{
+  const g=document.querySelector(sel);if(!g)return;
+  g.addEventListener('click',e=>{const chip=e.target.closest('.ajt,.ajs,.ajp,.ajf2');if(!chip)return;[...g.children].forEach(c=>c.classList.remove('sel'));chip.classList.add('sel');});
+});
+const SERVICE_PRICES={'Regular clean':65,'Deep clean':130,'End of tenancy':195,'One-off clean':85,'Carpet clean':80,'Oven clean':55,'Spring clean':100,'Post-renovation':180};
+function saveAJ(){
+  const type=document.querySelector('.ajf-types .ajt.sel')?.textContent||'Residential';
+  const svc=document.querySelector('.ajf-svcs .ajs.sel')?.textContent||'Regular clean';
+  const assign=document.querySelector('.ajf-assign .ajp.sel')?.textContent||'You';
+  const freq=document.querySelector('.ajf-freq .ajf2.sel')?.textContent||'Fortnightly';
+  const price=SERVICE_PRICES[svc]||65;
+  // Inject into the next available empty day (Thu → Sat)
+  const body=document.querySelector('.cal-body');
+  if(body){
+    const children=[...body.children];
+    const timeLabels=children.map((c,i)=>({c,i})).filter(o=>o.c.classList.contains('cal-time'));
+    // Try 11am row (index 4) first — it's fully empty in the default calendar
+    const rowIdx=timeLabels[4]?.i;
+    const dayOffsets=[5,6,3]; // Sat, Sun, Thu
+    let targetCell=null;
+    for(const off of dayOffsets){
+      const cell=children[rowIdx+off];
+      if(cell&&!cell.querySelector('.job')){targetCell=cell;break;}
+    }
+    if(targetCell){
+      const cls=type==='Exterior'?'job-ext':(type==='Commercial'?'job-com':'job-res');
+      const customer=S.biz?S.biz.split(/\s+/)[0]+' client':'New client';
+      const job=document.createElement('div');
+      job.className='job '+cls+' job-new';
+      job.innerHTML=`<div class="job-n">${customer}</div><div class="job-t">${svc} · ${assign}</div><div class="job-p">£${price}</div>`;
+      targetCell.appendChild(job);
+    }
+    // Bump counters
+    const jobsEl=document.getElementById('ssJobs');
+    if(jobsEl)jobsEl.textContent=(parseInt(jobsEl.textContent)||0)+1;
+  }
+  closeAJ();
+  showToast(freq+' job saved',`${svc} · ${assign} · £${price}. Client notified, recurring set.`,'📅');
+}
 
 // INVOICE
 function addLI(desc,rate){
@@ -1129,6 +1214,8 @@ function calcTot(){
   });
   document.getElementById('invSub').textContent='£'+tot.toFixed(2);
   document.getElementById('invTot').textContent='£'+tot.toFixed(2);
+  const tipEl=document.getElementById('invTipAmt');
+  if(tipEl)tipEl.textContent='£'+tot.toFixed(2);
 }
 function sendInv(){
   const sec=SECTORS[S.sector]||SECTORS.residential;
