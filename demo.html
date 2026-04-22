@@ -362,6 +362,94 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
 .ajf2.sel{border-color:var(--blue);background:var(--blue-dim);color:#fff;}
 .ajf-cta{width:100%;margin-top:14px;font-family:var(--font-app);font-size:12px;font-weight:600;color:#fff;background:var(--blue);border:none;border-radius:7px;padding:11px;cursor:pointer;}
 
+/* PANEL 4 — ACCOUNTS / MTD */
+.mtd-tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;}
+.mtd-tab{flex:1;min-width:140px;background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius-sm);padding:10px 12px;cursor:pointer;transition:all 0.15s;position:relative;}
+.mtd-tab:hover{border-color:rgba(59,91,255,0.3);}
+.mtd-tab.active{border-color:var(--blue);background:rgba(59,91,255,0.1);box-shadow:0 0 0 1px var(--blue) inset;}
+.mtd-tab.done{opacity:0.72;}
+.mtd-tl{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--label);margin-bottom:3px;}
+.mtd-tq{font-size:13px;font-weight:700;color:#fff;margin-bottom:2px;}
+.mtd-tst{font-size:10px;font-weight:600;}
+.mtd-tst.filed{color:var(--green);}
+.mtd-tst.ready{color:var(--blue);}
+.mtd-tst.progress{color:rgba(255,255,255,0.4);}
+.mtd-tst.filed::before{content:'✓ ';}
+.mtd-hero{background:linear-gradient(135deg,rgba(59,91,255,0.14),rgba(0,196,140,0.08));border:1px solid rgba(59,91,255,0.28);border-radius:var(--radius);padding:14px 18px;margin-bottom:12px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.mtd-hero-l{flex:1;min-width:220px;}
+.mtd-period{font-family:var(--font-brand);font-size:18px;font-weight:800;letter-spacing:-0.02em;color:#fff;margin-bottom:3px;}
+.mtd-deadline{font-size:11px;color:rgba(255,255,255,0.6);}
+.mtd-deadline strong{color:#fff;}
+.mtd-hero-r{display:flex;flex-direction:column;align-items:flex-end;gap:2px;}
+.mtd-status{font-size:11px;font-weight:700;color:var(--green);background:rgba(0,196,140,0.1);border:1px solid rgba(0,196,140,0.3);border-radius:100px;padding:4px 11px;}
+.mtd-subsub{font-size:10px;color:var(--label);}
+.mtd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px;}
+.mtd-fig{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius-sm);padding:12px 14px;}
+.mtd-fl{font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--label);margin-bottom:6px;}
+.mtd-fv{font-size:20px;font-weight:800;color:#fff;letter-spacing:-0.02em;margin-bottom:3px;}
+.mtd-fv.green{color:var(--green);}
+.mtd-fs{font-size:10px;color:rgba(255,255,255,0.35);}
+.mtd-main{display:grid;grid-template-columns:1fr 320px;gap:12px;margin-bottom:12px;}
+@media(max-width:900px){.mtd-main{grid-template-columns:1fr;}.mtd-grid{grid-template-columns:1fr 1fr;}}
+.mtd-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:14px 16px;}
+.mtd-ch{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.mtd-ct{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--label);}
+.mtd-cs{font-size:10px;color:rgba(255,255,255,0.3);}
+.mtd-row{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;cursor:pointer;transition:all 0.15s;border:1px solid transparent;}
+.mtd-row:hover{background:rgba(255,255,255,0.03);border-color:rgba(59,91,255,0.18);}
+.mtd-row.opened{background:rgba(59,91,255,0.06);border-color:rgba(59,91,255,0.22);}
+.mtd-ric{width:26px;height:26px;border-radius:7px;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+.mtd-rn{flex:1;min-width:0;}
+.mtd-rt{font-size:12px;font-weight:600;color:#fff;margin-bottom:2px;}
+.mtd-rsub{font-size:10px;color:var(--label);}
+.mtd-rv{font-size:12px;font-weight:700;color:#fff;text-align:right;}
+.mtd-rv.minus{color:rgba(255,255,255,0.6);}
+.mtd-rcheck{font-size:12px;color:var(--green);width:16px;text-align:center;flex-shrink:0;}
+.mtd-drawer{display:none;padding:10px 0 4px 36px;font-size:11px;color:rgba(255,255,255,0.5);line-height:1.55;animation:fadeUp 0.2s var(--ease) both;}
+.mtd-drawer.show{display:block;}
+.mtd-drawer .mtd-d-line{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed rgba(255,255,255,0.06);}
+.mtd-drawer .mtd-d-line:last-child{border-bottom:none;}
+.mtd-drawer .mtd-d-line b{color:rgba(255,255,255,0.78);font-weight:600;}
+.mtd-check{display:flex;flex-direction:column;gap:8px;}
+.mtd-chk{display:flex;align-items:flex-start;gap:10px;padding:9px 10px;background:rgba(0,196,140,0.05);border:1px solid rgba(0,196,140,0.18);border-radius:8px;cursor:pointer;transition:all 0.15s;}
+.mtd-chk:hover{background:rgba(0,196,140,0.08);}
+.mtd-chk.off{background:rgba(255,255,255,0.02);border-color:rgba(255,255,255,0.08);}
+.mtd-chk.off .mtd-chk-icon{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.4);}
+.mtd-chk-icon{width:20px;height:20px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;transition:all 0.2s;}
+.mtd-chk-body{flex:1;min-width:0;}
+.mtd-chk-t{font-size:11px;font-weight:600;color:#fff;margin-bottom:1px;}
+.mtd-chk-s{font-size:10px;color:var(--label);line-height:1.45;}
+.mtd-tax{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:14px 16px;margin-bottom:10px;}
+.mtd-tax-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.mtd-tax-l{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--label);}
+.mtd-tax-big{font-size:26px;font-weight:800;letter-spacing:-0.02em;color:var(--green);margin-bottom:2px;}
+.mtd-tax-sub{font-size:10px;color:rgba(255,255,255,0.4);margin-bottom:10px;}
+.mtd-tax-bar{height:5px;background:rgba(255,255,255,0.05);border-radius:100px;overflow:hidden;margin-bottom:10px;}
+.mtd-tax-barf{height:100%;background:linear-gradient(90deg,var(--blue),var(--green));border-radius:100px;transition:width 0.6s var(--ease);}
+.mtd-tax-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:11px;}
+.mtd-tax-row:last-child{border-bottom:none;}
+.mtd-tax-row .l{color:var(--label);}
+.mtd-tax-row .v{color:#fff;font-weight:600;}
+.mtd-submit-wrap{background:linear-gradient(135deg,rgba(10,21,53,0.8),rgba(19,33,82,0.8));border:1px solid rgba(59,91,255,0.28);border-radius:var(--radius);padding:16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.mtd-submit-l{flex:1;min-width:220px;}
+.mtd-submit-t{font-family:var(--font-brand);font-size:15px;font-weight:800;color:#fff;margin-bottom:2px;letter-spacing:-0.01em;}
+.mtd-submit-s{font-size:11px;color:rgba(255,255,255,0.55);line-height:1.5;}
+.mtd-submit-s strong{color:#fff;}
+.mtd-submit-btn{font-family:var(--font-app);font-size:13px;font-weight:700;color:#fff;background:var(--blue);border:none;border-radius:10px;padding:12px 22px;cursor:pointer;box-shadow:0 6px 22px rgba(59,91,255,0.4);transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;}
+.mtd-submit-btn:hover{box-shadow:0 8px 28px rgba(59,91,255,0.55);transform:translateY(-1px);}
+.mtd-submit-btn:disabled{cursor:wait;opacity:0.85;}
+.mtd-submit-btn.filed{background:var(--green);box-shadow:0 6px 22px rgba(0,196,140,0.35);cursor:default;}
+.mtd-spinner{width:12px;height:12px;border:2px solid rgba(255,255,255,0.35);border-top-color:#fff;border-radius:50%;animation:mtdSpin 0.8s linear infinite;display:inline-block;}
+@keyframes mtdSpin{to{transform:rotate(360deg);}}
+.mtd-success{display:none;background:linear-gradient(135deg,rgba(0,196,140,0.14),rgba(0,196,140,0.06));border:1px solid rgba(0,196,140,0.35);border-radius:var(--radius);padding:14px 18px;margin-top:12px;align-items:center;gap:14px;flex-wrap:wrap;animation:fadeUp 0.4s var(--ease) both;}
+.mtd-success.show{display:flex;}
+.mtd-success-ic{font-size:28px;flex-shrink:0;}
+.mtd-success-body{flex:1;min-width:200px;}
+.mtd-success-t{font-family:var(--font-brand);font-size:16px;font-weight:800;color:#fff;margin-bottom:3px;letter-spacing:-0.01em;}
+.mtd-success-s{font-size:11px;color:rgba(255,255,255,0.7);line-height:1.5;}
+.mtd-success-s code{font-family:monospace;color:var(--green);background:rgba(0,196,140,0.1);padding:1px 6px;border-radius:4px;font-size:10px;}
+.mtd-demo-tip{display:flex;align-items:center;gap:8px;font-size:10px;color:var(--label);margin-top:8px;padding:8px 12px;background:rgba(255,255,255,0.02);border:1px dashed rgba(255,255,255,0.08);border-radius:8px;}
+
 /* RESULTS */
 .results-screen{display:none;position:relative;z-index:1;padding:0 40px 80px;text-align:center;max-width:780px;margin:0 auto;}
 .results-screen.show{display:block;animation:fadeUp 0.4s var(--ease) both;}
@@ -482,6 +570,8 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
       <div class="dp-step" id="dps2"><div class="dp-dot">3</div><div class="dp-label">Schedule</div></div>
       <div class="dp-line" id="dpl2"></div>
       <div class="dp-step" id="dps3"><div class="dp-dot">4</div><div class="dp-label">Invoice</div></div>
+      <div class="dp-line" id="dpl3"></div>
+      <div class="dp-step" id="dps4"><div class="dp-dot">5</div><div class="dp-label">MTD</div></div>
     </div>
   </div>
 </section>
@@ -543,11 +633,11 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
         <div class="sb-item" onclick="goToStep(1,this)"><span class="sb-icon">💰</span>Pricing<span class="sb-dot"></span></div>
         <div class="sb-item" onclick="goToStep(2,this)"><span class="sb-icon">📅</span>Scheduler<span class="sb-dot"></span></div>
         <div class="sb-item" onclick="goToStep(3,this)"><span class="sb-icon">🧾</span>Invoices<span class="sb-dot"></span></div>
+        <div class="sb-item" onclick="goToStep(4,this)"><span class="sb-icon">📒</span>Accounts<span class="sb-dot"></span></div>
         <div class="sb-preview-tag">Also in Cadi</div>
         <div class="sb-item sb-locked" onclick="lockedNudge('Customers','Manage clients, addresses, service history, preferences — 20 free on the free plan.')"><span class="sb-icon">👤</span>Customers</div>
         <div class="sb-item sb-locked" onclick="lockedNudge('Inventory','Track stock levels, reorder points, supplier details across all your vehicles.')"><span class="sb-icon">📦</span>Inventory</div>
-        <div class="sb-item sb-locked" onclick="lockedNudge('Money','Live P&amp;L, tax reserve, MTD figures — updated the moment an invoice is paid.')"><span class="sb-icon">£</span>Money</div>
-        <div class="sb-item sb-locked" onclick="lockedNudge('Accounts','Self-assessment-ready books. Export the HMRC file in one click.')"><span class="sb-icon">📒</span>Accounts</div>
+        <div class="sb-item sb-locked" onclick="lockedNudge('Money','Live P&amp;L, cashflow, forecasting — updated the moment an invoice is paid.')"><span class="sb-icon">£</span>Money</div>
         <div class="sb-item sb-locked" onclick="lockedNudge('Routes','Optimised day routes across your team — cuts fuel + drive time by 20%.')"><span class="sb-icon">🗺️</span>Routes</div>
         <div class="sb-section">More</div>
         <div class="sb-item sb-locked" onclick="lockedNudge('Business Lab','Experiments, A/B tests, and benchmarking against other UK cleaners.')"><span class="sb-icon">🔬</span>Business Lab</div>
@@ -976,6 +1066,153 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
           </div>
           <div class="step-nav">
             <button class="sn-back" onclick="goToStep(2)">← Back</button>
+            <button class="sn-next" onclick="goToStep(4)">Next — file your MTD →</button>
+          </div>
+        </div>
+
+        <!-- PANEL 4: ACCOUNTS / MTD -->
+        <div class="app-panel" id="panel4">
+          <div class="mtd-tabs" id="mtdTabs">
+            <div class="mtd-tab done" data-q="1"><div class="mtd-tl">Q1</div><div class="mtd-tq">Apr – Jun</div><div class="mtd-tst filed">Filed 4 Aug</div></div>
+            <div class="mtd-tab done" data-q="2"><div class="mtd-tl">Q2</div><div class="mtd-tq">Jul – Sep</div><div class="mtd-tst filed">Filed 3 Nov</div></div>
+            <div class="mtd-tab active" data-q="3"><div class="mtd-tl">Q3</div><div class="mtd-tq">Oct – Dec</div><div class="mtd-tst ready">Ready to submit</div></div>
+            <div class="mtd-tab" data-q="4"><div class="mtd-tl">Q4</div><div class="mtd-tq">Jan – Mar</div><div class="mtd-tst progress">In progress</div></div>
+          </div>
+
+          <div class="mtd-hero">
+            <div class="mtd-hero-l">
+              <div class="mtd-period" id="mtdPeriod">Q3 · 1 Oct – 31 Dec</div>
+              <div class="mtd-deadline">Due to HMRC in <strong id="mtdDeadline">14 days</strong> · quarterly update under Making Tax Digital</div>
+            </div>
+            <div class="mtd-hero-r">
+              <div class="mtd-status" id="mtdHeroStatus">✓ Ready to submit</div>
+              <div class="mtd-subsub">Every invoice &amp; expense auto-categorised</div>
+            </div>
+          </div>
+
+          <div class="mtd-grid">
+            <div class="mtd-fig"><div class="mtd-fl">Turnover</div><div class="mtd-fv" id="mtdTurnover">£8,640</div><div class="mtd-fs" id="mtdTurnoverSub">from 128 jobs</div></div>
+            <div class="mtd-fig"><div class="mtd-fl">Allowable expenses</div><div class="mtd-fv" id="mtdExpenses">£1,912</div><div class="mtd-fs">across 6 categories</div></div>
+            <div class="mtd-fig"><div class="mtd-fl">Taxable profit</div><div class="mtd-fv" id="mtdProfit">£6,728</div><div class="mtd-fs">this quarter</div></div>
+            <div class="mtd-fig"><div class="mtd-fl">Tax reserved</div><div class="mtd-fv green" id="mtdReserved">£1,950</div><div class="mtd-fs">set aside for you</div></div>
+          </div>
+
+          <div class="mtd-main">
+            <div class="mtd-card">
+              <div class="mtd-ch">
+                <div class="mtd-ct">Quarter breakdown</div>
+                <div class="mtd-cs">click any row to see the entries</div>
+              </div>
+              <div id="mtdRows">
+                <div class="mtd-row" data-cat="income" onclick="toggleMTDRow(this)">
+                  <div class="mtd-ric">💷</div>
+                  <div class="mtd-rn"><div class="mtd-rt">Cleaning income</div><div class="mtd-rsub">128 paid invoices · auto-pulled from Invoicing</div></div>
+                  <div class="mtd-rv green" id="mtdR-income">£8,640</div>
+                  <div class="mtd-rcheck">✓</div>
+                </div>
+                <div class="mtd-drawer" data-for="income">
+                  <div class="mtd-d-line"><span>Residential cleans</span><b>£6,240</b></div>
+                  <div class="mtd-d-line"><span>One-off &amp; deep cleans</span><b>£1,820</b></div>
+                  <div class="mtd-d-line"><span>Exterior add-ons</span><b>£580</b></div>
+                </div>
+                <div class="mtd-row" data-cat="fuel" onclick="toggleMTDRow(this)">
+                  <div class="mtd-ric">⛽</div>
+                  <div class="mtd-rn"><div class="mtd-rt">Vehicle &amp; fuel</div><div class="mtd-rsub">18 receipts · mileage reconciled with routes</div></div>
+                  <div class="mtd-rv minus">–£720</div>
+                  <div class="mtd-rcheck">✓</div>
+                </div>
+                <div class="mtd-drawer" data-for="fuel">
+                  <div class="mtd-d-line"><span>Fuel (HMRC rate · 1,842 mi)</span><b>£368</b></div>
+                  <div class="mtd-d-line"><span>Vehicle insurance</span><b>£214</b></div>
+                  <div class="mtd-d-line"><span>Services &amp; repairs</span><b>£138</b></div>
+                </div>
+                <div class="mtd-row" data-cat="materials" onclick="toggleMTDRow(this)">
+                  <div class="mtd-ric">🧴</div>
+                  <div class="mtd-rn"><div class="mtd-rt">Cleaning materials</div><div class="mtd-rsub">22 supplier purchases · linked via Inventory</div></div>
+                  <div class="mtd-rv minus">–£486</div>
+                  <div class="mtd-rcheck">✓</div>
+                </div>
+                <div class="mtd-drawer" data-for="materials">
+                  <div class="mtd-d-line"><span>Chemicals &amp; consumables</span><b>£342</b></div>
+                  <div class="mtd-d-line"><span>Cloths, mops, equipment</span><b>£144</b></div>
+                </div>
+                <div class="mtd-row" data-cat="phone" onclick="toggleMTDRow(this)">
+                  <div class="mtd-ric">📱</div>
+                  <div class="mtd-rn"><div class="mtd-rt">Phone &amp; software</div><div class="mtd-rsub">3 subscriptions · business-use share only</div></div>
+                  <div class="mtd-rv minus">–£318</div>
+                  <div class="mtd-rcheck">✓</div>
+                </div>
+                <div class="mtd-drawer" data-for="phone">
+                  <div class="mtd-d-line"><span>Mobile (75% business)</span><b>£108</b></div>
+                  <div class="mtd-d-line"><span>Cadi subscription</span><b>£90</b></div>
+                  <div class="mtd-d-line"><span>Accountancy &amp; apps</span><b>£120</b></div>
+                </div>
+                <div class="mtd-row" data-cat="insurance" onclick="toggleMTDRow(this)">
+                  <div class="mtd-ric">🛡️</div>
+                  <div class="mtd-rn"><div class="mtd-rt">Insurance &amp; admin</div><div class="mtd-rsub">Public liability, bank fees, memberships</div></div>
+                  <div class="mtd-rv minus">–£266</div>
+                  <div class="mtd-rcheck">✓</div>
+                </div>
+                <div class="mtd-drawer" data-for="insurance">
+                  <div class="mtd-d-line"><span>Public liability</span><b>£186</b></div>
+                  <div class="mtd-d-line"><span>Bank &amp; payment fees</span><b>£58</b></div>
+                  <div class="mtd-d-line"><span>BICSc membership</span><b>£22</b></div>
+                </div>
+                <div class="mtd-row" data-cat="home" onclick="toggleMTDRow(this)">
+                  <div class="mtd-ric">🏠</div>
+                  <div class="mtd-rn"><div class="mtd-rt">Use of home (flat rate)</div><div class="mtd-rsub">HMRC simplified expenses · 50+ hrs/month</div></div>
+                  <div class="mtd-rv minus">–£122</div>
+                  <div class="mtd-rcheck">✓</div>
+                </div>
+                <div class="mtd-drawer" data-for="home">
+                  <div class="mtd-d-line"><span>£26/mo × 3 months (50–100 hrs)</span><b>£78</b></div>
+                  <div class="mtd-d-line"><span>Office supplies &amp; stationery</span><b>£44</b></div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="mtd-tax">
+                <div class="mtd-tax-head">
+                  <div class="mtd-tax-l">Estimated tax on profit</div>
+                </div>
+                <div class="mtd-tax-big" id="mtdTaxBig">£1,950</div>
+                <div class="mtd-tax-sub">20% income tax + 9% Class 4 NI · already in your reserve</div>
+                <div class="mtd-tax-bar"><div class="mtd-tax-barf" id="mtdTaxBar" style="width:100%;"></div></div>
+                <div class="mtd-tax-row"><span class="l">Income tax (20%)</span><span class="v" id="mtdTaxIT">£1,346</span></div>
+                <div class="mtd-tax-row"><span class="l">Class 4 NI (9%)</span><span class="v" id="mtdTaxNI">£605</span></div>
+                <div class="mtd-tax-row"><span class="l">Reserve balance</span><span class="v" style="color:var(--green);" id="mtdReserveBal">£1,950 ✓</span></div>
+              </div>
+              <div class="mtd-card">
+                <div class="mtd-ch"><div class="mtd-ct">Pre-flight checks</div></div>
+                <div class="mtd-check">
+                  <div class="mtd-chk"><div class="mtd-chk-icon">✓</div><div class="mtd-chk-body"><div class="mtd-chk-t">All invoices reconciled</div><div class="mtd-chk-s">128 of 128 paid &amp; categorised</div></div></div>
+                  <div class="mtd-chk"><div class="mtd-chk-icon">✓</div><div class="mtd-chk-body"><div class="mtd-chk-t">Expense receipts matched</div><div class="mtd-chk-s">Snapped photos auto-OCR'd &amp; filed</div></div></div>
+                  <div class="mtd-chk"><div class="mtd-chk-icon">✓</div><div class="mtd-chk-body"><div class="mtd-chk-t">Mileage log complete</div><div class="mtd-chk-s">Pulled from Routes · 1,842 business miles</div></div></div>
+                  <div class="mtd-chk"><div class="mtd-chk-icon">✓</div><div class="mtd-chk-body"><div class="mtd-chk-t">HMRC agent connected</div><div class="mtd-chk-s">OAuth active · renews automatically</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mtd-submit-wrap">
+            <div class="mtd-submit-l">
+              <div class="mtd-submit-t">Submit Q3 update to HMRC</div>
+              <div class="mtd-submit-s">One click files your quarterly update. We keep your digital records &amp; submission receipt for <strong>6 years</strong>, as MTD requires.</div>
+            </div>
+            <button class="mtd-submit-btn" id="mtdSubmitBtn" onclick="submitMTD()"><span id="mtdBtnIcon">🔐</span><span id="mtdBtnText">Submit to HMRC</span></button>
+          </div>
+          <div class="mtd-success" id="mtdSuccess">
+            <div class="mtd-success-ic">🎉</div>
+            <div class="mtd-success-body">
+              <div class="mtd-success-t">Filed with HMRC</div>
+              <div class="mtd-success-s">Q3 update accepted · receipt <code id="mtdRef">HMRC-MTD-Q3-8F42K1</code> saved to Accounts. Your next nudge: Q4 update, due <strong>5 May</strong>.</div>
+            </div>
+          </div>
+          <div class="mtd-demo-tip">💡 Demo mode — in real Cadi this submits straight to HMRC's MTD endpoint. No spreadsheets, no accountant back-and-forth.</div>
+
+          <div class="step-nav">
+            <button class="sn-back" onclick="goToStep(3)">← Back</button>
             <button class="sn-next" onclick="showRes()">See my results →</button>
           </div>
         </div>
@@ -1032,9 +1269,9 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
 <script>
 const S={sector:null,scenario:null,step:0,rate:18,mult:1,beds:2,bedTime:2,lastPrice:72,schedJobInjected:false};
 const SD={
-  solo:   {jobs:8,rev:'£524',comp:'3 / 8',un:1,rank:'#20',score:62,count:21,hl:'Good foundation — room to grow',hs:'3 areas will push your score over 70 this month.',ai:'17 pts to unlock Good tier'},
-  team:   {jobs:14,rev:'£1,240',comp:'6 / 14',un:0,rank:'#8',score:74,count:38,hl:'Strong business — scaling well',hs:'Retention rate is excellent. Payroll setup puts you in the top 10.',ai:'6 pts to unlock Elite tier'},
-  scaling:{jobs:22,rev:'£3,850',comp:'15 / 22',un:0,rank:'#3',score:81,count:54,hl:'High performer — top 10% UK',hs:'Two more actions and you crack the top 5 nationally.',ai:'2 pts to unlock Elite tier'}
+  solo:   {jobs:8,rev:'£524',comp:'3 / 8',un:1,rank:'#20',score:62,count:21,hl:'Good foundation — room to grow',hs:'3 areas will push your score over 70 this month.',ai:'17 pts to unlock Good tier',mtd:{turnover:8640,jobs:128,expenses:1912,profit:6728,tax:1950,it:1346,ni:605}},
+  team:   {jobs:14,rev:'£1,240',comp:'6 / 14',un:0,rank:'#8',score:74,count:38,hl:'Strong business — scaling well',hs:'Retention rate is excellent. Payroll setup puts you in the top 10.',ai:'6 pts to unlock Elite tier',mtd:{turnover:22480,jobs:286,expenses:5640,profit:16840,tax:4884,it:3368,ni:1516}},
+  scaling:{jobs:22,rev:'£3,850',comp:'15 / 22',un:0,rank:'#3',score:81,count:54,hl:'High performer — top 10% UK',hs:'Two more actions and you crack the top 5 nationally.',ai:'2 pts to unlock Elite tier',mtd:{turnover:54200,jobs:612,expenses:12480,profit:41720,tax:12097,it:8344,ni:3753}}
 };
 const SECTORS={
   residential:{label:'Residential',pricingTabIdx:0,pricingGreeting:'Quote a house clean in under 20 seconds',customer:{name:'Sarah Mitchell',email:'sarah.mitchell@email.com',phone:'07712 345 678',addr:'42 Maple Close, MK2 2BY'},service:'Fortnightly domestic clean — 3-bed',pillClass:'pill-res',stypeIdx:0,chips:[['Regular clean','65.00'],['Deep clean','130.00'],['End of tenancy clean','195.00'],['Oven clean','55.00'],['Carpet clean','80.00'],['Spring clean','100.00']]},
@@ -1057,7 +1294,7 @@ function lockedNudge(name,desc){
   showToast(name+' — in full Cadi',desc,'🔒');
 }
 
-const TRY_ME_SELECTORS=['#panel0 .sn-next','#panel1 .prop-grid','#panel2 .fix-btn','#panel3 .qa-chips'];
+const TRY_ME_SELECTORS=['#panel0 .sn-next','#panel1 .prop-grid','#panel2 .fix-btn','#panel3 .qa-chips','#panel4 .mtd-submit-btn'];
 function applyTryMe(step){
   document.querySelectorAll('.try-me').forEach(el=>el.classList.remove('try-me'));
   const el=document.querySelector(TRY_ME_SELECTORS[step]||'');
@@ -1130,11 +1367,107 @@ function initApp(){
   document.getElementById('invDue').textContent=due.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
   // Invoice tip + send message reflect the actual customer email
   document.getElementById('invSentMsg').textContent='✓ Invoice sent to '+sec.customer.email+' · Payment link included · Accounts updated automatically.';
+  // MTD figures — scale by scenario
+  initMTD();
 }
+
+function fmtGBP(n){return '£'+Math.round(n).toLocaleString('en-GB');}
+function initMTD(){
+  const d=SD[S.scenario];if(!d||!d.mtd)return;
+  const m=d.mtd;
+  document.getElementById('mtdTurnover').textContent=fmtGBP(m.turnover);
+  document.getElementById('mtdTurnoverSub').textContent='from '+m.jobs+' paid jobs';
+  document.getElementById('mtdExpenses').textContent=fmtGBP(m.expenses);
+  document.getElementById('mtdProfit').textContent=fmtGBP(m.profit);
+  document.getElementById('mtdReserved').textContent=fmtGBP(m.tax);
+  document.getElementById('mtdTaxBig').textContent=fmtGBP(m.tax);
+  document.getElementById('mtdTaxIT').textContent=fmtGBP(m.it);
+  document.getElementById('mtdTaxNI').textContent=fmtGBP(m.ni);
+  document.getElementById('mtdReserveBal').textContent=fmtGBP(m.tax)+' ✓';
+  // Income row reflects the live turnover
+  const incomeEl=document.getElementById('mtdR-income');
+  if(incomeEl)incomeEl.textContent=fmtGBP(m.turnover);
+  // Reset submission state
+  S.mtdFiled=false;
+  const btn=document.getElementById('mtdSubmitBtn');
+  if(btn){
+    btn.disabled=false;btn.classList.remove('filed');
+    document.getElementById('mtdBtnIcon').textContent='🔐';
+    document.getElementById('mtdBtnText').textContent='Submit to HMRC';
+  }
+  document.getElementById('mtdSuccess')?.classList.remove('show');
+  // Drawers closed
+  document.querySelectorAll('#panel4 .mtd-drawer').forEach(d=>d.classList.remove('show'));
+  document.querySelectorAll('#panel4 .mtd-row').forEach(r=>r.classList.remove('opened'));
+}
+
+function toggleMTDRow(row){
+  const cat=row.dataset.cat;
+  const drawer=document.querySelector(`#panel4 .mtd-drawer[data-for="${cat}"]`);
+  if(!drawer)return;
+  const opening=!drawer.classList.contains('show');
+  drawer.classList.toggle('show',opening);
+  row.classList.toggle('opened',opening);
+}
+
+function submitMTD(){
+  if(S.mtdFiled)return;
+  const btn=document.getElementById('mtdSubmitBtn');
+  btn.disabled=true;
+  document.getElementById('mtdBtnIcon').innerHTML='<span class="mtd-spinner"></span>';
+  document.getElementById('mtdBtnText').textContent='Connecting to HMRC…';
+  setTimeout(()=>{
+    document.getElementById('mtdBtnText').textContent='Filing quarterly update…';
+  },900);
+  setTimeout(()=>{
+    btn.classList.add('filed');
+    document.getElementById('mtdBtnIcon').textContent='✓';
+    document.getElementById('mtdBtnText').textContent='Filed';
+    // Generate a plausible-looking HMRC reference
+    const ref='HMRC-MTD-Q3-'+Math.random().toString(36).slice(2,8).toUpperCase();
+    document.getElementById('mtdRef').textContent=ref;
+    document.getElementById('mtdSuccess').classList.add('show');
+    // Flip Q3 tab to "Filed today"
+    const q3=document.querySelector('#mtdTabs .mtd-tab[data-q="3"]');
+    if(q3){
+      q3.classList.remove('active');q3.classList.add('done');
+      const st=q3.querySelector('.mtd-tst');
+      if(st){st.className='mtd-tst filed';st.textContent='Filed today';}
+    }
+    document.getElementById('mtdHeroStatus').textContent='✓ Filed today';
+    S.mtdFiled=true;
+    showToast('Filed with HMRC','Q3 update accepted · reference '+ref,'🏛️');
+  },2200);
+}
+
+function syncMTDWithInvoice(){
+  // A tiny post-invoice flourish: pulse the turnover cell to show "updated automatically"
+  const el=document.getElementById('mtdTurnover');
+  if(!el)return;
+  el.animate([{transform:'scale(1)'},{transform:'scale(1.06)',color:'#00c48c'},{transform:'scale(1)'}],{duration:700,easing:'cubic-bezier(0.16,1,0.3,1)'});
+  showToast('Accounts updated','Your invoice just landed in this quarter\'s figures — nothing for you to do.','📒');
+}
+
+// Quarter tab click — Q3 is the live one; others show a toast
+document.addEventListener('click',e=>{
+  const tab=e.target.closest('#mtdTabs .mtd-tab');
+  if(!tab)return;
+  const q=tab.dataset.q;
+  if(q==='1'||q==='2'){
+    showToast('Q'+q+' already filed','Receipt on file · no action needed. Click Q3 to submit this quarter.','📒');
+  }else if(q==='4'){
+    showToast('Q4 still building','Cadi\'s collecting invoices &amp; expenses now. Nothing for you to do until Q4 closes.','⏳');
+  }else{
+    // Q3 — make it the active tab visually
+    document.querySelectorAll('#mtdTabs .mtd-tab').forEach(t=>t.classList.remove('active'));
+    if(!tab.classList.contains('done'))tab.classList.add('active');
+  }
+});
 
 const topbarMap=[
   {s:'CADI',t:'Dashboard'},{s:'PRICING',t:'Quote builder'},
-  {s:'CADI',t:'Scheduler'},{s:'INVOICING',t:'New invoice'}
+  {s:'CADI',t:'Scheduler'},{s:'INVOICING',t:'New invoice'},
+  {s:'ACCOUNTS',t:'MTD · quarterly update'}
 ];
 
 function goToStep(step,sbEl){
@@ -1144,12 +1477,12 @@ function goToStep(step,sbEl){
   document.querySelectorAll('.sb-item').forEach(s=>s.classList.remove('active'));
   if(sbEl)sbEl.classList.add('active');
   else document.querySelectorAll('.sb-item')[step]?.classList.add('active');
-  for(let i=0;i<4;i++){
+  for(let i=0;i<5;i++){
     const el=document.getElementById('dps'+i);
     el.classList.remove('active','done');
     if(i<step)el.classList.add('done');
     if(i===step)el.classList.add('active');
-    if(i<3)document.getElementById('dpl'+i)?.classList.toggle('done',i<step);
+    if(i<4)document.getElementById('dpl'+i)?.classList.toggle('done',i<step);
   }
   const tb=topbarMap[step];
   if(tb){document.getElementById('atbSection').textContent=tb.s;document.getElementById('atbTitle').textContent=tb.t;}
@@ -1159,6 +1492,8 @@ function goToStep(step,sbEl){
   if(prev===1&&step===2&&!S.schedJobInjected)setTimeout(injectPricedJob,350);
   // Carry-through: scheduler → invoice pre-fills with the quoted amount
   if(prev===2&&step===3)setTimeout(syncInvoiceWithQuote,250);
+  // Carry-through: invoice → MTD pulses the newly-added figure
+  if(prev===3&&step===4)setTimeout(syncMTDWithInvoice,250);
   document.getElementById('appShell').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
