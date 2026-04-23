@@ -302,6 +302,8 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
 .job:hover{opacity:0.85;}
 .job-res{background:rgba(0,196,140,0.12);border-left-color:var(--green);}
 .job-ext{background:rgba(249,115,22,0.12);border-left-color:var(--orange);}
+.job-com{background:rgba(59,91,255,0.12);border-left-color:var(--blue);}
+.job-com .job-p{color:var(--blue);}
 .job-bad{background:rgba(239,68,68,0.1);border-left-color:#ef4444;}
 .job-n{font-size:10px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .job-t{font-size:9px;color:rgba(255,255,255,0.4);}
@@ -566,6 +568,90 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
 .try-me-hint{font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(168,196,255,0.7);margin-top:8px;display:flex;align-items:center;gap:6px;}
 .try-me-hint::before{content:'👇';font-size:11px;}
 
+/* LEADERBOARD INTRO + FOMO */
+.lb-intro{background:linear-gradient(135deg,rgba(59,91,255,0.1),rgba(0,196,140,0.05));border:1px solid rgba(59,91,255,0.22);border-radius:var(--radius);padding:16px 18px;margin-bottom:10px;position:relative;overflow:hidden;}
+.lb-intro::before{content:'';position:absolute;top:-50%;right:-20%;width:280px;height:280px;background:radial-gradient(circle,rgba(59,91,255,0.12),transparent 70%);pointer-events:none;}
+.lb-intro-pill{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(168,196,255,0.9);background:rgba(59,91,255,0.16);border:1px solid rgba(59,91,255,0.35);border-radius:100px;padding:4px 11px;margin-bottom:10px;position:relative;z-index:1;}
+.lb-intro-title{font-family:var(--font-brand);font-size:18px;font-weight:800;letter-spacing:-0.02em;color:#fff;line-height:1.2;margin-bottom:6px;position:relative;z-index:1;}
+.lb-intro-sub{font-size:12px;color:rgba(255,255,255,0.62);line-height:1.55;margin-bottom:10px;position:relative;z-index:1;}
+.lb-intro-sub strong{color:#fff;font-weight:700;}
+.lb-intro-btn{font-family:var(--font-app);font-size:11px;font-weight:600;color:rgba(168,196,255,0.85);background:rgba(59,91,255,0.1);border:1px solid rgba(59,91,255,0.25);border-radius:7px;padding:6px 13px;cursor:pointer;transition:all 0.15s;position:relative;z-index:1;}
+.lb-intro-btn:hover{background:rgba(59,91,255,0.18);color:#fff;}
+.lb-scoring{display:none;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.07);animation:fadeUp 0.3s var(--ease) both;position:relative;z-index:1;}
+.lb-scoring.show{display:block;}
+.lbs-title{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:10px;}
+.lbs-row{display:flex;align-items:flex-start;gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+.lbs-row:last-of-type{border-bottom:none;}
+.lbs-ic{font-size:14px;flex-shrink:0;width:18px;text-align:center;}
+.lbs-row > div{flex:1;}
+.lbs-n{font-size:12px;font-weight:600;color:#fff;margin-bottom:1px;}
+.lbs-d{font-size:10px;color:var(--label);line-height:1.5;}
+.lbs-p{font-size:13px;font-weight:800;color:var(--blue);flex-shrink:0;}
+.lbs-note{font-size:10px;color:rgba(255,255,255,0.38);line-height:1.5;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.04);font-style:italic;}
+
+/* PRICING EXPLAINER */
+.p-explain{background:rgba(59,91,255,0.06);border:1px solid rgba(59,91,255,0.18);border-radius:var(--radius);padding:12px 14px;margin-bottom:12px;display:flex;gap:10px;align-items:flex-start;}
+.p-explain-icon{font-size:18px;flex-shrink:0;line-height:1.2;}
+.p-explain-body{flex:1;}
+.p-explain-t{font-size:12px;font-weight:700;color:#fff;margin-bottom:3px;letter-spacing:-0.01em;}
+.p-explain-s{font-size:11px;color:rgba(255,255,255,0.55);line-height:1.55;}
+.p-explain-s strong{color:rgba(255,255,255,0.82);font-weight:600;}
+
+/* SCHEDULER EXPLAINER */
+.sched-explain{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
+.se-card{flex:1;min-width:180px;background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius-sm);padding:9px 12px;display:flex;align-items:center;gap:9px;}
+.se-ic{font-size:15px;flex-shrink:0;}
+.se-t{font-size:11px;font-weight:700;color:#fff;margin-bottom:1px;}
+.se-d{font-size:10px;color:var(--label);line-height:1.35;}
+
+/* LOCKED PRICING — enhanced content */
+.pl-inner{flex-wrap:wrap;}
+.pl-bullets{width:100%;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.07);display:grid;grid-template-columns:repeat(2,1fr);gap:6px 14px;}
+.pl-bullet{font-size:11px;color:rgba(255,255,255,0.6);line-height:1.4;display:flex;gap:6px;}
+.pl-bullet::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;}
+@media(max-width:700px){.pl-bullets{grid-template-columns:1fr;}}
+
+/* INVOICE PREVIEW MODAL */
+.ipv-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:350;display:none;backdrop-filter:blur(6px);}
+.ipv-overlay.show{display:block;animation:fadeUp 0.25s var(--ease) both;}
+.ipv{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--card2);border:1px solid rgba(59,91,255,0.25);border-radius:var(--radius);width:calc(100% - 40px);max-width:620px;max-height:calc(100vh - 60px);overflow-y:auto;z-index:351;box-shadow:0 24px 80px rgba(0,0,0,0.7);animation:popIn 0.3s var(--ease) both;}
+.ipv.show{display:block;}
+.ipv-head{padding:16px 20px;border-bottom:1px solid var(--card-border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--card2);z-index:2;}
+.ipv-head-t{font-size:14px;font-weight:700;color:#fff;margin-bottom:2px;}
+.ipv-head-s{font-size:11px;color:var(--label);}
+.ipv-close{font-size:16px;color:var(--label);background:none;border:none;cursor:pointer;padding:4px 8px;}
+.ipv-email{background:#f7f9fc;color:#1a2340;padding:0;margin:14px;border-radius:var(--radius-sm);overflow:hidden;border:1px solid rgba(255,255,255,0.05);}
+.ipv-email-hdr{background:#eef2fa;padding:12px 16px;font-family:'Inter',sans-serif;font-size:11px;color:#4a5680;border-bottom:1px solid #dfe4f0;}
+.ipv-email-hdr > div{padding:2px 0;}
+.ipv-email-hdr .ipv-subj{color:#1a2340;font-weight:700;font-size:13px;margin-top:4px;}
+.ipv-email-body{padding:18px;}
+.ipv-inv-card{background:#fff;border:1px solid #dfe4f0;border-radius:10px;padding:20px;box-shadow:0 4px 14px rgba(20,30,60,0.06);}
+.ipv-inv-hdr{display:flex;align-items:flex-start;justify-content:space-between;padding-bottom:14px;border-bottom:2px solid #1a2340;margin-bottom:14px;}
+.ipv-biz{font-family:var(--font-brand);font-size:18px;font-weight:800;color:#1a2340;letter-spacing:-0.02em;}
+.ipv-biz-sub{font-size:10px;color:#6a7595;margin-top:2px;letter-spacing:0.04em;}
+.ipv-inv-num{text-align:right;font-size:9px;font-weight:700;letter-spacing:0.14em;color:#6a7595;}
+.ipv-inv-num strong{display:block;font-size:15px;color:#1a2340;letter-spacing:0;margin-top:3px;}
+.ipv-addrs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:16px;}
+.ipv-addr-label{font-size:9px;font-weight:700;letter-spacing:0.14em;color:#6a7595;margin-bottom:4px;}
+.ipv-addr-val{font-size:12px;color:#1a2340;line-height:1.5;}
+.ipv-items-hdr{display:grid;grid-template-columns:1fr 50px 80px 80px;gap:8px;padding:8px 0;border-bottom:1px solid #dfe4f0;font-size:9px;font-weight:700;letter-spacing:0.12em;color:#6a7595;text-transform:uppercase;}
+.ipv-item{display:grid;grid-template-columns:1fr 50px 80px 80px;gap:8px;padding:10px 0;border-bottom:1px solid #f0f3f9;font-size:12px;color:#1a2340;}
+.ipv-item .ipv-qty,.ipv-item .ipv-rate,.ipv-item .ipv-line-tot{text-align:right;}
+.ipv-item .ipv-line-tot{font-weight:600;}
+.ipv-tot-block{margin-top:10px;padding-top:10px;border-top:2px solid #1a2340;}
+.ipv-tot-row{display:flex;justify-content:space-between;padding:3px 0;font-size:12px;color:#4a5680;}
+.ipv-tot-row.final{font-size:16px;font-weight:800;color:#1a2340;padding:8px 0 2px;}
+.ipv-bank{margin-top:14px;padding:12px;background:#f0f3f9;border-radius:8px;}
+.ipv-bank-t{font-size:10px;font-weight:700;letter-spacing:0.12em;color:#6a7595;text-transform:uppercase;margin-bottom:6px;}
+.ipv-bank-rows{display:grid;grid-template-columns:repeat(2,1fr);gap:4px 14px;font-size:11px;color:#1a2340;font-family:monospace;}
+.ipv-card-pay{display:block;width:100%;margin-top:12px;background:linear-gradient(135deg,#3b5bff,#2e4ae0);color:#fff;font-family:var(--font-app);font-size:13px;font-weight:700;border:none;border-radius:8px;padding:12px;cursor:pointer;box-shadow:0 4px 14px rgba(59,91,255,0.3);}
+.ipv-footer{padding:12px 18px 18px;font-size:11px;color:#6a7595;text-align:center;line-height:1.6;}
+.ipv-acts{padding:14px 20px;border-top:1px solid var(--card-border);display:flex;gap:10px;position:sticky;bottom:0;background:var(--card2);}
+.ipv-back{flex:1;font-family:var(--font-app);font-size:12px;font-weight:500;color:rgba(255,255,255,0.55);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:8px;padding:11px;cursor:pointer;}
+.ipv-back:hover{color:#fff;}
+.ipv-send-final{flex:2;font-family:var(--font-app);font-size:13px;font-weight:700;color:#fff;background:var(--blue);border:none;border-radius:8px;padding:11px;cursor:pointer;box-shadow:0 4px 16px rgba(59,91,255,0.4);transition:all 0.2s;}
+.ipv-send-final:hover{box-shadow:0 6px 22px rgba(59,91,255,0.55);transform:translateY(-1px);}
+
 @media(max-width:900px){
   .mkt-nav{padding:12px 20px;}.nav-links{display:none;}
   .hero{padding:100px 20px 40px;}.setup-screen{padding:0 20px 40px;}
@@ -644,7 +730,6 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
     <span class="db-label">Demo mode</span>
     <span class="db-sep"></span>
     <span class="db-text">Logged in as <strong id="dbBiz">Mackies Cleaning</strong></span>
-    <span class="db-pill hide-mob">Free trial · Day 1 of 14</span>
     <span class="db-spacer"></span>
     <a href="/#access" class="db-cta">Claim this account →</a>
   </div>
@@ -701,9 +786,24 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
           <div class="dash-date" id="dashDate">Loading...</div>
           <div class="dash-grid">
             <div>
+              <div class="lb-intro">
+                <div class="lb-intro-pill">🏆 UK's first — exclusive to Cadi</div>
+                <div class="lb-intro-title">Cleaning gets lonely. So we built a league.</div>
+                <div class="lb-intro-sub">Every week, your Cadi score is ranked against every other UK cleaner on the platform — competing for the official title of <strong>UK's Top Cleaning Business</strong>. No vanity numbers. Every point comes from real operational signals pulled straight from your Cadi.</div>
+                <button class="lb-intro-btn" onclick="toggleScoring()">How we score <span id="lbiChev">↓</span></button>
+                <div class="lb-scoring" id="lbScoring">
+                  <div class="lbs-title">5 pillars · 100 points · transparent</div>
+                  <div class="lbs-row"><span class="lbs-ic">💷</span><div><div class="lbs-n">Finance health</div><div class="lbs-d">Profit margin · tax reserve built · MTD on-time · cashflow runway</div></div><div class="lbs-p">25</div></div>
+                  <div class="lbs-row"><span class="lbs-ic">✅</span><div><div class="lbs-n">Operational quality</div><div class="lbs-d">On-time % · completion rate · reschedules per month · zero-complaint streak</div></div><div class="lbs-p">25</div></div>
+                  <div class="lbs-row"><span class="lbs-ic">🌱</span><div><div class="lbs-n">Growth</div><div class="lbs-d">New clients per quarter · retention rate · referrals · lifetime value</div></div><div class="lbs-p">20</div></div>
+                  <div class="lbs-row"><span class="lbs-ic">🧑‍💼</span><div><div class="lbs-n">Team &amp; utilisation</div><div class="lbs-d">Booked hours vs available · rota stability · solo ops scored on different weighting</div></div><div class="lbs-p">15</div></div>
+                  <div class="lbs-row"><span class="lbs-ic">🎯</span><div><div class="lbs-n">Consistency</div><div class="lbs-d">Months trading · goals hit in Annual Review · week-on-week score stability</div></div><div class="lbs-p">15</div></div>
+                  <div class="lbs-note">Solo, small team, and scaling businesses compete in separate tiers — a 1-person operation isn't graded against a 12-van firm. Fair game.</div>
+                </div>
+              </div>
               <div class="lb-card">
                 <div class="lb-hdr">
-                  <div><div class="lb-htitle">CADI COMMUNITY LEADERBOARD</div><div class="lb-hsub">Ranked by health score · updated weekly · <span id="lbCount">21</span> businesses competing</div></div>
+                  <div><div class="lb-htitle">THIS WEEK'S LEADERBOARD</div><div class="lb-hsub">Live ranking · updated every Sunday · <span id="lbCount">21</span> businesses competing in your tier</div></div>
                   <div class="lb-tier">Growth tier</div>
                 </div>
                 <div class="podium">
@@ -719,9 +819,9 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
                 </div>
                 <div class="lb-lock" id="lbLock">
                   <div class="lb-lock-icon">🔒</div>
-                  <div class="lb-lock-title">The full leaderboard is live inside Cadi</div>
-                  <div class="lb-lock-sub">See how your business ranks against cleaning businesses across the UK — in real time.</div>
-                  <button class="lb-lock-btn" onclick="window.location.href='/#access'">Get access →</button>
+                  <div class="lb-lock-title">Want to see who you're really up against?</div>
+                  <div class="lb-lock-sub">Real business names, live scores, weekly movement. Claim your founding account — first 200 get their name on the board.</div>
+                  <button class="lb-lock-btn" onclick="window.location.href='/#access'">Claim my spot →</button>
                 </div>
               </div>
             </div>
@@ -753,6 +853,13 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
 
         <!-- PANEL 1: PRICING -->
         <div class="app-panel" id="panel1">
+          <div class="p-explain" id="pExplain">
+            <div class="p-explain-icon">💡</div>
+            <div class="p-explain-body">
+              <div class="p-explain-t">Three calculators. One source of truth: your hourly rate.</div>
+              <div class="p-explain-s" id="pExplainSub">Built from <strong>17 years of real UK cleaning pricing data</strong> (not someone's guess). Every quote derives from your rate, so change it once and your whole business re-prices instantly. <strong>Residential</strong> uses a quick room/bed model · <strong>Commercial</strong> uses cost-plus with overheads · <strong>Exterior</strong> factors ladders, access and route clusters. Click the tabs to see each one.</div>
+            </div>
+          </div>
           <div class="pricing-tabs">
             <div class="pt-tab active" data-tab="residential" onclick="setPTab(this)">Residential <span class="pt-sub">Quick quote + room builder</span></div>
             <div class="pt-tab pt-locked" data-tab="commercial" onclick="setPTab(this)">Commercial <span class="pt-sub">Cost-build calculator</span></div>
@@ -767,6 +874,7 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
                   <div class="pl-sub" id="plSub">Live in the full Cadi. Claim your founding spot to unlock it.</div>
                 </div>
                 <a href="/#access" class="pl-cta">Get first access →</a>
+                <div class="pl-bullets" id="plBullets"></div>
               </div>
             </div>
           <div class="pricing-body pricing-body-sector" id="pricingBodyRes">
@@ -963,10 +1071,22 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
 
         <!-- PANEL 2: SCHEDULER -->
         <div class="app-panel" id="panel2">
+          <div class="p-explain">
+            <div class="p-explain-icon">📅</div>
+            <div class="p-explain-body">
+              <div class="p-explain-t">One calendar. Three rhythms baked in.</div>
+              <div class="p-explain-s">Click any job to see details or mark it paid. Drag a job to move it (in the full Cadi). Cadi handles each sector differently so the calendar actually fits how you work:</div>
+            </div>
+          </div>
+          <div class="sched-explain">
+            <div class="se-card"><div class="se-ic">🏠</div><div><div class="se-t">Residential</div><div class="se-d">Recurring rhythms — weekly / fortnightly slots auto-repeat. Clients get reminders.</div></div></div>
+            <div class="se-card"><div class="se-ic">🏢</div><div><div class="se-t">Commercial</div><div class="se-d">Contracted visits locked to hours. Team splits across sites. Never double-booked.</div></div></div>
+            <div class="se-card"><div class="se-ic">🪟</div><div><div class="se-t">Exterior</div><div class="se-d">Route-clustered by postcode. Weather-aware — Cadi reshuffles if rain is forecast.</div></div></div>
+          </div>
           <div class="sched-stats">
-            <div class="ss-card"><div class="ss-l">TOTAL JOBS</div><div class="ss-v" id="ssJobs">8</div></div>
-            <div class="ss-card"><div class="ss-l">REVENUE</div><div class="ss-v green" id="ssRev">£524</div></div>
-            <div class="ss-card"><div class="ss-l">COMPLETED</div><div class="ss-v" id="ssComp">3 / 8</div></div>
+            <div class="ss-card"><div class="ss-l">TOTAL JOBS</div><div class="ss-v" id="ssJobs">12</div></div>
+            <div class="ss-card"><div class="ss-l">REVENUE</div><div class="ss-v green" id="ssRev">£769</div></div>
+            <div class="ss-card"><div class="ss-l">COMPLETED</div><div class="ss-v" id="ssComp">3 / 12</div></div>
             <div class="ss-card"><div class="ss-l">UNASSIGNED</div><div class="ss-v" id="ssUn" style="color:#ef4444;">1</div></div>
           </div>
           <div class="sched-week-hdr">
@@ -976,11 +1096,11 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
           <div class="cal">
             <div class="cal-hdr">
               <div style="padding:8px 4px;"></div>
-              <div class="cal-th"><span style="font-size:9px;letter-spacing:0.1em;">MON</span><span class="dn" id="cd0">6</span><span class="dr" style="color:var(--green);">£130</span></div>
-              <div class="cal-th"><span style="font-size:9px;letter-spacing:0.1em;">TUE</span><span class="dn" id="cd1">7</span><span class="dr" style="color:var(--green);">£65</span></div>
-              <div class="cal-th"><span style="font-size:9px;letter-spacing:0.1em;">WED</span><span class="dn" id="cd2">8</span><span class="dr" style="color:var(--green);">£120</span></div>
+              <div class="cal-th"><span style="font-size:9px;letter-spacing:0.1em;">MON</span><span class="dn" id="cd0">6</span><span class="dr" style="color:var(--green);">£162</span></div>
+              <div class="cal-th"><span style="font-size:9px;letter-spacing:0.1em;">TUE</span><span class="dn" id="cd1">7</span><span class="dr" style="color:var(--green);">£155</span></div>
+              <div class="cal-th"><span style="font-size:9px;letter-spacing:0.1em;">WED</span><span class="dn" id="cd2">8</span><span class="dr" style="color:var(--green);">£195</span></div>
               <div class="cal-th"><span style="font-size:9px;letter-spacing:0.1em;">THU</span><span class="dn" id="cd3">9</span><span class="dr" style="color:var(--label);">£0</span></div>
-              <div class="cal-th"><span style="font-size:9px;letter-spacing:0.1em;">FRI</span><span class="dn" id="cd4">10</span><span class="dr" style="color:var(--green);">£85</span></div>
+              <div class="cal-th"><span style="font-size:9px;letter-spacing:0.1em;">FRI</span><span class="dn" id="cd4">10</span><span class="dr" style="color:var(--green);">£133</span></div>
               <div class="cal-th"><span style="font-size:9px;letter-spacing:0.1em;">SAT</span><span class="dn" id="cd5">11</span><span class="dr" style="color:var(--label);">£0</span></div>
               <div class="cal-th"><span style="font-size:9px;letter-spacing:0.1em;">SUN</span><span class="dn" id="cd6">12</span><span class="dr" style="color:var(--label);">£0</span></div>
             </div>
@@ -1008,9 +1128,21 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
               <div class="cal-cell"><div class="job job-res" onclick="openJob(this,'Dr Williams','Residential','Regular · 1h',30)"><div class="job-n">Dr Williams</div><div class="job-t">Regular · 1h</div><div class="job-p">£30</div></div></div>
               <div class="cal-cell"></div><div class="cal-cell"></div>
               <div class="cal-time">11am</div>
-              <div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div>
+              <div class="cal-cell"><div class="job job-res" onclick="openJob(this,'Mr Ahmed','Residential','Regular · 1h',32)"><div class="job-n">Mr Ahmed</div><div class="job-t">Regular · 1h</div><div class="job-p">£32</div></div></div>
+              <div class="cal-cell"></div>
+              <div class="cal-cell"><div class="job job-ext" onclick="openJob(this,'MK2 Route','Exterior','Gutter clear · 3 houses',75)"><div class="job-n">MK2 Route</div><div class="job-t">Gutters · 3 houses</div><div class="job-p" style="color:var(--orange);">£75</div></div></div>
+              <div class="cal-cell"></div>
+              <div class="cal-cell"></div>
+              <div class="cal-cell"></div>
+              <div class="cal-cell"></div>
               <div class="cal-time">12pm</div>
-              <div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div>
+              <div class="cal-cell"></div>
+              <div class="cal-cell"><div class="job job-com" onclick="openJob(this,'Lantern Café','Commercial','Weekly café clean · 2h',90)"><div class="job-n">Lantern Café</div><div class="job-t">Weekly · 2h</div><div class="job-p" style="color:var(--blue);">£90</div></div></div>
+              <div class="cal-cell"></div>
+              <div class="cal-cell"></div>
+              <div class="cal-cell"><div class="job job-res" onclick="openJob(this,'Mrs Khan','Residential','Fortnightly · 1.5h',48)"><div class="job-n">Mrs Khan</div><div class="job-t">Fortnightly · 1.5h</div><div class="job-p">£48</div></div></div>
+              <div class="cal-cell"></div>
+              <div class="cal-cell"></div>
             </div>
           </div>
           <div class="alert-bad" id="alertBad">
@@ -1278,6 +1410,67 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
   <button class="ajf-cta" onclick="saveAJ()">Save & Schedule Recurring</button>
 </div>
 
+<!-- INVOICE PREVIEW MODAL -->
+<div class="ipv-overlay" id="ipvOv" onclick="closeInvPrev()"></div>
+<div class="ipv" id="ipv">
+  <div class="ipv-head">
+    <div>
+      <div class="ipv-head-t">Preview before send</div>
+      <div class="ipv-head-s">This is exactly what <strong id="ipvRecipient">your customer</strong> will receive.</div>
+    </div>
+    <button class="ipv-close" onclick="closeInvPrev()">✕</button>
+  </div>
+  <div class="ipv-email">
+    <div class="ipv-email-hdr">
+      <div>From: <strong id="ipvFrom">Mackies Cleaning</strong> &lt;hello@mackiescleaning.co.uk&gt;</div>
+      <div>To: <strong id="ipvTo">customer</strong></div>
+      <div class="ipv-subj" id="ipvSubj">Invoice INV-1044 — Due 14 days</div>
+    </div>
+    <div class="ipv-email-body">
+      <div class="ipv-inv-card">
+        <div class="ipv-inv-hdr">
+          <div>
+            <div class="ipv-biz" id="ipvBiz">Mackies Cleaning</div>
+            <div class="ipv-biz-sub">Thank you for your business</div>
+          </div>
+          <div class="ipv-inv-num">INVOICE<strong>INV-1044</strong></div>
+        </div>
+        <div class="ipv-addrs">
+          <div>
+            <div class="ipv-addr-label">BILL TO</div>
+            <div class="ipv-addr-val" id="ipvBillTo">—</div>
+          </div>
+          <div>
+            <div class="ipv-addr-label">INVOICE DATE</div>
+            <div class="ipv-addr-val" id="ipvDate">—</div>
+            <div class="ipv-addr-label" style="margin-top:10px;">DUE DATE</div>
+            <div class="ipv-addr-val" id="ipvDueD">—</div>
+          </div>
+        </div>
+        <div class="ipv-items-hdr"><div>Description</div><div style="text-align:right;">Qty</div><div style="text-align:right;">Rate</div><div style="text-align:right;">Amount</div></div>
+        <div id="ipvItems"></div>
+        <div class="ipv-tot-block">
+          <div class="ipv-tot-row"><span>Subtotal</span><span id="ipvSub">£0.00</span></div>
+          <div class="ipv-tot-row final"><span>Total due</span><span id="ipvTot">£0.00</span></div>
+        </div>
+        <div class="ipv-bank">
+          <div class="ipv-bank-t">Pay by bank transfer</div>
+          <div class="ipv-bank-rows">
+            <div>Bank: Starling</div><div>Sort: 60-83-71</div>
+            <div>Account: 12345678</div><div>Ref: INV-1044</div>
+          </div>
+        </div>
+        <button class="ipv-card-pay" onclick="event.preventDefault();">Or pay <span id="ipvCardAmt">£0.00</span> by card →</button>
+      </div>
+    </div>
+    <div class="ipv-footer">Automated reminder 3 days before due date. Payment marked paid the moment it hits your Starling.</div>
+  </div>
+  <div class="ipv-acts">
+    <button class="ipv-back" onclick="closeInvPrev()">← Edit invoice</button>
+    <button class="ipv-send-final" onclick="confirmSendInv()">Confirm &amp; send →</button>
+  </div>
+</div>
+
 <!-- JOB DETAIL MODAL -->
 <div class="jdm" id="jdm">
   <div class="jdm-hdr">
@@ -1319,7 +1512,7 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
 <script>
 const S={sector:null,scenario:null,step:0,rate:18,mult:1,beds:2,bedTime:2,lastPrice:72,schedJobInjected:false};
 const SD={
-  solo:   {jobs:8,rev:'£524',comp:'3 / 8',un:1,rank:'#20',score:62,count:21,hl:'Good foundation — room to grow',hs:'3 areas will push your score over 70 this month.',ai:'17 pts to unlock Good tier',mtd:{turnover:8640,jobs:128,expenses:1912,profit:6728,tax:1950,it:1346,ni:605}},
+  solo:   {jobs:12,rev:'£769',comp:'3 / 12',un:1,rank:'#20',score:62,count:21,hl:'Good foundation — room to grow',hs:'3 areas will push your score over 70 this month.',ai:'17 pts to unlock Good tier',mtd:{turnover:8640,jobs:128,expenses:1912,profit:6728,tax:1950,it:1346,ni:605}},
   team:   {jobs:14,rev:'£1,240',comp:'6 / 14',un:0,rank:'#8',score:74,count:38,hl:'Strong business — scaling well',hs:'Retention rate is excellent. Payroll setup puts you in the top 10.',ai:'6 pts to unlock Elite tier',mtd:{turnover:22480,jobs:286,expenses:5640,profit:16840,tax:4884,it:3368,ni:1516}},
   scaling:{jobs:22,rev:'£3,850',comp:'15 / 22',un:0,rank:'#3',score:81,count:54,hl:'High performer — top 10% UK',hs:'Two more actions and you crack the top 5 nationally.',ai:'2 pts to unlock Elite tier',mtd:{turnover:54200,jobs:612,expenses:12480,profit:41720,tax:12097,it:8344,ni:3753}}
 };
@@ -1609,8 +1802,8 @@ function setR(r,el){document.querySelectorAll('.preset').forEach(x=>x.classList.
 function setCT(m,el){document.querySelectorAll('.ct').forEach(x=>x.classList.remove('sel'));el.classList.add('sel');S.mult=m;const types={1:'Regular clean',2:'Deep clean',3:'End of tenancy',1.5:'One-off clean'};document.getElementById('pbdType').textContent=types[m]||'Regular clean';updateP();}
 function setP(beds,hours,el){document.querySelectorAll('.pb').forEach(x=>x.classList.remove('sel'));el.classList.add('sel');S.beds=beds;S.bedTime=hours;updateBD();}
 const PRICING_LOCK_COPY={
-  commercial:{icon:'🏢',title:'Commercial calculator — locked',sub:'Cost-plus quoting with overheads, team rates and contract discounts.'},
-  exterior:  {icon:'🪟',title:'Exterior calculator — locked',sub:'Property-based pricing with ladder, access and route-cluster logic.'}
+  commercial:{icon:'🏢',title:'Commercial cost-build calculator',sub:'Prices contract cleaning from the ground up — labour, materials, travel, and overhead — not a gut-feel number. Here’s what it does:',bullets:['Site size × visit frequency auto-calc','Cost-plus: labour + materials + travel + overheads','Margin targeting (set your target, price adjusts)','Per-visit / weekly / monthly / annual contract view','3-year lifetime value projection','Recommended contract length to pay back sales cost']},
+  exterior:  {icon:'🪟',title:'Exterior & property calculator',sub:'Handles the quirks of outdoor work — access, ladders, route density — that flat hourly pricing always gets wrong:',bullets:['Job type × property size matrix','Auto route-cluster discount (neighbours on route)','Ladder + access multipliers','Postcode density (fills routes, not just diaries)','Repeat frequency built into LTV','Per-panel / per-sqm / per-job flex']}
 };
 function setPTab(el){
   document.querySelectorAll('.pt-tab').forEach(x=>x.classList.remove('active'));
@@ -1631,6 +1824,8 @@ function setPTab(el){
   document.getElementById('plIcon').textContent=c.icon;
   document.getElementById('plTitle').textContent=c.title;
   document.getElementById('plSub').textContent=c.sub;
+  const bEl=document.getElementById('plBullets');
+  if(bEl)bEl.innerHTML=c.bullets.map(b=>`<div class="pl-bullet">${b}</div>`).join('');
   lock.classList.add('show');
 }
 function setPTabByName(name){
@@ -1736,16 +1931,73 @@ function calcTot(){
   if(tipEl)tipEl.textContent='£'+tot.toFixed(2);
 }
 function sendInv(){
+  // Step 1: open the preview modal with the current invoice contents
+  const sec=SECTORS[S.sector]||SECTORS.residential;
+  const biz=S.biz||'Mackies Cleaning';
+  const bizHandle=biz.toLowerCase().replace(/[^a-z0-9]+/g,'');
+  const customerInputs=document.querySelectorAll('#panel3 .inv-card:first-child .fi');
+  const name=customerInputs[0]?.value||sec.customer.name;
+  const email=customerInputs[1]?.value||sec.customer.email;
+  const addr=customerInputs[3]?.value||sec.customer.addr;
+  const invDate=document.getElementById('invDate')?.value||'';
+  const dueText=document.getElementById('invDue')?.textContent||'';
+  const total=document.getElementById('invTot').textContent;
+  const sub=document.getElementById('invSub').textContent;
+  document.getElementById('ipvBiz').textContent=biz;
+  document.getElementById('ipvFrom').textContent=biz;
+  document.getElementById('ipvRecipient').textContent=name;
+  document.getElementById('ipvTo').textContent=`${name} <${email}>`;
+  document.getElementById('ipvSubj').textContent=`Invoice INV-1044 from ${biz} — Due ${dueText||'in 14 days'}`;
+  document.getElementById('ipvBillTo').innerHTML=`${escapeHTML(name)}<br>${escapeHTML(addr)}<br>${escapeHTML(email)}`;
+  document.getElementById('ipvDate').textContent=invDate;
+  document.getElementById('ipvDueD').textContent=dueText||'—';
+  document.getElementById('ipvSub').textContent=sub;
+  document.getElementById('ipvTot').textContent=total;
+  document.getElementById('ipvCardAmt').textContent=total;
+  // Render line items
+  const itemsEl=document.getElementById('ipvItems');
+  itemsEl.innerHTML='';
+  document.querySelectorAll('#liContainer .li-row').forEach(row=>{
+    const ins=row.querySelectorAll('input');
+    const desc=ins[0]?.value||'';
+    const qty=ins[1]?.value||'1';
+    const rate=parseFloat(ins[2]?.value)||0;
+    const line=(parseFloat(qty)||1)*rate;
+    if(!desc&&!rate)return;
+    itemsEl.insertAdjacentHTML('beforeend',`<div class="ipv-item"><div>${escapeHTML(desc)}</div><div class="ipv-qty">${escapeHTML(qty)}</div><div class="ipv-rate">£${rate.toFixed(2)}</div><div class="ipv-line-tot">£${line.toFixed(2)}</div></div>`);
+  });
+  // Domain on from address
+  const fromEl=document.querySelector('#ipv .ipv-email-hdr > div:first-child');
+  if(fromEl)fromEl.innerHTML=`From: <strong>${escapeHTML(biz)}</strong> &lt;hello@${bizHandle||'mackiescleaning'}.co.uk&gt;`;
+  document.getElementById('ipv').classList.add('show');
+  document.getElementById('ipvOv').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function escapeHTML(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);}
+function closeInvPrev(){
+  document.getElementById('ipv').classList.remove('show');
+  document.getElementById('ipvOv').classList.remove('show');
+  document.body.style.overflow='';
+}
+function confirmSendInv(){
   const sec=SECTORS[S.sector]||SECTORS.residential;
   const total=document.getElementById('invTot').textContent;
   document.getElementById('invSendBtn').textContent='✓ Sent';
   document.getElementById('invSendBtn').style.background='var(--green)';
   document.getElementById('invSendBtn').disabled=true;
   document.getElementById('invSentMsg').style.display='block';
+  closeInvPrev();
   showToast('Invoice sent',`${total} to ${sec.customer.name}. Accounts + tax reserve updated.`,'💸');
 }
 
 // DASHBOARD — AI action cards
+function toggleScoring(){
+  const panel=document.getElementById('lbScoring');
+  const chev=document.getElementById('lbiChev');
+  if(!panel)return;
+  const open=panel.classList.toggle('show');
+  if(chev)chev.textContent=open?'↑':'↓';
+}
 function bumpHealth(pts){
   const numEl=document.getElementById('hcNum');
   if(!numEl)return;
