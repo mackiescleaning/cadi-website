@@ -294,28 +294,88 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
 .cal-th{font-size:10px;font-weight:600;color:var(--label);padding:10px 6px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px;}
 .cal-th .dn{font-size:16px;font-weight:700;color:#fff;line-height:1;}
 .cal-th .dr{font-size:9px;}
-.cal-body{display:grid;grid-template-columns:46px repeat(7,1fr);}
-.cal-time{font-size:9px;color:var(--label);padding:6px 4px;text-align:right;border-right:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);}
-.cal-cell{border-right:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);padding:2px;min-height:42px;position:relative;}
-.cal-cell:last-child{border-right:none;}
-.job{border-radius:6px;padding:4px 7px;margin:1px;cursor:pointer;transition:all 0.15s;border-left:3px solid;}
-.job:hover{opacity:0.85;}
-.job-res{background:rgba(0,196,140,0.12);border-left-color:var(--green);}
-.job-ext{background:rgba(249,115,22,0.12);border-left-color:var(--orange);}
-.job-com{background:rgba(59,91,255,0.12);border-left-color:var(--blue);}
-.job-com .job-p{color:var(--blue);}
-.job-bad{background:rgba(239,68,68,0.1);border-left-color:#ef4444;}
-.job-n{font-size:10px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.job-t{font-size:9px;color:rgba(255,255,255,0.4);}
-.job-p{font-size:9px;font-weight:600;color:var(--green);}
-.job-ext .job-p{color:var(--orange);}
+
+/* staff legend */
+.staff-legend{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:9px 14px;border-bottom:1px solid var(--card-border);background:rgba(255,255,255,0.015);}
+.sl-chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:100px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);font-size:10px;font-weight:500;color:rgba(255,255,255,0.72);cursor:pointer;transition:all 0.15s;}
+.sl-chip:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.14);color:#fff;}
+.sl-chip.active{background:rgba(59,91,255,0.14);border-color:rgba(59,91,255,0.35);color:#fff;}
+.sl-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.sl-count{font-weight:700;color:#fff;margin-left:2px;}
+.sl-hint{font-size:10px;color:var(--label);margin-left:auto;}
+
+/* calendar body — time-gridded with absolute-positioned jobs per day column */
+.cal-body{display:grid;grid-template-columns:46px repeat(7,1fr);position:relative;}
+.cal-times{display:grid;grid-template-rows:repeat(10,44px);}
+.cal-times > div{font-size:9px;color:var(--label);padding:3px 6px 0 0;text-align:right;line-height:1;border-right:1px solid rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.04);}
+.cal-day{position:relative;height:440px;border-right:1px solid rgba(255,255,255,0.04);background:repeating-linear-gradient(to bottom,transparent 0 43px,rgba(255,255,255,0.04) 43px 44px);transition:background-color 0.4s;}
+.cal-day:last-child{border-right:none;}
+.cal-day.day-highlight{background-color:rgba(0,196,140,0.08);}
+
+/* staff avatar colours */
+.jbs-jamie{background:#3b5bff;}
+.jbs-sarah{background:#10b981;}
+.jbs-chris{background:#f59e0b;}
+.jbs-tom{background:#a855f7;}
+.jbs-un{background:#ef4444;}
+
+/* a job block sized by its actual duration */
+.job-blk{position:absolute;top:calc((var(--start) - 1) * 44px + 2px);height:calc(var(--dur) * 44px - 4px);left:calc(var(--lane, 0) * (100% / var(--lanes, 1)) + 2px);width:calc(100% / var(--lanes, 1) - 4px);border-radius:7px;padding:5px 7px 4px;cursor:pointer;transition:all 0.18s;border-left:3px solid;display:flex;flex-direction:column;overflow:hidden;z-index:1;}
+.job-blk:hover{filter:brightness(1.1);z-index:3;transform:scale(1.03);}
+.job-blk.job-dim{opacity:0.25;filter:saturate(0.4);}
+.job-blk.job-focus{outline:2px solid rgba(16,185,129,0.7);outline-offset:1px;z-index:2;}
+.job-res{background:rgba(0,196,140,0.15);border-left-color:var(--green);}
+.job-ext{background:rgba(249,115,22,0.15);border-left-color:var(--orange);}
+.job-com{background:rgba(59,91,255,0.15);border-left-color:var(--blue);}
+.job-bad{background:rgba(239,68,68,0.13);border-left-color:#ef4444;animation:badPulse 1.6s ease-in-out infinite;}
+@keyframes badPulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,0);}50%{box-shadow:0 0 0 3px rgba(239,68,68,0.22);}}
+.job-blk.job-new{animation:popIn 0.5s var(--ease) both;box-shadow:0 0 0 2px rgba(0,196,140,0.6),0 0 18px rgba(0,196,140,0.35);}
+.job-blk.job-fixed{animation:fixedPulse 1.2s ease-out;box-shadow:0 0 0 2px rgba(0,196,140,0.6),0 0 22px rgba(0,196,140,0.4);}
+@keyframes fixedPulse{0%{transform:scale(1);box-shadow:0 0 0 0 rgba(0,196,140,0.8);}40%{transform:scale(1.06);box-shadow:0 0 0 5px rgba(0,196,140,0.35),0 0 24px rgba(0,196,140,0.5);}100%{transform:scale(1);box-shadow:0 0 0 2px rgba(0,196,140,0.6),0 0 22px rgba(0,196,140,0.4);}}
+.job-blk.job-paid{background:rgba(0,196,140,0.28);opacity:0.85;}
+.job-blk.job-pulse{animation:fixedPulse 0.7s ease-out;}
+
+.jb-head{display:flex;align-items:center;gap:4px;margin-bottom:2px;}
+.jb-staff{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:50%;font-size:8px;font-weight:800;color:#fff;flex-shrink:0;}
+.jb-time{font-size:9px;color:rgba(255,255,255,0.65);font-weight:600;letter-spacing:0.01em;}
+.jb-tag{margin-left:auto;font-size:8px;font-weight:800;letter-spacing:0.06em;color:var(--green);}
+.jb-name{font-size:10px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2;}
+.jb-sub{font-size:9px;color:rgba(255,255,255,0.48);line-height:1.25;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.jb-price{font-size:10px;font-weight:700;color:var(--green);margin-top:auto;padding-top:2px;}
+.job-ext .jb-price{color:var(--orange);}
+.job-com .jb-price{color:var(--blue);}
+.job-bad .jb-price{color:#ef4444;}
+
 .alert-bad{background:rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.16);border-radius:var(--radius-sm);padding:10px 14px;margin-top:10px;display:flex;align-items:center;gap:10px;}
-.alert-good{display:none;background:var(--green-dim);border:1px solid rgba(0,196,140,0.18);border-radius:var(--radius-sm);padding:10px 14px;margin-top:10px;}
+.alert-good{display:none;background:linear-gradient(135deg,rgba(0,196,140,0.12),rgba(0,196,140,0.04));border:1px solid rgba(0,196,140,0.25);border-radius:var(--radius-sm);padding:12px 14px;margin-top:10px;animation:fadeUp 0.3s var(--ease) both;}
+.ag-hdr{display:flex;align-items:center;gap:8px;margin-bottom:9px;flex-wrap:wrap;}
+.ag-check{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--green);color:#fff;font-size:11px;font-weight:900;box-shadow:0 0 12px rgba(0,196,140,0.5);}
+.ag-title{font-size:12px;font-weight:700;color:#fff;}
+.ag-sub{font-size:10px;color:rgba(255,255,255,0.45);margin-left:4px;}
+.ag-undo{margin-left:auto;font-family:var(--font-app);font-size:10px;font-weight:600;color:rgba(255,255,255,0.65);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.15);border-radius:6px;padding:5px 10px;cursor:pointer;transition:all 0.15s;}
+.ag-undo:hover{color:#fff;border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.08);}
+.ag-row{display:flex;align-items:flex-start;gap:9px;margin:5px 0;font-size:11px;color:rgba(230,255,245,0.82);line-height:1.5;}
+.ag-row b{color:#fff;font-weight:700;}
+.ag-row s{color:rgba(255,255,255,0.32);}
+.ag-row em{color:rgba(255,255,255,0.68);font-style:italic;}
+.ag-icon{flex-shrink:0;width:18px;text-align:center;font-size:12px;line-height:1.5;}
+.ag-body{flex:1;}
+.ag-actions{margin-top:9px;display:flex;flex-wrap:wrap;gap:7px;}
+.ag-btn{font-family:var(--font-app);font-size:10px;font-weight:600;color:#fff;background:rgba(0,196,140,0.18);border:1px solid rgba(0,196,140,0.35);border-radius:6px;padding:6px 11px;cursor:pointer;transition:all 0.15s;}
+.ag-btn:hover{background:rgba(0,196,140,0.3);border-color:rgba(0,196,140,0.55);transform:translateY(-1px);}
+.ag-btn.ag-btn-ghost{background:transparent;border-color:rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);}
+.ag-btn.ag-btn-ghost:hover{color:#fff;border-color:rgba(255,255,255,0.25);background:rgba(255,255,255,0.04);}
 .fix-btn{font-family:var(--font-app);font-size:11px;font-weight:600;color:#fff;background:var(--blue);border:none;border-radius:6px;padding:7px 12px;cursor:pointer;}
 
 /* PANEL 4 — INVOICE */
-.inv-wrap{display:grid;grid-template-columns:1fr 1.7fr;gap:12px;}
-.inv-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:16px;margin-bottom:10px;}
+.inv-summary-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;background:linear-gradient(135deg,rgba(59,91,255,0.14),rgba(0,196,140,0.06));border:1px solid rgba(59,91,255,0.28);border-radius:var(--radius-sm);padding:12px 16px;margin-bottom:14px;flex-wrap:wrap;}
+.isb-left{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.isb-label{font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--label);}
+.isb-amt{font-size:22px;font-weight:800;color:#fff;letter-spacing:-0.02em;line-height:1;}
+.isb-note{font-size:10px;color:rgba(255,255,255,0.45);}
+.isb-right{display:flex;gap:8px;flex-shrink:0;}
+.inv-wrap{display:grid;grid-template-columns:1fr 1.7fr;gap:12px;align-items:start;}
+.inv-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:14px 16px;margin-bottom:8px;}
 .fl{font-size:9px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--label);margin-bottom:5px;margin-top:8px;}
 .fl:first-child{margin-top:0;}
 .fi{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:7px;padding:9px 11px;font-size:12px;color:rgba(255,255,255,0.65);font-family:var(--font-app);outline:none;margin-bottom:4px;}
@@ -625,9 +685,11 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
 /* INVOICE PREVIEW MODAL */
 .ipv-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:350;display:none;backdrop-filter:blur(6px);}
 .ipv-overlay.show{display:block;animation:fadeUp 0.25s var(--ease) both;}
-.ipv{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--card2);border:1px solid rgba(59,91,255,0.25);border-radius:var(--radius);width:calc(100% - 40px);max-width:620px;max-height:calc(100vh - 60px);overflow-y:auto;z-index:351;box-shadow:0 24px 80px rgba(0,0,0,0.7);animation:popIn 0.3s var(--ease) both;}
-.ipv.show{display:block;}
-.ipv-head{padding:16px 20px;border-bottom:1px solid var(--card-border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--card2);z-index:2;}
+.ipv{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--card2);border:1px solid rgba(59,91,255,0.25);border-radius:var(--radius);width:calc(100% - 40px);max-width:620px;max-height:calc(100vh - 40px);height:auto;z-index:351;box-shadow:0 24px 80px rgba(0,0,0,0.7);animation:ipvPopIn 0.3s var(--ease) both;flex-direction:column;overflow:hidden;}
+.ipv.show{display:flex;}
+@keyframes ipvPopIn{from{opacity:0;transform:translate(-50%,-50%) scale(0.95);}to{opacity:1;transform:translate(-50%,-50%) scale(1);}}
+.ipv-head{padding:14px 20px;border-bottom:1px solid var(--card-border);display:flex;align-items:center;justify-content:space-between;background:var(--card2);flex-shrink:0;}
+.ipv-scroll{flex:1;overflow-y:auto;min-height:0;}
 .ipv-head-t{font-size:14px;font-weight:700;color:#fff;margin-bottom:2px;}
 .ipv-head-s{font-size:11px;color:var(--label);}
 .ipv-close{font-size:16px;color:var(--label);background:none;border:none;cursor:pointer;padding:4px 8px;}
@@ -657,7 +719,7 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
 .ipv-bank-rows{display:grid;grid-template-columns:repeat(2,1fr);gap:4px 14px;font-size:11px;color:#1a2340;font-family:monospace;}
 .ipv-card-pay{display:block;width:100%;margin-top:12px;background:linear-gradient(135deg,#3b5bff,#2e4ae0);color:#fff;font-family:var(--font-app);font-size:13px;font-weight:700;border:none;border-radius:8px;padding:12px;cursor:pointer;box-shadow:0 4px 14px rgba(59,91,255,0.3);}
 .ipv-footer{padding:12px 18px 18px;font-size:11px;color:#6a7595;text-align:center;line-height:1.6;}
-.ipv-acts{padding:14px 20px;border-top:1px solid var(--card-border);display:flex;gap:10px;position:sticky;bottom:0;background:var(--card2);}
+.ipv-acts{padding:14px 20px;border-top:1px solid var(--card-border);display:flex;gap:10px;background:var(--card2);flex-shrink:0;}
 .ipv-back{flex:1;font-family:var(--font-app);font-size:12px;font-weight:500;color:rgba(255,255,255,0.55);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:8px;padding:11px;cursor:pointer;}
 .ipv-back:hover{color:#fff;}
 .ipv-send-final{flex:2;font-family:var(--font-app);font-size:13px;font-weight:700;color:#fff;background:var(--blue);border:none;border-radius:8px;padding:11px;cursor:pointer;box-shadow:0 4px 16px rgba(59,91,255,0.4);transition:all 0.35s var(--ease);display:flex;align-items:center;justify-content:center;gap:8px;}
@@ -837,8 +899,8 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
                 <div class="lb-lock" id="lbLock">
                   <div class="lb-lock-icon">🔒</div>
                   <div class="lb-lock-title">Want to see who you're really up against?</div>
-                  <div class="lb-lock-sub">Real business names, live scores, weekly movement. Claim your founding account — first 200 get their name on the board.</div>
-                  <button class="lb-lock-btn" onclick="window.location.href='/#access'">Claim my spot →</button>
+                  <div class="lb-lock-sub">Real business names, live scores, weekly movement. Join the waitlist — early users get their name on the board first.</div>
+                  <button class="lb-lock-btn" onclick="window.location.href='/#access'">Join the waitlist →</button>
                 </div>
               </div>
             </div>
@@ -888,7 +950,7 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
                 <div class="pl-icon" id="plIcon">🏢</div>
                 <div class="pl-text">
                   <div class="pl-title" id="plTitle">Commercial calculator — locked</div>
-                  <div class="pl-sub" id="plSub">Live in the full Cadi. Claim your founding spot to unlock it.</div>
+                  <div class="pl-sub" id="plSub">Live in the full Cadi. Join the waitlist to unlock it.</div>
                 </div>
                 <a href="/#access" class="pl-cta">Get first access →</a>
                 <div class="pl-bullets" id="plBullets"></div>
@@ -1121,87 +1183,164 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
               <div class="cal-th"><span style="font-size:9px;letter-spacing:0.1em;">SAT</span><span class="dn" id="cd5">11</span><span class="dr" style="color:var(--green);">£120</span></div>
               <div class="cal-th"><span style="font-size:9px;letter-spacing:0.1em;">SUN</span><span class="dn" id="cd6">12</span><span class="dr" style="color:var(--label);">£0</span></div>
             </div>
+            <div class="staff-legend">
+              <div class="sl-chip"><span class="sl-dot" style="background:#3b5bff;"></span>Jamie<span class="sl-count" id="slJamieCount">6</span></div>
+              <div class="sl-chip"><span class="sl-dot" style="background:#10b981;"></span>Sarah<span class="sl-count" id="slSarahCount">7</span></div>
+              <div class="sl-chip"><span class="sl-dot" style="background:#f59e0b;"></span>You<span class="sl-count" id="slChrisCount">4</span></div>
+              <div class="sl-chip"><span class="sl-dot" style="background:#a855f7;"></span>Tom<span class="sl-count" id="slTomCount">3</span></div>
+              <div class="sl-chip"><span class="sl-dot" style="background:#ef4444;"></span>Unassigned<span class="sl-count" id="slUnCount">1</span></div>
+              <span class="sl-hint">Jobs are sized by their duration · different staff can work the same hour</span>
+            </div>
             <div class="cal-body">
-              <div class="cal-time">7am</div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"><div class="job job-com" onclick="openJob(this,'MK Warehouse','Commercial','Early warehouse clean · 2h',180)"><div class="job-n">MK Warehouse</div><div class="job-t">Early · 2h</div><div class="job-p">£180</div></div></div>
-              <div class="cal-cell"><div class="job job-com" onclick="openJob(this,'Office Park MK','Commercial','Daily contract · 2h',160)"><div class="job-n">Office Park</div><div class="job-t">Daily · 2h</div><div class="job-p">£160</div></div></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-time">8am</div>
-              <div class="cal-cell"><div class="job job-ext" onclick="openJob(this,'MK2 Route','Exterior','Window route · 24 houses · 3h',480)"><div class="job-n">MK2 Route</div><div class="job-t">24 houses · 3h</div><div class="job-p">£480</div></div></div>
-              <div class="cal-cell"><div class="job job-ext" onclick="openJob(this,'MK7 Route','Exterior','Window route · 28 houses · 3h',560)"><div class="job-n">MK7 Route</div><div class="job-t">28 houses · 3h</div><div class="job-p">£560</div></div></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"><div class="job job-ext" onclick="openJob(this,'MK5 Route','Exterior','Window route · 22 houses · 3h',440)"><div class="job-n">MK5 Route</div><div class="job-t">22 houses · 3h</div><div class="job-p">£440</div></div></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-time">9am</div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"><div class="job job-ext" onclick="openJob(this,'Gutter Route','Exterior','Gutters · 5 houses · 2h',375)"><div class="job-n">Gutter Route</div><div class="job-t">5 houses · 2h</div><div class="job-p">£375</div></div></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"><div class="job job-ext" onclick="openJob(this,'Mr Begum','Exterior','Solar panel clean · 12 panels',120)"><div class="job-n">Mr Begum</div><div class="job-t">Solar panels</div><div class="job-p">£120</div></div></div>
-              <div class="cal-cell"></div>
-              <div class="cal-time">10am</div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-time">11am</div>
-              <div class="cal-cell"><div class="job job-com" onclick="openJob(this,'Bletchley Office','Commercial','Daily contract · 1h',95)"><div class="job-n">Bletchley Office</div><div class="job-t">Daily · 1h</div><div class="job-p">£95</div></div></div>
-              <div class="cal-cell"><div class="job job-com" onclick="openJob(this,'Lantern Café','Commercial','Daily café clean · 1h',85)"><div class="job-n">Lantern Café</div><div class="job-t">Daily · 1h</div><div class="job-p">£85</div></div></div>
-              <div class="cal-cell"><div class="job job-com" onclick="openJob(this,'Retail Park','Commercial','Contract clean · 1.5h',140)"><div class="job-n">Retail Park</div><div class="job-t">Contract · 1.5h</div><div class="job-p">£140</div></div></div>
-              <div class="cal-cell"><div class="job job-com" onclick="openJob(this,'School Canteen','Commercial','Daily clean · 1h',95)"><div class="job-n">School Canteen</div><div class="job-t">Daily · 1h</div><div class="job-p">£95</div></div></div>
-              <div class="cal-cell"><div class="job job-com" onclick="openJob(this,'Gym & Studio','Commercial','Weekly deep · 2h',110)"><div class="job-n">Gym &amp; Studio</div><div class="job-t">Weekly deep</div><div class="job-p">£110</div></div></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-time">12pm</div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-time">1pm</div>
-              <div class="cal-cell"><div class="job job-res" onclick="openJob(this,'Mrs Davies','Residential','Regular · 2h',65)"><div class="job-n">Mrs Davies</div><div class="job-t">Regular · 2h</div><div class="job-p">£65</div></div></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"><div class="job job-res" onclick="openJob(this,'Acorn Close','Residential','Spring clean · 2h',150)"><div class="job-n">Acorn Close</div><div class="job-t">Spring · 2h</div><div class="job-p">£150</div></div></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-time">2pm</div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"><div class="job job-bad" id="badJob"><div class="job-n">⚠ The Petersons</div><div class="job-t">Unassigned · 2h</div><div class="job-p" style="color:#ef4444;">£65</div></div></div>
-              <div class="cal-cell"><div class="job job-res" onclick="openJob(this,'Willow Close','Residential','End of tenancy · 3h',195)"><div class="job-n">Willow Close</div><div class="job-t">End of tenancy · 3h</div><div class="job-p">£195</div></div></div>
-              <div class="cal-cell"><div class="job job-res" onclick="openJob(this,'Mrs Khan','Residential','Fortnightly · 1.5h',48)"><div class="job-n">Mrs Khan</div><div class="job-t">Fortnightly · 1.5h</div><div class="job-p">£48</div></div></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-time">3pm</div>
-              <div class="cal-cell"><div class="job job-res" onclick="openJob(this,'The Collins','Residential','Deep clean · 3h',180)"><div class="job-n">The Collins</div><div class="job-t">Deep · 3h</div><div class="job-p">£180</div></div></div>
-              <div class="cal-cell"><div class="job job-res" onclick="openJob(this,'Mr Ahmed','Residential','Regular · 1h',32)"><div class="job-n">Mr Ahmed</div><div class="job-t">Regular · 1h</div><div class="job-p">£32</div></div></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"><div class="job job-res" onclick="openJob(this,'Dr Williams','Residential','Regular · 1h',30)"><div class="job-n">Dr Williams</div><div class="job-t">Regular · 1h</div><div class="job-p">£30</div></div></div>
-              <div class="cal-cell"><div class="job job-res" onclick="openJob(this,'Mrs Green','Residential','Fortnightly · 1.5h',55)"><div class="job-n">Mrs Green</div><div class="job-t">Fortnightly · 1.5h</div><div class="job-p">£55</div></div></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-time">4pm</div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
-              <div class="cal-cell"></div>
+              <div class="cal-times">
+                <div>7am</div><div>8am</div><div>9am</div><div>10am</div><div>11am</div><div>12pm</div><div>1pm</div><div>2pm</div><div>3pm</div><div>4pm</div>
+              </div>
+              <!-- MON -->
+              <div class="cal-day" id="dayMon">
+                <div class="job-blk job-ext" data-staff="tom" style="--start:2;--dur:3;" onclick="openJob(this,'MK2 Route','Exterior','Window route · 24 houses · 3h',480)">
+                  <div class="jb-head"><span class="jb-staff jbs-tom">T</span><span class="jb-time">8–11am</span></div>
+                  <div class="jb-name">MK2 Route</div>
+                  <div class="jb-sub">24 houses · Tom</div>
+                  <div class="jb-price">£480</div>
+                </div>
+                <div class="job-blk job-com" data-staff="jamie" style="--start:5;--dur:1;" onclick="openJob(this,'Bletchley Office','Commercial','Daily contract · 1h',95)">
+                  <div class="jb-head"><span class="jb-staff jbs-jamie">J</span><span class="jb-time">11am–12pm</span></div>
+                  <div class="jb-name">Bletchley Office</div>
+                  <div class="jb-sub">Daily contract · Jamie</div>
+                  <div class="jb-price">£95</div>
+                </div>
+                <div class="job-blk job-res" data-staff="sarah" style="--start:7;--dur:2;" onclick="openJob(this,'Mrs Davies','Residential','Regular · 2h',65)">
+                  <div class="jb-head"><span class="jb-staff jbs-sarah">S</span><span class="jb-time">1–3pm</span></div>
+                  <div class="jb-name">Mrs Davies</div>
+                  <div class="jb-sub">Regular · Sarah · 2h</div>
+                  <div class="jb-price">£65</div>
+                </div>
+                <div class="job-blk job-res" data-staff="sarah" style="--start:9;--dur:3;" onclick="openJob(this,'The Collins','Residential','Deep clean · 3h',180)">
+                  <div class="jb-head"><span class="jb-staff jbs-sarah">S</span><span class="jb-time">3–6pm</span></div>
+                  <div class="jb-name">The Collins</div>
+                  <div class="jb-sub">Deep clean · Sarah · 3h</div>
+                  <div class="jb-price">£180</div>
+                </div>
+              </div>
+              <!-- TUE -->
+              <div class="cal-day" id="dayTue">
+                <div class="job-blk job-ext" data-staff="tom" style="--start:2;--dur:3;" onclick="openJob(this,'MK7 Route','Exterior','Window route · 28 houses · 3h',560)">
+                  <div class="jb-head"><span class="jb-staff jbs-tom">T</span><span class="jb-time">8–11am</span></div>
+                  <div class="jb-name">MK7 Route</div>
+                  <div class="jb-sub">28 houses · Tom</div>
+                  <div class="jb-price">£560</div>
+                </div>
+                <div class="job-blk job-com" data-staff="jamie" style="--start:5;--dur:1;" onclick="openJob(this,'Lantern Café','Commercial','Daily café clean · 1h',85)">
+                  <div class="jb-head"><span class="jb-staff jbs-jamie">J</span><span class="jb-time">11am–12pm</span></div>
+                  <div class="jb-name">Lantern Café</div>
+                  <div class="jb-sub">Daily · Jamie</div>
+                  <div class="jb-price">£85</div>
+                </div>
+                <div class="job-blk job-bad" id="badJob" data-staff="unassigned" style="--start:8;--dur:2;">
+                  <div class="jb-head"><span class="jb-staff jbs-un">!</span><span class="jb-time">2–4pm</span></div>
+                  <div class="jb-name">⚠ The Petersons</div>
+                  <div class="jb-sub">Unassigned — Jamie sick</div>
+                  <div class="jb-price">£65</div>
+                </div>
+                <div class="job-blk job-res" data-staff="sarah" style="--start:9;--dur:1;" onclick="openJob(this,'Mr Ahmed','Residential','Regular · 1h',32)">
+                  <div class="jb-head"><span class="jb-staff jbs-sarah">S</span><span class="jb-time">3–4pm</span></div>
+                  <div class="jb-name">Mr Ahmed</div>
+                  <div class="jb-sub">Regular · Sarah</div>
+                  <div class="jb-price">£32</div>
+                </div>
+              </div>
+              <!-- WED -->
+              <div class="cal-day" id="dayWed">
+                <div class="job-blk job-com" data-staff="chris" style="--start:1;--dur:2;" onclick="openJob(this,'MK Warehouse','Commercial','Early warehouse clean · 2h',180)">
+                  <div class="jb-head"><span class="jb-staff jbs-chris">Y</span><span class="jb-time">7–9am</span></div>
+                  <div class="jb-name">MK Warehouse</div>
+                  <div class="jb-sub">Early clean · You</div>
+                  <div class="jb-price">£180</div>
+                </div>
+                <div class="job-blk job-ext" data-staff="tom" style="--start:3;--dur:2;" onclick="openJob(this,'Gutter Route','Exterior','Gutters · 5 houses · 2h',375)">
+                  <div class="jb-head"><span class="jb-staff jbs-tom">T</span><span class="jb-time">9–11am</span></div>
+                  <div class="jb-name">Gutter Route</div>
+                  <div class="jb-sub">5 houses · Tom</div>
+                  <div class="jb-price">£375</div>
+                </div>
+                <div class="job-blk job-com" data-staff="jamie" style="--start:5;--dur:2;" onclick="openJob(this,'Retail Park','Commercial','Contract clean · 1.5h',140)">
+                  <div class="jb-head"><span class="jb-staff jbs-jamie">J</span><span class="jb-time">11am–12:30pm</span></div>
+                  <div class="jb-name">Retail Park</div>
+                  <div class="jb-sub">Contract · Jamie · 1.5h</div>
+                  <div class="jb-price">£140</div>
+                </div>
+                <div class="job-blk job-res" data-staff="sarah" style="--start:8;--dur:3;" onclick="openJob(this,'Willow Close','Residential','End of tenancy · 3h',195)">
+                  <div class="jb-head"><span class="jb-staff jbs-sarah">S</span><span class="jb-time">2–5pm</span></div>
+                  <div class="jb-name">Willow Close</div>
+                  <div class="jb-sub">End of tenancy · Sarah</div>
+                  <div class="jb-price">£195</div>
+                </div>
+              </div>
+              <!-- THU -->
+              <div class="cal-day" id="dayThu">
+                <div class="job-blk job-com" data-staff="chris" style="--start:1;--dur:2;" onclick="openJob(this,'Office Park MK','Commercial','Daily contract · 2h',160)">
+                  <div class="jb-head"><span class="jb-staff jbs-chris">Y</span><span class="jb-time">7–9am</span></div>
+                  <div class="jb-name">Office Park</div>
+                  <div class="jb-sub">Daily · You · 2h</div>
+                  <div class="jb-price">£160</div>
+                </div>
+                <div class="job-blk job-com" data-staff="jamie" style="--start:5;--dur:1;" onclick="openJob(this,'School Canteen','Commercial','Daily clean · 1h',95)">
+                  <div class="jb-head"><span class="jb-staff jbs-jamie">J</span><span class="jb-time">11am–12pm</span></div>
+                  <div class="jb-name">School Canteen</div>
+                  <div class="jb-sub">Daily · Jamie</div>
+                  <div class="jb-price">£95</div>
+                </div>
+                <div class="job-blk job-res" data-staff="sarah" style="--start:8;--dur:2;" onclick="openJob(this,'Mrs Khan','Residential','Fortnightly · 1.5h',48)">
+                  <div class="jb-head"><span class="jb-staff jbs-sarah">S</span><span class="jb-time">2–3:30pm</span></div>
+                  <div class="jb-name">Mrs Khan</div>
+                  <div class="jb-sub">Fortnightly · Sarah · 1.5h</div>
+                  <div class="jb-price">£48</div>
+                </div>
+                <div class="job-blk job-res" data-staff="sarah" style="--start:9;--dur:1;" onclick="openJob(this,'Dr Williams','Residential','Regular · 1h',30)">
+                  <div class="jb-head"><span class="jb-staff jbs-sarah">S</span><span class="jb-time">3–4pm</span></div>
+                  <div class="jb-name">Dr Williams</div>
+                  <div class="jb-sub">Regular · Sarah</div>
+                  <div class="jb-price">£30</div>
+                </div>
+              </div>
+              <!-- FRI -->
+              <div class="cal-day" id="dayFri">
+                <div class="job-blk job-ext" data-staff="tom" style="--start:2;--dur:3;--lane:0;--lanes:2;" onclick="openJob(this,'MK5 Route','Exterior','Window route · 22 houses · 3h',440)">
+                  <div class="jb-head"><span class="jb-staff jbs-tom">T</span><span class="jb-time">8–11am</span></div>
+                  <div class="jb-name">MK5 Route</div>
+                  <div class="jb-sub">22 houses · Tom</div>
+                  <div class="jb-price">£440</div>
+                </div>
+                <div class="job-blk job-com" data-staff="chris" style="--start:2;--dur:2;--lane:1;--lanes:2;" onclick="openJob(this,'Gym & Studio','Commercial','Weekly deep · 2h',110)">
+                  <div class="jb-head"><span class="jb-staff jbs-chris">Y</span><span class="jb-time">8–10am</span></div>
+                  <div class="jb-name">Gym &amp; Studio</div>
+                  <div class="jb-sub">Weekly deep · You</div>
+                  <div class="jb-price">£110</div>
+                </div>
+                <div class="job-blk job-res" data-staff="sarah" style="--start:7;--dur:2;" onclick="openJob(this,'Acorn Close','Residential','Spring clean · 2h',150)">
+                  <div class="jb-head"><span class="jb-staff jbs-sarah">S</span><span class="jb-time">1–3pm</span></div>
+                  <div class="jb-name">Acorn Close</div>
+                  <div class="jb-sub">Spring clean · Sarah · 2h</div>
+                  <div class="jb-price">£150</div>
+                </div>
+                <div class="job-blk job-res" data-staff="sarah" style="--start:9;--dur:2;" onclick="openJob(this,'Mrs Green','Residential','Fortnightly · 1.5h',55)">
+                  <div class="jb-head"><span class="jb-staff jbs-sarah">S</span><span class="jb-time">3–4:30pm</span></div>
+                  <div class="jb-name">Mrs Green</div>
+                  <div class="jb-sub">Fortnightly · Sarah · 1.5h</div>
+                  <div class="jb-price">£55</div>
+                </div>
+              </div>
+              <!-- SAT -->
+              <div class="cal-day" id="daySat">
+                <div class="job-blk job-ext" data-staff="chris" style="--start:3;--dur:1;" onclick="openJob(this,'Mr Begum','Exterior','Solar panel clean · 12 panels',120)">
+                  <div class="jb-head"><span class="jb-staff jbs-chris">Y</span><span class="jb-time">9–10am</span></div>
+                  <div class="jb-name">Mr Begum</div>
+                  <div class="jb-sub">Solar panels · You</div>
+                  <div class="jb-price">£120</div>
+                </div>
+              </div>
+              <!-- SUN -->
+              <div class="cal-day" id="daySun"></div>
             </div>
           </div>
           <div class="alert-bad" id="alertBad">
@@ -1210,10 +1349,19 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
             <button class="fix-btn" onclick="fixSched()">✨ Auto-fix</button>
           </div>
           <div class="alert-good" id="alertGood">
-            <span style="font-size:12px;color:rgba(180,255,230,0.85);">✓ Done. <strong style="color:#fff;">The Petersons</strong> reassigned to Sarah — she had a gap on Tuesday. Client notified automatically. No calls made. No chaos.</span>
-          </div>
-          <div style="display:flex;justify-content:flex-end;margin-top:8px;">
-            <button onclick="openAJ()" style="font-family:var(--font-app);font-size:11px;font-weight:600;color:#fff;background:var(--blue);border:none;border-radius:7px;padding:8px 14px;cursor:pointer;">+ Add job</button>
+            <div class="ag-hdr">
+              <span class="ag-check">✓</span>
+              <span class="ag-title">Reassigned in 1 tap</span>
+              <span class="ag-sub">· 3 things happened</span>
+              <button class="ag-undo" onclick="undoFix()">↺ Undo</button>
+            </div>
+            <div class="ag-row"><span class="ag-icon">👤</span><span class="ag-body"><b>The Petersons</b> moved from <s>Jamie</s> to <b style="color:#10b981;">Sarah</b> — she had a free 2-hour slot Tuesday 2pm.</span></div>
+            <div class="ag-row"><span class="ag-icon">✉️</span><span class="ag-body">SMS sent to client: <em>"Hi — quick update, Sarah will be with you 2pm Tue instead of Jamie. Same price, same service."</em></span></div>
+            <div class="ag-row"><span class="ag-icon">🗺️</span><span class="ag-body">Route re-optimised — Sarah's drive time +6 min (still within target).</span></div>
+            <div class="ag-actions">
+              <button class="ag-btn" onclick="showSarahsDay()">📅 Highlight Sarah's week</button>
+              <button class="ag-btn ag-btn-ghost" onclick="previewSMS()">💬 Show the SMS</button>
+            </div>
           </div>
           <div class="step-nav">
             <button class="sn-back" onclick="goToStep(1)">← Back</button>
@@ -1223,6 +1371,19 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
 
         <!-- PANEL 3: INVOICE -->
         <div class="app-panel" id="panel3">
+          <div class="inv-summary-bar">
+            <div class="isb-left">
+              <div>
+                <div class="isb-label">Total due</div>
+                <div class="isb-amt" id="invHeadTot">£65.00</div>
+              </div>
+              <div class="isb-note">Invoice INV-1044 · <span id="invHeadCust">Sarah Mitchell</span> · payment link included</div>
+            </div>
+            <div class="isb-right">
+              <button class="inv-save" onclick="saveDraft(this)">Save draft</button>
+              <button class="inv-send" id="invSendBtn" onclick="sendInv()">Preview &amp; send →</button>
+            </div>
+          </div>
           <div class="inv-wrap">
             <div>
               <div class="inv-card">
@@ -1276,10 +1437,6 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
                 <div class="bank-r"><span class="bk">Account no.</span><span class="bv">12345678</span></div>
                 <div class="bank-r"><span class="bk">Reference</span><span class="bv">INV-1044</span></div>
                 <div class="inv-tip"><span>💡</span><span>When this invoice is marked paid, <strong id="invTipAmt">£65.00</strong> will be logged automatically to your <strong>Accounts tab</strong> — updating your YTD total, tax reserve and MTD figures.</span></div>
-              </div>
-              <div class="inv-acts">
-                <button class="inv-save" onclick="saveDraft(this)">Save draft</button>
-                <button class="inv-send" id="invSendBtn" onclick="sendInv()">Preview & send →</button>
               </div>
               <div id="invSentMsg" style="display:none;font-size:12px;color:rgba(80,200,140,0.85);margin-top:8px;text-align:right;">✓ Invoice sent to sarah.mitchell@email.com · Payment link included · Accounts updated automatically.</div>
             </div>
@@ -1442,32 +1599,8 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
   </div>
 </div>
 
-<!-- ADD JOB MODAL -->
+<!-- Shared overlay used by the job-detail modal -->
 <div class="ajf-overlay" id="ajfOv"></div>
-<div class="ajf" id="ajf">
-  <div class="ajf-title">Add New Job</div><div class="ajf-sub">Fortnightly · recurring</div>
-  <button class="ajf-close" onclick="closeAJ()">✕</button>
-  <div class="ajf-s">Job type</div>
-  <div class="ajf-types">
-    <div class="ajt sel">Residential</div><div class="ajt">Commercial</div><div class="ajt">Exterior</div>
-  </div>
-  <div class="ajf-s">Service</div>
-  <div class="ajf-svcs">
-    <div class="ajs">Regular clean</div><div class="ajs">Deep clean</div><div class="ajs">End of tenancy</div>
-    <div class="ajs">One-off clean</div><div class="ajs">Carpet clean</div><div class="ajs">Oven clean</div>
-    <div class="ajs">Spring clean</div><div class="ajs">Post-renovation</div>
-  </div>
-  <div class="ajf-s">Assign to</div>
-  <div class="ajf-assign">
-    <div class="ajp sel">You</div><div class="ajp">Jamie</div><div class="ajp">Sarah</div><div class="ajp">Unassigned</div>
-  </div>
-  <div class="ajf-s">Recurrence</div>
-  <div class="ajf-freq">
-    <div class="ajf2">One-off</div><div class="ajf2">Daily</div><div class="ajf2">Weekly</div>
-    <div class="ajf2 sel">Fortnightly</div><div class="ajf2">Monthly</div><div class="ajf2">Quarterly</div>
-  </div>
-  <button class="ajf-cta" onclick="saveAJ()">Save & Schedule Recurring</button>
-</div>
 
 <!-- INVOICE PREVIEW MODAL -->
 <div class="ipv-overlay" id="ipvOv" onclick="closeInvPrev()"></div>
@@ -1479,6 +1612,7 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
     </div>
     <button class="ipv-close" onclick="closeInvPrev()">✕</button>
   </div>
+  <div class="ipv-scroll">
   <div class="ipv-email">
     <div class="ipv-email-hdr">
       <div>From: <strong id="ipvFrom">Mackies Cleaning</strong> &lt;hello@mackiescleaning.co.uk&gt;</div>
@@ -1523,6 +1657,7 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
       </div>
     </div>
     <div class="ipv-footer">Automated reminder 3 days before due date. Payment marked paid the moment it hits your Starling.</div>
+  </div>
   </div>
   <div class="ipv-acts">
     <button class="ipv-back" onclick="closeInvPrev()">← Edit invoice</button>
@@ -1573,10 +1708,9 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
     <span class="res-chip">filed MTD</span>
   </div>
   <div class="res-ctas">
-    <a href="/#access" class="btn-big">Claim my founding spot →</a>
-    <a href="/founding-200.html" class="btn-ghost2">See the Founding 200</a>
+    <a href="/#access" class="btn-big">Join the waitlist →</a>
   </div>
-  <p class="res-note">Half-price for life · no card needed to start · first 200 only</p>
+  <p class="res-note">Half-price for life · no card needed to start</p>
 </div>
 
 <script>
@@ -1680,6 +1814,8 @@ function initApp(){
   document.getElementById('invDue').textContent=due.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
   // Invoice tip + send message reflect the actual customer email
   document.getElementById('invSentMsg').textContent='✓ Invoice sent to '+sec.customer.email+' · Payment link included · Accounts updated automatically.';
+  const headCust=document.getElementById('invHeadCust');
+  if(headCust)headCust.textContent=sec.customer.name;
   // MTD figures — scale by scenario
   initMTD();
 }
@@ -1812,31 +1948,28 @@ function goToStep(step,sbEl){
 
 function injectPricedJob(){
   const sec=SECTORS[S.sector]||SECTORS.residential;
-  // Thursday 9am cell (index 4 in body: time=7am row, 7 cells per hour; 9am row start = 1+7+1+7+1 = 17, Thu=17+4=21)
-  // Simpler: target Thursday 9am by iterating
-  const body=document.querySelector('.cal-body');if(!body)return;
-  // Find the 9am row's Thu cell — the 3rd time-row, 4th cell after that time label
-  const children=[...body.children];
-  const timeLabels=children.map((c,i)=>({c,i})).filter(o=>o.c.classList.contains('cal-time'));
-  if(timeLabels.length<3)return;
-  const thuCellIdx=timeLabels[2].i+4; // 9am label + Thu offset (Mon=1, Tue=2, Wed=3, Thu=4)
-  const thuCell=children[thuCellIdx];
-  if(!thuCell)return;
+  const thuCol=document.getElementById('dayThu');if(!thuCol)return;
   const jobClass=S.sector==='exterior'?'job-ext':(S.sector==='commercial'?'job-com':'job-res');
   const price=S.lastPrice||72;
+  const hrs=Math.max(1,Math.round(S.bedTime||2));
+  // Place at 10am (start row 4) to avoid overlap with existing Thu jobs
+  const startHr=10;
+  const endHr=startHr+hrs;
+  const fmt=h=>h<12?(h+'am'):(h===12?'12pm':((h-12)+'pm'));
   const job=document.createElement('div');
-  job.className='job '+jobClass+' job-new';
-  job.innerHTML=`<div class="job-n">${sec.customer.name}</div><div class="job-t">Just quoted · ${S.bedTime||2}h</div><div class="job-p">£${price}</div>`;
-  job.addEventListener('click',()=>openJob(job,sec.customer.name,sec.label,'Just quoted · '+(S.bedTime||2)+'h',price));
-  thuCell.appendChild(job);
-  // Update Thursday total
+  job.className='job-blk '+jobClass+' job-new';
+  job.dataset.staff='chris';
+  job.style.setProperty('--start',String(startHr-6)); // row index where 7am=1
+  job.style.setProperty('--dur',String(hrs));
+  job.innerHTML=`<div class="jb-head"><span class="jb-staff jbs-chris">Y</span><span class="jb-time">${fmt(startHr)}–${fmt(endHr)}</span><span class="jb-tag">JUST QUOTED</span></div><div class="jb-name">${sec.customer.name}</div><div class="jb-sub">${sec.service} · You</div><div class="jb-price">£${price}</div>`;
+  job.addEventListener('click',()=>openJob(job,sec.customer.name,sec.label,'Just quoted · '+hrs+'h',price));
+  thuCol.appendChild(job);
   const thuHdr=document.getElementById('cd3')?.parentElement?.querySelector('.dr');
-  if(thuHdr){thuHdr.textContent='£'+price;thuHdr.style.color='var(--green)';}
-  // Bump job count + revenue
+  if(thuHdr){const cur=parseFloat(thuHdr.textContent.replace(/[^0-9.]/g,''))||0;thuHdr.textContent='£'+Math.round(cur+price);thuHdr.style.color='var(--green)';}
   const jobsEl=document.getElementById('ssJobs');
   if(jobsEl){jobsEl.textContent=(parseInt(jobsEl.textContent)||0)+1;}
   S.schedJobInjected=true;
-  showToast('Quote saved',`${sec.customer.name} — £${price}. Added to Thursday 9am.`,'📅');
+  showToast('Quote saved',`${sec.customer.name} — £${price}. Added to Thursday ${fmt(startHr)}.`,'📅');
 }
 
 function syncInvoiceWithQuote(){
@@ -1927,57 +2060,47 @@ function updateBD(){
 
 // SCHEDULER
 function fixSched(){
-  const j=document.getElementById('badJob');
-  j.className='job job-res';
-  j.innerHTML='<div class="job-n">The Petersons</div><div class="job-t">Sarah · reassigned</div><div class="job-p">£65</div>';
-  j.onclick=()=>openJob(j,'The Petersons','Residential','Reassigned to Sarah',65);
+  const j=document.getElementById('badJob');if(!j)return;
+  j.className='job-blk job-res job-fixed';
+  j.dataset.staff='sarah';
+  j.innerHTML='<div class="jb-head"><span class="jb-staff jbs-sarah">S</span><span class="jb-time">2–4pm</span><span class="jb-tag">✓ REASSIGNED</span></div><div class="jb-name">The Petersons</div><div class="jb-sub">Regular · Sarah · 2h</div><div class="jb-price">£65</div>';
+  j.onclick=()=>openJob(j,'The Petersons','Residential','Reassigned to Sarah · 2h',65);
+  const tueDay=document.getElementById('dayTue');
+  if(tueDay){tueDay.classList.add('day-highlight');setTimeout(()=>tueDay.classList.remove('day-highlight'),2200);}
   document.getElementById('alertBad').style.display='none';
   document.getElementById('alertGood').style.display='block';
   document.getElementById('ssUn').textContent='0';
   document.getElementById('ssUn').style.color='#fff';
+  const uc=document.getElementById('slUnCount');if(uc)uc.textContent='0';
+  const sc=document.getElementById('slSarahCount');if(sc)sc.textContent=String((parseInt(sc.textContent)||7)+1);
 }
-function openAJ(){document.getElementById('ajf').classList.add('show');document.getElementById('ajfOv').classList.add('show');document.body.style.overflow='hidden';}
-function closeAJ(){document.getElementById('ajf').classList.remove('show');document.getElementById('ajfOv').classList.remove('show');document.body.style.overflow='';}
-// Make modal chips selectable — one per group
-['.ajf-types','.ajf-svcs','.ajf-assign','.ajf-freq'].forEach(sel=>{
-  const g=document.querySelector(sel);if(!g)return;
-  g.addEventListener('click',e=>{const chip=e.target.closest('.ajt,.ajs,.ajp,.ajf2');if(!chip)return;[...g.children].forEach(c=>c.classList.remove('sel'));chip.classList.add('sel');});
-});
-const SERVICE_PRICES={'Regular clean':65,'Deep clean':130,'End of tenancy':195,'One-off clean':85,'Carpet clean':80,'Oven clean':55,'Spring clean':100,'Post-renovation':180};
-function saveAJ(){
-  const type=document.querySelector('.ajf-types .ajt.sel')?.textContent||'Residential';
-  const svc=document.querySelector('.ajf-svcs .ajs.sel')?.textContent||'Regular clean';
-  const assign=document.querySelector('.ajf-assign .ajp.sel')?.textContent||'You';
-  const freq=document.querySelector('.ajf-freq .ajf2.sel')?.textContent||'Fortnightly';
-  const price=SERVICE_PRICES[svc]||65;
-  // Inject into the next available empty day (Thu → Sat)
-  const body=document.querySelector('.cal-body');
-  if(body){
-    const children=[...body.children];
-    const timeLabels=children.map((c,i)=>({c,i})).filter(o=>o.c.classList.contains('cal-time'));
-    // Try 11am row (index 4) first — it's fully empty in the default calendar
-    const rowIdx=timeLabels[4]?.i;
-    const dayOffsets=[5,6,3]; // Sat, Sun, Thu
-    let targetCell=null;
-    for(const off of dayOffsets){
-      const cell=children[rowIdx+off];
-      if(cell&&!cell.querySelector('.job')){targetCell=cell;break;}
-    }
-    if(targetCell){
-      const cls=type==='Exterior'?'job-ext':(type==='Commercial'?'job-com':'job-res');
-      const customer=S.biz?S.biz.split(/\s+/)[0]+' client':'New client';
-      const job=document.createElement('div');
-      job.className='job '+cls+' job-new';
-      job.innerHTML=`<div class="job-n">${customer}</div><div class="job-t">${svc} · ${assign}</div><div class="job-p">£${price}</div>`;
-      job.addEventListener('click',()=>openJob(job,customer,type,svc+' · '+assign,price));
-      targetCell.appendChild(job);
-    }
-    // Bump counters
-    const jobsEl=document.getElementById('ssJobs');
-    if(jobsEl)jobsEl.textContent=(parseInt(jobsEl.textContent)||0)+1;
-  }
-  closeAJ();
-  showToast(freq+' job saved',`${svc} · ${assign} · £${price}. Client notified, recurring set.`,'📅');
+function undoFix(){
+  const j=document.getElementById('badJob');if(!j)return;
+  j.className='job-blk job-bad';
+  j.dataset.staff='unassigned';
+  j.innerHTML='<div class="jb-head"><span class="jb-staff jbs-un">!</span><span class="jb-time">2–4pm</span></div><div class="jb-name">⚠ The Petersons</div><div class="jb-sub">Unassigned — Jamie sick</div><div class="jb-price">£65</div>';
+  j.onclick=null;
+  document.getElementById('alertBad').style.display='flex';
+  document.getElementById('alertGood').style.display='none';
+  document.getElementById('ssUn').textContent='1';
+  document.getElementById('ssUn').style.color='#ef4444';
+  const uc=document.getElementById('slUnCount');if(uc)uc.textContent='1';
+  const sc=document.getElementById('slSarahCount');if(sc)sc.textContent=String(Math.max(0,(parseInt(sc.textContent)||8)-1));
+  showToast('Undone','Back to unassigned. Auto-fix again any time.','↺');
+}
+function showSarahsDay(){
+  document.querySelectorAll('#panel2 .job-blk').forEach(jb=>{
+    const isSarah=jb.dataset.staff==='sarah';
+    jb.classList.toggle('job-focus',isSarah);
+    jb.classList.toggle('job-dim',!isSarah);
+  });
+  setTimeout(()=>{
+    document.querySelectorAll('#panel2 .job-blk').forEach(jb=>{jb.classList.remove('job-focus','job-dim');});
+  },2800);
+  showToast("Sarah's week",'Mon, Tue (+The Petersons now), Wed, Thu, Fri — 8 jobs in total, all within her drive radius.','👤');
+}
+function previewSMS(){
+  showToast('SMS preview','To: Mrs Petersons — "Hi! Small change for Tue 2pm: Sarah will be with you instead of Jamie. Same price, same clean. Reply STOP to cancel."','💬');
 }
 
 // INVOICE
@@ -1999,6 +2122,8 @@ function calcTot(){
   document.getElementById('invTot').textContent='£'+tot.toFixed(2);
   const tipEl=document.getElementById('invTipAmt');
   if(tipEl)tipEl.textContent='£'+tot.toFixed(2);
+  const headEl=document.getElementById('invHeadTot');
+  if(headEl)headEl.textContent='£'+tot.toFixed(2);
 }
 function sendInv(){
   // Step 1: open the preview modal with the current invoice contents
@@ -2115,7 +2240,7 @@ function doAIAction(el,kind){
     showToast('Invoice ready to log','Jump to Invoices and mark payments received today.','💷');
     setTimeout(()=>goToStep(3),500);
   }else if(kind==='goal'){
-    lockedNudge('Annual Review','90-day sprints live in the full Cadi. Claim your founding spot to unlock.');
+    lockedNudge('Annual Review','90-day sprints live in the full Cadi. Join the waitlist to unlock.');
     el.classList.remove('done');
   }
 }
@@ -2143,7 +2268,7 @@ function openJob(jobEl,name,type,svc,price){
 }
 function closeJob(){
   document.getElementById('jdm').classList.remove('show');
-  if(!document.getElementById('ajf').classList.contains('show'))document.getElementById('ajfOv').classList.remove('show');
+  document.getElementById('ajfOv').classList.remove('show');
   currentJob=null;
 }
 function markPaid(){
@@ -2167,7 +2292,7 @@ function markPaid(){
 }
 // Close modal on overlay click
 document.addEventListener('click',e=>{
-  if(e.target.id==='ajfOv'){closeJob();closeAJ();}
+  if(e.target.id==='ajfOv')closeJob();
 });
 
 // INVOICE — payment terms, service type, save draft
