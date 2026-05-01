@@ -1460,23 +1460,53 @@ footer{padding:60px 40px 40px;background:rgba(2,4,12,0.95);border-top:1px solid 
   </div>
 </section>
 
-<section id="access" style="padding:120px 0;background:var(--off-white);position:relative;">
-  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(29,56,196,0.2),transparent);"></div>
-  <div class="inner-narrow" style="text-align:center;">
-    <span class="eyebrow-light">Be first through the door</span>
-    <h2 style="font-size:clamp(34px,5vw,52px);font-weight:800;letter-spacing:-0.04em;line-height:1.1;color:#071140;margin-bottom:14px;">Get first access.<br><span class="hl-warm">Completely free.</span></h2>
-    <p style="font-size:18px;color:rgba(7,17,64,0.45);line-height:1.65;margin-bottom:40px;">Register your interest and you'll be the first to know when Cadi opens its doors. No spam. No obligation. Just first access — and a very good reason to be early.</p>
-    <div class="email-form-wrap" style="display:flex;gap:10px;max-width:520px;margin:0 auto 16px;">
-      <input id="email-input" type="email" placeholder="Your email address" style="flex:1;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;color:#071140;background:#fff;border:1px solid rgba(7,17,64,0.12);border-radius:14px;padding:16px 20px;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(29,56,196,0.4)'" onblur="this.style.borderColor='rgba(7,17,64,0.12)'"/>
-      <button onclick="handleSignup()" id="signup-btn" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:700;color:#fff;background:linear-gradient(135deg,#1a3ac9,#2e55f0);border:none;border-radius:14px;padding:16px 28px;cursor:pointer;box-shadow:0 4px 20px rgba(29,56,196,0.3);white-space:nowrap;transition:all 0.2s;">Get first access →</button>
+<section id="access" style="padding:120px 0 100px;background:var(--ink);position:relative;overflow:hidden;">
+  <!-- ambient glow -->
+  <div style="position:absolute;top:-160px;left:50%;transform:translateX(-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(46,85,240,0.14) 0%,transparent 70%);pointer-events:none;"></div>
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(79,120,255,0.25),transparent);"></div>
+
+  <div class="inner-narrow" style="text-align:center;position:relative;z-index:1;">
+    <span class="eyebrow">Join the waitlist</span>
+    <h2 style="font-size:clamp(34px,5vw,54px);font-weight:800;letter-spacing:-0.04em;line-height:1.1;color:#fff;margin-bottom:14px;">Be first through<br>the door. <span class="hl">For free.</span></h2>
+    <p style="font-size:17px;color:rgba(255,255,255,0.38);line-height:1.7;margin-bottom:40px;max-width:480px;margin-left:auto;margin-right:auto;">Tell us which plan you're interested in and we'll reach out as soon as early access opens. Your plan price is locked from the moment you sign up.</p>
+
+    <!-- Plan selector -->
+    <div style="margin-bottom:24px;">
+      <p style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:12px;">Which plan are you interested in?</p>
+      <div style="display:inline-flex;gap:8px;flex-wrap:wrap;justify-content:center;" id="plan-pills">
+        <button class="wl-plan-pill" data-plan="free" onclick="selectPlan(this)" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:600;padding:9px 18px;border-radius:100px;border:1px solid rgba(255,255,255,0.12);background:transparent;color:rgba(255,255,255,0.45);cursor:pointer;transition:all 0.18s;">Free</button>
+        <button class="wl-plan-pill active" data-plan="pro" onclick="selectPlan(this)" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;padding:9px 18px;border-radius:100px;border:1px solid rgba(46,85,240,0.6);background:rgba(46,85,240,0.18);color:#a8c4ff;cursor:pointer;transition:all 0.18s;">Pro — £39/mo</button>
+        <button class="wl-plan-pill" data-plan="max" onclick="selectPlan(this)" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:600;padding:9px 18px;border-radius:100px;border:1px solid rgba(255,255,255,0.12);background:transparent;color:rgba(255,255,255,0.45);cursor:pointer;transition:all 0.18s;">Max — £79/mo</button>
+        <button class="wl-plan-pill" data-plan="enterprise" onclick="selectPlan(this)" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:600;padding:9px 18px;border-radius:100px;border:1px solid rgba(255,255,255,0.12);background:transparent;color:rgba(255,255,255,0.45);cursor:pointer;transition:all 0.18s;">Enterprise</button>
+      </div>
     </div>
-    <p id="signup-success" style="display:none;font-size:14px;font-weight:600;color:rgba(30,140,70,0.8);margin-bottom:12px;">✓ You're in. Check your inbox — something good is coming.</p>
-    <p id="signup-error" style="display:none;font-size:14px;font-weight:600;color:rgba(200,60,60,0.8);margin-bottom:12px;">Something went wrong. Please try again.</p>
-    <p style="font-size:12px;color:rgba(7,17,64,0.25);letter-spacing:0.04em;">No spam. No card. Unsubscribe anytime.</p>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:36px;text-align:left;">
-      <div style="background:rgba(29,56,196,0.05);border:1px solid rgba(29,56,196,0.1);border-radius:16px;padding:20px;"><div style="font-size:18px;margin-bottom:8px;">📬</div><div style="font-size:13px;font-weight:700;color:#071140;margin-bottom:4px;">First access</div><div style="font-size:12px;color:rgba(7,17,64,0.4);line-height:1.5;">You'll be first through the door when Cadi opens. Before the public.</div></div>
-      <div style="background:rgba(29,56,196,0.05);border:1px solid rgba(29,56,196,0.1);border-radius:16px;padding:20px;"><div style="font-size:18px;margin-bottom:8px;">🔒</div><div style="font-size:13px;font-weight:700;color:#071140;margin-bottom:4px;">Your price, locked</div><div style="font-size:12px;color:rgba(7,17,64,0.4);line-height:1.5;">Get in early and your plan price is locked forever. When pricing goes up for new users, yours stays exactly where it is.</div></div>
-      <div style="background:rgba(29,56,196,0.05);border:1px solid rgba(29,56,196,0.1);border-radius:16px;padding:20px;"><div style="font-size:18px;margin-bottom:8px;">💙</div><div style="font-size:13px;font-weight:700;color:#071140;margin-bottom:4px;">The inside story</div><div style="font-size:12px;color:rgba(7,17,64,0.4);line-height:1.5;">Behind the scenes of building Cadi — direct from the founders, in your inbox.</div></div>
+
+    <!-- Email form -->
+    <div style="display:flex;gap:10px;max-width:500px;margin:0 auto 12px;">
+      <input id="email-input" type="email" placeholder="Your email address" style="flex:1;min-width:0;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;color:#fff;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:16px 20px;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(79,120,255,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"/>
+      <button onclick="handleSignup()" id="signup-btn" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:700;color:#fff;background:linear-gradient(135deg,#1a3ac9,#2e55f0);border:none;border-radius:14px;padding:16px 26px;cursor:pointer;box-shadow:0 4px 20px rgba(46,85,240,0.4);white-space:nowrap;transition:all 0.2s;flex-shrink:0;">Join the waitlist →</button>
+    </div>
+    <p id="signup-success" style="display:none;font-size:14px;font-weight:600;color:rgba(70,210,130,0.85);margin-bottom:12px;">✓ You're on the list. We'll be in touch soon.</p>
+    <p id="signup-error" style="display:none;font-size:14px;font-weight:600;color:rgba(255,100,100,0.8);margin-bottom:12px;">Something went wrong. Please try again.</p>
+    <p style="font-size:12px;color:rgba(255,255,255,0.18);letter-spacing:0.03em;">No spam. No card needed. Unsubscribe anytime.</p>
+
+    <!-- Benefit cards -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:48px;text-align:left;">
+      <div style="background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:22px 20px;">
+        <div style="font-size:20px;margin-bottom:10px;">📬</div>
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:5px;">First through the door</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.35);line-height:1.6;">Early access before the public launch. You set up and get running while everyone else is still waiting.</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:22px 20px;">
+        <div style="font-size:20px;margin-bottom:10px;">🔒</div>
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:5px;">Your price, locked</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.35);line-height:1.6;">The price you sign up at is yours forever. When pricing goes up for new users, yours stays exactly where it is.</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:22px 20px;">
+        <div style="font-size:20px;margin-bottom:10px;">💙</div>
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:5px;">The inside story</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.35);line-height:1.6;">Behind the scenes of building Cadi — direct from the founders, straight to your inbox.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1538,11 +1568,12 @@ async function handleSignup(){
     return;
   }
   const variant=sessionStorage.getItem('cta_variant')||'unknown';
+  const selectedPlan=document.querySelector('.wl-plan-pill.active')?.dataset?.plan||'unknown';
   try{
     const res=await fetch(LOOPS_FORM_URL,{
       method:'POST',
       headers:{'Content-Type':'application/x-www-form-urlencoded'},
-      body:'userGroup=&mailingLists=&email='+encodeURIComponent(email)+'&ctaVariant='+encodeURIComponent(variant)
+      body:'userGroup=&mailingLists=&email='+encodeURIComponent(email)+'&ctaVariant='+encodeURIComponent(variant)+'&selectedPlan='+encodeURIComponent(selectedPlan)
     });
     if(!res.ok){
       const data=await res.json().catch(()=>({}));
@@ -1559,6 +1590,22 @@ async function handleSignup(){
   }
 }
 document.getElementById('email-input')?.addEventListener('keydown',e=>{if(e.key==='Enter')handleSignup();});
+
+// Plan pill selector
+function selectPlan(btn){
+  document.querySelectorAll('.wl-plan-pill').forEach(p=>{
+    p.classList.remove('active');
+    p.style.background='transparent';
+    p.style.borderColor='rgba(255,255,255,0.12)';
+    p.style.color='rgba(255,255,255,0.45)';
+    p.style.fontWeight='600';
+  });
+  btn.classList.add('active');
+  btn.style.background='rgba(46,85,240,0.18)';
+  btn.style.borderColor='rgba(46,85,240,0.6)';
+  btn.style.color='#a8c4ff';
+  btn.style.fontWeight='700';
+}
 
 // Scroll reveal
 (function(){
