@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Docs — Cadi | Cleaning Business Software</title>
+<meta name="description" content="Everything you need to know about using Cadi — setup, scheduling, invoicing, MTD, pricing calculators, Cadi AI and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:      #040810;
+  --navy:     #07102e;
+  --blue:     #1a3ac9;
+  --electric: #2e55f0;
+  --sky:      #4f78ff;
+  --pale:     #c4d3ff;
+  --white:    #ffffff;
+  --font:     'Plus Jakarta Sans', sans-serif;
+  --serif:    'Instrument Serif', serif;
+  --ease:     cubic-bezier(0.16, 1, 0.3, 1);
+  --sidebar:  240px;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--ink); font-family: var(--font); color: var(--white); overflow-x: hidden; line-height: 1; }
+
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.018;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── NAV ── */
+nav { position:fixed;top:0;left:0;right:0;z-index:200;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(4,8,16,0.85);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.05); }
+.nav-wm { font-family:var(--font);font-weight:600;font-size:26px;letter-spacing:-0.05em;display:flex;align-items:baseline;text-decoration:none;filter:drop-shadow(0 0 10px rgba(79,120,255,0.4)); }
+.nav-C{color:rgba(196,211,255,0.6);}
+.nav-a{background:linear-gradient(170deg,#fff 0%,#a8c4ff 40%,#4f78ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.nav-d{background:linear-gradient(170deg,#fff 10%,#6090ff 55%,#2e55f0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.nav-i{color:rgba(255,255,255,0.28);position:relative;}
+.nav-dot{position:absolute;left:50%;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,#fff,#a8c4ff,#4f78ff,transparent);width:5px;height:5px;top:0.08em;box-shadow:0 0 8px 2px rgba(168,196,255,0.7),0 0 18px 4px rgba(79,120,255,0.4);animation:nav-dot-pulse 3.5s ease-in-out infinite;}
+@keyframes nav-dot-pulse{0%,100%{box-shadow:0 0 8px 2px rgba(168,196,255,0.7),0 0 20px 5px rgba(79,120,255,0.4);transform:translateX(-50%) scale(1);}50%{box-shadow:0 0 12px 3px rgba(168,196,255,0.9),0 0 30px 8px rgba(79,120,255,0.6);transform:translateX(-50%) scale(1.2);}}
+.nav-links{display:flex;align-items:center;gap:4px;list-style:none;}
+.nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,0.45);text-decoration:none;padding:8px 14px;border-radius:10px;transition:all 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.05);}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.nav-cta{font-family:var(--font);font-size:13px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--blue),var(--electric));border:none;border-radius:10px;padding:10px 20px;cursor:pointer;box-shadow:0 4px 16px rgba(46,85,240,0.35);transition:all 0.2s;text-decoration:none;white-space:nowrap;}
+.nav-cta:hover{box-shadow:0 6px 22px rgba(46,85,240,0.55);transform:translateY(-1px);}
+.nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.nav-burger span{display:block;width:22px;height:2px;background:rgba(255,255,255,0.55);border-radius:2px;}
+
+/* ── DOCS SHELL ── */
+.docs-shell {
+  display: flex;
+  padding-top: 57px;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── SIDEBAR ── */
+.docs-sidebar {
+  width: var(--sidebar);
+  flex-shrink: 0;
+  position: fixed;
+  top: 57px;
+  left: 0;
+  bottom: 0;
+  overflow-y: auto;
+  background: rgba(7,16,46,0.4);
+  border-right: 1px solid rgba(255,255,255,0.05);
+  padding: 28px 0 60px;
+  z-index: 100;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(79,120,255,0.2) transparent;
+}
+.docs-sidebar::-webkit-scrollbar { width: 4px; }
+.docs-sidebar::-webkit-scrollbar-track { background: transparent; }
+.docs-sidebar::-webkit-scrollbar-thumb { background: rgba(79,120,255,0.2); border-radius: 2px; }
+
+.sb-search {
+  margin: 0 16px 20px;
+  position: relative;
+}
+.sb-search input {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 9px;
+  padding: 8px 12px 8px 32px;
+  font-family: var(--font);
+  font-size: 12px;
+  color: rgba(255,255,255,0.55);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.sb-search input:focus { border-color: rgba(79,120,255,0.35); color: #fff; }
+.sb-search input::placeholder { color: rgba(255,255,255,0.25); }
+.sb-search svg { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); opacity: 0.3; }
+
+.sb-section { margin-bottom: 4px; }
+.sb-section-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  padding: 16px 20px 6px;
+  display: block;
+}
+.sb-link {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  padding: 6px 20px;
+  border-radius: 0;
+  transition: color 0.15s, background 0.15s;
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  line-height: 1.4;
+}
+.sb-link:hover { color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.03); }
+.sb-link.active { color: var(--sky); border-left-color: var(--sky); background: rgba(79,120,255,0.07); font-weight: 600; }
+
+/* ── MAIN CONTENT ── */
+.docs-main {
+  margin-left: var(--sidebar);
+  flex: 1;
+  min-width: 0;
+  display: flex;
+}
+
+.docs-content {
+  flex: 1;
+  max-width: 740px;
+  padding: 48px 48px 120px;
+  min-width: 0;
+}
+
+/* ── ON THIS PAGE ── */
+.docs-toc {
+  width: 200px;
+  flex-shrink: 0;
+  padding: 52px 20px 60px 8px;
+  position: sticky;
+  top: 57px;
+  height: fit-content;
+  align-self: flex-start;
+}
+.toc-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  margin-bottom: 12px;
+  display: block;
+}
+.toc-link {
+  display: block;
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  padding: 4px 0 4px 12px;
+  border-left: 1px solid rgba(255,255,255,0.07);
+  transition: color 0.15s, border-color 0.15s;
+  line-height: 1.5;
+}
+.toc-link:hover { color: rgba(255,255,255,0.7); border-left-color: rgba(79,120,255,0.4); }
+.toc-link.active { color: var(--sky); border-left-color: var(--sky); }
+
+/* ── CONTENT SECTIONS ── */
+.doc-section { display: none; }
+.doc-section.active { display: block; }
+
+.doc-section h1 {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+.doc-section .doc-lead {
+  font-size: 16px;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.7;
+  margin-bottom: 36px;
+  max-width: 580px;
+}
+.doc-section h2 {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin: 40px 0 10px;
+  padding-top: 4px;
+}
+.doc-section h3 {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: rgba(255,255,255,0.7);
+  margin: 28px 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 11px;
+}
+.doc-section p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.doc-section p strong {
+  color: rgba(255,255,255,0.8);
+  font-weight: 600;
+}
+.doc-section ul, .doc-section ol {
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+.doc-section li {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.8;
+  margin-bottom: 4px;
+}
+.doc-section li strong { color: rgba(255,255,255,0.8); font-weight: 600; }
+
+/* breadcrumb */
+.doc-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.25);
+  margin-bottom: 28px;
+}
+.doc-breadcrumb span { color: rgba(255,255,255,0.15); }
+
+/* badge */
+.doc-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 5px;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+.badge-pro { background: rgba(46,85,240,0.15); color: rgba(100,140,255,0.9); border: 1px solid rgba(46,85,240,0.2); }
+.badge-max { background: rgba(130,80,255,0.12); color: rgba(170,130,255,0.9); border: 1px solid rgba(130,80,255,0.2); }
+.badge-free { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.08); }
+.badge-soon { background: rgba(255,190,60,0.1); color: rgba(255,200,80,0.75); border: 1px solid rgba(255,190,60,0.15); }
+
+/* callout */
+.doc-callout {
+  background: rgba(46,85,240,0.08);
+  border: 1px solid rgba(46,85,240,0.18);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin: 20px 0;
+}
+.doc-callout.warning {
+  background: rgba(255,160,60,0.07);
+  border-color: rgba(255,160,60,0.18);
+}
+.doc-callout.success {
+  background: rgba(50,200,120,0.07);
+  border-color: rgba(50,200,120,0.18);
+}
+.doc-callout p { margin-bottom: 0; font-size: 13px; line-height: 1.7; }
+.doc-callout p:last-child { margin-bottom: 0; }
+.doc-callout-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(100,140,255,0.8);
+  margin-bottom: 6px;
+}
+.doc-callout.warning .doc-callout-title { color: rgba(255,180,80,0.8); }
+.doc-callout.success .doc-callout-title { color: rgba(70,210,130,0.8); }
+
+/* divider */
+.doc-divider { height: 1px; background: rgba(255,255,255,0.05); margin: 36px 0; }
+
+/* step list */
+.doc-steps { list-style: none; padding: 0; counter-reset: steps; margin-bottom: 16px; }
+.doc-steps li {
+  counter-increment: steps;
+  position: relative;
+  padding: 12px 0 12px 44px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+}
+.doc-steps li:last-child { border-bottom: none; }
+.doc-steps li::before {
+  content: counter(steps);
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 26px;
+  height: 26px;
+  background: rgba(46,85,240,0.18);
+  border: 1px solid rgba(46,85,240,0.25);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(100,140,255,0.9);
+  line-height: 1;
+  display: grid;
+  place-items: center;
+}
+
+/* feature grid */
+.doc-feat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 16px 0 24px;
+}
+.doc-feat-card {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.doc-feat-card-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 4px;
+}
+.doc-feat-card p {
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* plan comparison strip */
+.plan-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 16px 0 24px;
+}
+.plan-strip-cell {
+  background: rgba(7,16,46,0.6);
+  padding: 14px 16px;
+}
+.plan-strip-cell.featured { background: rgba(46,85,240,0.1); }
+.plan-strip-name { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 4px; }
+.plan-strip-price { font-size: 18px; font-weight: 800; color: #fff; letter-spacing: -0.03em; }
+.plan-strip-price span { font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.3); }
+
+/* mobile sidebar toggle */
+.docs-mobile-bar {
+  display: none;
+  position: sticky;
+  top: 57px;
+  z-index: 99;
+  background: rgba(4,8,16,0.95);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 12px 20px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.docs-mobile-select {
+  flex: 1;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-family: var(--font);
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  outline: none;
+  cursor: pointer;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px) {
+  .docs-toc { display: none; }
+}
+@media(max-width:768px) {
+  nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+  .nav-burger { display: flex; }
+  .docs-sidebar { display: none; }
+  .docs-main { margin-left: 0; }
+  .docs-content { padding: 24px 20px 80px; }
+  .docs-mobile-bar { display: flex; }
+  .doc-feat-grid { grid-template-columns: 1fr; }
+  .plan-strip { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/index.html" class="nav-wm"><span class="nav-C">C</span><span class="nav-a">a</span><span class="nav-d">d</span><span class="nav-i">i<span class="nav-dot"></span></span></a>
+  <ul class="nav-links">
+    <li><a href="/index.html#why">Why Cadi</a></li>
+    <li><a href="/index.html#pricing">Pricing</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/demo.html">Demo</a></li>
+    <li><a href="/blog.html">Blog</a></li>
+    <li><a href="/docs.html" class="active">Docs</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="/index.html#access" class="nav-cta">Get early access ⚡</a>
+    <button class="nav-burger" onclick="this.closest('nav').querySelector('.nav-links').classList.toggle('mobile-open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE NAV LINKS (hidden until burger tap) -->
+<style>
+.nav-links.mobile-open{display:flex!important;flex-direction:column;position:fixed;top:57px;left:0;right:0;background:rgba(4,8,16,0.98);backdrop-filter:blur(20px);padding:20px 20px 28px;border-bottom:1px solid rgba(255,255,255,0.06);gap:4px;z-index:199;}
+.nav-links.mobile-open li{width:100%;}
+.nav-links.mobile-open a{display:block;width:100%;padding:12px 16px;font-size:15px;border-radius:10px;}
+</style>
+
+<!-- DOCS SHELL -->
+<div class="docs-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="docs-sidebar" id="docs-sidebar">
+    <div class="sb-search">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" placeholder="Search docs…" id="sb-search-input" oninput="filterDocs(this.value)">
+    </div>
+
+    <div class="sb-section">
+      <span class="sb-section-label">Getting Started</span>
+      <a class="sb-link active" data-section="overview" onclick="showSection('overview',this)">What is Cadi?</a>
+      <a class="sb-link" data-section="setup" onclick="showSection('setup',this)">Account setup</a>
+      <a class="sb-link" data-section="sectors" onclick="showSection('sectors',this)">Choosing your sector</a>
+    </div>
+
+    <div class="sb-section">
+      <span class="sb-section-label">Core Features</span>
+      <a class="sb-link" data-section="dashboard" onclick="showSection('dashboard',this)">Dashboard & health score</a>
+      <a class="sb-link" data-section="scheduling" onclick="showSection('scheduling',this)">Scheduling & calendar</a>
+      <a class="sb-link" data-section="invoicing" onclick="showSection('invoicing',this)">Invoicing & payments</a>
+      <a class="sb-link" data-section="pricing-calc" onclick="showSection('pricing-calc',this)">Pricing calculator</a>
+      <a class="sb-link" data-section="quotes" onclick="showSection('quotes',this)">Quotes & estimates</a>
+      <a class="sb-link" data-section="routes" onclick="showSection('routes',this)">Route planning</a>
+      <a class="sb-link" data-section="inventory" onclick="showSection('inventory',this)">Inventory management</a>
+    </div>
+
+    <div class="sb-section">
+      <span class="sb-section-label">Accounts & Tax</span>
+      <a class="sb-link" data-section="open-banking" onclick="showSection('open-banking',this)">Open banking</a>
+      <a class="sb-link" data-section="expenses" onclick="showSection('expenses',this)">Expense categorisation</a>
+      <a class="sb-link" data-section="tax-estimates" onclick="showSection('tax-estimates',this)">Real-time tax estimates</a>
+      <a class="sb-link" data-section="mtd" onclick="showSection('mtd',this)">MTD ITSA submissions</a>
+      <a class="sb-link" data-section="vat" onclick="showSection('vat',this)">VAT threshold monitoring</a>
+    </div>
+
+    <div class="sb-section">
+      <span class="sb-section-label">Staff & Growth</span>
+      <a class="sb-link" data-section="team" onclick="showSection('team',this)">Managing your team</a>
+      <a class="sb-link" data-section="reports" onclick="showSection('reports',this)">Business reports</a>
+      <a class="sb-link" data-section="cadi-ai" onclick="showSection('cadi-ai',this)">Cadi AI</a>
+      <a class="sb-link" data-section="leaderboard" onclick="showSection('leaderboard',this)">Local leaderboard</a>
+    </div>
+
+    <div class="sb-section">
+      <span class="sb-section-label">Plans & Billing</span>
+      <a class="sb-link" data-section="plans" onclick="showSection('plans',this)">Comparing plans</a>
+      <a class="sb-link" data-section="billing" onclick="showSection('billing',this)">Billing & upgrades</a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="docs-main">
+
+    <!-- MOBILE SECTION PICKER -->
+    <div class="docs-mobile-bar">
+      <select class="docs-mobile-select" onchange="showSection(this.value, null)">
+        <optgroup label="Getting Started">
+          <option value="overview">What is Cadi?</option>
+          <option value="setup">Account setup</option>
+          <option value="sectors">Choosing your sector</option>
+        </optgroup>
+        <optgroup label="Core Features">
+          <option value="dashboard">Dashboard & health score</option>
+          <option value="scheduling">Scheduling & calendar</option>
+          <option value="invoicing">Invoicing & payments</option>
+          <option value="pricing-calc">Pricing calculator</option>
+          <option value="quotes">Quotes & estimates</option>
+          <option value="routes">Route planning</option>
+          <option value="inventory">Inventory management</option>
+        </optgroup>
+        <optgroup label="Accounts & Tax">
+          <option value="open-banking">Open banking</option>
+          <option value="expenses">Expense categorisation</option>
+          <option value="tax-estimates">Real-time tax estimates</option>
+          <option value="mtd">MTD ITSA submissions</option>
+          <option value="vat">VAT threshold monitoring</option>
+        </optgroup>
+        <optgroup label="Staff & Growth">
+          <option value="team">Managing your team</option>
+          <option value="reports">Business reports</option>
+          <option value="cadi-ai">Cadi AI</option>
+          <option value="leaderboard">Local leaderboard</option>
+        </optgroup>
+        <optgroup label="Plans & Billing">
+          <option value="plans">Comparing plans</option>
+          <option value="billing">Billing & upgrades</option>
+        </optgroup>
+      </select>
+    </div>
+
+    <div class="docs-content" id="docs-content">
+
+      <!-- ══════════════════════════════════
+           WHAT IS CADI
+      ══════════════════════════════════ -->
+      <div class="doc-section active" id="section-overview">
+        <div class="doc-breadcrumb">Getting started <span>›</span> What is Cadi?</div>
+        <h1>What is Cadi?</h1>
+        <p class="doc-lead">Cadi is business management software built specifically for UK cleaning businesses — residential, commercial, and exterior. It replaces the pile of separate tools most cleaners cobble together with a single platform that handles scheduling, invoicing, accounts, tax, and team management.</p>
+
+        <div class="doc-callout">
+          <div class="doc-callout-title">Currently in early access</div>
+          <p>Cadi is accepting early access sign-ups ahead of full launch. <a href="/index.html#access" style="color:rgba(100,140,255,0.9);">Join the waitlist</a> to lock in your founding plan price.</p>
+        </div>
+
+        <h2>Everything in one place</h2>
+        <p>Most cleaning business owners run on a combination of a scheduling app, a separate invoicing tool, a spreadsheet for expenses, and their phone's calculator for pricing. That's four logins, four subscriptions, and no single view of what's actually happening.</p>
+        <p>Cadi connects all of it. A job created in the scheduler flows through to invoicing, feeds into your accounts, and updates your real-time tax estimate — automatically.</p>
+
+        <div class="doc-feat-grid">
+          <div class="doc-feat-card">
+            <div class="doc-feat-card-title">📅 Scheduling</div>
+            <p>Recurring jobs, staff assignments, multi-sector calendars — all in one view.</p>
+          </div>
+          <div class="doc-feat-card">
+            <div class="doc-feat-card-title">🧾 Invoicing</div>
+            <p>Custom branded invoices, automated reminders, and instant payment tracking.</p>
+          </div>
+          <div class="doc-feat-card">
+            <div class="doc-feat-card-title">💷 Accounts & tax</div>
+            <p>Open banking, expense categorisation, real-time tax and NI estimates.</p>
+          </div>
+          <div class="doc-feat-card">
+            <div class="doc-feat-card-title">📊 MTD ITSA</div>
+            <p>Quarterly digital submissions to HMRC, built into your workflow.</p>
+          </div>
+          <div class="doc-feat-card">
+            <div class="doc-feat-card-title">🧮 Pricing calculator</div>
+            <p>Industry-calibrated pricing for residential, commercial, and exterior work.</p>
+          </div>
+          <div class="doc-feat-card">
+            <div class="doc-feat-card-title">🤖 Cadi AI</div>
+            <p>Business intelligence that spots opportunities and gives you honest advice.</p>
+          </div>
+        </div>
+
+        <h2>Who is it for?</h2>
+        <p>Cadi is built for UK cleaning business owners — whether you're a sole trader cleaning houses, a commercial contractor with a team, or an exterior specialist running a window and gutter round. It covers all three sectors in a single account.</p>
+        <p>If you're making most of your decisions by gut feel because you don't have time to dig through spreadsheets, Cadi gives you the numbers automatically so you can focus on the work.</p>
+
+        <div class="doc-divider"></div>
+
+        <h2>How to get started</h2>
+        <ol class="doc-steps">
+          <li><strong>Sign up for early access</strong> — join the waitlist at <a href="/index.html#access" style="color:rgba(100,140,255,0.8);">cadi.cleaning</a> to reserve your founding plan price.</li>
+          <li><strong>Set up your account</strong> — add your business name, sector(s), and hourly rate. Takes under five minutes.</li>
+          <li><strong>Connect your bank</strong> — optional but recommended. Open banking pulls in transactions automatically so you're not entering expenses manually.</li>
+          <li><strong>Add your customers</strong> — import a CSV or add manually. Cadi will suggest recurring job schedules based on your existing pattern.</li>
+          <li><strong>Send your first invoice</strong> — custom branded, payment tracked, reminders automatic.</li>
+        </ol>
+      </div>
+
+      <!-- ══════════════════════════════════
+           ACCOUNT SETUP
+      ══════════════════════════════════ -->
+      <div class="doc-section" id="section-setup">
+        <div class="doc-breadcrumb">Getting started <span>›</span> Account setup</div>
+        <h1>Account setup</h1>
+        <p class="doc-lead">Getting your Cadi account configured correctly from the start means every feature works with your real numbers — not placeholders. Setup takes under 10 minutes.</p>
+
+        <h2>Business details</h2>
+        <p>The first thing Cadi needs is the basics: your business name, trading structure (sole trader or limited company), and the sectors you work in. You can operate across all three sectors (residential, commercial, exterior) from one account — just tick what applies to you now. You can add more sectors later.</p>
+
+        <h2>Your hourly rate</h2>
+        <p>Your hourly rate is the foundation everything else builds on. The pricing calculator, the quote builder, and your profitability reports all reference it. Set it based on what you currently charge for a standard residential clean — you can configure different rates per sector once you're in.</p>
+        <div class="doc-callout">
+          <div class="doc-callout-title">Tip</div>
+          <p>Not sure what your rate should be? The pricing calculator can work backwards from your target annual income, local market data, and your cost base to suggest a rate.</p>
+        </div>
+
+        <h2>Tax settings</h2>
+        <p>Add your Unique Taxpayer Reference (UTR) so Cadi can prepare your MTD ITSA submissions correctly. Your tax year start date and payment on account preferences are also set here.</p>
+
+        <h2>Staff & roles</h2>
+        <p>If you have employees or subcontractors, add them during setup. Each staff member gets a role (admin, scheduler, cleaner) that determines what they can see and do inside Cadi. <span class="doc-badge badge-pro">Pro</span> plans support up to 5 staff. <span class="doc-badge badge-max">Max</span> is unlimited.</p>
+
+        <div class="doc-divider"></div>
+
+        <h2>Importing your data</h2>
+        <p>If you're moving from another tool or a spreadsheet, Cadi can import:</p>
+        <ul>
+          <li><strong>Customer list</strong> — name, address, contact details, notes</li>
+          <li><strong>Recurring jobs</strong> — customer, frequency, price, sector</li>
+          <li><strong>Historical invoices</strong> — for bookkeeping continuity</li>
+          <li><strong>Expense records</strong> — for opening balance on your accounts</li>
+        </ul>
+        <p>Upload a CSV or paste from a spreadsheet. Cadi maps the columns automatically and flags anything it can't match for you to review.</p>
+      </div>
+
+      <!-- ══════════════════════════════════
+           CHOOSING YOUR SECTOR
+      ══════════════════════════════════ -->
+      <div class="doc-section" id="section-sectors">
+        <div class="doc-breadcrumb">Getting started <span>›</span> Choosing your sector</div>
+        <h1>Choosing your sector</h1>
+        <p class="doc-lead">Cadi works across residential, commercial, and exterior cleaning. You're not locked into one — most accounts use two or all three. Each sector has its own pricing logic, scheduling patterns, and tax considerations baked in.</p>
+
+        <h2>Residential</h2>
+        <p>The most common starting point. Residential scheduling is built around recurring weekly or fortnightly cleans, bedroom-based pricing, and a client base that grows steadily through word of mouth.</p>
+        <p>Cadi's residential pricing calculator uses <strong>bedroom count × your hourly rate × clean type</strong> (standard, deep clean, end-of-tenancy, AirBnB) to generate a price. The result is consistent across quotes so your pricing doesn't drift.</p>
+
+        <h2>Commercial</h2>
+        <p>Commercial contracts have different dynamics: larger sites, daily or weekly frequency, often invoiced monthly in arrears. Cadi handles commercial differently from residential — the scheduler shows commercial jobs as contract blocks rather than one-off visits, and invoicing supports monthly consolidated billing.</p>
+        <p>The commercial pricing calculator uses a cost-plus model: site size, cleaning frequency, labour hours, materials and consumables, and your target margin to arrive at a per-visit or monthly contract rate.</p>
+
+        <h2>Exterior</h2>
+        <p>Exterior cleaning (windows, gutters, fascia, jet washing) scales fast because rounds are geographically efficient — 20–30 properties in a single morning is realistic once a round is established. That growth speed is also why exterior cleaners typically cross the VAT threshold sooner than they expect.</p>
+        <div class="doc-callout warning">
+          <div class="doc-callout-title">VAT threshold</div>
+          <p>The UK VAT registration threshold is <strong>£90,000</strong>. Cadi's VAT threshold monitor tracks your rolling 12-month taxable turnover in real time and alerts you when you're approaching it — giving you time to prepare rather than scrambling after the fact.</p>
+        </div>
+        <p>Exterior pricing uses a property-type matrix: window cleaning, gutter clearing, fascia & soffit cleaning, and jet washing are each priced separately by property type (terrace, semi, 3-bed detached, 4-bed detached), then combined into a job total.</p>
+
+        <div class="doc-divider"></div>
+
+        <h2>Running multiple sectors</h2>
+        <p>If you operate across sectors, Cadi keeps them properly separated for tax purposes — commercial income is treated differently from residential for some expense categories, and exterior rounds may have different material costs. Your accounts tab shows a breakdown by sector so you can see exactly where your profit is coming from.</p>
+      </div>
+
+      <!-- ══════════════════════════════════
+           DASHBOARD
+      ══════════════════════════════════ -->
+      <div class="doc-section" id="section-dashboard">
+        <div class="doc-breadcrumb">Core features <span>›</span> Dashboard & health score</div>
+        <h1>Dashboard & health score</h1>
+        <p class="doc-lead">The dashboard is your daily view of the business. It surfaces what needs your attention, tracks your financial health, and — via the health score — gives you a single number that tells you how well-run your business actually is.</p>
+
+        <h2>Business health score</h2>
+        <p>The health score is a number out of 100, recalculated daily. It's made up of five weighted components:</p>
+        <ul>
+          <li><strong>Finance (30%)</strong> — revenue trend, invoice collection rate, cash position</li>
+          <li><strong>Operations (25%)</strong> — schedule fill rate, job completion, no-shows</li>
+          <li><strong>Growth (20%)</strong> — new customers, sector expansion, average job value</li>
+          <li><strong>Team (15%)</strong> — staff utilisation, reassignment rate, capacity headroom</li>
+          <li><strong>Consistency (10%)</strong> — how regularly you're logging, submitting, and reviewing</li>
+        </ul>
+        <p>The score is meant to be honest, not flattering. A score in the 60s is a normal running business. 80+ means you're doing most things right. Below 50 and Cadi will flag specifically what's dragging it down.</p>
+
+        <h2>AI action cards</h2>
+        <p>Below the health score, Cadi surfaces 2–4 action cards each day. These are specific, actionable suggestions based on your actual data — not generic advice. Examples:</p>
+        <ul>
+          <li>"3 invoices have been unpaid for over 14 days — send reminders now?"</li>
+          <li>"Your Tuesday route has a 40-minute gap between jobs. One more booking here would add £X/week."</li>
+          <li>"Your gutter cleaning revenue is up 34% this month — you're on track to cross the VAT threshold in 6 months."</li>
+        </ul>
+        <p>Clicking an action card takes you straight to the relevant tab with the relevant action pre-loaded.</p>
+
+        <h2>Revenue & jobs at a glance</h2>
+        <p>The top of the dashboard shows this month vs last month: total revenue, jobs completed, new customers, and outstanding invoices. The sparkline chart shows your daily revenue for the rolling 30 days.</p>
+      </div>
+
+      <!-- ══════════════════════════════════
+           SCHEDULING
+      ══════════════════════════════════ -->
+      <div class="doc-section" id="section-scheduling">
+        <div class="doc-breadcrumb">Core features <span>›</span> Scheduling & calendar</div>
+        <h1>Scheduling & calendar</h1>
+        <p class="doc-lead">The scheduler is a full weekly calendar built around how cleaning businesses actually work — recurring jobs, multiple staff, and the need to quickly reassign when something changes.</p>
+
+        <h2>Creating a job</h2>
+        <ol class="doc-steps">
+          <li>Open the scheduler and tap the time slot you want, or click <strong>+ Add job</strong>.</li>
+          <li>Search for an existing customer or add a new one on the spot.</li>
+          <li>Select the sector (residential / commercial / exterior), service type, and duration.</li>
+          <li>Assign to a staff member (optional — defaults to you if solo).</li>
+          <li>Save — the job appears on the calendar and a draft invoice is queued automatically.</li>
+        </ol>
+
+        <h2>Recurring jobs</h2>
+        <p>Most residential cleans are recurring. When you create a job, set it to repeat (weekly, fortnightly, 4-weekly, monthly) and Cadi generates the full future schedule. Recurring jobs show with a loop icon on the calendar.</p>
+        <p>Changing the price on a recurring job gives you the option to update just that occurrence or all future instances.</p>
+
+        <h2>Staff view</h2>
+        <p>With multiple staff, the calendar shows each person's jobs in a different colour. You can filter to a single staff member to see their week, or view all at once to spot scheduling conflicts and gaps.</p>
+        <p><span class="doc-badge badge-pro">Pro</span> supports up to 5 staff. <span class="doc-badge badge-max">Max</span> supports unlimited staff.</p>
+
+        <h2>Auto-reschedule</h2>
+        <p>When a staff member calls in sick or a job needs to move, Cadi's auto-reschedule tool suggests the best available slot based on route efficiency (keeping nearby jobs together) and staff availability. It also drafts the customer SMS for you to review before sending.</p>
+
+        <div class="doc-divider"></div>
+
+        <h2>Multi-sector scheduling</h2>
+        <p>Jobs from different sectors sit on the same calendar. Exterior window rounds typically run in the mornings, residential cleans during the day, commercial contracts in the evenings — Cadi shows them all in one view and prevents double-booking across sectors.</p>
+      </div>
+
+      <!-- ══════════════════════════════════
+           INVOICING
+      ══════════════════════════════════ -->
+      <div class="doc-section" id="section-invoicing">
+        <div class="doc-breadcrumb">Core features <span>›</span> Invoicing & payments</div>
+        <h1>Invoicing & payments</h1>
+        <p class="doc-lead">Every completed job generates a draft invoice. Review it, customise it, and send it in seconds. Cadi tracks payment status automatically and chases overdue invoices for you.</p>
+
+        <h2>Creating an invoice</h2>
+        <p>Draft invoices are created automatically when a job is marked complete. You can also create invoices manually — useful for ad-hoc work or commercial monthly billing.</p>
+        <p>Each invoice includes your business name and branding, the customer's details, a line-item breakdown of services, payment terms, and your bank details or payment link.</p>
+        <div class="doc-callout">
+          <div class="doc-callout-title">Custom branding</div>
+          <p>Add your logo and brand colour to all invoices. <span class="doc-badge badge-pro">Pro</span> and <span class="doc-badge badge-max">Max</span> plans include custom branded invoices. The Free plan uses Cadi's default template.</p>
+        </div>
+
+        <h2>Payment terms</h2>
+        <p>Set default payment terms for your account (7, 14, 21, or 30 days) and override per customer where needed. Commercial clients often need 30-day terms; residential clients usually pay on receipt.</p>
+
+        <h2>Sending invoices</h2>
+        <p>Send via email directly from Cadi — your customer receives a clean PDF with a payment link if you've connected a payment processor. Alternatively download the PDF and send it yourself.</p>
+
+        <h2>Automated reminders</h2>
+        <p>Cadi sends payment reminders automatically at your configured intervals (e.g. 3 days before due, on the due date, 7 days overdue). You review and approve the wording before it's set up, and can pause reminders for specific customers.</p>
+
+        <h2>Payment tracking</h2>
+        <p>When open banking is connected, Cadi matches incoming payments to outstanding invoices automatically. You can also mark invoices as paid manually. Your dashboard shows total outstanding, overdue, and collected this month at a glance.</p>
+
+        <div class="doc-divider"></div>
+
+        <h2>White-label client portal</h2>
+        <p><span class="doc-badge badge-max">Max</span> — Your customers get access to a portal under your brand (not Cadi's) where they can view invoices, payment history, and upcoming jobs. Useful for commercial clients who need to reconcile invoices against their own records.</p>
+      </div>
+
+      <!-- ══════════════════════════════════
+           PRICING CALCULATOR
+      ══════════════════════════════════ -->
+      <div class="doc-section" id="section-pricing-calc">
+        <div class="doc-breadcrumb">Core features <span>›</span> Pricing calculator</div>
+        <h1>Pricing calculator</h1>
+        <p class="doc-lead">The pricing calculator takes the guesswork out of quoting. It uses your hourly rate, industry benchmarks, and sector-specific pricing logic to produce a confident price for any job — one that covers your costs and pays you properly.</p>
+
+        <h2>How it works</h2>
+        <p>All three calculators share a single source of truth: <strong>your hourly rate</strong>. Set it once in your account settings and every calculation flows from it. If your rate changes (because costs go up, or you decide to charge more), update it once and all future quotes recalculate.</p>
+
+        <h2>Residential calculator</h2>
+        <p>The residential calculator uses:</p>
+        <ul>
+          <li><strong>Bedroom count</strong> — 1 to 5 bedrooms, each mapped to a standard clean time</li>
+          <li><strong>Clean type</strong> — standard, deep clean (1.8× multiplier), end-of-tenancy (2.2×), AirBnB turnaround (1.4×)</li>
+          <li><strong>Your hourly rate</strong> — applies directly to produce a job price</li>
+        </ul>
+        <p>The result is a recommended price, your estimated time on site, and what that works out to as an effective hourly rate (useful for checking you're not underselling).</p>
+
+        <h2>Commercial calculator <span class="doc-badge badge-pro">Pro</span></h2>
+        <p>The commercial calculator uses a cost-plus model: it builds up from your real costs (labour hours, materials, travel) and applies your target margin to arrive at a contract price. Inputs include:</p>
+        <ul>
+          <li>Site size (sq ft / sq m) and surface type</li>
+          <li>Cleaning frequency (daily, 3×/week, weekly)</li>
+          <li>Number of staff required per visit</li>
+          <li>Materials and consumables estimate</li>
+          <li>Target gross margin percentage</li>
+        </ul>
+        <p>The output is a per-visit price, a monthly contract value, and an annual contract value — the format commercial clients usually expect.</p>
+
+        <h2>Exterior calculator <span class="doc-badge badge-pro">Pro</span></h2>
+        <p>Exterior pricing uses a property-type matrix. Select the service (windows, gutters, fascia, jet washing) and the property type (terrace, semi, 3-bed detached, 4-bed detached) — Cadi outputs the recommended price per property. For a route quote, add multiple properties and Cadi calculates a route total with route efficiency applied.</p>
+
+        <div class="doc-callout">
+          <div class="doc-callout-title">Route clustering</div>
+          <p>Exterior jobs that are geographically close together take less time per property because there's no travel overhead. The route calculator applies a small time-efficiency discount when you're quoting a cluster of properties in the same street or road.</p>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════
+           QUOTES
+      ══════════════════════════════════ -->
+      <div class="doc-section" id="section-quotes">
+        <div class="doc-breadcrumb">Core features <span>›</span> Quotes & estimates</div>
+        <h1>Quotes & estimates</h1>
+        <p class="doc-lead">Turn a pricing calculator result directly into a formal quote — sent to the customer, tracked for acceptance, and converted to a scheduled job and invoice when they confirm.</p>
+
+        <h2>Creating a quote</h2>
+        <p>Start from the pricing calculator or create a quote from scratch. A quote includes your business details, the customer's details, the service breakdown, the price, and an expiry date. It's sent as a branded PDF or via a web link the customer can accept online.</p>
+
+        <h2>Quote status</h2>
+        <p>Quotes move through: <strong>Draft → Sent → Viewed → Accepted / Declined</strong>. You can see exactly when a customer opened a quote and how long they took to respond — useful for following up at the right moment.</p>
+
+        <h2>Converting a quote</h2>
+        <p>When a customer accepts, one tap converts the quote to a scheduled job (pre-filled with all the job details) and queues a draft invoice. Nothing needs re-entering.</p>
+
+        <h2>Estimates vs quotes</h2>
+        <p>Quotes are fixed-price. Estimates are indicative — you can add a range (e.g. "£80–£120 depending on condition") and note what might change the final price. Useful for one-off deep cleans or end-of-tenancy work where the state of the property isn't fully known upfront.</p>
+      </div>
+
+      <!-- ══════════════════════════════════
+           ROUTES
+      ══════════════════════════════════ -->
+      <div class="doc-section" id="section-routes">
+        <div class="doc-breadcrumb">Core features <span>›</span> Route planning</div>
+        <h1>Route planning</h1>
+        <p class="doc-lead">Route planning organises your jobs by geography so you're spending time cleaning, not driving. It's especially useful for exterior rounds where you might have 20–30 properties in a morning.</p>
+
+        <h2>How routes work</h2>
+        <p>Add the jobs you want to run in a session and Cadi calculates the most efficient order — minimising total drive time between properties. You can start from your home address or a depot, and set a fixed end point if needed.</p>
+        <p>The route view shows a map of the stops in order, estimated travel time between each, total drive time, and the estimated finish time for the session.</p>
+
+        <h2>Building a round</h2>
+        <p>For regular exterior rounds, save a route as a template. Each week, open the template and Cadi re-generates the schedule with any changes (new customers added, one-offs removed) automatically applied.</p>
+
+        <h2>Sharing routes</h2>
+        <p>Export a route as a PDF for a staff member who's doing the round without app access, or share directly from Cadi if they're using the app. The exported sheet includes customer name, address, service, and price per stop.</p>
+
+        <div class="doc-callout">
+          <div class="doc-callout-title">Exterior round efficiency</div>
+          <p>A well-built exterior window round can service 25–30 houses in a 4-hour morning at £30–£65 per property. Route planning is what makes that density possible — adding even 3 extra properties per morning compounding over a year is significant revenue.</p>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════
+           INVENTORY
+      ══════════════════════════════════ -->
+      <div class="doc-section" id="section-inventory">
+        <div class="doc-breadcrumb">Core features <span>›</span> Inventory management</div>
+        <h1>Inventory management</h1>
+        <p class="doc-lead">Track your cleaning supplies and equipment so you're never caught short on a job, and never buying more than you need. Stock levels update automatically as jobs are completed.</p>
+
+        <h2>Setting up inventory</h2>
+        <p>Add the products you use regularly — cleaning solutions, cloths, bags, window-cleaning detergent, whatever you go through regularly. Set a current stock level and a reorder threshold. Cadi alerts you when stock drops below the threshold.</p>
+
+        <h2>Usage tracking</h2>
+        <p>Each job type (residential clean, window round, deep clean) has a default consumables usage estimate. When a job is completed, Cadi deducts the expected usage from your inventory. You can adjust the deduction if a job used more or less than usual.</p>
+
+        <h2>Cost tracking</h2>
+        <p>Log purchase prices when you restock. Cadi tracks your materials cost per job type over time, which feeds into your expense categorisation and profitability reports — so you can see whether your materials costs are creeping up and whether your pricing still covers them.</p>
+
+        <h2>Equipment log</h2>
+        <p>Track equipment alongside consumables — vacuum cleaners, pressure washers, window cleaning kit, ladders. Log purchase prices and estimated service intervals so you can account for depreciation in your cost base.</p>
+      </div>
+
+      <!-- ══════════════════════════════════
+           OPEN BANKING
+      ══════════════════════════════════ -->
+      <div class="doc-section" id="section-open-banking">
+        <div class="doc-breadcrumb">Accounts & tax <span>›</span> Open banking</div>
+        <h1>Open banking</h1>
+        <p class="doc-lead">Connect your business bank account to Cadi via open banking and your income and expenses are pulled in automatically — no manual entry, no chasing statements. <span class="doc-badge badge-pro">Pro</span> <span class="doc-badge badge-max">Max</span></p>
+
+        <h2>How it works</h2>
+        <p>Open banking is a UK regulatory framework that lets you share read-only access to your bank transactions with authorised apps like Cadi. Cadi never has access to move money — it can only read your transaction history.</p>
+        <p>Authorisation takes about 2 minutes: choose your bank, log in through your bank's own interface, and confirm the connection. Most major UK banks are supported including Barclays, HSBC, Lloyds, Monzo, Starling, and NatWest.</p>
+
+        <div class="doc-callout success">
+          <div class="doc-callout-title">Free plan without open banking</div>
+          <p>On the Free plan, you enter income and expenses manually. Open banking is available from the Pro plan upwards.</p>
+        </div>
+
+        <h2>Transaction matching</h2>
+        <p>Once connected, Cadi matches incoming transactions against your outstanding invoices automatically. Most matches are instant — if a payment amount and reference match an invoice, it's marked paid without any input from you.</p>
+        <p>Unmatched transactions (supplier payments, bank charges, personal transfers) are flagged for you to categorise. Cadi learns from your categorisation choices so over time it categorises recurring transactions automatically.</p>
+
+        <h2>Refreshing your data</h2>
+        <p>Open banking connections are refreshed every 24 hours automatically. You can also trigger a manual refresh at any time. Most banks require you to re-authorise every 90 days — Cadi will remind you before the connection expires.</p>
+      </div>
+
+      <!-- ══════════════════════════════════
+           EXPENSES
+      ══════════════════════════════════ -->
+      <div class="doc-section" id="section-expenses">
+        <div class="doc-breadcrumb">Accounts & tax <span>›</span> Expense categorisation</div>
+        <h1>Expense categorisation</h1>
+        <p class="doc-lead">Every expense your business incurs reduces your taxable profit. Cadi categorises your costs automatically and makes sure HMRC-allowable expenses are correctly identified — so you don't leave money on the table at tax time.</p>
+
+        <h2>HMRC expense categories</h2>
+        <p>Cadi organises expenses into the categories HMRC uses for self-assessment:</p>
+        <ul>
+          <li><strong>Materials &amp; cleaning supplies</strong> — products used on jobs</li>
+          <li><strong>Equipment &amp; tools</strong> — vacuum cleaners, pressure washers, ladders</li>
+          <li><strong>Vehicle costs</strong> — fuel, insurance, servicing (business proportion)</li>
+          <li><strong>Marketing &amp; advertising</strong> — website, leaflets, Google ads</li>
+          <li><strong>Software &amp; subscriptions</strong> — yes, Cadi itself is an allowable expense</li>
+          <li><strong>Professional services</strong> — accountant, insurance broker fees</li>
+          <li><strong>Premises</strong> — if you rent a storage unit or office</li>
+          <li><strong>Staff costs</strong> — wages, NI contributions</li>
+          <li><strong>Use of home</strong> — flat-rate or calculated proportion</li>
+          <li><strong>Bank charges &amp; interest</strong> — business account fees</li>
+        </ul>
+
+        <h2>Auto-categorisation</h2>
+        <p>When transactions come in via open banking, Cadi categorises them based on merchant name, amount patterns, and your previous categorisation choices. The accuracy improves over time — within a few months most routine expenses are categorised without any input from you.</p>
+
+        <h2>Reviewing uncategorised transactions</h2>
+        <p>Anything Cadi isn't confident about appears in the "Needs review" queue. Tap to categorise, add a note if needed, and confirm. You can bulk-categorise multiple similar transactions at once.</p>
+
+        <h2>Receipts &amp; attachments</h2>
+        <p>Attach a photo of a receipt to any expense. For MTD purposes you need to be able to evidence your expenses, and keeping receipts attached to the transaction in Cadi means everything is in one place at quarter end.</p>
+      </div>
+
+      <!-- ══════════════════════════════════
+           TAX ESTIMATES
+      ══════════════════════════════════ -->
+      <div class="doc-section" id="section-tax-estimates">
+        <div class="doc-breadcrumb">Accounts & tax <span>›</span> Real-time tax estimates</div>
+        <h1>Real-time tax estimates</h1>
+        <p class="doc-lead">Cadi calculates your Income Tax and Class 4 National Insurance liability in real time, based on your actual income and expenses to date. No surprises at the end of the year — you know what you owe as you earn it.</p>
+
+        <h2>How the estimate works</h2>
+        <p>The estimate is based on your year-to-date profit (invoiced income minus allowable expenses) projected to the end of the tax year, then tax and NI applied at current rates:</p>
+        <ul>
+          <li><strong>Income Tax</strong> — Personal Allowance (£12,570), basic rate (20%), higher rate (40%)</li>
+          <li><strong>Class 4 NI</strong> — 6% on profits between £12,570–£50,270, 2% above</li>
+          <li><strong>Class 2 NI</strong> — flat rate for self-employed (currently £3.45/week)</li>
+          <li><strong>Payments on account</strong> — if applicable, Cadi factors in what you've already paid</li>
+        </ul>
+
+        <div class="doc-callout warning">
+          <div class="doc-callout-title">This is an estimate, not tax advice</div>
+          <p>Cadi's tax estimate is based on your inputted data and standard rates. It doesn't account for all possible reliefs, allowances, or individual circumstances. If your tax situation is complex, speak to an accountant.</p>
+        </div>
+
+        <h2>The tax pot</h2>
+        <p>Based on your real-time estimate, Cadi tells you what percentage of each invoice payment you should set aside for tax. Some cleaners find it useful to move this to a separate savings account — Cadi shows you the amount after each invoice is paid so the decision is easy.</p>
+
+        <h2>Quarterly view</h2>
+        <p>The accounts tab shows your income, expenses, and estimated tax for each quarter of the tax year. This lines up with the MTD quarterly reporting periods so you can see exactly what you'll be submitting.</p>
+      </div>
+
+      <!-- ══════════════════════════════════
+           MTD
+      ══════════════════════════════════ -->
+      <div class="doc-section" id="section-mtd">
+        <div class="doc-breadcrumb">Accounts & tax <span>›</span> MTD ITSA submissions</div>
+        <h1>MTD ITSA submissions</h1>
+        <p class="doc-lead">Making Tax Digital for Income Tax Self Assessment (MTD ITSA) requires most self-employed people to submit quarterly income and expense updates to HMRC digitally. Cadi handles this entirely — your data is always ready, and submissions take a few taps. <span class="doc-badge badge-pro">Pro</span> <span class="doc-badge badge-max">Max</span></p>
+
+        <h2>What is MTD ITSA?</h2>
+        <p>MTD ITSA is HMRC's requirement for self-employed people and landlords to maintain digital records and submit quarterly updates via compatible software (like Cadi), rather than a single annual self-assessment return.</p>
+        <p><strong>When it applies:</strong></p>
+        <ul>
+          <li><strong>From April 2026</strong> — self-employed with income over £50,000</li>
+          <li><strong>From April 2027</strong> — self-employed with income over £30,000</li>
+          <li><strong>From April 2028</strong> — expected to extend to £20,000+</li>
+        </ul>
+
+        <div class="doc-callout">
+          <div class="doc-callout-title">Already above the threshold?</div>
+          <p>If your income is over £50,000, MTD ITSA applies to you now (from April 2026). Cadi's MTD feature is fully compatible with HMRC's requirements.</p>
+        </div>
+
+        <h2>How submissions work in Cadi</h2>
+        <ol class="doc-steps">
+          <li><strong>Your records are already digital</strong> — every invoice and expense logged in Cadi counts as your digital record. No extra work needed.</li>
+          <li><strong>At quarter end, Cadi prepares your update</strong> — income and expenses for the quarter are automatically summarised in the HMRC-required format.</li>
+          <li><strong>Review the summary</strong> — check the figures, add any notes, and confirm everything looks right.</li>
+          <li><strong>Submit to HMRC</strong> — one tap. Cadi sends the data directly to HMRC's API and returns your confirmation reference.</li>
+          <li><strong>End of year</strong> — your final declaration uses the four quarterly submissions as its foundation. Cadi prepares this too.</li>
+        </ol>
+
+        <h2>Authorising Cadi with HMRC</h2>
+        <p>To submit to HMRC, you need to authorise Cadi to act on your behalf. This is done once through HMRC's own login portal — you'll be redirected during setup. The authorisation lasts 18 months before it needs refreshing.</p>
+
+        <h2>Quarterly periods</h2>
+        <p>The standard quarterly periods are: 6 April–5 July, 6 July–5 October, 6 October–5 January, 6 January–5 April. Cadi shows the current period's running totals at all times and alerts you two weeks before each submission deadline.</p>
+      </div>
+
+      <!-- ══════════════════════════════════
+           VAT
+      ══════════════════════════════════ -->
+      <div class="doc-section" id="section-vat">
+        <div class="doc-breadcrumb">Accounts & tax <span>›</span> VAT threshold monitoring</div>
+        <h1>VAT threshold monitoring</h1>
+        <p class="doc-lead">The UK VAT registration threshold is £90,000 of taxable turnover in any rolling 12-month period. If you cross it, you must register within 30 days. Cadi tracks your rolling turnover automatically and tells you how close you are — before it becomes urgent.</p>
+
+        <h2>How the tracker works</h2>
+        <p>Cadi calculates your rolling 12-month taxable turnover in real time using your invoiced income. The dashboard shows a progress bar from £0 to £90,000, your current figure, and a projected crossing date based on your current growth rate.</p>
+        <p>Alerts are triggered at:</p>
+        <ul>
+          <li><strong>£72,000</strong> (80%) — early warning, time to plan</li>
+          <li><strong>£81,000</strong> (90%) — register within the next 3 months</li>
+          <li><strong>£87,000</strong> (97%) — register now, you have under 30 days</li>
+        </ul>
+
+        <div class="doc-callout warning">
+          <div class="doc-callout-title">Rolling 12 months, not tax year</div>
+          <p>The VAT threshold is measured on a rolling 12-month basis — not your tax year or calendar year. If you had a strong summer last year, those months still count toward your current 12-month total. Cadi tracks this correctly.</p>
+        </div>
+
+        <h2>What happens when you register</h2>
+        <p>Once VAT registered, you'll charge VAT on your services (20% standard rate for most cleaning work) and submit quarterly VAT returns. Cadi's Max plan includes VAT return preparation. Contact us at <a href="mailto:hello@cadi.cleaning" style="color:rgba(100,140,255,0.8);">hello@cadi.cleaning</a> if you need to discuss VAT-registered support.</p>
+
+        <h2>Exterior cleaning and VAT</h2>
+        <p>Exterior cleaners are disproportionately likely to cross the VAT threshold because rounds scale efficiently. A full window cleaning round of 100 regular properties at £40 each, visiting monthly, produces £48,000/year — add gutters, jet washing, and commercial contracts and you can cross £90k faster than expected.</p>
+      </div>
+
+      <!-- ══════════════════════════════════
+           TEAM
+      ══════════════════════════════════ -->
+      <div class="doc-section" id="section-team">
+        <div class="doc-breadcrumb">Staff & growth <span>›</span> Managing your team</div>
+        <h1>Managing your team</h1>
+        <p class="doc-lead">Add staff, assign them jobs, track their hours, and keep an eye on capacity — all from the same app you use to run the rest of the business. <span class="doc-badge badge-pro">Pro</span> <span class="doc-badge badge-max">Max</span></p>
+
+        <h2>Adding a team member</h2>
+        <p>Go to the Team tab and tap <strong>+ Add staff</strong>. Enter their name, contact details, and role:</p>
+        <ul>
+          <li><strong>Cleaner</strong> — can see their own schedule and mark jobs complete. No financial access.</li>
+          <li><strong>Scheduler</strong> — can create and modify jobs, view all staff schedules. No financial access.</li>
+          <li><strong>Admin</strong> — full access except billing settings.</li>
+        </ul>
+        <p>Staff receive an invite to download the Cadi app and create their login. They only see what their role allows.</p>
+
+        <h2>Capacity planning</h2>
+        <p>The capacity view shows each staff member's weekly hours — booked vs available. Green means headroom, amber means close to full, red means overbooked. This is the tool to use when a new client enquires and you need to know honestly whether you can take them on.</p>
+
+        <h2>Staff performance</h2>
+        <p><span class="doc-badge badge-max">Max</span> — The reports tab includes per-staff revenue attribution, job completion rates, and customer retention rates by staff member. Useful for performance conversations and for working out who your most effective people are.</p>
+      </div>
+
+      <!-- ══════════════════════════════════
+           REPORTS
+      ══════════════════════════════════ -->
+      <div class="doc-section" id="section-reports">
+        <div class="doc-breadcrumb">Staff & growth <span>›</span> Business reports</div>
+        <h1>Business reports</h1>
+        <p class="doc-lead">Standard reports give you a monthly and quarterly view of your business. Advanced analytics go deeper — sector profitability, customer lifetime value, expansion modelling. <span class="doc-badge badge-pro">Pro</span> <span class="doc-badge badge-max">Max</span></p>
+
+        <h2>Standard reports <span class="doc-badge badge-pro">Pro</span></h2>
+        <p>Available monthly and quarterly:</p>
+        <ul>
+          <li><strong>Profit &amp; loss</strong> — revenue, expenses, gross and net profit</li>
+          <li><strong>Invoice summary</strong> — issued, collected, outstanding, overdue</li>
+          <li><strong>Customer report</strong> — active customers, new customers, churn</li>
+          <li><strong>Job summary</strong> — completed jobs by sector, average job value</li>
+          <li><strong>Tax summary</strong> — income, allowable expenses, estimated liability</li>
+        </ul>
+
+        <h2>Advanced analytics <span class="doc-badge badge-max">Max</span></h2>
+        <ul>
+          <li><strong>Sector profitability</strong> — net margin by sector, which is most profitable per hour</li>
+          <li><strong>Customer lifetime value</strong> — revenue per customer over their relationship with you</li>
+          <li><strong>Revenue forecasting</strong> — 3 and 12-month projections based on current trajectory</li>
+          <li><strong>Staff attribution</strong> — revenue and margin per staff member</li>
+          <li><strong>Expansion modelling</strong> — what adding X customers in a given sector does to your annual revenue and tax position</li>
+        </ul>
+
+        <h2>Exporting reports</h2>
+        <p>All reports export as PDF or CSV. Share directly with your accountant, or download for your own records. Cadi's reports are formatted to match what HMRC expects for self-assessment — so if an accountant asks for your P&amp;L, you can hand it over immediately.</p>
+      </div>
+
+      <!-- ══════════════════════════════════
+           CADI AI
+      ══════════════════════════════════ -->
+      <div class="doc-section" id="section-cadi-ai">
+        <div class="doc-breadcrumb">Staff & growth <span>›</span> Cadi AI</div>
+        <h1>Cadi AI</h1>
+        <p class="doc-lead">Cadi AI is a business intelligence layer built on top of your real data. It answers questions, surfaces opportunities, flags risks, and helps you think through decisions — all with full context of your actual numbers.</p>
+
+        <h2>What it can do</h2>
+        <p>Ask Cadi AI anything about your business and it responds with specific, data-backed answers:</p>
+        <ul>
+          <li>"What would adding a commercial contract at £800/month do to my tax position this year?"</li>
+          <li>"Which of my customers have I not visited in over 8 weeks?"</li>
+          <li>"My materials costs have gone up — should I increase my prices?"</li>
+          <li>"When am I likely to cross the VAT threshold at my current growth rate?"</li>
+          <li>"What's my most profitable sector per hour worked?"</li>
+        </ul>
+
+        <h2>Proactive suggestions</h2>
+        <p>Cadi AI doesn't just respond to questions — it proactively flags things worth your attention. These appear as action cards on the dashboard, generated from patterns in your data: pricing anomalies, gaps in your schedule, invoices that are overdue, customers whose spend has dropped.</p>
+
+        <h2>Plan limits</h2>
+        <div class="plan-strip">
+          <div class="plan-strip-cell">
+            <div class="plan-strip-name">Pro</div>
+            <div class="plan-strip-price">Standard <span>usage</span></div>
+          </div>
+          <div class="plan-strip-cell featured">
+            <div class="plan-strip-name">Max</div>
+            <div class="plan-strip-price">Higher <span>usage limits</span></div>
+          </div>
+          <div class="plan-strip-cell">
+            <div class="plan-strip-name">Enterprise</div>
+            <div class="plan-strip-price">Custom <span>allocation</span></div>
+          </div>
+        </div>
+        <p>Cadi AI is available on Pro and Max plans. Max includes higher usage limits and access to the more complex analytical queries (expansion modelling, multi-scenario forecasting). Enterprise plans have a custom allocation.</p>
+
+        <div class="doc-callout">
+          <div class="doc-callout-title">Your data stays yours</div>
+          <p>Cadi AI uses your business data to answer your questions. Your data is never used to train shared models or shared with other users. Full details in the <a href="mailto:hello@cadi.cleaning" style="color:rgba(100,140,255,0.8);">privacy policy</a>.</p>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════
+           LEADERBOARD
+      ══════════════════════════════════ -->
+      <div class="doc-section" id="section-leaderboard">
+        <div class="doc-breadcrumb">Staff & growth <span>›</span> Local leaderboard</div>
+        <h1>Local leaderboard</h1>
+        <p class="doc-lead">The local leaderboard ranks cleaning businesses in your area by a composite score based on how well-run they are — not just by size. It's the UK's first performance league for cleaning businesses.</p>
+
+        <h2>How scoring works</h2>
+        <p>Each business is scored out of 100 across five pillars (same as the health score). Scores are updated daily. Businesses only appear on the leaderboard if they consent to it, and names are anonymised to "Business #1, #2" etc — except for your own, which shows your actual name.</p>
+
+        <h2>Tiers</h2>
+        <p>Businesses compete within their own tier:</p>
+        <ul>
+          <li><strong>Solo</strong> — sole traders with no staff</li>
+          <li><strong>Team</strong> — 2–5 employees</li>
+          <li><strong>Scaling</strong> — 6+ employees or multi-location</li>
+        </ul>
+        <p>Comparing a one-person window cleaning round against a 20-person commercial contractor doesn't tell you anything useful. Tiers make the comparison honest.</p>
+
+        <h2>What it's for</h2>
+        <p>Most cleaning business owners operate in an information vacuum — they don't know how they compare to other local businesses, and there's no external signal of whether they're doing well or not. The leaderboard gives you a market signal: are you in the top third of businesses in your area, or the bottom? That's useful to know.</p>
+
+        <p>It's also a small motivator. Knowing there are other businesses nearby competing on the same metrics makes it slightly easier to take the boring-but-important actions — reconciling expenses, chasing invoices — that move your score up.</p>
+      </div>
+
+      <!-- ══════════════════════════════════
+           PLANS
+      ══════════════════════════════════ -->
+      <div class="doc-section" id="section-plans">
+        <div class="doc-breadcrumb">Plans & billing <span>›</span> Comparing plans</div>
+        <h1>Comparing plans</h1>
+        <p class="doc-lead">Cadi has four plans: Free, Pro, Max, and Enterprise. Here's what each one gives you and when to upgrade.</p>
+
+        <h2>Free</h2>
+        <p>The Free plan gives you the tools to run a basic cleaning business — customers, scheduling, invoicing (standard template), and the job tools (pricing calculator, quotes, routes, inventory). Up to 50 customers. Accounts and tax features are view-only; open banking and MTD require Pro.</p>
+        <p><strong>Best for:</strong> new businesses just getting started, or testing Cadi before committing.</p>
+
+        <h2>Pro — £39/mo</h2>
+        <p>Pro unlocks the full platform: custom branded invoices, open banking, the complete accounts and tax suite (expense categorisation, real-time estimates, MTD submissions, VAT monitoring), and up to 5 staff. This is the plan most active cleaning businesses will use.</p>
+        <p><strong>Best for:</strong> sole traders and small teams who are serious about staying compliant and growing properly.</p>
+        <p><strong>Annual:</strong> £31/mo (billed as £374/yr — save £94).</p>
+
+        <h2>Max — £79/mo</h2>
+        <p>Max is Pro plus: unlimited staff, white-label client portal, advanced Cadi AI (higher usage limits), advanced analytics and revenue forecasting, and a dedicated account manager with same-day support, phone and live chat. Max also includes coming-soon features (payroll, API access, franchise tools) when they launch.</p>
+        <p><strong>Best for:</strong> growing businesses with teams, multiple sectors, or commercial contracts that need deeper data and premium support.</p>
+        <p><strong>Annual:</strong> £63/mo (billed as £758/yr — save £190).</p>
+
+        <h2>Enterprise — custom pricing</h2>
+        <p>For franchise networks, large commercial contractors, and multi-brand cleaning groups. Custom build, custom pricing, full white-labelling, API access, SLA, and guided onboarding. <a href="mailto:hello@cadi.cleaning" style="color:rgba(100,140,255,0.8);">Talk to us →</a></p>
+
+        <div class="doc-callout success">
+          <div class="doc-callout-title">Founding member prices</div>
+          <p>Early access members lock in their plan price forever — no price increases, even as we add features. <a href="/index.html#access" style="color:rgba(70,210,130,0.8);">Join the waitlist</a> to secure your founding rate.</p>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════
+           BILLING
+      ══════════════════════════════════ -->
+      <div class="doc-section" id="section-billing">
+        <div class="doc-breadcrumb">Plans & billing <span>›</span> Billing & upgrades</div>
+        <h1>Billing & upgrades</h1>
+        <p class="doc-lead">Billing is handled via Stripe. You can upgrade, downgrade, or cancel at any time from your account settings.</p>
+
+        <h2>Monthly vs annual</h2>
+        <p>Monthly billing charges at the start of each billing cycle. Annual billing charges for 12 months upfront at a 20% discount — you pay for 10 months and get 12. Annual plans can be cancelled but are non-refundable for the remaining period.</p>
+
+        <h2>Upgrading</h2>
+        <p>Upgrading takes effect immediately. You're charged a prorated amount for the remainder of the current billing period, then the new rate from the next cycle.</p>
+
+        <h2>Downgrading</h2>
+        <p>Downgrading takes effect at the end of your current billing period. If you're downgrading from Pro to Free, features that exceed the Free plan limits (e.g. more than 50 customers, open banking connection) will be locked — your data is preserved but inaccessible until you upgrade again.</p>
+
+        <h2>Cancelling</h2>
+        <p>You can cancel at any time from Account Settings → Billing → Cancel plan. Cancellation takes effect at the end of the current billing period — you retain access until then. Your data is held for 90 days after cancellation before being deleted, giving you time to export if needed.</p>
+
+        <h2>Invoices &amp; receipts</h2>
+        <p>All billing invoices are emailed automatically and available in Account Settings → Billing → Invoice history. These are Stripe-issued invoices and are valid for your own business expense records.</p>
+
+        <div class="doc-callout">
+          <div class="doc-callout-title">Questions about billing?</div>
+          <p>Email <a href="mailto:hello@cadi.cleaning" style="color:rgba(100,140,255,0.8);">hello@cadi.cleaning</a> — we'll sort it out.</p>
+        </div>
+      </div>
+
+    </div><!-- /docs-content -->
+
+    <!-- ON THIS PAGE (TOC) -->
+    <div class="docs-toc" id="docs-toc">
+      <span class="toc-label">On this page</span>
+      <div id="toc-links"></div>
+    </div>
+
+  </div><!-- /docs-main -->
+</div><!-- /docs-shell -->
+
+<script>
+// ── Section navigation ──
+function showSection(id, linkEl) {
+  // hide all sections
+  document.querySelectorAll('.doc-section').forEach(s => s.classList.remove('active'));
+  // show target
+  const target = document.getElementById('section-' + id);
+  if (target) target.classList.add('active');
+
+  // update sidebar active link
+  document.querySelectorAll('.sb-link').forEach(l => l.classList.remove('active'));
+  if (linkEl) {
+    linkEl.classList.add('active');
+  } else {
+    // find by data-section
+    const link = document.querySelector('.sb-link[data-section="' + id + '"]');
+    if (link) link.classList.add('active');
+  }
+
+  // update mobile select
+  const sel = document.querySelector('.docs-mobile-select');
+  if (sel) sel.value = id;
+
+  // build TOC for this section
+  buildToc(target);
+
+  // scroll content to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function buildToc(section) {
+  const tocLinks = document.getElementById('toc-links');
+  if (!tocLinks || !section) return;
+  const headings = section.querySelectorAll('h2');
+  if (headings.length === 0) { tocLinks.innerHTML = ''; return; }
+  let html = '';
+  headings.forEach((h, i) => {
+    const slug = 'toc-' + i + '-' + h.textContent.replace(/\s+/g,'_').toLowerCase().replace(/[^a-z0-9_]/g,'');
+    h.id = slug;
+    html += '<a class="toc-link" href="#' + slug + '">' + h.textContent + '</a>';
+  });
+  tocLinks.innerHTML = html;
+
+  // highlight active toc on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        document.querySelectorAll('.toc-link').forEach(l => l.classList.remove('active'));
+        const active = tocLinks.querySelector('a[href="#' + e.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.6 });
+  section.querySelectorAll('h2').forEach(h => { if (h.id) observer.observe(h); });
+}
+
+// ── Search / filter ──
+function filterDocs(query) {
+  const q = query.toLowerCase().trim();
+  document.querySelectorAll('.sb-link').forEach(link => {
+    const text = link.textContent.toLowerCase();
+    link.style.display = (!q || text.includes(q)) ? '' : 'none';
+  });
+  document.querySelectorAll('.sb-section-label').forEach(label => {
+    const section = label.closest('.sb-section');
+    if (!section) return;
+    const visible = [...section.querySelectorAll('.sb-link')].some(l => l.style.display !== 'none');
+    label.style.display = visible ? '' : 'none';
+  });
+}
+
+// Init TOC for default section
+buildToc(document.getElementById('section-overview'));
+</script>
+
+</body>
+</html>
