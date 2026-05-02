@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ready to Scale — The Podcast for UK Cleaning Business Owners | Cadi</title>
+<meta name="description" content="Ready to Scale is the podcast for UK cleaning business owners who want to grow. Real talk on scaling, hiring, money, mindset and marketing from Mackies Cleaning and Cadi. Episodes dropping soon.">
+<meta name="keywords" content="cleaning business podcast UK, ready to scale podcast, UK cleaning business growth, cleaning business mindset, scaling cleaning company, Mackies Cleaning podcast">
+<link rel="canonical" href="https://cadi.cleaning/podcast">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "PodcastSeries",
+  "name": "Ready to Scale",
+  "description": "The podcast for UK cleaning business owners who want to grow beyond solo — episodes on scaling, mindset, hiring, money and marketing.",
+  "url": "https://cadi.cleaning/podcast",
+  "inLanguage": "en-GB",
+  "producer": {
+    "@type": "Organization",
+    "name": "Cadi",
+    "url": "https://cadi.cleaning"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Rhianna",
+    "jobTitle": "Founder, Mackies Cleaning & Cadi"
+  }
+}
+</script>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink:#040810; --navy:#07102e; --blue:#1a3ac9; --electric:#2e55f0; --sky:#4f78ff;
+  --pale:#c4d3ff; --white:#ffffff;
+  --font:'Plus Jakarta Sans',sans-serif; --serif:'Instrument Serif',serif;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+  --c-mindset:rgba(255,80,150,1);
+  --c-scaling:rgba(79,120,255,1);
+  --c-money:rgba(80,200,140,1);
+  --c-marketing:rgba(255,180,80,1);
+  --c-people:rgba(160,80,255,1);
+}
+html{scroll-behavior:smooth;}
+body{background:var(--ink);font-family:var(--font);color:var(--white);overflow-x:hidden;line-height:1;}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.02;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+.inner{max-width:1080px;margin:0 auto;padding:0 40px;}
+.hl{background:linear-gradient(135deg,#fff 0%,#a8c4ff 40%,#4f78ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:rgba(79,120,255,0.7);display:block;margin-bottom:14px;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 0.6s var(--ease),transform 0.6s var(--ease);}
+.reveal.visible{opacity:1;transform:none;}
+.rv1{transition-delay:0.08s;}.rv2{transition-delay:0.16s;}.rv3{transition-delay:0.24s;}.rv4{transition-delay:0.32s;}.rv5{transition-delay:0.4s;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(4,8,16,0.7);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.05);transition:background 0.3s;}
+nav.scrolled{background:rgba(4,8,16,0.92);}
+.nav-wm{font-family:var(--font);font-weight:600;font-size:28px;letter-spacing:-0.05em;display:flex;align-items:baseline;text-decoration:none;filter:drop-shadow(0 0 12px rgba(79,120,255,0.4));}
+.nav-C{color:rgba(196,211,255,0.6);}
+.nav-a{background:linear-gradient(170deg,#fff,#a8c4ff,#4f78ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.nav-d{background:linear-gradient(170deg,#fff,#6090ff,#2e55f0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.nav-i{color:rgba(255,255,255,0.28);position:relative;}
+.nav-dot{position:absolute;left:50%;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,#fff,#a8c4ff,#4f78ff,transparent);width:6px;height:6px;top:0.08em;box-shadow:0 0 8px 2px rgba(168,196,255,0.7),0 0 20px 5px rgba(79,120,255,0.4);animation:ndp 3.5s ease-in-out infinite;}
+@keyframes ndp{0%,100%{transform:translateX(-50%) scale(1);}50%{transform:translateX(-50%) scale(1.2);}}
+.nav-links{display:flex;align-items:center;gap:8px;list-style:none;}
+.nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,0.45);text-decoration:none;padding:8px 14px;border-radius:10px;transition:all 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.05);}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.nav-signin{font-size:13px;font-weight:600;color:rgba(255,255,255,0.5);background:none;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:9px 18px;transition:all 0.2s;text-decoration:none;}
+.nav-signin:hover{border-color:rgba(255,255,255,0.25);color:#fff;}
+.nav-cta{font-size:13px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--blue),var(--electric));border:none;border-radius:10px;padding:10px 20px;box-shadow:0 4px 16px rgba(46,85,240,0.35);transition:all 0.2s;text-decoration:none;white-space:nowrap;}
+.nav-cta:hover{box-shadow:0 6px 22px rgba(46,85,240,0.55);transform:translateY(-1px);}
+.nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.nav-burger span{display:block;width:22px;height:2px;background:rgba(255,255,255,0.55);border-radius:2px;}
+
+/* HERO */
+.pod-hero{padding:148px 0 80px;position:relative;overflow:hidden;}
+.pod-hero::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:900px;height:600px;background:radial-gradient(ellipse,rgba(46,85,240,0.18) 0%,transparent 65%);pointer-events:none;}
+.pod-hero-inner{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:60px;flex-wrap:wrap;}
+.pod-hero-left{flex:1;min-width:280px;}
+.pod-hero-h1{font-family:var(--serif);font-style:italic;font-size:clamp(36px,4.5vw,58px);font-weight:400;line-height:1.1;color:#fff;margin-bottom:20px;letter-spacing:-0.01em;}
+.pod-hero-sub{font-size:16px;color:rgba(255,255,255,0.45);line-height:1.75;max-width:500px;margin-bottom:36px;}
+
+/* ARTWORK CARD */
+.artwork-card{width:260px;height:260px;flex-shrink:0;background:linear-gradient(135deg,#07102e,#040810);border:1px solid rgba(79,120,255,0.25);border-radius:24px;padding:28px 24px 22px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;position:relative;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,0.6),0 0 60px rgba(46,85,240,0.12),inset 0 1px 0 rgba(79,120,255,0.15);}
+.artwork-card::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:180px;height:180px;background:radial-gradient(circle,rgba(79,120,255,0.15),transparent 70%);pointer-events:none;}
+.artwork-eyebrow{font-size:9px;font-weight:700;letter-spacing:0.35em;text-transform:uppercase;color:rgba(79,120,255,0.8);text-align:center;position:relative;z-index:1;}
+.artwork-title{font-family:var(--serif);font-style:italic;font-size:72px;font-weight:400;line-height:0.9;background:linear-gradient(160deg,#fff 0%,#a8c4ff 50%,#4f78ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-align:center;position:relative;z-index:1;}
+.artwork-sub{font-size:9px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.25);text-align:center;margin-top:-4px;position:relative;z-index:1;}
+.artwork-waveform{display:flex;align-items:center;justify-content:center;gap:4px;height:32px;position:relative;z-index:1;}
+.artwork-waveform .bar{width:4px;border-radius:2px;background:linear-gradient(to top,rgba(79,120,255,0.4),rgba(168,196,255,0.8));}
+.artwork-waveform .bar:nth-child(1){animation:wave 1.4s ease-in-out infinite 0s;}
+.artwork-waveform .bar:nth-child(2){animation:wave 1.4s ease-in-out infinite 0.2s;}
+.artwork-waveform .bar:nth-child(3){animation:wave 1.4s ease-in-out infinite 0.1s;}
+.artwork-waveform .bar:nth-child(4){animation:wave 1.4s ease-in-out infinite 0.3s;}
+.artwork-waveform .bar:nth-child(5){animation:wave 1.4s ease-in-out infinite 0.15s;}
+@keyframes wave{
+  0%,100%{height:8px;opacity:0.5;}
+  50%{height:28px;opacity:1;}
+}
+.artwork-brand{font-family:var(--font);font-weight:700;font-size:11px;letter-spacing:-0.02em;color:rgba(196,211,255,0.4);display:flex;align-items:baseline;gap:1px;position:relative;z-index:1;}
+
+/* PLATFORM BADGES */
+.platforms{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.platform-badge{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:12px;border:1px solid;font-size:12px;font-weight:600;opacity:0.38;cursor:not-allowed;transition:none;text-decoration:none;}
+.platform-badge-inner{display:flex;flex-direction:column;gap:1px;}
+.platform-badge-name{font-size:12px;font-weight:700;line-height:1;}
+.platform-badge-status{font-size:10px;font-weight:500;opacity:0.7;line-height:1;}
+.pb-spotify{background:rgba(30,215,96,0.06);border-color:rgba(30,215,96,0.18);color:rgba(30,215,96,0.7);}
+.pb-apple{background:rgba(180,80,255,0.06);border-color:rgba(180,80,255,0.18);color:rgba(200,130,255,0.7);}
+.pb-amazon{background:rgba(79,120,255,0.06);border-color:rgba(79,120,255,0.18);color:rgba(120,160,255,0.7);}
+.pb-google{background:rgba(255,130,60,0.06);border-color:rgba(255,130,60,0.18);color:rgba(255,160,100,0.7);}
+
+/* VAULT SECTION */
+.vault-section{padding:80px 0 60px;border-top:1px solid rgba(255,255,255,0.05);}
+.vault-header{margin-bottom:40px;}
+.vault-h2{font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-0.04em;line-height:1.1;color:#fff;margin-bottom:12px;}
+.vault-sub{font-size:15px;color:rgba(255,255,255,0.38);line-height:1.7;max-width:560px;}
+
+/* FILTER PILLS */
+.filter-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
+.filter-pill{font-size:12px;font-weight:600;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:7px 16px;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+.filter-pill:hover{color:rgba(255,255,255,0.75);border-color:rgba(255,255,255,0.18);}
+.filter-pill.active{color:#a8c4ff;background:rgba(79,120,255,0.12);border-color:rgba(79,120,255,0.28);}
+.ep-count{font-size:12px;color:rgba(255,255,255,0.22);margin-bottom:28px;}
+
+/* EPISODE GRID */
+.ep-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.ep-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:20px 22px;transition:all 0.2s;border-left-width:3px;border-left-style:solid;cursor:default;}
+.ep-card:hover{transform:translateY(-2px);}
+.ep-card[data-cat="mindset"]{border-left-color:rgba(255,80,150,0.6);}
+.ep-card[data-cat="mindset"]:hover{border-color:rgba(255,80,150,0.3);border-left-color:rgba(255,80,150,0.9);}
+.ep-card[data-cat="scaling"]{border-left-color:rgba(79,120,255,0.6);}
+.ep-card[data-cat="scaling"]:hover{border-color:rgba(79,120,255,0.3);border-left-color:rgba(79,120,255,0.9);}
+.ep-card[data-cat="money"]{border-left-color:rgba(80,200,140,0.6);}
+.ep-card[data-cat="money"]:hover{border-color:rgba(80,200,140,0.3);border-left-color:rgba(80,200,140,0.9);}
+.ep-card[data-cat="marketing"]{border-left-color:rgba(255,180,80,0.6);}
+.ep-card[data-cat="marketing"]:hover{border-color:rgba(255,180,80,0.3);border-left-color:rgba(255,180,80,0.9);}
+.ep-card[data-cat="people"]{border-left-color:rgba(160,80,255,0.6);}
+.ep-card[data-cat="people"]:hover{border-color:rgba(160,80,255,0.3);border-left-color:rgba(160,80,255,0.9);}
+.ep-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;gap:8px;}
+.ep-cat-pill{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:20px;white-space:nowrap;}
+.ep-cat-mindset{background:rgba(255,80,150,0.1);border:1px solid rgba(255,80,150,0.2);color:rgba(255,140,185,0.9);}
+.ep-cat-scaling{background:rgba(79,120,255,0.1);border:1px solid rgba(79,120,255,0.2);color:rgba(140,175,255,0.9);}
+.ep-cat-money{background:rgba(80,200,140,0.08);border:1px solid rgba(80,200,140,0.18);color:rgba(140,220,180,0.9);}
+.ep-cat-marketing{background:rgba(255,180,80,0.08);border:1px solid rgba(255,180,80,0.18);color:rgba(255,210,130,0.9);}
+.ep-cat-people{background:rgba(160,80,255,0.1);border:1px solid rgba(160,80,255,0.2);color:rgba(200,150,255,0.9);}
+.ep-coming{font-size:10px;font-weight:600;color:rgba(255,255,255,0.22);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:3px 8px;white-space:nowrap;flex-shrink:0;}
+.ep-title{font-size:13.5px;font-weight:700;letter-spacing:-0.015em;line-height:1.4;color:rgba(255,255,255,0.85);}
+
+/* HOST SECTION */
+.host-section{padding:80px 0;border-top:1px solid rgba(255,255,255,0.05);}
+.host-label{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:40px;}
+.host-inner{display:grid;grid-template-columns:auto 1fr;gap:60px;align-items:start;}
+.host-avatar-wrap{display:flex;flex-direction:column;align-items:center;gap:16px;}
+.host-avatar{width:140px;height:140px;border-radius:50%;background:linear-gradient(135deg,rgba(46,85,240,0.4),rgba(79,120,255,0.2));border:2px solid rgba(79,120,255,0.3);display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 16px 48px rgba(0,0,0,0.4),0 0 40px rgba(46,85,240,0.1);}
+.host-avatar::before{content:'';position:absolute;inset:-3px;border-radius:50%;background:linear-gradient(135deg,rgba(79,120,255,0.3),transparent,rgba(46,85,240,0.2));z-index:-1;}
+.host-initials{font-size:38px;font-weight:800;letter-spacing:-0.03em;background:linear-gradient(135deg,#fff,#a8c4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.host-role{font-size:11px;font-weight:600;color:rgba(255,255,255,0.25);letter-spacing:0.1em;text-transform:uppercase;text-align:center;}
+.host-bio-name{font-size:clamp(24px,3vw,32px);font-weight:800;letter-spacing:-0.04em;color:#fff;margin-bottom:6px;}
+.host-bio-title{font-size:13px;color:rgba(79,120,255,0.8);font-weight:600;margin-bottom:22px;}
+.host-bio p{font-size:15px;color:rgba(255,255,255,0.5);line-height:1.8;margin-bottom:16px;}
+.host-bio p:last-child{margin-bottom:0;color:rgba(255,255,255,0.7);font-style:italic;}
+
+/* NOTIFY SECTION */
+.notify-section{padding:80px 0;position:relative;overflow:hidden;}
+.notify-card{background:linear-gradient(135deg,rgba(29,56,196,0.18),rgba(46,85,240,0.1));border:1px solid rgba(79,120,255,0.2);border-radius:28px;padding:64px 72px;text-align:center;position:relative;overflow:hidden;}
+.notify-card::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:500px;height:400px;background:radial-gradient(ellipse,rgba(46,85,240,0.2),transparent 65%);pointer-events:none;}
+.notify-h2{font-size:clamp(26px,3.5vw,38px);font-weight:800;letter-spacing:-0.04em;color:#fff;margin-bottom:10px;position:relative;}
+.notify-sub{font-size:15px;color:rgba(255,255,255,0.4);line-height:1.7;max-width:440px;margin:0 auto 32px;position:relative;}
+.notify-form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;position:relative;}
+.notify-input{font-family:var(--font);font-size:14px;color:#fff;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:14px 20px;width:280px;outline:none;transition:border-color 0.2s;}
+.notify-input::placeholder{color:rgba(255,255,255,0.25);}
+.notify-input:focus{border-color:rgba(79,120,255,0.5);}
+.notify-btn{font-family:var(--font);font-size:14px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--blue),var(--electric));border:none;border-radius:12px;padding:14px 28px;cursor:pointer;box-shadow:0 4px 20px rgba(46,85,240,0.4);transition:all 0.2s;white-space:nowrap;}
+.notify-btn:hover{box-shadow:0 6px 28px rgba(46,85,240,0.6);transform:translateY(-1px);}
+.notify-note{font-size:12px;color:rgba(255,255,255,0.2);margin-top:16px;position:relative;}
+
+/* FOOTER */
+footer{padding:60px 40px 40px;border-top:1px solid rgba(255,255,255,0.05);}
+.footer-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:48px;}
+.footer-brand{}
+.footer-wm{font-weight:600;font-size:26px;letter-spacing:-0.05em;display:flex;align-items:baseline;margin-bottom:14px;}
+.fw-C{color:rgba(196,211,255,0.6);}
+.fw-a{background:linear-gradient(170deg,#fff,#a8c4ff,#4f78ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.fw-d{background:linear-gradient(170deg,#fff,#6090ff,#2e55f0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.fw-i{color:rgba(255,255,255,0.28);position:relative;}
+.fw-dot{position:absolute;left:50%;transform:translateX(-50%);border-radius:50%;width:5px;height:5px;top:0.1em;background:radial-gradient(circle,#fff,#a8c4ff,#4f78ff,transparent);box-shadow:0 0 6px 2px rgba(168,196,255,0.6);}
+.footer-tagline{font-size:13px;color:rgba(255,255,255,0.25);line-height:1.7;max-width:220px;}
+.footer-col h4{font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-bottom:16px;}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,0.38);text-decoration:none;margin-bottom:10px;transition:color 0.2s;}
+.footer-col a:hover{color:rgba(255,255,255,0.75);}
+.footer-bottom{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid rgba(255,255,255,0.05);}
+.fb-copy{font-size:12px;color:rgba(255,255,255,0.18);}
+.fb-links{display:flex;gap:20px;}
+.fb-links a{font-size:12px;color:rgba(255,255,255,0.22);text-decoration:none;transition:color 0.2s;}
+.fb-links a:hover{color:rgba(255,255,255,0.6);}
+
+@media(max-width:960px){
+  .ep-grid{grid-template-columns:1fr;}
+  .host-inner{grid-template-columns:1fr;gap:36px;}
+  .host-avatar-wrap{flex-direction:row;justify-content:flex-start;}
+  .notify-card{padding:48px 40px;}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:28px;}
+  nav{padding:14px 20px;}
+  .pod-hero-inner{flex-direction:column-reverse;align-items:flex-start;}
+  .artwork-card{width:220px;height:220px;}
+}
+@media(max-width:640px){
+  .inner{padding:0 20px;}
+  .nav-links{display:none;}
+  .nav-burger{display:flex;}
+  .notify-card{padding:36px 24px;}
+  .notify-input{width:100%;}
+  .notify-form{flex-direction:column;align-items:stretch;}
+  .notify-btn{width:100%;}
+  .footer-inner{grid-template-columns:1fr;}
+  .artwork-card{width:200px;height:200px;}
+  .artwork-title{font-size:56px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="/" class="nav-wm"><span class="nav-C">C</span><span class="nav-a">a</span><span class="nav-d">d</span><span class="nav-i">i<span class="nav-dot"></span></span></a>
+  <ul class="nav-links">
+    <li><a href="/features.html">Features</a></li>
+    <li><a href="/index.html#pricing">Pricing</a></li>
+    <li><a href="/docs.html">Docs</a></li>
+    <li><a href="/news.html">News</a></li>
+    <li><a href="/resources.html">Resources</a></li>
+    <li><a href="/podcast.html" class="active">Podcast</a></li>
+    <li><a href="/partnerships.html">Partners</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://app.cadi.cleaning" class="nav-signin">Sign in</a>
+    <a href="/index.html#access" class="nav-cta">Join waitlist</a>
+  </div>
+  <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+
+<!-- HERO -->
+<section class="pod-hero">
+  <div class="inner">
+    <div class="pod-hero-inner">
+
+      <div class="pod-hero-left" style="animation:fadeUp 0.7s var(--ease) both;">
+        <span class="eyebrow">Now building the episode vault</span>
+        <h1 class="pod-hero-h1"><em>Ready to Scale</em> — the podcast for cleaning business owners who refuse to stay small</h1>
+        <p class="pod-hero-sub">Real talk on scaling, hiring, money, mindset and marketing from the team behind Mackies Cleaning. Episodes dropping soon — every one designed to make you money or save you time.</p>
+
+        <div class="platforms">
+          <div class="platform-badge pb-spotify" title="Coming soon on Spotify">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 17.293a.75.75 0 01-1.033.242c-2.834-1.73-6.399-2.12-10.596-1.163a.75.75 0 01-.336-1.462c4.593-1.052 8.532-.598 11.72 1.35a.75.75 0 01.245 1.033zm1.484-3.3a.937.937 0 01-1.29.303c-3.241-1.99-8.183-2.567-12.017-1.405a.938.938 0 01-.544-1.793c4.38-1.327 9.83-.684 13.548 1.605a.937.937 0 01.303 1.29zm.127-3.435C15.44 8.39 9.106 8.184 5.61 9.24a1.125 1.125 0 11-.652-2.15c4.047-1.227 10.782-1 14.997 1.578a1.125 1.125 0 01-1.182 1.9z"/></svg>
+            <div class="platform-badge-inner">
+              <span class="platform-badge-name">Spotify</span>
+              <span class="platform-badge-status">Coming soon</span>
+            </div>
+          </div>
+          <div class="platform-badge pb-apple" title="Coming soon on Apple Podcasts">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 4.5c2.79 0 5.062 2.272 5.062 5.063 0 1.887-1.038 3.531-2.578 4.406.234.75.375 1.547.375 2.375C14.859 18.515 13.6 20 12 20s-2.859-1.485-2.859-3.656c0-.828.14-1.625.375-2.375C8.047 13.094 7 11.45 7 9.563 7 6.772 9.21 4.5 12 4.5zm0 1.5a3.563 3.563 0 100 7.125A3.563 3.563 0 0012 6z"/></svg>
+            <div class="platform-badge-inner">
+              <span class="platform-badge-name">Apple Podcasts</span>
+              <span class="platform-badge-status">Coming soon</span>
+            </div>
+          </div>
+          <div class="platform-badge pb-amazon" title="Coming soon on Amazon Music">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705a.661.661 0 01-.76.074c-1.069-.887-1.26-1.299-1.847-2.146-1.766 1.799-3.015 2.338-5.305 2.338-2.709 0-4.818-1.672-4.818-5.015 0-2.612 1.416-4.392 3.432-5.267 1.748-.775 4.191-.913 6.057-1.126v-.42c0-.773.06-1.686-.394-2.353-.394-.595-1.148-.841-1.813-.841-1.232 0-2.33.633-2.599 1.944-.056.285-.269.567-.558.583l-3.113-.337c-.262-.058-.552-.27-.477-.671C5.806 1.95 8.95.99 11.77.99c1.443 0 3.328.384 4.468 1.476 1.443 1.348 1.305 3.148 1.305 5.108v4.626c0 1.391.578 2.001 1.121 2.752.192.27.233.592-.01.791l-1.51 1.052zm3.21 1.898c-.318.233-1.01.499-1.494.256-.41-.214-.683-.756-1.035-1.126l-.032-.03c-1.068 1.031-2.222 1.604-3.494 1.779-1.565.218-3.384-.079-4.484-1.297-1.09-1.2-1.49-2.768-1.337-4.376.177-1.857 1.044-3.335 2.368-4.307.935-.692 2.147-1.152 3.484-1.366V9.28c0-.717-.032-1.56-.365-2.207-.317-.608-.938-.89-1.618-.875-.617.015-1.213.318-1.617.906-.407.589-.444 1.331-.504 2.02l-.022.22-3.108-.336c-.26-.058-.547-.268-.474-.664C5.858 1.978 9.021 1 11.85 1c1.432 0 3.298.389 4.457 1.493C17.745 3.836 17.6 5.63 17.6 7.59v4.582c0 1.38.573 1.984 1.113 2.724.188.265.23.585-.01.782L17.354 19.693z"/></svg>
+            <div class="platform-badge-inner">
+              <span class="platform-badge-name">Amazon Music</span>
+              <span class="platform-badge-status">Coming soon</span>
+            </div>
+          </div>
+          <div class="platform-badge pb-google" title="Coming soon on Google Podcasts">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+            <div class="platform-badge-inner">
+              <span class="platform-badge-name">Google Podcasts</span>
+              <span class="platform-badge-status">Coming soon</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="animation:fadeUp 0.7s 0.14s var(--ease) both;flex-shrink:0;">
+        <div class="artwork-card">
+          <div class="artwork-eyebrow">Ready to</div>
+          <div class="artwork-title">Scale</div>
+          <div class="artwork-sub">The Podcast</div>
+          <div class="artwork-waveform">
+            <div class="bar" style="height:14px;"></div>
+            <div class="bar" style="height:22px;"></div>
+            <div class="bar" style="height:10px;"></div>
+            <div class="bar" style="height:26px;"></div>
+            <div class="bar" style="height:16px;"></div>
+          </div>
+          <div class="artwork-brand">
+            <span style="color:rgba(196,211,255,0.4);">C</span><span style="background:linear-gradient(170deg,rgba(255,255,255,0.5),rgba(168,196,255,0.5),rgba(79,120,255,0.5));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">a</span><span style="background:linear-gradient(170deg,rgba(255,255,255,0.5),rgba(96,144,255,0.5),rgba(46,85,240,0.5));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">d</span><span style="color:rgba(255,255,255,0.18);">i</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- EPISODE VAULT -->
+<section class="vault-section">
+  <div class="inner">
+    <div class="vault-header reveal">
+      <h2 class="vault-h2">93 episodes. <span class="hl">Coming soon.</span></h2>
+      <p class="vault-sub">Every episode is planned, scripted and designed to give you one thing: an unfair advantage in your cleaning business.</p>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-pill active" onclick="setFilter(this,'all')">All episodes</button>
+      <button class="filter-pill" onclick="setFilter(this,'mindset')">🧠 Mindset</button>
+      <button class="filter-pill" onclick="setFilter(this,'scaling')">📈 Scaling</button>
+      <button class="filter-pill" onclick="setFilter(this,'money')">💰 Money</button>
+      <button class="filter-pill" onclick="setFilter(this,'marketing')">🎯 Marketing</button>
+      <button class="filter-pill" onclick="setFilter(this,'people')">👥 People</button>
+    </div>
+    <p class="ep-count" id="ep-count">Showing 93 episodes</p>
+
+    <div class="ep-grid">
+
+      <!-- MINDSET EPISODES -->
+      <div class="ep-card" data-cat="mindset">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-mindset">Mindset</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Stop. Listen to this before you write another goal for your cleaning business.</p>
+      </div>
+
+      <div class="ep-card" data-cat="mindset">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-mindset">Mindset</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">The honest truth about staying hungry years into running your cleaning business</p>
+      </div>
+
+      <div class="ep-card" data-cat="mindset">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-mindset">Mindset</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">The boring cleaning business beats the exciting one every time. Here's why.</p>
+      </div>
+
+      <div class="ep-card" data-cat="mindset">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-mindset">Mindset</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">I wanted to quit. These 4 things kept me going.</p>
+      </div>
+
+      <div class="ep-card" data-cat="mindset">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-mindset">Mindset</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">I lost £60k in one year running my cleaning business. Here's what I did next.</p>
+      </div>
+
+      <div class="ep-card" data-cat="mindset">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-mindset">Mindset</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">You're not starting from scratch — you're starting from experience.</p>
+      </div>
+
+      <div class="ep-card" data-cat="mindset">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-mindset">Mindset</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Starting from zero: the raw truth about building a cleaning business with nothing</p>
+      </div>
+
+      <div class="ep-card" data-cat="mindset">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-mindset">Mindset</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">The shiny object trap is quietly destroying your cleaning business. Do the boring work.</p>
+      </div>
+
+      <div class="ep-card" data-cat="mindset">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-mindset">Mindset</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Why old friends keep you poor — and what that means for your cleaning business</p>
+      </div>
+
+      <div class="ep-card" data-cat="mindset">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-mindset">Mindset</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Every setback in my cleaning business taught me something. Here's the list.</p>
+      </div>
+
+      <div class="ep-card" data-cat="mindset">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-mindset">Mindset</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">If you're burnt out running your cleaning business, listen to this first.</p>
+      </div>
+
+      <div class="ep-card" data-cat="mindset">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-mindset">Mindset</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">You're stressed in your cleaning business for one reason. Here it is.</p>
+      </div>
+
+      <div class="ep-card" data-cat="mindset">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-mindset">Mindset</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">I've messed up plenty running cleaning businesses. Here's what handling it looks like.</p>
+      </div>
+
+      <div class="ep-card" data-cat="mindset">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-mindset">Mindset</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Why passion alone won't scale your cleaning business — but here's what it does do</p>
+      </div>
+
+      <div class="ep-card" data-cat="mindset">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-mindset">Mindset</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Document every mistake in your cleaning business. It will make you a fortune.</p>
+      </div>
+
+      <div class="ep-card" data-cat="mindset">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-mindset">Mindset</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Building a cleaning business will cost you friendships. That's normal.</p>
+      </div>
+
+      <div class="ep-card" data-cat="mindset">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-mindset">Mindset</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">If I had to rebuild my cleaning business from nothing tomorrow, this is what I'd do</p>
+      </div>
+
+      <div class="ep-card" data-cat="mindset">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-mindset">Mindset</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">The unglamorous work that puts you ahead of 99% of cleaning business owners</p>
+      </div>
+
+      <div class="ep-card" data-cat="mindset">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-mindset">Mindset</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">You switch strategy every 6 weeks. That's why you're not scaling. Stop it.</p>
+      </div>
+
+      <div class="ep-card" data-cat="mindset">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-mindset">Mindset</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">No one cares about your story until you're winning. So just win first.</p>
+      </div>
+
+      <div class="ep-card" data-cat="mindset">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-mindset">Mindset</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">This is not fun. You won't enjoy it. But it will make you more money than anything else.</p>
+      </div>
+
+      <div class="ep-card" data-cat="mindset">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-mindset">Mindset</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Your cleaning business doesn't have a growth problem. It has a focus problem.</p>
+      </div>
+
+      <div class="ep-card" data-cat="mindset">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-mindset">Mindset</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Industry standards are the floor, not the ceiling. Stop following them if you want to win.</p>
+      </div>
+
+      <!-- SCALING EPISODES -->
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">6 moves top cleaning businesses made this year while everyone else stood still</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">The invisible ceiling that stops most cleaning businesses from ever breaking six figures</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">One management framework. Two cleaning companies. Completely different results.</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">3 tactics that moved the needle more than any marketing campaign we've ever run</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">5 scaling moves that actually work in cleaning — and the 3 that waste your time</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">The exact playbook for scaling a commercial cleaning business to six figures</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">How exterior cleaning businesses scale differently — and the mistakes that cost contracts</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">The residential cleaning scaling blueprint nobody talks about</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Specialist cleaning: the highest margin sector and how to scale it properly</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">3 questions that will immediately clarify what's holding back your cleaning business</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">The one thing that puts you ahead of 99% of cleaning businesses. It's not what you think.</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">I reverse-engineered what a perfect cleaning business looks like. Here's the blueprint.</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">5 cleaning business owners, 5 different problems, 5 things that actually moved the needle</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">My full 8-hour workday running two cleaning companies — explained in 15 minutes</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">The real reason your cleaning company isn't growing — it's not what you've been fixing</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">7 business concepts cleaning owners have never heard of — worth serious money if you apply them</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">The framework I'd use to grow any cleaning business in any UK town or city</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Stuck at the same revenue for months? This is probably why.</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">The real ingredients for growing a cleaning business — nobody tells you this part</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">The growth ceiling most cleaning businesses never break through — and exactly why</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">The genius positioning strategy that makes clients feel lucky to book you</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">The micro-scaling cycle I use to grow two cleaning companies at the same time</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Stuck? Here's the exact 4-step process I use when my cleaning business stops growing</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">There are only 2 real paths to scaling a cleaning business. Which one are you on?</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Build a cleaning business growth flywheel — 4 ways to make momentum work for you</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Make 2027 your best year in cleaning: the planning session nobody else is having</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">3 things that make a cleaning business genuinely unstoppable — most owners skip all of them</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">The practical growth playbook for cleaning businesses in 2027</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">A full scaling workshop for cleaning business owners — 45 minutes of pure strategy</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Strategic thinking most cleaning business owners never apply — let's fix that</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">1 hour. Your biggest cleaning business questions. Real answers.</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">The 3 real bottlenecks holding back your cleaning business — diagnosed</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Before you invest another penny: how to validate your cleaning business idea properly</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Simplicity is a competitive advantage in cleaning. Complexity is killing your growth.</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">My cleaning business isn't growing — here's how to diagnose exactly what to fix</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">The lead generation system that can put thousands of potential clients into your pipeline</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">If I started a cleaning business from scratch in 2027, this is exactly what I'd do differently</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">One question. Ask it every week. It will scale your cleaning business.</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Know the shape of your cleaning business — and you'll know exactly how to scale it</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Diagnose before you scale — the step most cleaning business owners skip entirely</p>
+      </div>
+
+      <div class="ep-card" data-cat="scaling">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-scaling">Scaling</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Your business model is the scale lever most cleaning owners ignore completely</p>
+      </div>
+
+      <!-- MONEY EPISODES -->
+      <div class="ep-card" data-cat="money">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-money">Money</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">£100k is the hardest milestone in cleaning — here's exactly how to break through it</p>
+      </div>
+
+      <div class="ep-card" data-cat="money">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-money">Money</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Double your cleaning business profit in 8 weeks. Here are the 3 steps.</p>
+      </div>
+
+      <div class="ep-card" data-cat="money">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-money">Money</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Stop setting goals that feel good. Set goals that make money.</p>
+      </div>
+
+      <div class="ep-card" data-cat="money">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-money">Money</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">The email strategy that generates £5k a month for my cleaning business — copy it</p>
+      </div>
+
+      <div class="ep-card" data-cat="money">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-money">Money</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">23 minutes that will change how you price and book every clean from now on</p>
+      </div>
+
+      <div class="ep-card" data-cat="money">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-money">Money</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">The profit margin moves that put your cleaning business in the top 1%</p>
+      </div>
+
+      <div class="ep-card" data-cat="money">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-money">Money</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">3 moves that could genuinely 10x your cleaning business income next year</p>
+      </div>
+
+      <div class="ep-card" data-cat="money">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-money">Money</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">My exact 5-step blueprint to hitting your first £100k in cleaning</p>
+      </div>
+
+      <div class="ep-card" data-cat="money">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-money">Money</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Inside our £1m strategy at Mackies Cleaning — what we're doing and why</p>
+      </div>
+
+      <div class="ep-card" data-cat="money">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-money">Money</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">The exact client funnel we built to generate £250k a year at Mackies Cleaning</p>
+      </div>
+
+      <div class="ep-card" data-cat="money">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-money">Money</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Why £60k is where most cleaning businesses stall — and the specific reasons why</p>
+      </div>
+
+      <div class="ep-card" data-cat="money">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-money">Money</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Fix these 4 bottlenecks and nothing will stop you breaking £100k in cleaning</p>
+      </div>
+
+      <!-- MARKETING EPISODES -->
+      <div class="ep-card" data-cat="marketing">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-marketing">Marketing</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Why obsessing over your competitors is quietly killing your cleaning business growth</p>
+      </div>
+
+      <div class="ep-card" data-cat="marketing">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-marketing">Marketing</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Why your cleaning business is forgettable — and the exact steps to fix it</p>
+      </div>
+
+      <div class="ep-card" data-cat="marketing">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-marketing">Marketing</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">No one takes you seriously as a cleaning business authority. Here's exactly why.</p>
+      </div>
+
+      <div class="ep-card" data-cat="marketing">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-marketing">Marketing</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">The customer service bar in cleaning is embarrassingly low. Here's how to own it.</p>
+      </div>
+
+      <div class="ep-card" data-cat="marketing">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-marketing">Marketing</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">How giving away free cleans built us a pipeline worth more than paid ads</p>
+      </div>
+
+      <div class="ep-card" data-cat="marketing">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-marketing">Marketing</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Get your first 5 cleaning clients this week — the exact approach that actually works</p>
+      </div>
+
+      <div class="ep-card" data-cat="marketing">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-marketing">Marketing</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Branding isn't a logo. Here's what it actually is — and why it's making your competitors money.</p>
+      </div>
+
+      <div class="ep-card" data-cat="marketing">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-marketing">Marketing</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">7 ways to get new cleaning clients this week with zero ad spend</p>
+      </div>
+
+      <div class="ep-card" data-cat="marketing">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-marketing">Marketing</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Stop promising results. Show proof instead. It's the only marketing that actually converts.</p>
+      </div>
+
+      <div class="ep-card" data-cat="marketing">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-marketing">Marketing</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Nobody knows your cleaning business exists. Here's how to fix that — fast.</p>
+      </div>
+
+      <div class="ep-card" data-cat="marketing">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-marketing">Marketing</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Branding is a revenue strategy, not a design project. Here's the proof.</p>
+      </div>
+
+      <div class="ep-card" data-cat="marketing">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-marketing">Marketing</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Copy this marketing strategy — it blew up our cleaning business and it'll work for yours</p>
+      </div>
+
+      <div class="ep-card" data-cat="marketing">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-marketing">Marketing</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">How to get cleaning clients so fast it feels illegal (it's not — it's just smart)</p>
+      </div>
+
+      <!-- PEOPLE EPISODES -->
+      <div class="ep-card" data-cat="people">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-people">People</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">The one hire that changes everything in your cleaning business — and the one that destroys it</p>
+      </div>
+
+      <div class="ep-card" data-cat="people">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-people">People</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">Why your cleaning staff don't take the business seriously — and how you accidentally caused it</p>
+      </div>
+
+      <div class="ep-card" data-cat="people">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-people">People</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">The order to hire your first 5 people in a growing cleaning business</p>
+      </div>
+
+      <div class="ep-card" data-cat="people">
+        <div class="ep-card-top">
+          <span class="ep-cat-pill ep-cat-people">People</span>
+          <span class="ep-coming">Coming soon</span>
+        </div>
+        <p class="ep-title">I hired wrong for years. Here's exactly how I changed my approach.</p>
+      </div>
+
+    </div><!-- /ep-grid -->
+  </div>
+</section>
+
+
+<!-- HOST SECTION -->
+<section class="host-section">
+  <div class="inner">
+    <div class="host-label">Who's behind it</div>
+    <div class="host-inner reveal">
+
+      <div class="host-avatar-wrap">
+        <div class="host-avatar">
+          <span class="host-initials">RH</span>
+        </div>
+        <div class="host-role">Host &amp; founder</div>
+      </div>
+
+      <div class="host-bio">
+        <h2 class="host-bio-name">Rhianna</h2>
+        <p class="host-bio-title">Founder, Mackies Cleaning &amp; Cadi</p>
+        <p>Built Mackies Cleaning from scratch — starting with nothing, figuring it out as she went. No playbook, no mentor, no safety net. What came from that is two growing cleaning companies and a very specific understanding of what it actually takes to scale this kind of business in the UK.</p>
+        <p>Now running both companies while building Cadi — the software that runs the operations side behind the scenes. Ready to Scale is the podcast that shares all of it: what's worked, what's failed, what costs money, what makes it, and what nobody talks about publicly because they're too worried about looking bad.</p>
+        <p>"This isn't a highlights reel. It's the full match."</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- NOTIFY CTA -->
+<section class="notify-section">
+  <div class="inner">
+    <div class="notify-card reveal">
+      <h2 class="notify-h2">Be first to hear when episodes drop.</h2>
+      <p class="notify-sub">Every episode is practical, specific, and built for cleaning business owners. No fluff.</p>
+      <div class="notify-form">
+        <input type="email" class="notify-input" placeholder="your@email.com" id="notify-email">
+        <button class="notify-btn" onclick="handleNotifySignup()">Notify me</button>
+      </div>
+      <p class="notify-note">Join 500+ cleaning business owners on the waitlist</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-wm"><span class="fw-C">C</span><span class="fw-a">a</span><span class="fw-d">d</span><span class="fw-i">i<span class="fw-dot"></span></span></div>
+      <p class="footer-tagline">The software that runs your cleaning business. Built by cleaners, for cleaners.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <a href="/features.html">Features</a>
+      <a href="/index.html#pricing">Pricing</a>
+      <a href="/docs.html">Docs</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="/resources.html">All resources</a>
+      <a href="/resources/coshh-cleaning-businesses.html">COSHH guide</a>
+      <a href="/resources/rams-cleaning-businesses.html">RAMS guide</a>
+      <a href="/news/mtd-itsa-cleaning-businesses-2026.html">MTD ITSA</a>
+    </div>
+    <div class="footer-col">
+      <h4>Podcast</h4>
+      <a href="/podcast.html">Ready to Scale</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="/about.html">About</a>
+      <a href="mailto:hello@cadi.cleaning">Contact</a>
+      <a href="/privacy">Privacy policy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="fb-copy">© 2026 Cadi. All rights reserved. · cadi.cleaning</p>
+    <div class="fb-links"><a href="https://instagram.com/getcadi">Instagram</a><a href="https://tiktok.com/@getcadi">TikTok</a><a href="https://linkedin.com/company/getcadi">LinkedIn</a></div>
+  </div>
+</footer>
+
+
+<script>
+// Nav scroll state
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Intersection observer for reveal animations
+(function() {
+  const io = new IntersectionObserver(e => {
+    e.forEach(x => { if (x.isIntersecting) x.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+})();
+
+// Episode filter
+let activeFilter = 'all';
+function setFilter(btn, cat) {
+  activeFilter = cat;
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  let count = 0;
+  document.querySelectorAll('.ep-card').forEach(card => {
+    const match = cat === 'all' || card.dataset.cat === cat;
+    card.style.display = match ? '' : 'none';
+    if (match) count++;
+  });
+  document.getElementById('ep-count').textContent = `Showing ${count} episodes`;
+}
+
+// Notify signup
+function handleNotifySignup() {
+  const email = document.getElementById('notify-email').value.trim();
+  if (!email || !email.includes('@')) {
+    document.getElementById('notify-email').style.borderColor = 'rgba(255,100,100,0.5)';
+    return;
+  }
+  const btn = document.querySelector('.notify-btn');
+  btn.textContent = 'You\'re on the list ✓';
+  btn.style.background = 'rgba(80,200,140,0.3)';
+  btn.style.boxShadow = 'none';
+  document.getElementById('notify-email').disabled = true;
+  // Submit to Loops
+  fetch('https://app.loops.so/api/newsletter-form/cmo7imr0303zm0iwrpkpy9dao', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'email=' + encodeURIComponent(email) + '&source=podcast-notify'
+  }).catch(() => {});
+}
+
+// Mobile nav burger
+document.getElementById('burger').addEventListener('click', function() {
+  const l = document.querySelector('.nav-links');
+  const open = l.style.display === 'flex';
+  if (open) {
+    l.style.display = '';
+  } else {
+    Object.assign(l.style, {
+      display: 'flex',
+      flexDirection: 'column',
+      position: 'fixed',
+      top: '57px',
+      left: '0',
+      right: '0',
+      background: 'rgba(4,8,16,0.97)',
+      padding: '20px',
+      borderBottom: '1px solid rgba(255,255,255,0.06)',
+      gap: '4px',
+      zIndex: '200'
+    });
+  }
+});
+</script>
+</body>
+</html>
