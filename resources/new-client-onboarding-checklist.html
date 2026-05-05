@@ -689,36 +689,99 @@ sections.forEach(s => observer.observe(s));
 </script>
 
 <script>
-(function() {
+(function(){
   var SELECTOR = '.checklist-block';
-  var FILENAME = 'cadi-new-client-onboarding-checklist.txt';
-  var LABEL = 'New Client Onboarding Checklist';
+  var TITLE    = 'New Client Onboarding Checklist';
+
+  function cleanText(el) {
+    // Walk the DOM and build clean text preserving section structure
+    var lines = [];
+    function walk(node, depth) {
+      if (node.nodeType === 3) {
+        var t = node.textContent;
+        if (t.trim()) lines.push(t);
+        return;
+      }
+      var tag = (node.tagName||'').toLowerCase();
+      var cls = (node.className||'').toString();
+      // Block-level: add spacing
+      if (['div','section','p','li','tr','h1','h2','h3','h4'].includes(tag)) {
+        if (lines.length && lines[lines.length-1] !== '') lines.push('');
+        node.childNodes.forEach(function(c){ walk(c, depth+1); });
+        if (lines.length && lines[lines.length-1] !== '') lines.push('');
+      } else {
+        node.childNodes.forEach(function(c){ walk(c, depth); });
+      }
+    }
+    el.childNodes.forEach(function(c){ walk(c, 0); });
+    // Collapse 3+ blank lines to 2
+    var out = lines.join('\n').replace(/\n{3,}/g, '\n\n').trim();
+    return out;
+  }
+
+  function openPrintWindow(el) {
+    var text = cleanText(el);
+    // Escape for inclusion in HTML
+    var escaped = text
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;');
+    // Highlight placeholders
+    escaped = escaped.replace(/\[([A-Z][A-Z0-9 \/\-]+)\]/g,
+      '<span style="background:#fef9c3;color:#78350f;padding:0 2px;border-radius:2px;">[$1]</span>');
+
+    var html = '<!DOCTYPE html><html lang="en"><head>'
+      + '<meta charset="UTF-8">'
+      + '<title>' + TITLE + ' — Cadi</title>'
+      + '<style>'
+      + 'body{font-family:Arial,Helvetica,sans-serif;color:#111;background:#fff;'
+      + '  padding:48px 56px;max-width:820px;margin:0 auto;font-size:13px;line-height:1.75;}'
+      + '.doc-hdr{display:flex;justify-content:space-between;align-items:flex-end;'
+      + '  border-bottom:2px solid #1a3ac9;padding-bottom:14px;margin-bottom:32px;}'
+      + '.doc-title{font-size:17px;font-weight:700;color:#07102e;letter-spacing:-0.02em;}'
+      + '.doc-brand{font-size:11px;color:#aaa;letter-spacing:0.04em;text-transform:uppercase;}'
+      + 'pre{white-space:pre-wrap;word-wrap:break-word;font-family:Arial,Helvetica,sans-serif;'
+      + '  font-size:13px;line-height:1.75;margin:0;}'
+      + '.doc-footer{margin-top:40px;padding-top:14px;border-top:1px solid #e5e7eb;'
+      + '  font-size:11px;color:#aaa;display:flex;justify-content:space-between;}'
+      + '@media print{body{padding:24px 32px;}@page{margin:18mm 16mm;}}'
+      + '</style></head><body>'
+      + '<div class="doc-hdr">'
+      + '  <div class="doc-title">' + TITLE + '</div>'
+      + '  <div class="doc-brand">cadi.cleaning</div>'
+      + '</div>'
+      + '<pre>' + escaped + '</pre>'
+      + '<div class="doc-footer">'
+      + '  <span>Downloaded from cadi.cleaning/resources</span>'
+      + '  <span>Replace all highlighted [PLACEHOLDERS] before use</span>'
+      + '</div>'
+      + '</body></html>';
+
+    var w = window.open('','_blank','width=900,height=700');
+    w.document.write(html);
+    w.document.close();
+    w.focus();
+    // Short delay so browser fully renders before print dialog
+    setTimeout(function(){ w.print(); }, 400);
+  }
 
   function injectBtn(el) {
     var wrap = document.createElement('div');
     wrap.className = 'tpl-download-wrap';
     var btn = document.createElement('button');
     btn.className = 'tpl-download-btn';
-    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Download ' + LABEL + ' (.txt)';
-    btn.addEventListener('click', function() {
-      var text = el.innerText || el.textContent;
-      // Clean up excess blank lines
-      text = text.replace(/\n{3,}/g, '\n\n').trim();
-      var blob = new Blob([text], {type: 'text/plain;charset=utf-8'});
-      var url = URL.createObjectURL(blob);
-      var a = document.createElement('a');
-      a.href = url; a.download = FILENAME;
-      document.body.appendChild(a); a.click();
-      document.body.removeChild(a);
-      setTimeout(function(){ URL.revokeObjectURL(url); }, 100);
-    });
+    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none">'
+      + '<path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.8"'
+      + ' stroke-linecap="round" stroke-linejoin="round"/></svg>'
+      + ' Download template (PDF)';
+    btn.addEventListener('click', function(){ openPrintWindow(el); });
     wrap.appendChild(btn);
     el.parentNode.insertBefore(wrap, el);
   }
 
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function(){
     var els = document.querySelectorAll(SELECTOR);
-    if (els.length) { els.forEach(function(el) { injectBtn(el); }); }
+    if (els.length) els.forEach(function(el){ injectBtn(el); });
   });
 })();
 </script>
