@@ -1417,54 +1417,75 @@ sections.forEach(s => observer.observe(s));
       byline.parentNode.insertBefore(topWrap, byline.nextSibling);
     }
 
-    // Logo uploader
-    var logoInput = document.createElement('input');
-    logoInput.type = 'file'; logoInput.accept = 'image/*'; logoInput.style.display = 'none';
-    document.body.appendChild(logoInput);
 
-    var LOGO_SELECTOR = '';
-    var logoTarget = LOGO_SELECTOR ? document.querySelector(LOGO_SELECTOR) : null;
+    // ---- Logo uploader ----
+    var uid = 'tpl-logo-' + Math.random().toString(36).slice(2,7);
+    var fileInput = document.createElement('input');
+    fileInput.type = 'file'; fileInput.accept = 'image/*';
+    fileInput.id = uid; fileInput.style.display = 'none';
+    document.body.appendChild(fileInput);
 
-    if (logoTarget) {
-      // Wire up existing placeholder (quote template)
-      logoTarget.title = 'Click to upload your logo';
-      logoTarget.style.cursor = 'pointer';
-      logoTarget.addEventListener('click', function(){ logoInput.click(); });
-    } else if (targets.length) {
-      // Inject a logo zone at the top of the first template block
-      var zone = document.createElement('div');
-      zone.className = 'tpl-logo-zone';
-      zone.title = 'Click to upload your logo';
-      zone.innerHTML = '<svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="1" y="3" width="13" height="9" rx="1.5" stroke="currentColor" stroke-width="1.4"/><circle cx="5" cy="6.5" r="1.2" stroke="currentColor" stroke-width="1.2"/><path d="M1 10l3.5-3 2.5 2.5 2-2 4 3" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg><span>Add your logo</span>';
-      zone.addEventListener('click', function(){ logoInput.click(); });
-      logoTarget = zone;
-      targets[0].insertBefore(zone, targets[0].firstChild);
+    var LOGO_EXISTING = '';
+    var existingSlot = LOGO_EXISTING ? document.querySelector(LOGO_EXISTING) : null;
+    var logoWrap = null; // will hold the img wrap after upload
+
+    function showLogo(dataUrl) {
+      // Build img + change button
+      logoWrap = document.createElement('div');
+      logoWrap.className = 'tpl-logo-img-wrap';
+      var img = document.createElement('img');
+      img.src = dataUrl; img.className = 'tpl-logo-img';
+      var changeLabel = document.createElement('label');
+      changeLabel.htmlFor = uid;
+      changeLabel.className = 'tpl-logo-change';
+      changeLabel.textContent = 'Change logo';
+      logoWrap.appendChild(img); logoWrap.appendChild(changeLabel);
+
+      if (existingSlot) {
+        // Quote template: replace placeholder content
+        existingSlot.innerHTML = '';
+        existingSlot.style.cssText = 'background:none;border:none;width:auto;height:auto;border-radius:0;display:flex;align-items:center;';
+        existingSlot.appendChild(img);
+        var cl = document.createElement('label');
+        cl.htmlFor = uid; cl.className = 'tpl-logo-change';
+        cl.style.marginLeft = '8px'; cl.textContent = 'Change';
+        existingSlot.appendChild(cl);
+      } else if (targets.length) {
+        // Other templates: inject wrap ABOVE template block (outside contenteditable)
+        if (zoneLabel && zoneLabel.parentNode) {
+          zoneLabel.parentNode.replaceChild(logoWrap, zoneLabel);
+        }
+      }
     }
 
-    logoInput.addEventListener('change', function(e) {
+    // For non-quote templates, create a label zone OUTSIDE the template block
+    var zoneLabel = null;
+    if (!existingSlot && targets.length) {
+      zoneLabel = document.createElement('label');
+      zoneLabel.htmlFor = uid;
+      zoneLabel.className = 'tpl-logo-zone';
+      zoneLabel.innerHTML = '<svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="1" y="3" width="13" height="9" rx="1.5" stroke="currentColor" stroke-width="1.4"/><circle cx="5" cy="6.5" r="1.2" stroke="currentColor" stroke-width="1.2"/><path d="M1 10l3.5-3 2.5 2.5 2-2 4 3" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg><span>Add your logo</span>';
+      // Insert above the template block (after edit hint if present, else before block)
+      var block = targets[0];
+      var prev = block.previousSibling;
+      block.parentNode.insertBefore(zoneLabel, block);
+    } else if (existingSlot) {
+      // Make existing placeholder act as label
+      existingSlot.style.cursor = 'pointer';
+      existingSlot.title = 'Click to upload your logo';
+      existingSlot.addEventListener('click', function(){ fileInput.click(); });
+    }
+
+    fileInput.addEventListener('change', function(e) {
       var file = e.target.files[0];
       if (!file) return;
       var reader = new FileReader();
-      reader.onload = function(ev) {
-        var img = document.createElement('img');
-        img.src = ev.target.result;
-        img.className = 'tpl-logo-img';
-        img.title = 'Click to change logo';
-        img.style.cursor = 'pointer';
-        img.addEventListener('click', function(e){ e.stopPropagation(); logoInput.click(); });
-        if (logoTarget.classList.contains('tpl-logo-zone')) {
-          logoTarget.innerHTML = '';
-          logoTarget.appendChild(img);
-        } else {
-          // quote-logo-placeholder: replace content with img
-          logoTarget.innerHTML = '';
-          logoTarget.style.background = 'none';
-          logoTarget.style.border = 'none';
-          logoTarget.appendChild(img);
-        }
-      };
+      reader.onload = function(ev) { showLogo(ev.target.result); };
       reader.readAsDataURL(file);
+      // Reset so same file can be re-selected
+      fileInput.value = '';
     });
+    // ---- End logo uploader ----
 
   });
 })();</script>
