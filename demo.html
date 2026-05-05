@@ -1,6 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+      window['_fs_host'] = 'fullstory.com';
+      window['_fs_script'] = 'edge.fullstory.com/s/fs.js';
+      window['_fs_org'] = 'o-24KYP8-na1';
+      window['_fs_namespace'] = 'FS';
+      !function(m,n,e,t,l,o,g,y){var s,f,a=function(h){
+      return!(h in m)||(m.console&&m.console.log&&m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].'),!1)}(e)
+      ;function p(b){var h,d=[];function j(){h&&(d.forEach((function(b){var d;try{d=b[h[0]]&&b[h[0]](h[1])}catch(h){return void(b[3]&&b[3](h))}
+      d&&d.then?d.then(b[2],b[3]):b[2]&&b[2](d)})),d.length=0)}function r(b){return function(d){h||(h=[b,d],j())}}return b(r(0),r(1)),{
+      then:function(b,h){return p((function(r,i){d.push([b,h,r,i]),j()}))}}}a&&(g=m[e]=function(){var b=function(b,d,j,r){function i(i,c){
+      h(b,d,j,i,c,r)}r=r||2;var c,u=/Async$/;return u.test(b)?(b=b.replace(u,""),"function"==typeof Promise?new Promise(i):p(i)):h(b,d,j,c,c,r)}
+      ;function h(h,d,j,r,i,c){return b._api?b._api(h,d,j,r,i,c):(b.q&&b.q.push([h,d,j,r,i,c]),null)}return b.q=[],b}(),y=function(b){function h(h){
+      "function"==typeof h[4]&&h[4](new Error(b))}var d=g.q;if(d){for(var j=0;j<d.length;j++)h(d[j]);d.length=0,d.push=h}},function(){
+      (o=n.createElement(t)).async=!0,o.crossOrigin="anonymous",o.src="https://"+l,o.onerror=function(){y("Error loading "+l)}
+      ;var b=n.getElementsByTagName(t)[0];b&&b.parentNode?b.parentNode.insertBefore(o,b):n.head.appendChild(o)}(),function(){function b(){}
+      function h(b,h,d){g(b,h,d,1)}function d(b,d,j){h("setProperties",{type:b,properties:d},j)}function j(b,h){d("user",b,h)}function r(b,h,d){j({
+      uid:b},d),h&&j(h,d)}g.identify=r,g.setUserVars=j,g.identifyAccount=b,g.clearUserCookie=b,g.setVars=d,g.event=function(b,d,j){h("trackEvent",{
+      name:b,properties:d},j)},g.anonymize=function(){r(!1)},g.shutdown=function(){h("shutdown")},g.restart=function(){h("restart")},
+      g.log=function(b,d){h("log",{level:b,msg:d})},g.consent=function(b){h("setIdentity",{consent:!arguments.length||b})}}(),s="fetch",
+      f="XMLHttpRequest",g._w={},g._w[f]=m[f],g._w[s]=m[s],m[s]&&(m[s]=function(){return g._w[s].apply(this,arguments)}),g._v="2.0.0")
+      }(window,document,window._fs_namespace,"script",window._fs_script);
+    </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Demo — Cadi | Run your business for a day</title>
@@ -683,9 +705,9 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
 @media(max-width:700px){.pl-bullets{grid-template-columns:1fr;}}
 
 /* INVOICE PREVIEW MODAL */
-.ipv-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:350;display:none;backdrop-filter:blur(6px);}
+.ipv-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:350;display:none;backdrop-filter:blur(8px);}
 .ipv-overlay.show{display:block;animation:fadeUp 0.25s var(--ease) both;}
-.ipv{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--card2);border:1px solid rgba(59,91,255,0.25);border-radius:var(--radius);width:calc(100% - 40px);max-width:620px;max-height:calc(100vh - 40px);height:auto;z-index:351;box-shadow:0 24px 80px rgba(0,0,0,0.7);animation:ipvPopIn 0.3s var(--ease) both;flex-direction:column;overflow:hidden;}
+.ipv{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--card2);border:1px solid rgba(59,91,255,0.25);border-radius:var(--radius);width:calc(100% - 40px);max-width:600px;max-height:calc(100vh - 40px);height:auto;z-index:351;box-shadow:0 32px 100px rgba(0,0,0,0.8);animation:ipvPopIn 0.3s var(--ease) both;flex-direction:column;overflow:hidden;}
 .ipv.show{display:flex;}
 @keyframes ipvPopIn{from{opacity:0;transform:translate(-50%,-50%) scale(0.95);}to{opacity:1;transform:translate(-50%,-50%) scale(1);}}
 .ipv-head{padding:14px 20px;border-bottom:1px solid var(--card-border);display:flex;align-items:center;justify-content:space-between;background:var(--card2);flex-shrink:0;}
@@ -693,32 +715,47 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
 .ipv-head-t{font-size:14px;font-weight:700;color:#fff;margin-bottom:2px;}
 .ipv-head-s{font-size:11px;color:var(--label);}
 .ipv-close{font-size:16px;color:var(--label);background:none;border:none;cursor:pointer;padding:4px 8px;}
-.ipv-email{background:#f7f9fc;color:#1a2340;padding:0;margin:14px;border-radius:var(--radius-sm);overflow:hidden;border:1px solid rgba(255,255,255,0.05);}
-.ipv-email-hdr{background:#eef2fa;padding:12px 16px;font-family:'Inter',sans-serif;font-size:11px;color:#4a5680;border-bottom:1px solid #dfe4f0;}
-.ipv-email-hdr > div{padding:2px 0;}
-.ipv-email-hdr .ipv-subj{color:#1a2340;font-weight:700;font-size:13px;margin-top:4px;}
-.ipv-email-body{padding:18px;}
-.ipv-inv-card{background:#fff;border:1px solid #dfe4f0;border-radius:10px;padding:20px;box-shadow:0 4px 14px rgba(20,30,60,0.06);}
-.ipv-inv-hdr{display:flex;align-items:flex-start;justify-content:space-between;padding-bottom:14px;border-bottom:2px solid #1a2340;margin-bottom:14px;}
-.ipv-biz{font-family:var(--font-brand);font-size:18px;font-weight:800;color:#1a2340;letter-spacing:-0.02em;}
-.ipv-biz-sub{font-size:10px;color:#6a7595;margin-top:2px;letter-spacing:0.04em;}
-.ipv-inv-num{text-align:right;font-size:9px;font-weight:700;letter-spacing:0.14em;color:#6a7595;}
-.ipv-inv-num strong{display:block;font-size:15px;color:#1a2340;letter-spacing:0;margin-top:3px;}
-.ipv-addrs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:16px;}
-.ipv-addr-label{font-size:9px;font-weight:700;letter-spacing:0.14em;color:#6a7595;margin-bottom:4px;}
-.ipv-addr-val{font-size:12px;color:#1a2340;line-height:1.5;}
-.ipv-items-hdr{display:grid;grid-template-columns:1fr 50px 80px 80px;gap:8px;padding:8px 0;border-bottom:1px solid #dfe4f0;font-size:9px;font-weight:700;letter-spacing:0.12em;color:#6a7595;text-transform:uppercase;}
-.ipv-item{display:grid;grid-template-columns:1fr 50px 80px 80px;gap:8px;padding:10px 0;border-bottom:1px solid #f0f3f9;font-size:12px;color:#1a2340;}
+/* Email shell */
+.ipv-email{background:#f0f4ff;color:#1a2340;margin:14px;border-radius:12px;overflow:hidden;border:1px solid rgba(59,91,255,0.1);box-shadow:0 8px 32px rgba(0,0,0,0.25);}
+.ipv-email-hdr{background:#e8edf8;padding:12px 16px;font-size:11px;color:#4a5680;border-bottom:1px solid #d8dfee;}
+.ipv-email-hdr>div{padding:2px 0;}
+.ipv-email-hdr .ipv-subj{color:#0d1640;font-weight:700;font-size:13px;margin-top:4px;}
+.ipv-email-body{padding:16px;}
+/* Invoice card — dark header, white body */
+.ipv-inv-card{border-radius:12px;overflow:hidden;box-shadow:0 8px 32px rgba(10,20,80,0.18);border:1px solid #c8d0e8;}
+.ipv-inv-hdr{background:linear-gradient(135deg,#07102e 0%,#0d1e52 100%);padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.ipv-logo-zone{position:relative;display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border:1.5px dashed rgba(255,255,255,0.2);border-radius:7px;cursor:pointer;transition:border-color 0.2s,background 0.2s;background:rgba(255,255,255,0.04);overflow:hidden;}
+.ipv-logo-zone:hover{border-color:rgba(255,255,255,0.45);background:rgba(255,255,255,0.08);}
+.ipv-logo-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;font-size:0;}
+.ipv-logo-zone span{font-size:11px;color:rgba(255,255,255,0.45);pointer-events:none;user-select:none;white-space:nowrap;}
+.ipv-logo-zone svg{pointer-events:none;opacity:0.5;flex-shrink:0;}
+.ipv-logo-img{max-height:44px;max-width:150px;object-fit:contain;display:block;border-radius:4px;}
+.ipv-logo-change{position:relative;display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border:1px dashed rgba(255,255,255,0.2);border-radius:6px;cursor:pointer;font-size:11px;color:rgba(255,255,255,0.4);overflow:hidden;transition:border-color 0.2s;}
+.ipv-logo-change:hover{border-color:rgba(255,255,255,0.5);}
+.ipv-logo-change input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;font-size:0;}
+.ipv-hdr-right{text-align:right;flex-shrink:0;}
+.ipv-biz{font-family:var(--font-brand);font-size:17px;font-weight:800;color:#fff;letter-spacing:-0.02em;line-height:1.2;}
+.ipv-biz-sub{font-size:10px;color:rgba(255,255,255,0.35);margin-top:3px;letter-spacing:0.04em;}
+.ipv-inv-label{font-size:8px;font-weight:700;letter-spacing:0.18em;color:rgba(255,255,255,0.4);text-transform:uppercase;margin-bottom:3px;}
+.ipv-inv-num{font-family:var(--font-brand);font-size:18px;font-weight:800;color:#fff;letter-spacing:-0.01em;}
+/* White body */
+.ipv-inv-body{background:#fff;padding:20px 24px;}
+.ipv-addrs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid #eaecf4;}
+.ipv-addr-label{font-size:8px;font-weight:700;letter-spacing:0.14em;color:#8892b0;margin-bottom:5px;text-transform:uppercase;}
+.ipv-addr-val{font-size:12px;color:#1a2340;line-height:1.6;}
+.ipv-items-hdr{display:grid;grid-template-columns:1fr 50px 80px 80px;gap:8px;padding:8px 0;border-bottom:1px solid #eaecf4;font-size:8px;font-weight:700;letter-spacing:0.14em;color:#8892b0;text-transform:uppercase;}
+.ipv-item{display:grid;grid-template-columns:1fr 50px 80px 80px;gap:8px;padding:11px 0;border-bottom:1px solid #f4f6fb;font-size:12px;color:#1a2340;}
 .ipv-item .ipv-qty,.ipv-item .ipv-rate,.ipv-item .ipv-line-tot{text-align:right;}
-.ipv-item .ipv-line-tot{font-weight:600;}
-.ipv-tot-block{margin-top:10px;padding-top:10px;border-top:2px solid #1a2340;}
-.ipv-tot-row{display:flex;justify-content:space-between;padding:3px 0;font-size:12px;color:#4a5680;}
-.ipv-tot-row.final{font-size:16px;font-weight:800;color:#1a2340;padding:8px 0 2px;}
-.ipv-bank{margin-top:14px;padding:12px;background:#f0f3f9;border-radius:8px;}
-.ipv-bank-t{font-size:10px;font-weight:700;letter-spacing:0.12em;color:#6a7595;text-transform:uppercase;margin-bottom:6px;}
-.ipv-bank-rows{display:grid;grid-template-columns:repeat(2,1fr);gap:4px 14px;font-size:11px;color:#1a2340;font-family:monospace;}
-.ipv-card-pay{display:block;width:100%;margin-top:12px;background:linear-gradient(135deg,#3b5bff,#2e4ae0);color:#fff;font-family:var(--font-app);font-size:13px;font-weight:700;border:none;border-radius:8px;padding:12px;cursor:pointer;box-shadow:0 4px 14px rgba(59,91,255,0.3);}
-.ipv-footer{padding:12px 18px 18px;font-size:11px;color:#6a7595;text-align:center;line-height:1.6;}
+.ipv-item .ipv-line-tot{font-weight:700;}
+.ipv-tot-block{margin-top:14px;padding-top:14px;border-top:2px solid #07102e;}
+.ipv-tot-row{display:flex;justify-content:space-between;padding:3px 0;font-size:12px;color:#6a7595;}
+.ipv-tot-row.final{font-size:17px;font-weight:800;color:#07102e;padding:10px 0 2px;}
+.ipv-bank{margin-top:16px;padding:13px 16px;background:linear-gradient(135deg,#f4f6fb,#edf0f9);border-radius:8px;border:1px solid #dde2f0;}
+.ipv-bank-t{font-size:8px;font-weight:700;letter-spacing:0.14em;color:#8892b0;text-transform:uppercase;margin-bottom:8px;}
+.ipv-bank-rows{display:grid;grid-template-columns:repeat(2,1fr);gap:4px 16px;font-size:11px;color:#1a2340;font-family:monospace;}
+.ipv-card-pay{display:block;width:100%;margin-top:14px;background:linear-gradient(135deg,#3b5bff,#2041e0);color:#fff;font-family:var(--font-brand);font-size:13px;font-weight:700;border:none;border-radius:9px;padding:13px;cursor:pointer;box-shadow:0 6px 20px rgba(59,91,255,0.35);letter-spacing:-0.01em;}
+.ipv-footer{padding:12px 18px 16px;font-size:11px;color:#8892b0;text-align:center;line-height:1.6;background:#f0f4ff;}
+/* Bottom actions */
 .ipv-acts{padding:14px 20px;border-top:1px solid var(--card-border);display:flex;gap:10px;background:var(--card2);flex-shrink:0;}
 .ipv-back{flex:1;font-family:var(--font-app);font-size:12px;font-weight:500;color:rgba(255,255,255,0.55);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:8px;padding:11px;cursor:pointer;}
 .ipv-back:hover{color:#fff;}
@@ -1356,11 +1393,9 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
               <button class="ag-undo" onclick="undoFix()">↺ Undo</button>
             </div>
             <div class="ag-row"><span class="ag-icon">👤</span><span class="ag-body"><b>The Petersons</b> moved from <s>Jamie</s> to <b style="color:#10b981;">Sarah</b> — she had a free 2-hour slot Tuesday 2pm.</span></div>
-            <div class="ag-row"><span class="ag-icon">✉️</span><span class="ag-body">SMS sent to client: <em>"Hi — quick update, Sarah will be with you 2pm Tue instead of Jamie. Same price, same service."</em></span></div>
             <div class="ag-row"><span class="ag-icon">🗺️</span><span class="ag-body">Route re-optimised — Sarah's drive time +6 min (still within target).</span></div>
             <div class="ag-actions">
               <button class="ag-btn" onclick="showSarahsDay()">📅 Highlight Sarah's week</button>
-              <button class="ag-btn ag-btn-ghost" onclick="previewSMS()">💬 Show the SMS</button>
             </div>
           </div>
           <div class="step-nav">
@@ -1621,39 +1656,51 @@ input[type=range]{width:100%;accent-color:rgba(100,120,255,0.5);margin-bottom:6p
     </div>
     <div class="ipv-email-body">
       <div class="ipv-inv-card">
+        <!-- Dark header -->
         <div class="ipv-inv-hdr">
-          <div>
-            <div class="ipv-biz" id="ipvBiz">Mackies Cleaning</div>
+          <div id="ipvLogoZone">
+            <div class="ipv-logo-zone" id="ipvLogoBtn">
+              <input type="file" accept="image/*" id="ipvLogoInput">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="0.5" y="2.5" width="12" height="8" rx="1.2" stroke="rgba(255,255,255,0.5)" stroke-width="1.3"/><circle cx="4.5" cy="5.5" r="1" stroke="rgba(255,255,255,0.5)" stroke-width="1.2"/><path d="M0.5 9l3-2.5 2.5 2.5 2-2 4 3" stroke="rgba(255,255,255,0.5)" stroke-width="1.2" stroke-linejoin="round"/></svg>
+              <span>Add logo</span>
+            </div>
+            <div class="ipv-biz" id="ipvBiz" style="margin-top:10px;">Mackies Cleaning</div>
             <div class="ipv-biz-sub">Thank you for your business</div>
           </div>
-          <div class="ipv-inv-num">INVOICE<strong>INV-1044</strong></div>
-        </div>
-        <div class="ipv-addrs">
-          <div>
-            <div class="ipv-addr-label">BILL TO</div>
-            <div class="ipv-addr-val" id="ipvBillTo">—</div>
-          </div>
-          <div>
-            <div class="ipv-addr-label">INVOICE DATE</div>
-            <div class="ipv-addr-val" id="ipvDate">—</div>
-            <div class="ipv-addr-label" style="margin-top:10px;">DUE DATE</div>
-            <div class="ipv-addr-val" id="ipvDueD">—</div>
+          <div class="ipv-hdr-right">
+            <div class="ipv-inv-label">Invoice</div>
+            <div class="ipv-inv-num">INV-1044</div>
           </div>
         </div>
-        <div class="ipv-items-hdr"><div>Description</div><div style="text-align:right;">Qty</div><div style="text-align:right;">Rate</div><div style="text-align:right;">Amount</div></div>
-        <div id="ipvItems"></div>
-        <div class="ipv-tot-block">
-          <div class="ipv-tot-row"><span>Subtotal</span><span id="ipvSub">£0.00</span></div>
-          <div class="ipv-tot-row final"><span>Total due</span><span id="ipvTot">£0.00</span></div>
-        </div>
-        <div class="ipv-bank">
-          <div class="ipv-bank-t">Pay by bank transfer</div>
-          <div class="ipv-bank-rows">
-            <div>Bank: Starling</div><div>Sort: 60-83-71</div>
-            <div>Account: 12345678</div><div>Ref: INV-1044</div>
+        <!-- White body -->
+        <div class="ipv-inv-body">
+          <div class="ipv-addrs">
+            <div>
+              <div class="ipv-addr-label">Bill to</div>
+              <div class="ipv-addr-val" id="ipvBillTo">—</div>
+            </div>
+            <div>
+              <div class="ipv-addr-label">Invoice date</div>
+              <div class="ipv-addr-val" id="ipvDate">—</div>
+              <div class="ipv-addr-label" style="margin-top:10px;">Due date</div>
+              <div class="ipv-addr-val" id="ipvDueD">—</div>
+            </div>
           </div>
+          <div class="ipv-items-hdr"><div>Description</div><div style="text-align:right;">Qty</div><div style="text-align:right;">Rate</div><div style="text-align:right;">Amount</div></div>
+          <div id="ipvItems"></div>
+          <div class="ipv-tot-block">
+            <div class="ipv-tot-row"><span>Subtotal</span><span id="ipvSub">£0.00</span></div>
+            <div class="ipv-tot-row final"><span>Total due</span><span id="ipvTot">£0.00</span></div>
+          </div>
+          <div class="ipv-bank">
+            <div class="ipv-bank-t">Pay by bank transfer</div>
+            <div class="ipv-bank-rows">
+              <div>Bank: Starling</div><div>Sort: 60-83-71</div>
+              <div>Account: 12345678</div><div>Ref: INV-1044</div>
+            </div>
+          </div>
+          <button class="ipv-card-pay" onclick="event.preventDefault();">Or pay <span id="ipvCardAmt">£0.00</span> by card →</button>
         </div>
-        <button class="ipv-card-pay" onclick="event.preventDefault();">Or pay <span id="ipvCardAmt">£0.00</span> by card →</button>
       </div>
     </div>
     <div class="ipv-footer">Automated reminder 3 days before due date. Payment marked paid the moment it hits your Starling.</div>
@@ -2099,9 +2146,41 @@ function showSarahsDay(){
   },2800);
   showToast("Sarah's week",'Mon, Tue (+The Petersons now), Wed, Thu, Fri — 8 jobs in total, all within her drive radius.','👤');
 }
-function previewSMS(){
-  showToast('SMS preview','To: Mrs Petersons — "Hi! Small change for Tue 2pm: Sarah will be with you instead of Jamie. Same price, same clean. Reply STOP to cancel."','💬');
-}
+// Invoice logo upload
+(function(){
+  document.addEventListener('DOMContentLoaded', function(){
+    var inp = document.getElementById('ipvLogoInput');
+    var zone = document.getElementById('ipvLogoZone');
+    if(!inp||!zone) return;
+    inp.addEventListener('change', function(e){
+      var file = e.target.files[0]; if(!file) return;
+      var reader = new FileReader();
+      reader.onload = function(ev){
+        var btn = document.getElementById('ipvLogoBtn');
+        if(btn){
+          var img = document.createElement('img');
+          img.src = ev.target.result; img.className = 'ipv-logo-img';
+          var changeWrap = document.createElement('div');
+          changeWrap.className = 'ipv-logo-change';
+          var changeInp = document.createElement('input');
+          changeInp.type='file'; changeInp.accept='image/*';
+          changeInp.addEventListener('change', function(e2){
+            var f2=e2.target.files[0]; if(!f2) return;
+            var r2=new FileReader(); r2.onload=function(ev2){ img.src=ev2.target.result; }; r2.readAsDataURL(f2);
+          });
+          changeWrap.appendChild(changeInp);
+          changeWrap.appendChild(document.createTextNode('Change'));
+          btn.parentNode.replaceChild(document.createDocumentFragment(), btn);
+          var frag = document.createDocumentFragment();
+          frag.appendChild(img); frag.appendChild(changeWrap);
+          zone.insertBefore(frag, zone.firstChild);
+        }
+      };
+      reader.readAsDataURL(file);
+      inp.value='';
+    });
+  });
+})();
 
 // INVOICE
 function addLI(desc,rate){
