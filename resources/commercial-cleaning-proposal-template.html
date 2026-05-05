@@ -299,6 +299,20 @@ footer{padding:60px 40px 40px;border-top:1px solid rgba(255,255,255,0.05);}
   .stat-row{grid-template-columns:1fr 1fr;}
   .anatomy-grid{grid-template-columns:1fr;}
 }
+
+/* Download button */
+.tpl-download-wrap { margin: 0 0 16px; }
+.tpl-download-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 20px; background: rgba(46,85,240,0.1);
+  border: 1px solid rgba(46,85,240,0.3); border-radius: 8px;
+  color: #a8c4ff; font-size: 13px; font-weight: 700;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  cursor: pointer; transition: background 0.2s, border-color 0.2s, color 0.2s;
+  letter-spacing: -0.01em;
+}
+.tpl-download-btn:hover { background: rgba(46,85,240,0.22); border-color: rgba(46,85,240,0.55); color: #fff; }
+.tpl-download-btn svg { flex-shrink: 0; }
 </style>
 </head>
 <body>
@@ -1097,5 +1111,39 @@ const observer = new IntersectionObserver((entries) => {
 sections.forEach(s => observer.observe(s));
 </script>
 
+<script>
+(function() {
+  var SELECTOR = '.template-block';
+  var FILENAME = 'cadi-commercial-cleaning-proposal-template.txt';
+  var LABEL = 'Commercial Cleaning Proposal';
+
+  function injectBtn(el) {
+    var wrap = document.createElement('div');
+    wrap.className = 'tpl-download-wrap';
+    var btn = document.createElement('button');
+    btn.className = 'tpl-download-btn';
+    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Download ' + LABEL + ' (.txt)';
+    btn.addEventListener('click', function() {
+      var text = el.innerText || el.textContent;
+      // Clean up excess blank lines
+      text = text.replace(/\n{3,}/g, '\n\n').trim();
+      var blob = new Blob([text], {type: 'text/plain;charset=utf-8'});
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url; a.download = FILENAME;
+      document.body.appendChild(a); a.click();
+      document.body.removeChild(a);
+      setTimeout(function(){ URL.revokeObjectURL(url); }, 100);
+    });
+    wrap.appendChild(btn);
+    el.parentNode.insertBefore(wrap, el);
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var els = document.querySelectorAll(SELECTOR);
+    if (els.length) { els.forEach(function(el) { injectBtn(el); }); }
+  });
+})();
+</script>
 </body>
 </html>
