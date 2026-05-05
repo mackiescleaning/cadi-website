@@ -297,6 +297,14 @@ footer{padding:60px 40px 40px;border-top:1px solid rgba(255,255,255,0.05);}
 .tpl-ph:hover{background:rgba(255,200,50,0.22);}
 [contenteditable]{caret-color:#4f78ff;outline:none;}
 .template-block[contenteditable]:focus-within,.quote-doc[contenteditable]:focus-within,.checklist-block[contenteditable]:focus-within,.steps-list[contenteditable]:focus-within{border-color:rgba(79,120,255,0.4) !important;}
+
+/* Logo uploader */
+.tpl-logo-zone{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border:1.5px dashed rgba(79,120,255,0.3);border-radius:8px;cursor:pointer;margin-bottom:20px;transition:border-color 0.2s,background 0.2s;background:rgba(79,120,255,0.04);}
+.tpl-logo-zone:hover{border-color:rgba(79,120,255,0.6);background:rgba(79,120,255,0.08);}
+.tpl-logo-zone span{font-size:12px;color:rgba(255,255,255,0.4);font-family:'Plus Jakarta Sans',sans-serif;pointer-events:none;}
+.tpl-logo-img{max-height:56px;max-width:180px;object-fit:contain;display:block;border-radius:4px;}
+.quote-logo-placeholder{cursor:pointer;transition:opacity 0.2s;}
+.quote-logo-placeholder:hover{opacity:0.75;}
 </style>
 </head>
 <body>
@@ -821,6 +829,56 @@ sections.forEach(s => observer.observe(s));
       topWrap.appendChild(topBtn);
       byline.parentNode.insertBefore(topWrap, byline.nextSibling);
     }
+
+    // Logo uploader
+    var logoInput = document.createElement('input');
+    logoInput.type = 'file'; logoInput.accept = 'image/*'; logoInput.style.display = 'none';
+    document.body.appendChild(logoInput);
+
+    var LOGO_SELECTOR = '';
+    var logoTarget = LOGO_SELECTOR ? document.querySelector(LOGO_SELECTOR) : null;
+
+    if (logoTarget) {
+      // Wire up existing placeholder (quote template)
+      logoTarget.title = 'Click to upload your logo';
+      logoTarget.style.cursor = 'pointer';
+      logoTarget.addEventListener('click', function(){ logoInput.click(); });
+    } else if (targets.length) {
+      // Inject a logo zone at the top of the first template block
+      var zone = document.createElement('div');
+      zone.className = 'tpl-logo-zone';
+      zone.title = 'Click to upload your logo';
+      zone.innerHTML = '<svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="1" y="3" width="13" height="9" rx="1.5" stroke="currentColor" stroke-width="1.4"/><circle cx="5" cy="6.5" r="1.2" stroke="currentColor" stroke-width="1.2"/><path d="M1 10l3.5-3 2.5 2.5 2-2 4 3" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg><span>Add your logo</span>';
+      zone.addEventListener('click', function(){ logoInput.click(); });
+      logoTarget = zone;
+      targets[0].insertBefore(zone, targets[0].firstChild);
+    }
+
+    logoInput.addEventListener('change', function(e) {
+      var file = e.target.files[0];
+      if (!file) return;
+      var reader = new FileReader();
+      reader.onload = function(ev) {
+        var img = document.createElement('img');
+        img.src = ev.target.result;
+        img.className = 'tpl-logo-img';
+        img.title = 'Click to change logo';
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', function(e){ e.stopPropagation(); logoInput.click(); });
+        if (logoTarget.classList.contains('tpl-logo-zone')) {
+          logoTarget.innerHTML = '';
+          logoTarget.appendChild(img);
+        } else {
+          // quote-logo-placeholder: replace content with img
+          logoTarget.innerHTML = '';
+          logoTarget.style.background = 'none';
+          logoTarget.style.border = 'none';
+          logoTarget.appendChild(img);
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+
   });
 })();</script>
 </body>
