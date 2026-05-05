@@ -328,6 +328,7 @@ nav.scrolled { background:rgba(4,8,16,0.92); }
 .res-card-link { font-size:12px; font-weight:700; color:#a8c4ff; text-decoration:none; display:inline-flex; align-items:center; gap:4px; transition:gap 0.2s, color 0.2s; white-space:nowrap; }
 .res-card-link:hover { color:#fff; gap:7px; }
 .res-card-link.disabled { color:rgba(255,255,255,0.2); pointer-events:none; cursor:default; }
+.res-card-link:not(.disabled)::after { content:''; position:absolute; inset:0; }
 
 /* COMING SOON CARD STATE */
 .res-card.soon { opacity:0.55; }
