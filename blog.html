@@ -126,6 +126,9 @@ nav {
 #blogListing { display: block; }
 #blogPost1   { display: none; }
 #blogPost2   { display: none; }
+#blogPost3   { display: none; }
+#blogPost4   { display: none; }
+#blogPost5   { display: none; }
 
 /* HERO */
 .blog-hero {
@@ -425,16 +428,17 @@ footer { padding: 52px 40px 36px; background: rgba(2,4,12,0.95); border-top: 1px
       </div>
     </div>
 
-    <div class="post-card coming">
+    <div class="post-card" onclick="showPost(4)">
       <div class="pc-visual">
         <div class="pc-emoji">🧱</div>
-        <span class="cs-badge">Coming soon</span>
+        <span class="pc-tag">Operations</span>
       </div>
       <div class="pc-body">
         <div class="pc-title">Build the boring business</div>
         <div class="pc-excerpt">The unglamorous stuff nobody talks about — and why the businesses that master it always win.</div>
         <div class="pc-meta">
-          <div class="pc-author-sm">Cadi · Coming soon</div>
+          <div class="pc-author-sm">Cadi · 5 min read</div>
+          <div class="pc-read">Read →</div>
         </div>
       </div>
     </div>
@@ -453,30 +457,32 @@ footer { padding: 52px 40px 36px; background: rgba(2,4,12,0.95); border-top: 1px
       </div>
     </div>
 
-    <div class="post-card coming">
+    <div class="post-card" onclick="showPost(3)">
       <div class="pc-visual">
         <div class="pc-emoji">💰</div>
-        <span class="cs-badge">Coming soon</span>
+        <span class="pc-tag">Strategy</span>
       </div>
       <div class="pc-body">
         <div class="pc-title">Why most cleaning businesses stall at £60k</div>
         <div class="pc-excerpt">There's a ceiling most cleaning businesses hit and never break through. Here's exactly why — and what to do about it.</div>
         <div class="pc-meta">
-          <div class="pc-author-sm">Cadi · Coming soon</div>
+          <div class="pc-author-sm">Cadi · 7 min read</div>
+          <div class="pc-read">Read →</div>
         </div>
       </div>
     </div>
 
-    <div class="post-card coming">
+    <div class="post-card" onclick="showPost(5)">
       <div class="pc-visual">
         <div class="pc-emoji">📈</div>
-        <span class="cs-badge">Coming soon</span>
+        <span class="pc-tag">Growth</span>
       </div>
       <div class="pc-body">
         <div class="pc-title">3 tactical ways to immensely grow your cleaning business</div>
         <div class="pc-excerpt">Not theory. Not "get more clients." Three specific, actionable moves that actually work.</div>
         <div class="pc-meta">
-          <div class="pc-author-sm">Cadi · Coming soon</div>
+          <div class="pc-author-sm">Cadi · 6 min read</div>
+          <div class="pc-read">Read →</div>
         </div>
       </div>
     </div>
@@ -625,8 +631,8 @@ footer { padding: 52px 40px 36px; background: rgba(2,4,12,0.95); border-top: 1px
             <div class="pc-meta"><div class="pc-author-sm">Rhi · 6 min read</div><div class="pc-read">Read →</div></div>
           </div>
         </div>
-        <div class="post-card coming"><div class="pc-visual"><div class="pc-emoji">💰</div><span class="cs-badge">Coming soon</span></div><div class="pc-body"><div class="pc-title">Why most cleaning businesses stall at £60k</div><div class="pc-excerpt">There's a ceiling most cleaning businesses hit and never break through.</div></div></div>
-        <div class="post-card coming"><div class="pc-visual"><div class="pc-emoji">🧱</div><span class="cs-badge">Coming soon</span></div><div class="pc-body"><div class="pc-title">Build the boring business</div><div class="pc-excerpt">The unglamorous stuff nobody talks about — and why it always wins.</div></div></div>
+        <div class="post-card" onclick="showPost(3)"><div class="pc-visual"><div class="pc-emoji">💰</div><span class="pc-tag">Strategy</span></div><div class="pc-body"><div class="pc-title">Why most cleaning businesses stall at £60k</div><div class="pc-excerpt">There's a ceiling most cleaning businesses hit and never break through.</div><div class="pc-meta"><div class="pc-author-sm">Cadi · 7 min read</div><div class="pc-read">Read →</div></div></div></div>
+        <div class="post-card" onclick="showPost(4)"><div class="pc-visual"><div class="pc-emoji">🧱</div><span class="pc-tag">Operations</span></div><div class="pc-body"><div class="pc-title">Build the boring business</div><div class="pc-excerpt">The unglamorous stuff nobody talks about — and why it always wins.</div><div class="pc-meta"><div class="pc-author-sm">Cadi · 5 min read</div><div class="pc-read">Read →</div></div></div></div>
       </div>
     </div>
   </div>
@@ -737,8 +743,8 @@ footer { padding: 52px 40px 36px; background: rgba(2,4,12,0.95); border-top: 1px
             <div class="pc-meta"><div class="pc-author-sm">Rhi · 8 min read</div><div class="pc-read">Read →</div></div>
           </div>
         </div>
-        <div class="post-card coming"><div class="pc-visual"><div class="pc-emoji">💰</div><span class="cs-badge">Coming soon</span></div><div class="pc-body"><div class="pc-title">Why most cleaning businesses stall at £60k</div><div class="pc-excerpt">There's a ceiling most cleaning businesses hit and never break through.</div></div></div>
-        <div class="post-card coming"><div class="pc-visual"><div class="pc-emoji">📈</div><span class="cs-badge">Coming soon</span></div><div class="pc-body"><div class="pc-title">3 tactical ways to immensely grow your cleaning business</div><div class="pc-excerpt">Not theory. Three specific moves that actually work.</div></div></div>
+        <div class="post-card" onclick="showPost(3)"><div class="pc-visual"><div class="pc-emoji">💰</div><span class="pc-tag">Strategy</span></div><div class="pc-body"><div class="pc-title">Why most cleaning businesses stall at £60k</div><div class="pc-excerpt">There's a ceiling most cleaning businesses hit and never break through.</div><div class="pc-meta"><div class="pc-author-sm">Cadi · 7 min read</div><div class="pc-read">Read →</div></div></div></div>
+        <div class="post-card" onclick="showPost(5)"><div class="pc-visual"><div class="pc-emoji">📈</div><span class="pc-tag">Growth</span></div><div class="pc-body"><div class="pc-title">3 tactical ways to immensely grow your cleaning business</div><div class="pc-excerpt">Not theory. Three specific moves that actually work.</div><div class="pc-meta"><div class="pc-author-sm">Cadi · 6 min read</div><div class="pc-read">Read →</div></div></div></div>
       </div>
     </div>
   </div>
@@ -746,17 +752,427 @@ footer { padding: 52px 40px 36px; background: rgba(2,4,12,0.95); border-top: 1px
   <footer><div class="footer-inner"><div class="footer-wm"><span class="fwC">C</span><span class="fwa">a</span><span class="fwd">d</span><span class="fwi">i<span class="fwdot"></span></span></div><p class="footer-copy">© 2025 Cadi · cadi.cleaning</p><div class="footer-links"><a href="/">Home</a><a href="/about.html">About</a><a href="/blog.html">Blog</a></div></div></footer>
 </div>
 
+<!-- ══════════════════════════════
+     POST 3: £60K STALL
+══════════════════════════════ -->
+<div id="blogPost3" class="post-page">
+  <div class="post-hero">
+    <div class="post-hero-bg"></div>
+    <div class="post-hero-inner">
+      <button class="post-back" onclick="showListing()">← Back to blog</button>
+      <span class="post-tag">Strategy</span>
+      <h1 class="post-h1">Why most cleaning businesses stall at £60k</h1>
+      <p class="post-intro">
+        There's a ceiling most cleaning businesses hit and never break through. It's not bad luck, a slow market, or tough competition.
+        <strong>It's five very specific, very fixable problems — that almost nobody talks about.</strong>
+      </p>
+      <div class="post-byline">
+        <div class="post-avatar">C</div>
+        <div class="post-author-info">
+          <div class="post-author-name">Cadi</div>
+          <div class="post-meta">7 minute read · Cleaning business growth strategy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-content">
+
+    <p>£60,000. It's a number that comes up again and again when you talk to cleaning business owners. The business gets there — sometimes quickly — and then it just… stays. Months go by. Maybe a year. Revenue bounces around the same figure. New clients come in, old ones leave. The owner is working harder than ever. And the business isn't growing.</p>
+
+    <p>This isn't a coincidence. The £60k stall is real, and it's caused by a specific set of problems that compound each other. <strong>The good news is that every single one of them is fixable.</strong></p>
+
+    <div class="post-stat">
+      <div class="ps-num">£60k</div>
+      <div class="ps-label">The revenue point where most cleaning businesses plateau. It's not about the market — it's about what's happening inside the business at that size.</div>
+    </div>
+
+    <h2>The five reasons you're stuck</h2>
+
+    <h3>1. You're priced for when you started, not for where you are now</h3>
+
+    <p>Most cleaning businesses set their prices in the first six months and never meaningfully change them. The rate that felt reasonable when you were hungry for work — when every client mattered and you'd take anything — is the same rate you're charging now, three years later, with a full diary, rising costs, and significantly more experience.</p>
+
+    <p><strong>The maths are brutal.</strong> If your rate hasn't kept pace with the National Living Wage, fuel costs, insurance premiums, and product costs, your real margin has shrunk every year — even as your revenue stayed flat. You're doing more work for less money without ever noticing because the number on the invoice looks the same.</p>
+
+    <div class="post-callout">
+      <div class="callout-label">The pricing test</div>
+      Take your last ten jobs. For each one, work out the true hourly rate you actually took home after time, travel, products, and a proportion of your fixed costs. If you can't answer that off the top of your head — that's the problem. You're not running a pricing strategy. You're guessing.
+    </div>
+
+    <h3>2. You are the business</h3>
+
+    <p>At £60k, the cleaning business and the cleaning business owner are often the same thing. You do the cleans. You do the quotes. You chase the invoices. You deal with complaints. You sort the scheduling. You do the bookkeeping. Every system in the business runs through you — which means the business can only grow as fast as you can personally run it.</p>
+
+    <p>And you've already maxed out. You can't do more hours. <em>Growth isn't possible while you're both the engine and the driver.</em></p>
+
+    <p>The exit from this trap is delegation and systems — but delegation is terrifying when you don't have the financial visibility to know what you can afford, and systems are hard to build when you're already working 50-hour weeks inside the business.</p>
+
+    <h3>3. You don't have enough recurring revenue</h3>
+
+    <p>A cleaning business built on one-off jobs is on a permanent treadmill. Every month you start from zero — you need to find the same revenue again. There's no compounding, no foundation, nothing that carries over.</p>
+
+    <p>Recurring clients — weekly, fortnightly, monthly — are the only path off that treadmill. A business with 40 recurring clients at £200/month has £8,000 of predictable monthly revenue before it books a single new job. <strong>The difference in how you can plan, invest, and hire between that business and one built on one-offs is enormous.</strong></p>
+
+    <h3>4. You have no financial clarity</h3>
+
+    <p>Most cleaning business owners at £60k know roughly what they're earning. They know their bank balance. But they don't know their actual profit margin, their cost per job, their effective hourly rate, or whether they could afford to hire someone without going backwards.</p>
+
+    <p>This isn't laziness — it's a systems failure. If your bookkeeping happens once a year, if your expenses are scattered across three apps and a pile of receipts, if your only financial report is the January scramble before Self Assessment — you don't have the information you need to make growth decisions. <em>You're flying blind at exactly the moment when visibility matters most.</em></p>
+
+    <h3>5. Admin is eating the time that should be growing the business</h3>
+
+    <p>At £60k, the average cleaning business owner spends four to six hours a week on admin — scheduling, invoicing, chasing payment, bookkeeping, quoting. That's a full working day, every week, that isn't generating revenue or building the business.</p>
+
+    <p>At that volume of admin, there's simply no capacity left for the things that would actually move things forward: prospecting commercial contracts, building recurring client relationships, thinking strategically. The operational burden consumes everything.</p>
+
+    <div class="post-divider"></div>
+
+    <h2>How to break through it</h2>
+
+    <p>The exit from the £60k ceiling requires addressing all five — not just one. Raising prices alone doesn't fix the admin burden. Building recurring revenue alone doesn't fix the financial visibility problem. They're interconnected, and they need to be tackled as a system.</p>
+
+    <div class="post-list">
+      <div class="post-list-item"><span class="li-icon">→</span><div><strong>Raise your prices now, not eventually.</strong> If you haven't raised rates in twelve months, you're already behind. An increase of £1–2 per hour across your existing client base is the highest-leverage financial move available. Most clients won't leave. The ones who do were probably your lowest-margin anyway.</div></div>
+      <div class="post-list-item"><span class="li-icon">→</span><div><strong>Audit your one-off clients and convert them to recurring.</strong> For every one-off client, ask: could this be a monthly or fortnightly arrangement? Many clients don't ask for recurring because you haven't offered it. Offer it.</div></div>
+      <div class="post-list-item"><span class="li-icon">→</span><div><strong>Get your numbers in front of you weekly, not annually.</strong> Revenue, costs, outstanding invoices, profit after expenses. Without this, every growth decision is a guess.</div></div>
+      <div class="post-list-item"><span class="li-icon">→</span><div><strong>Automate the admin that doesn't need you.</strong> Recurring invoices, payment reminders, scheduling confirmations — none of these require your brain. Every hour of admin you eliminate is an hour that can go toward building rather than running.</div></div>
+    </div>
+
+    <div class="post-pull">"The £60k ceiling isn't a market problem. It's an internal one. The businesses that break through it aren't the ones that hustle harder — they're the ones that finally build the infrastructure to grow past themselves."</div>
+
+    <p>This is the problem Cadi was built to solve. The pricing calculator that tells you what a job should actually cost before you quote it. The dashboard that shows your real margin, your recurring revenue base, your outstanding invoices — in real time. The scheduling and invoicing automation that gives you back the hours that admin is eating.</p>
+
+    <p>If you're at £60k and you feel stuck, the ceiling isn't the market. <strong>It's your infrastructure.</strong> And that's something you can change.</p>
+
+    <div class="post-cta">
+      <h3>Ready to break through the ceiling?</h3>
+      <p>Cadi gives you the pricing clarity, financial visibility, and admin automation to grow past £60k — and keep growing. <strong>Free to start. No card needed.</strong></p>
+      <a href="/launch.html#waitlist" class="post-cta-btn">Join the waitlist — it's free →</a>
+    </div>
+
+  </div>
+
+  <div class="more-posts">
+    <div class="inner">
+      <div class="more-label">Read next</div>
+      <div class="more-grid">
+        <div class="post-card" onclick="showPost(5)">
+          <div class="pc-visual"><div class="pc-emoji">📈</div><span class="pc-tag">Growth</span></div>
+          <div class="pc-body">
+            <div class="pc-title">3 tactical ways to immensely grow your cleaning business</div>
+            <div class="pc-excerpt">Not theory. Three specific, actionable moves that actually work.</div>
+            <div class="pc-meta"><div class="pc-author-sm">Cadi · 6 min read</div><div class="pc-read">Read →</div></div>
+          </div>
+        </div>
+        <div class="post-card" onclick="showPost(4)">
+          <div class="pc-visual"><div class="pc-emoji">🧱</div><span class="pc-tag">Operations</span></div>
+          <div class="pc-body">
+            <div class="pc-title">Build the boring business</div>
+            <div class="pc-excerpt">The unglamorous stuff nobody talks about — and why it always wins.</div>
+            <div class="pc-meta"><div class="pc-author-sm">Cadi · 5 min read</div><div class="pc-read">Read →</div></div>
+          </div>
+        </div>
+        <div class="post-card" onclick="showPost(1)">
+          <div class="pc-visual"><div class="pc-emoji">😤</div><span class="pc-tag">Mindset & Growth</span></div>
+          <div class="pc-body">
+            <div class="pc-title">Why most cleaning businesses are stuck in survival mode</div>
+            <div class="pc-excerpt">Most cleaning owners aren't failing because they lack clients. They're running entirely on reaction.</div>
+            <div class="pc-meta"><div class="pc-author-sm">Rhi · 8 min read</div><div class="pc-read">Read →</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer><div class="footer-inner"><div class="footer-wm"><span class="fwC">C</span><span class="fwa">a</span><span class="fwd">d</span><span class="fwi">i<span class="fwdot"></span></span></div><p class="footer-copy">© 2026 Cadi · cadi.cleaning</p><div class="footer-links"><a href="/">Home</a><a href="/about.html">About</a><a href="/blog.html">Blog</a></div></div></footer>
+</div>
+
+<!-- ══════════════════════════════
+     POST 4: BUILD THE BORING BUSINESS
+══════════════════════════════ -->
+<div id="blogPost4" class="post-page">
+  <div class="post-hero">
+    <div class="post-hero-bg"></div>
+    <div class="post-hero-inner">
+      <button class="post-back" onclick="showListing()">← Back to blog</button>
+      <span class="post-tag">Operations</span>
+      <h1 class="post-h1">Build the boring business</h1>
+      <p class="post-intro">
+        Nobody posts on Instagram about their invoicing system. Nobody talks about their bookkeeping at networking events.
+        <strong>But the cleaning businesses that last — the ones that actually grow — all have one thing in common: they've built the boring stuff properly.</strong>
+      </p>
+      <div class="post-byline">
+        <div class="post-avatar">C</div>
+        <div class="post-author-info">
+          <div class="post-author-name">Cadi</div>
+          <div class="post-meta">5 minute read · Cleaning business operations</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-content">
+
+    <p>The cleaning business content you see most online is about the exciting stuff. Getting more clients. Going viral. Building a personal brand. The big revenue numbers. The team photos.</p>
+
+    <p>Almost none of it is about the operational infrastructure that actually keeps a cleaning business running well. The quoting system. The invoicing schedule. The recurring booking structure. The bookkeeping habits. The tax compliance.</p>
+
+    <p>These things aren't exciting. <strong>They're the reason some cleaning businesses are still standing in ten years and others aren't.</strong></p>
+
+    <h2>What "boring" actually means</h2>
+
+    <p>When I say boring, I don't mean dull or low-value. I mean the operational work that isn't client-facing, doesn't generate a social post, and doesn't feel like progress when you're doing it — even though it's the thing that makes everything else possible.</p>
+
+    <div class="post-pull">"The glamorous businesses are exciting to watch. The boring businesses are the ones worth owning. They're more predictable, more profitable, and far less reliant on the owner being present for everything."</div>
+
+    <h2>Systemised quoting</h2>
+
+    <p>In a boring business, every quote is calculated the same way. Time estimate. Travel cost. Product cost. Overheads allocation. Target margin. Suggested price. It takes the same amount of time as guessing — but the output is a number you can defend, and a margin you can rely on.</p>
+
+    <p>In an exciting business, quoting is a gut-feel exercise based on what seems reasonable or what the client might accept. Some jobs are profitable. Many aren't. The owner doesn't know which is which because they've never done the maths. <strong>The boring business knows its margin on every job. The exciting one finds out at year end.</strong></p>
+
+    <h2>Scheduled invoicing</h2>
+
+    <p>In a boring business, invoices go out on the same day every week or month, automatically. Recurring clients get recurring invoices. One-off clients get an invoice the day the job is completed. Payment reminders go out at seven days and fourteen days, automatically. Cash flow is predictable. Chasing is rare.</p>
+
+    <p>In an exciting business, invoicing happens when there's time — which means it happens late, inconsistently, and the owner spends hours every month chasing payments. Cash flow is a source of anxiety. <em>The bank balance tells a different story every week.</em></p>
+
+    <h2>Recurring revenue as the foundation</h2>
+
+    <p>The boring business builds its revenue base on recurring clients. Weekly, fortnightly, monthly bookings that provide a predictable floor of income every month before any new jobs are booked. It doesn't grow as fast in the good months — but it doesn't fall as hard in the difficult ones.</p>
+
+    <p>The exciting business chases new jobs. Every month starts from scratch. When acquisition slows — because seasons change, or the phone just goes quiet for a couple of weeks — there's nothing underneath. No floor. Just uncertainty.</p>
+
+    <div class="post-stat">
+      <div class="ps-num">£0</div>
+      <div class="ps-label">How much predictable monthly revenue a cleaning business built entirely on one-offs has at the start of each month. A recurring model changes this number immediately.</div>
+    </div>
+
+    <h2>Proper bookkeeping — weekly, not annually</h2>
+
+    <p>The boring business does its bookkeeping weekly. Every transaction is categorised. Expenses are logged when they happen. The profit and loss picture is always current. At the end of the tax year, there's almost nothing to do — because it's already done.</p>
+
+    <p>The exciting business does its bookkeeping in January, in a panic, from a pile of receipts and bank statements going back twelve months. It takes two weeks, costs money in accountant's time, and produces numbers that are already six months out of date. <strong>The tax bill is always a surprise.</strong></p>
+
+    <p>With Making Tax Digital for Income Tax now in force for higher earners and rolling out further — mandatory quarterly submissions to HMRC for most sole traders — the era of the annual bookkeeping panic is ending whether you want it to or not. The boring business is already ready. The exciting one isn't.</p>
+
+    <h2>HMRC compliance as a habit, not a crisis</h2>
+
+    <p>The boring business understands its tax obligations before they become emergencies. It knows its MTD ITSA status, its payment on account dates, its Class 4 NI position, its VAT threshold proximity. None of this is complicated — it just requires knowing it, and building the habit of staying current.</p>
+
+    <p>The exciting business finds out about these things at the worst possible time. The VAT letter arrives unexpectedly. The tax bill is larger than expected. Every compliance moment is a mini-crisis because no system is in place to see it coming.</p>
+
+    <div class="post-callout">
+      <div class="callout-label">The honest reality</div>
+      <strong>Building the boring infrastructure isn't difficult.</strong> It's mostly just deciding to do it — and then having the tools to make it easy. The reason most cleaning businesses don't have it isn't lack of knowledge or effort. It's that nobody ever showed them what it should look like, and the tools they've been using weren't built for their business.
+    </div>
+
+    <h2>Why boring businesses win</h2>
+
+    <p>The boring cleaning business can answer these questions right now, today, without looking anything up:</p>
+
+    <div class="post-list">
+      <div class="post-list-item"><span class="li-icon">→</span><div><strong>What's my profit margin this month?</strong></div></div>
+      <div class="post-list-item"><span class="li-icon">→</span><div><strong>How much do I have outstanding in unpaid invoices?</strong></div></div>
+      <div class="post-list-item"><span class="li-icon">→</span><div><strong>What's my estimated tax bill for this quarter?</strong></div></div>
+      <div class="post-list-item"><span class="li-icon">→</span><div><strong>Could I afford to hire someone this quarter?</strong></div></div>
+      <div class="post-list-item"><span class="li-icon">→</span><div><strong>Which three clients generate the most profit — not revenue?</strong></div></div>
+    </div>
+
+    <p>If you can't answer these immediately, you're running an exciting business. And that's fine — for now. But the boring business answers all of them in thirty seconds, from a dashboard, before making any decision. <em>That's the difference between reacting and building.</em></p>
+
+    <p>Cadi is built for the boring business. Not the exciting one. If you want a tool that helps you go viral or tells you which hashtag to use, we're the wrong product. But if you want to know your margin, automate your invoicing, stay ahead of HMRC, and make financial decisions based on real numbers — this is exactly what we built it for.</p>
+
+    <div class="post-cta">
+      <h3>Build the boring foundation. Let Cadi run it.</h3>
+      <p>Quoting, invoicing, bookkeeping, MTD compliance — all in one place, built for cleaning businesses specifically. <strong>Free to start. No card needed.</strong></p>
+      <a href="/launch.html#waitlist" class="post-cta-btn">Join the waitlist — it's free →</a>
+    </div>
+
+  </div>
+
+  <div class="more-posts">
+    <div class="inner">
+      <div class="more-label">Read next</div>
+      <div class="more-grid">
+        <div class="post-card" onclick="showPost(3)">
+          <div class="pc-visual"><div class="pc-emoji">💰</div><span class="pc-tag">Strategy</span></div>
+          <div class="pc-body">
+            <div class="pc-title">Why most cleaning businesses stall at £60k</div>
+            <div class="pc-excerpt">There's a ceiling most cleaning businesses hit and never break through. Here's exactly why.</div>
+            <div class="pc-meta"><div class="pc-author-sm">Cadi · 7 min read</div><div class="pc-read">Read →</div></div>
+          </div>
+        </div>
+        <div class="post-card" onclick="showPost(5)">
+          <div class="pc-visual"><div class="pc-emoji">📈</div><span class="pc-tag">Growth</span></div>
+          <div class="pc-body">
+            <div class="pc-title">3 tactical ways to immensely grow your cleaning business</div>
+            <div class="pc-excerpt">Not theory. Three specific, actionable moves that actually work.</div>
+            <div class="pc-meta"><div class="pc-author-sm">Cadi · 6 min read</div><div class="pc-read">Read →</div></div>
+          </div>
+        </div>
+        <div class="post-card" onclick="showPost(1)">
+          <div class="pc-visual"><div class="pc-emoji">😤</div><span class="pc-tag">Mindset & Growth</span></div>
+          <div class="pc-body">
+            <div class="pc-title">Why most cleaning businesses are stuck in survival mode</div>
+            <div class="pc-excerpt">Most cleaning owners aren't failing because they lack clients. They're running entirely on reaction.</div>
+            <div class="pc-meta"><div class="pc-author-sm">Rhi · 8 min read</div><div class="pc-read">Read →</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer><div class="footer-inner"><div class="footer-wm"><span class="fwC">C</span><span class="fwa">a</span><span class="fwd">d</span><span class="fwi">i<span class="fwdot"></span></span></div><p class="footer-copy">© 2026 Cadi · cadi.cleaning</p><div class="footer-links"><a href="/">Home</a><a href="/about.html">About</a><a href="/blog.html">Blog</a></div></div></footer>
+</div>
+
+<!-- ══════════════════════════════
+     POST 5: 3 TACTICAL WAYS TO GROW
+══════════════════════════════ -->
+<div id="blogPost5" class="post-page">
+  <div class="post-hero">
+    <div class="post-hero-bg"></div>
+    <div class="post-hero-inner">
+      <button class="post-back" onclick="showListing()">← Back to blog</button>
+      <span class="post-tag">Growth</span>
+      <h1 class="post-h1">3 tactical ways to immensely grow your cleaning business</h1>
+      <p class="post-intro">
+        Not theory. Not "get more clients" or "post on social media." Three specific, actionable moves that
+        <strong>cleaning business owners have used to grow significantly — and exactly why each one works.</strong>
+      </p>
+      <div class="post-byline">
+        <div class="post-avatar">C</div>
+        <div class="post-author-info">
+          <div class="post-author-name">Cadi</div>
+          <div class="post-meta">6 minute read · Cleaning business growth strategy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-content">
+
+    <p>Most cleaning business growth advice is generic. Build a website. Get more reviews. Post consistently. Put a branded van on the road. These things aren't wrong — but they're vague, slow, and hard to act on specifically.</p>
+
+    <p>What follows are three tactical moves. Not broad principles. <em>Specific things you can start doing this week</em>, with a clear explanation of why each one works.</p>
+
+    <h2>1. Raise your prices — across the board, right now</h2>
+
+    <p>This is the move most cleaning business owners are avoiding. Not because they don't know they should, but because it feels risky. What if clients leave? What if the phone stops ringing?</p>
+
+    <p>Here's what the data actually shows: most cleaning businesses are undercharging by 15–25% relative to their local market and their actual costs. A price increase of £1–2 per hour applied across your existing client base is the highest-leverage financial move available to you — and the client reaction is almost always milder than you fear.</p>
+
+    <div class="post-stat">
+      <div class="ps-num">~5%</div>
+      <div class="ps-label">The typical churn rate from a well-communicated, justified price increase. You lose very few clients — and the ones you lose are usually your lowest-margin ones anyway.</div>
+    </div>
+
+    <p>The key word is <em>communicated</em>. Don't silently update an invoice. Write to your clients individually and explain why. Rising costs. NLW increases. Commitment to quality. Clients who value your service expect prices to increase; they just want to be told why and given notice. <strong>The ones who leave were already at risk.</strong> The ones who stay are now worth significantly more to your business.</p>
+
+    <p>The compounding effect is the part nobody talks about. If you have 40 clients and raise rates by £1.50/hr, you might earn an additional £3,000–£5,000 per year from the same work, the same clients, the same hours. No new marketing. No new team members. <em>Just a decision you've been putting off.</em></p>
+
+    <div class="post-callout">
+      <div class="callout-label">How to do it</div>
+      Write to each client at least 28 days before the increase takes effect. Name a specific date. Give a brief reason. Thank them for their continued trust. Keep it short. Most won't reply. A small number will say thanks for letting them know. Very few will leave. And when they do, your capacity opens up for higher-value replacements.
+    </div>
+
+    <h2>2. Convert one-off clients to recurring bookings</h2>
+
+    <p>If your business is built on one-off jobs, you're starting from zero every month. There's no floor under your revenue, no predictability, and no compounding. The moment your acquisition slows — because the season changes, because you take a week off — your revenue follows it down.</p>
+
+    <p>Recurring clients change the maths completely. A business with 30 recurring clients at £150/month has £4,500 of locked-in revenue before it picks up the phone. The same business built on one-offs has £0 of certainty at the start of each month.</p>
+
+    <p><strong>The move is simple: go through your one-off client list and make them an offer.</strong> For end-of-tenancy clients, offer aftercare — a monthly maintenance clean for tenants moving in. For one-off deep cleans, offer a regular maintenance clean at a modest discount for commitment. For seasonal exterior clients, offer an annual maintenance package covering multiple visits.</p>
+
+    <div class="post-list">
+      <div class="post-list-item"><span class="li-icon">→</span><div><strong>Identify your last 20 one-off clients.</strong> How many are genuinely one-off by nature? How many are one-off because you never offered them recurring?</div></div>
+      <div class="post-list-item"><span class="li-icon">→</span><div><strong>Make them a recurring offer with a modest incentive.</strong> 10% off their regular price in exchange for a standing booking. Most people prefer predictability — they just need to be asked.</div></div>
+      <div class="post-list-item"><span class="li-icon">→</span><div><strong>Track the conversion rate.</strong> If you're converting fewer than 30% of eligible one-off clients to recurring, the offer or the communication needs adjusting.</div></div>
+    </div>
+
+    <p>Every one-off client you convert to recurring is worth three times the revenue over twelve months — and costs nothing in additional acquisition. <em>This is the highest-ROI sales move available to most cleaning businesses.</em></p>
+
+    <h2>3. Win one commercial contract</h2>
+
+    <p>Residential cleaning is the natural starting point. The sales cycle is short, the jobs are accessible, and word of mouth works well. But residential has a ceiling — both on individual job value and on how many clients one team can manage in a given area.</p>
+
+    <p>Commercial cleaning changes the model. A single commercial contract — an office, a school, a medical practice, a block of managed flats — can be worth £800–£2,500 per month. It typically involves predictable hours, clear specifications, and invoices that get paid without chasing. And once you have one, winning the second is significantly easier.</p>
+
+    <p><strong>The first commercial contract is the hardest because you don't have commercial references.</strong> The way around this is to start close to home:</p>
+
+    <div class="post-list">
+      <div class="post-list-item"><span class="li-icon">→</span><div><strong>Businesses you already have relationships with.</strong> Your accountant, your solicitor, your insurance broker — all of them occupy premises that need cleaning. Ask. You already have a relationship; that's most of the sale.</div></div>
+      <div class="post-list-item"><span class="li-icon">→</span><div><strong>Local businesses on your existing residential routes.</strong> If you're already in the area, you're cheaper to deploy and a known quantity. Knock on the door. Leave a quote. Follow up.</div></div>
+      <div class="post-list-item"><span class="li-icon">→</span><div><strong>Property management companies.</strong> They manage dozens of properties and need reliable cleaning contractors for each. A relationship with one property manager can produce a steady stream of end-of-tenancy work — the starting point for a commercial arm.</div></div>
+    </div>
+
+    <p>One commercial contract at £1,200/month is worth £14,400 per year. It takes one team in a predictable rhythm. And it becomes the reference that unlocks the next one. <em>This is how residential cleaning businesses grow into something larger.</em></p>
+
+    <div class="post-pull">"Most cleaning businesses that want to grow focus on acquisition. The fastest-growing ones focus on raising value from what they already have — better prices, recurring revenue, higher-ticket commercial work. The foundation comes first."</div>
+
+    <p>All three of these moves become significantly easier when you can see your business clearly — your margins by job type, your recurring revenue base, your outstanding invoices, your cost per acquisition. That's exactly what Cadi is built to show you.</p>
+
+    <div class="post-cta">
+      <h3>See your business clearly. Grow it faster.</h3>
+      <p>Cadi gives you the pricing calculator, revenue visibility, and operational tools to put all three of these moves into practice. <strong>Free to start. No card needed.</strong></p>
+      <a href="/launch.html#waitlist" class="post-cta-btn">Join the waitlist — it's free →</a>
+    </div>
+
+  </div>
+
+  <div class="more-posts">
+    <div class="inner">
+      <div class="more-label">Read next</div>
+      <div class="more-grid">
+        <div class="post-card" onclick="showPost(3)">
+          <div class="pc-visual"><div class="pc-emoji">💰</div><span class="pc-tag">Strategy</span></div>
+          <div class="pc-body">
+            <div class="pc-title">Why most cleaning businesses stall at £60k</div>
+            <div class="pc-excerpt">There's a ceiling most cleaning businesses hit and never break through. Here's exactly why.</div>
+            <div class="pc-meta"><div class="pc-author-sm">Cadi · 7 min read</div><div class="pc-read">Read →</div></div>
+          </div>
+        </div>
+        <div class="post-card" onclick="showPost(4)">
+          <div class="pc-visual"><div class="pc-emoji">🧱</div><span class="pc-tag">Operations</span></div>
+          <div class="pc-body">
+            <div class="pc-title">Build the boring business</div>
+            <div class="pc-excerpt">The unglamorous stuff nobody talks about — and why the businesses that master it always win.</div>
+            <div class="pc-meta"><div class="pc-author-sm">Cadi · 5 min read</div><div class="pc-read">Read →</div></div>
+          </div>
+        </div>
+        <div class="post-card" onclick="showPost(2)">
+          <div class="pc-visual"><div class="pc-emoji">🎯</div><span class="pc-tag">Strategy</span></div>
+          <div class="pc-body">
+            <div class="pc-title">Focus on your clients, not the competition</div>
+            <div class="pc-excerpt">While you're watching what everyone else is doing, your best clients are deciding whether to stay.</div>
+            <div class="pc-meta"><div class="pc-author-sm">Rhi · 6 min read</div><div class="pc-read">Read →</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer><div class="footer-inner"><div class="footer-wm"><span class="fwC">C</span><span class="fwa">a</span><span class="fwd">d</span><span class="fwi">i<span class="fwdot"></span></span></div><p class="footer-copy">© 2026 Cadi · cadi.cleaning</p><div class="footer-links"><a href="/">Home</a><a href="/about.html">About</a><a href="/blog.html">Blog</a></div></div></footer>
+</div>
+
 <script>
 function showPost(num) {
   document.getElementById('blogListing').style.display = 'none';
   document.getElementById('blogPost1').style.display = 'none';
   document.getElementById('blogPost2').style.display = 'none';
+  document.getElementById('blogPost3').style.display = 'none';
+  document.getElementById('blogPost4').style.display = 'none';
+  document.getElementById('blogPost5').style.display = 'none';
   document.getElementById('blogPost' + num).style.display = 'block';
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 function showListing() {
   document.getElementById('blogPost1').style.display = 'none';
   document.getElementById('blogPost2').style.display = 'none';
+  document.getElementById('blogPost3').style.display = 'none';
+  document.getElementById('blogPost4').style.display = 'none';
+  document.getElementById('blogPost5').style.display = 'none';
   document.getElementById('blogListing').style.display = 'block';
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
