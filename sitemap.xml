@@ -177,6 +177,38 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- Blog posts -->
+  <url>
+    <loc>https://cadi.cleaning/blog/survival-mode</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cadi.cleaning/blog/focus-on-your-clients</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cadi.cleaning/blog/cleaning-business-stall-60k</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cadi.cleaning/blog/build-the-boring-business</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cadi.cleaning/blog/grow-your-cleaning-business</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- Resources: guides and templates -->
   <url>
     <loc>https://cadi.cleaning/resources/starting-residential-cleaning-business</loc>

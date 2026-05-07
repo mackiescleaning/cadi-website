@@ -25,8 +25,10 @@
     </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog — Cadi | Cleaning Business Growth & Strategy</title>
-<meta name="description" content="Real talk for cleaning business owners. No fluff, no theory — just the honest stuff that actually moves your business forward.">
+<title>Focus on your clients, not the competition — Cadi Blog</title>
+<meta name="description" content="While you're watching what everyone else is doing, your best clients are quietly deciding whether they still want to stay with you.">
+<link rel="canonical" href="https://cadi.cleaning/blog/focus-on-your-clients">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Focus on your clients, not the competition","author":{"@type":"Person","name":"Rhi","jobTitle":"Founder, Cadi"},"publisher":{"@type":"Organization","name":"Cadi","url":"https://cadi.cleaning"},"datePublished":"2026-03-15","dateModified":"2026-05-07","url":"https://cadi.cleaning/blog/focus-on-your-clients","description":"While you're watching what everyone else is doing, your best clients are quietly deciding whether they still want to stay with you.","mainEntityOfPage":"https://cadi.cleaning/blog/focus-on-your-clients"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
@@ -120,11 +122,7 @@ nav {
 .nav-cta { font-family: var(--font); font-size: 13px; font-weight: 700; color: #fff; background: linear-gradient(135deg,var(--blue),var(--electric)); border: none; border-radius: 10px; padding: 10px 20px; cursor: pointer; box-shadow: 0 4px 16px rgba(46,85,240,0.35); transition: all 0.2s; text-decoration: none; white-space: nowrap; }
 .nav-cta:hover { box-shadow: 0 6px 22px rgba(46,85,240,0.55); transform: translateY(-1px); }
 
-/* ══════════════════════════════
-   BLOG LISTING PAGE
-══════════════════════════════ */
-
-/* HERO */
+/* BLOG HERO */
 .blog-hero {
   padding: 140px 40px 80px;
   position: relative; overflow: hidden;
@@ -149,7 +147,6 @@ nav {
   transition: transform 0.3s; border-radius: 28px; overflow: hidden;
   border: 1px solid rgba(255,255,255,0.06);
 }
-.featured-post { display: grid; text-decoration: none; color: inherit; }
 .featured-post:hover { transform: translateY(-4px); }
 .fp-visual {
   background: linear-gradient(145deg, #07102e, #0d1a5e);
@@ -193,8 +190,8 @@ nav {
   border-radius: 22px; overflow: hidden;
   cursor: pointer; transition: transform 0.3s, border-color 0.3s;
   position: relative;
+  display: block; text-decoration: none; color: inherit;
 }
-.post-card { display: block; text-decoration: none; color: inherit; }
 .post-card:hover { transform: translateY(-4px); border-color: rgba(79,120,255,0.2); }
 .post-card::before { content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg,transparent,rgba(79,120,255,0.3),transparent); }
 .pc-visual {
@@ -220,9 +217,7 @@ nav {
 .post-card.coming:hover { transform: none; border-color: rgba(255,255,255,0.06); }
 .cs-badge { font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 100px; padding: 3px 10px; display: inline-block; }
 
-/* ══════════════════════════════
-   BLOG POST TEMPLATE
-══════════════════════════════ */
+/* BLOG POST TEMPLATE */
 .post-page { padding-top: 100px; background: #f8f9ff; }
 
 .post-hero {
@@ -314,7 +309,7 @@ nav {
 .post-cta-btn:hover { box-shadow: 0 6px 28px rgba(46,85,240,0.55); transform: translateY(-1px); }
 
 /* Back nav */
-.post-back { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.35); cursor: pointer; margin-bottom: 32px; transition: color 0.2s; background: none; border: none; font-family: var(--font); }
+.post-back { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.35); cursor: pointer; margin-bottom: 32px; transition: color 0.2s; text-decoration: none; }
 .post-back:hover { color: rgba(255,255,255,0.65); }
 
 /* More posts */
@@ -363,160 +358,154 @@ footer { padding: 52px 40px 36px; background: rgba(2,4,12,0.95); border-top: 1px
   </div>
 </nav>
 
-<!-- ══════════════════════════════
-     BLOG LISTING
-══════════════════════════════ -->
-<div id="blogListing">
-  <section class="blog-hero">
-    <div class="blog-hero-bg"></div>
-    <div class="inner blog-hero-inner">
-      <span class="blog-eyebrow">The Cadi Blog</span>
-      <h1 class="blog-h1">Real talk for<br><span class="hl">cleaning business owners.</span></h1>
-      <p class="blog-sub">No fluff. No theory borrowed from Silicon Valley. <strong>Just the honest stuff that actually moves a cleaning business forward</strong> — written by people still in it.</p>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- FEATURED -->
-  <a href="/blog/survival-mode" class="featured-post" style="margin-top:48px;">
-    <div class="fp-visual">
-      <div class="fp-emoji">😤</div>
-      <span class="fp-tag">Mindset & Growth</span>
-      <div class="fp-title">Why most cleaning businesses are stuck in survival mode</div>
-    </div>
-    <div class="fp-content">
-      <div class="fp-featured-label">⭐ Featured post</div>
-      <p class="fp-excerpt">
-        Most cleaning business owners aren't failing because they lack clients, or talent, or work ethic.
-        They're failing because <strong>they're running their business in reactive mode</strong> —
-        responding to what's in front of them instead of building something that works without them.
-        Here's what survival mode actually looks like — and how to get out of it.
+<div class="post-page">
+  <div class="post-hero">
+    <div class="post-hero-bg"></div>
+    <div class="post-hero-inner">
+      <a href="/blog.html" class="post-back">← Back to blog</a>
+      <span class="post-tag">Strategy</span>
+      <h1 class="post-h1">Focus on your clients, not the competition</h1>
+      <p class="post-intro">
+        While you're watching what everyone else is doing, your best clients are quietly deciding <strong>whether they still want to stay with you.</strong>
       </p>
-      <div class="fp-meta">
-        <div class="fp-author">
-          <div class="fp-avatar">R</div>
-          <div>
-            <div class="fp-author-name">Rhi</div>
-            <div class="fp-date">8 min read · Founder, Cadi</div>
+      <div class="post-byline">
+        <div class="post-avatar">R</div>
+        <div class="post-author-info">
+          <div class="post-author-name">Rhi — Founder, Cadi</div>
+          <div class="post-meta">6 minute read · Cleaning business owner &amp; software founder</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-content">
+
+    <p>There's a conversation I hear constantly in cleaning business communities. Someone's worried about the new company that just started up down the road. Someone's upset about a competitor undercutting on price. Someone's trying to figure out what their rivals are doing on social media so they can do it better.</p>
+
+    <p>And while all of that is happening, their best clients are cleaning their own bathrooms because the last visit wasn't up to standard and they didn't feel like saying anything. <strong>They just quietly cancelled.</strong></p>
+
+    <h2>Competition is a distraction. Retention is the game.</h2>
+
+    <p>Here's the thing about the cleaning industry that most business owners don't have the data to see clearly: <em>the biggest threat to your business isn't another cleaning company taking your clients.</em> It's your existing clients leaving for reasons that are entirely preventable — and that you'd never even know about because they don't complain, they just disappear.</p>
+
+    <div class="post-stat">
+      <div class="ps-num">68%</div>
+      <div class="ps-label"><strong>of customers leave because they feel unappreciated or overlooked</strong> — not because they found someone cheaper. Price is rarely the real reason. Indifference is.</div>
+    </div>
+
+    <p>Think about what that means for a cleaning business. You spend time and money acquiring a new client. You do the first clean. Maybe the second. And then gradually — because life gets busy and there's always a next thing — the relationship becomes transactional. They're a job on a schedule. You're a direct debit on their bank statement. <strong>There's no relationship there to fight for when something goes slightly wrong.</strong></p>
+
+    <div class="post-pull">"Your best clients aren't leaving because someone offered them a cheaper clean. They're leaving because nobody made them feel like they mattered. That's a fixable problem."</div>
+
+    <h2>What obsessing over competition actually costs you</h2>
+
+    <p>When you're focused on the competition, you're spending mental energy on things you can't control. You can't control what another company charges. You can't control their marketing budget, their team, their location, or the clients they go after. <strong>Trying to out-compete someone else is the most exhausting, least effective growth strategy available to a cleaning business owner.</strong></p>
+
+    <p>And while you're doing it — while you're checking their Instagram, wondering why they're growing faster, thinking about whether to match their prices — your own clients are experiencing a service that's quietly getting less personal. Because your attention is elsewhere.</p>
+
+    <p>The businesses that dominate their local area don't do it by beating the competition. They do it by <em>making the competition irrelevant</em> — by building relationships with their clients so strong that price comparison doesn't even come into it.</p>
+
+    <h2>What client-focused actually looks like in practice</h2>
+
+    <p>This isn't about being nice. It's about being intentional. Here's what it looks like when a cleaning business genuinely focuses on its clients rather than its competition:</p>
+
+    <div class="post-list">
+      <div class="post-list-item"><span class="li-icon">→</span><div><strong>You know which clients are most valuable long-term — and you protect them.</strong> Not just who spends the most, but who refers others, who's been with you longest, who has the highest lifetime value. These people get your best communication, your most reliable team, your personal attention.</div></div>
+      <div class="post-list-item"><span class="li-icon">→</span><div><strong>You track retention, not just acquisition.</strong> Most cleaning businesses measure how many new clients they're getting. Very few measure how many they're keeping — and at what rate. If you're losing 2 clients a month and gaining 3, you're not growing. You're treading water expensively.</div></div>
+      <div class="post-list-item"><span class="li-icon">→</span><div><strong>You make it easy for happy clients to refer you.</strong> Word of mouth is the most powerful marketing a cleaning business has. But it doesn't happen automatically — it happens when clients feel genuinely looked after and have a simple way to pass your name on.</div></div>
+      <div class="post-list-item"><span class="li-icon">→</span><div><strong>You review the relationship, not just the job.</strong> Once a year, at minimum, you look at each client relationship. Are they happy? Have their needs changed? Is there something you could be doing that you're not? This kind of intentional review is what turns a 1-year client into a 5-year client.</div></div>
+    </div>
+
+    <div class="post-callout">
+      <div class="callout-label">The maths that changes everything</div>
+      A cleaning business with 40 clients who stay for an average of 3 years generates dramatically more revenue than one with 60 clients who leave after 8 months. <strong>Lifetime value beats volume every single time.</strong> The businesses that understand this stop chasing new clients and start investing in the ones they already have.
+    </div>
+
+    <h2>How to actually do this — practically</h2>
+
+    <p>The reason most cleaning business owners don't do this isn't because they don't want to. It's because they don't have the visibility. You can't focus on client relationships if you don't know which clients are at risk of leaving, which ones have the highest lifetime value, or which ones haven't had a proper check-in in six months.</p>
+
+    <p>This is one of the things Cadi was built specifically to solve. Not just scheduling or invoicing — but giving you a clear picture of your client base. Who's been with you longest. Who's most valuable. Who might be drifting. <strong>Because you can't build relationships with data you don't have.</strong></p>
+
+    <p>But even without software, you can start tomorrow. Pick your five best clients. Not biggest — best. Write them a personal message. Not a circular email, not a social post — a direct, personal message that says you value them and you're committed to making sure the service is exactly what they need. See what comes back.</p>
+
+    <p>It takes twenty minutes. <em>It's the most valuable twenty minutes you'll spend this week.</em></p>
+
+    <div class="post-pull">"Stop asking how to get more clients. Start asking how to keep the ones you have so well that they never think about leaving — and then tell everyone they know about you."</div>
+
+    <p>The cleaning businesses that win long-term aren't the ones with the lowest prices or the biggest marketing budget. They're the ones whose clients feel genuinely looked after — so well that no competitor with a leaflet through the door is ever going to turn their head.</p>
+
+    <p><strong>Stop watching the competition. Start watching your clients.</strong> That's where the business is.</p>
+
+    <div class="post-cta">
+      <h3>Know exactly which clients matter most — and why.</h3>
+      <p>Cadi tracks client lifetime value, retention, and relationship health so you always know where to focus. <strong>Free to start. No card needed.</strong></p>
+      <a href="/#access" class="post-cta-btn">Get first access — it's free →</a>
+    </div>
+
+  </div>
+
+  <div class="more-posts">
+    <div class="inner">
+      <div class="more-label">Read next</div>
+      <div class="more-grid">
+        <a href="/blog/survival-mode" class="post-card">
+          <div class="pc-visual"><div class="pc-emoji">😤</div><span class="pc-tag">Mindset &amp; Growth</span></div>
+          <div class="pc-body">
+            <div class="pc-title">Why most cleaning businesses are stuck in survival mode</div>
+            <div class="pc-excerpt">Most cleaning owners aren't failing because they lack clients. They're failing because they're running entirely on reaction.</div>
+            <div class="pc-meta"><div class="pc-author-sm">Rhi · 8 min read</div><div class="pc-read">Read →</div></div>
           </div>
-        </div>
-        <div class="fp-read">Read now →</div>
+        </a>
+        <a href="/blog/cleaning-business-stall-60k" class="post-card">
+          <div class="pc-visual"><div class="pc-emoji">💰</div><span class="pc-tag">Strategy</span></div>
+          <div class="pc-body">
+            <div class="pc-title">Why most cleaning businesses stall at £60k</div>
+            <div class="pc-excerpt">There's a ceiling most cleaning businesses hit and never break through.</div>
+            <div class="pc-meta"><div class="pc-author-sm">Cadi · 7 min read</div><div class="pc-read">Read →</div></div>
+          </div>
+        </a>
+        <a href="/blog/grow-your-cleaning-business" class="post-card">
+          <div class="pc-visual"><div class="pc-emoji">📈</div><span class="pc-tag">Growth</span></div>
+          <div class="pc-body">
+            <div class="pc-title">3 tactical ways to immensely grow your cleaning business</div>
+            <div class="pc-excerpt">Not theory. Three specific moves that actually work.</div>
+            <div class="pc-meta"><div class="pc-author-sm">Cadi · 6 min read</div><div class="pc-read">Read →</div></div>
+          </div>
+        </a>
       </div>
     </div>
   </div>
 
-  <!-- POSTS GRID -->
-  <div class="posts-grid" style="margin-top:16px;">
-
-    <a href="/blog/focus-on-your-clients" class="post-card">
-      <div class="pc-visual">
-        <div class="pc-emoji">🎯</div>
-        <span class="pc-tag">Strategy</span>
-      </div>
-      <div class="pc-body">
-        <div class="pc-title">Focus on your clients, not the competition</div>
-        <div class="pc-excerpt">While you're watching what everyone else is doing, your best clients are deciding whether to stay.</div>
-        <div class="pc-meta">
-          <div class="pc-author-sm">Rhi · 6 min read</div>
-          <div class="pc-read">Read →</div>
-        </div>
-      </div>
-    </a>
-
-    <a href="/blog/build-the-boring-business" class="post-card">
-      <div class="pc-visual">
-        <div class="pc-emoji">🧱</div>
-        <span class="pc-tag">Operations</span>
-      </div>
-      <div class="pc-body">
-        <div class="pc-title">Build the boring business</div>
-        <div class="pc-excerpt">The unglamorous stuff nobody talks about — and why the businesses that master it always win.</div>
-        <div class="pc-meta">
-          <div class="pc-author-sm">Cadi · 5 min read</div>
-          <div class="pc-read">Read →</div>
-        </div>
-      </div>
-    </a>
-
-    <div class="post-card coming">
-      <div class="pc-visual">
-        <div class="pc-emoji">🎯</div>
-        <span class="cs-badge">Coming soon</span>
-      </div>
-      <div class="pc-body">
-        <div class="pc-title">Read this before you set another goal</div>
-        <div class="pc-excerpt">Goal-setting advice for cleaning businesses is broken. Here's what actually works.</div>
-        <div class="pc-meta">
-          <div class="pc-author-sm">Rhi · Coming soon</div>
-        </div>
-      </div>
-    </div>
-
-    <a href="/blog/cleaning-business-stall-60k" class="post-card">
-      <div class="pc-visual">
-        <div class="pc-emoji">💰</div>
-        <span class="pc-tag">Strategy</span>
-      </div>
-      <div class="pc-body">
-        <div class="pc-title">Why most cleaning businesses stall at £60k</div>
-        <div class="pc-excerpt">There's a ceiling most cleaning businesses hit and never break through. Here's exactly why — and what to do about it.</div>
-        <div class="pc-meta">
-          <div class="pc-author-sm">Cadi · 7 min read</div>
-          <div class="pc-read">Read →</div>
-        </div>
-      </div>
-    </a>
-
-    <a href="/blog/grow-your-cleaning-business" class="post-card">
-      <div class="pc-visual">
-        <div class="pc-emoji">📈</div>
-        <span class="pc-tag">Growth</span>
-      </div>
-      <div class="pc-body">
-        <div class="pc-title">3 tactical ways to immensely grow your cleaning business</div>
-        <div class="pc-excerpt">Not theory. Not "get more clients." Three specific, actionable moves that actually work.</div>
-        <div class="pc-meta">
-          <div class="pc-author-sm">Cadi · 6 min read</div>
-          <div class="pc-read">Read →</div>
-        </div>
-      </div>
-    </a>
-
-    <div class="post-card coming">
-      <div class="pc-visual">
-        <div class="pc-emoji">🔍</div>
-        <span class="cs-badge">Coming soon</span>
-      </div>
-      <div class="pc-body">
-        <div class="pc-title">Is your cleaning business actually built to grow?</div>
-        <div class="pc-excerpt">Most businesses that want to grow aren't ready to. Here's the honest checklist.</div>
-        <div class="pc-meta">
-          <div class="pc-author-sm">Rhi · Coming soon</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-wm"><span class="fwC">C</span><span class="fwa">a</span><span class="fwd">d</span><span class="fwi">i<span class="fwdot"></span></span></div>
-      <p class="footer-copy">© 2025 Cadi · cadi.cleaning</p>
-      <div class="footer-links">
-        <a href="/">Home</a><a href="/about.html">About</a><a href="/demo.html">Demo</a>
-      </div>
-    </div>
-  </footer>
+  <footer><div class="footer-inner"><div class="footer-wm"><span class="fwC">C</span><span class="fwa">a</span><span class="fwd">d</span><span class="fwi">i<span class="fwdot"></span></span></div><p class="footer-copy">© 2026 Cadi · cadi.cleaning</p><div class="footer-links"><a href="/">Home</a><a href="/about.html">About</a><a href="/blog.html">Blog</a></div></div></footer>
 </div>
 
-
-<script>
-window.addEventListener('scroll', () => {
-  document.getElementById('nav').style.background =
-    window.scrollY > 40 ? 'rgba(4,8,16,0.95)' : 'rgba(4,8,16,0.8)';
-});
-</script>
-
+<style>
+.post-content p { color: #1a1f36 !important; }
+.post-content p strong { color: #040810 !important; }
+.post-content p em { background: linear-gradient(135deg,#1a3ac9,#2e55f0); -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; font-weight:600; }
+.post-content h2 { color: #040810 !important; }
+.post-content h3 { color: #1a1f36 !important; }
+.post-pull { background: rgba(29,56,196,0.05); border-left-color: rgba(29,56,196,0.5); color: #1a1f36 !important; }
+.post-callout { background: rgba(29,56,196,0.05); border-color: rgba(29,56,196,0.15); color: #1a1f36 !important; }
+.post-callout strong { color: #040810 !important; }
+.post-callout .callout-label { color: rgba(29,56,196,0.7); }
+.post-stat { background: #fff; border-color: rgba(29,56,196,0.1); }
+.ps-label { color: #1a1f36 !important; }
+.ps-label strong { color: #040810 !important; }
+.post-list-item { color: #1a1f36 !important; }
+.post-list-item strong { color: #040810 !important; }
+.post-divider { background: rgba(7,17,64,0.08); }
+.post-cta { background: #fff; border-color: rgba(29,56,196,0.18); }
+.post-cta h3 { color: #040810; }
+.post-cta p { color: #1a1f36 !important; }
+.post-cta p strong { color: #040810 !important; }
+.more-posts { background: #eef2ff; border-top-color: rgba(7,17,64,0.06); }
+.more-label { color: rgba(7,17,64,0.3); }
+.post-back { color: rgba(7,17,64,0.4) !important; }
+.post-back:hover { color: rgba(7,17,64,0.7) !important; }
+.post-author-name { color: rgba(7,17,64,0.65); }
+.post-meta { color: rgba(7,17,64,0.35); }
+</style>
 </body>
 </html>
