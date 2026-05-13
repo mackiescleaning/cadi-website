@@ -362,4 +362,30 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Blog posts: AI & operations -->
+  <url>
+    <loc>https://cadi.cleaning/blog/the-enquiry-that-got-away</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cadi.cleaning/blog/stop-being-your-own-receptionist</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cadi.cleaning/blog/your-reputation-is-your-pipeline</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cadi.cleaning/blog/the-3am-booking</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
